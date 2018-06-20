@@ -1,0 +1,39 @@
+lib-cov
+coverage
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+*.swp
+
+pids
+logs
+results
+tmp
+
+#Build
+public/css/main.css
+
+# Dependency directory
+node_modules
+
+# Built files
+dist
+
+# Editors
+.idea
+*.iml
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Ignore built ts files
+dist/**/*
+.nyc_output
+
+#Rush
+/common/temp/**

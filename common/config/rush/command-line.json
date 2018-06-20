@@ -1,0 +1,12 @@
+{
+  "$schema": "https://github.com/Microsoft/web-build-tools/blob/master/apps/rush-lib/src/schemas/command-line.schema.json",
+  "commands": [
+    {
+      "commandKind": "bulk",
+      "name": "test",
+      "summary": "Execute tests in each project.",
+      "description": "Runs tests in each project",
+      "enableParallelism": false
+    }
+  ]
+}

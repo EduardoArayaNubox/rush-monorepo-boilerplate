@@ -1,0 +1,52 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10.4.1
+        environment:
+          - DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
+      - image: postgres:9
+        environment:
+          - POSTGRES_USER: root
+          - POSTGRES_DB: circle_test
+    steps:
+      - checkout
+      - run:
+          name: rush install
+          command: |
+            sudo npm i -g @microsoft/rush
+      - run:
+          name: dependency install
+          command: |
+            rush install --purge
+      - run:
+          name: check dependencies
+          command: |
+            rush check
+      - run:
+          name: build
+          command: rush build
+      - run:
+          name: test
+          command: |
+            rush test-ci
+      - store_artifacts:
+          path: coverage
+          prefix: coverage
+      - store_artifacts:
+          path: reports/junit/
+          prefix: reports/junit/
+      - store_test_results:
+          path: reports/junit/
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - node_modules
+            - dist
+
+workflows:
+  version: 2
+
+  test_and_publish:
+    jobs:
+      - build

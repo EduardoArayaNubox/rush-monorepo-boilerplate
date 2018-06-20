@@ -1,0 +1,26 @@
+// Comments are allowed in all Rush config files :-)
+{
+  // Don't forget to update these versions periodically:
+  "rushVersion": "5.0.0-dev.23",
+  "npmVersion": "5.6.0",
+  // cannot enable until this is fixed:
+  // https://github.com/zkat/cacache/pull/136
+  //  "npmVersion": "6.1.0",
+  "nodeSupportedVersionRange": "10.4.1",
+
+  "projects": [
+    {
+      "packageName": "repo-tools",
+      "projectFolder": "repo-tools"
+    },
+    {
+      "packageName": "lib1",
+      "projectFolder": "lib1"
+    },
+    {
+      "packageName": "app1",
+      "projectFolder": "app1",
+      "shouldPublish": true
+    }
+  ]
+}

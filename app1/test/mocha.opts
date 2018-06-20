@@ -1,0 +1,10 @@
+--require ts-node/register
+--require source-map-support/register
+
+--full-trace
+--check-leaks
+
+--recursive
+--timeout=4000
+
+test/**/*.spec.ts
