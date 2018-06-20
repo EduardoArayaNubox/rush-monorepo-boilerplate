@@ -35,7 +35,6 @@
     "loopback-boot": "^2.27.0",
     "loopback-component-bunyan": "git+https://github.com/6RiverSystems/loopback-component-bunyan.git#v0.0.7",
     "loopback-component-explorer": "2.5.0",
-    "loopback-component-server-admin": "git+https://github.com/6RiverSystems/loopback-component-server-admin.git#v0.0.4",
     "loopback-connector-postgresql": "2.5.0",
     "loopback-connector-remote": "1.3.1",
     "loopback-datasource-juggler": "2.46.1",
