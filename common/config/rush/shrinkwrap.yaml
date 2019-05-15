@@ -19,7 +19,6 @@ dependencies:
   '@rush-temp/template-service': 'file:projects/template-service.tgz'
   '@sixriver/cfs_models': sixriver.jfrog.io/@sixriver/cfs_models/9.45.6
   '@sixriver/commitlint-config-6river': sixriver.jfrog.io/@sixriver/commitlint-config-6river/2.0.0
-  '@sixriver/event-ingestor-lib': sixriver.jfrog.io/@sixriver/event-ingestor-lib/1.2.6
   '@sixriver/wis-common': sixriver.jfrog.io/@sixriver/wis-common/1.43.0
   '@sixriver/wis-contracts': sixriver.jfrog.io/@sixriver/wis-contracts/1.43.0
   '@types/bunyan': 1.8.4
@@ -9921,7 +9920,7 @@ packages:
     dev: false
     name: '@rush-temp/template-service'
     resolution:
-      integrity: sha512-AP5EM3LTlLp/7J3+8+B8lNST45uGj1Iph/4rBGUuMHEvB4yXRUl3jLuKNAW1uXZo4EGr8tMjaGUYz5AO4uEIGA==
+      integrity: sha512-VvqUWtb+vrBab1VXRElAGDzB3ubZNWt4RpANFpiNckNkRLKu8JN2iI7wmHxSHNxa6pBnXgSqnAYRqgW/isRG8A==
       tarball: 'file:projects/template-service.tgz'
     version: 0.0.0
   sixriver.jfrog.io/@sixriver/blackboard/1.6.0:
@@ -10100,33 +10099,6 @@ packages:
       registry: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/'
       tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/config-schema/-/@sixriver/config-schema-1.1.9.tgz'
     version: 1.1.9
-  sixriver.jfrog.io/@sixriver/event-ingestor-lib/1.2.6:
-    dependencies:
-      '@google-cloud/pubsub': 0.28.1
-      '@loopback/boot': 1.0.11
-      '@loopback/context': 1.5.0
-      '@loopback/core': 1.1.5
-      '@loopback/openapi-v3': 1.2.0
-      '@loopback/openapi-v3-types': 1.0.4
-      '@loopback/repository': 1.1.4
-      '@loopback/rest': 1.5.4
-      '@loopback/rest-explorer': 1.1.6
-      '@loopback/service-proxy': 1.0.6
-      '@sixriver/cfs_models': sixriver.jfrog.io/@sixriver/cfs_models/9.35.1
-      lodash: 4.17.10
-      url-mask: 1.0.5
-      uuid: 3.3.2
-    dev: false
-    name: '@sixriver/event-ingestor-lib'
-    peerDependencies:
-      db-migrate: 0.11.5
-      db-migrate-pg: 0.4.0
-      loopback-connector-postgresql: 3.6.0
-    resolution:
-      integrity: sha1-MvV4qqKfDAfQ+9Og++hpbm2Oxa0=
-      registry: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/'
-      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/event-ingestor-lib/-/@sixriver/event-ingestor-lib-1.2.6.tgz'
-    version: 1.2.6
   sixriver.jfrog.io/@sixriver/event-ingestor-lib/1.2.6/4a2198d062dbc80f32816f17cce29352:
     dependencies:
       '@google-cloud/pubsub': 0.28.1
@@ -10219,7 +10191,6 @@ specifiers:
   '@rush-temp/template-service': 'file:./projects/template-service.tgz'
   '@sixriver/cfs_models': 9.45.6
   '@sixriver/commitlint-config-6river': ^2.0.0
-  '@sixriver/event-ingestor-lib': 1.2.6
   '@sixriver/wis-common': 1.43.0
   '@sixriver/wis-contracts': 1.43.0
   '@types/bunyan': 1.8.4

@@ -65,7 +65,6 @@
     "@loopback/rest": "1.5.4",
     "@loopback/rest-explorer": "1.1.7",
     "@sixriver/cfs_models": "9.45.6",
-    "@sixriver/event-ingestor-lib": "1.2.6",
     "@sixriver/template-common": "0.0.0-development",
     "@sixriver/template-oas": "0.0.0-development",
     "@sixriver/wis-common": "1.43.0",
