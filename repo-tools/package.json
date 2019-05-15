@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/6RiverSystems/rush-template.git"
+    "url": "https://github.com/6RiverSystems/rush-monorepo-boilerplate.git"
   },
   "publishConfig": {
     "registry": "https://sixriver.jfrog.io/sixriver/npm-local/"
