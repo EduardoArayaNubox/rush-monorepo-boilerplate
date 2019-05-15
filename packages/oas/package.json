@@ -9,8 +9,8 @@
     "node": "10.15.1"
   },
   "scripts": {
-    "rebuild": "npm-run-all clean build",
     "build": "npm-run-all build:utils build:models build:compile",
+    "rebuild": "npm-run-all clean build",
     "build:utils": "tsc --project utils",
     "build:compile": "tsc",
     "build:models": "node dist/utils/convertModelsToSchemas.js",

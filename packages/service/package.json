@@ -12,6 +12,7 @@
   },
   "scripts": {
     "build": "npm run build:only",
+    "rebuild": "npm-run-all clean build",
     "build:apidocs": "lb-apidocs",
     "build:only": "gulp compile --gulpfile '../../repo-tools/build-configs/gulpfile.js' --cwd './'",
     "build:watch": "gulp watch --gulpfile '../../repo-tools/build-configs/gulpfile.js' --cwd './'",

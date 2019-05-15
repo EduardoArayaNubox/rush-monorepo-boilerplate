@@ -3,7 +3,7 @@
 
 require('source-map-support').install();
 
-const application = require('./dist10');
+const application = require('./dist');
 
 module.exports = application;
 

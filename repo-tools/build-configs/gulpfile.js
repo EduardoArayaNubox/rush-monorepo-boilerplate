@@ -47,11 +47,11 @@ gulp.task('compile', function() {
 });
 
 gulp.task('watch', gulp.series('compile', () => {
-	return gulp.watch(['{lib,server,test}/**/*'], gulp.series('compile'));
+	return gulp.watch(['{lib,src,server,test}/**/*'], gulp.series('compile'));
 }));
 
 gulp.task('serve', gulp.series('compile', 'startServer', () => {
-	return gulp.watch(['{lib,server,test}/**/*'], gulp.series('compile', 'startServer'));
+	return gulp.watch(['{lib,src,server,test}/**/*'], gulp.series('compile', 'startServer'));
 }));
 
 gulp.task('default', gulp.series('compile'));
