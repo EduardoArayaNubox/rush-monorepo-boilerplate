@@ -866,7 +866,7 @@ packages:
       node: '>=8.9'
     resolution:
       integrity: sha1-EZM4NhIQBp5N+XaNPFNz9PnlvBg=
-      tarball: 'https://sixriver.jfrog.io/@sixriver/blackboard/-/@sixriver/blackboard-1.6.0.tgz'
+      tarball: /@sixriver/blackboard/-/@sixriver/blackboard-1.6.0.tgz
   /@sixriver/cfs_models/9.35.1:
     dependencies:
       '@sixriver/blackboard': 1.6.0
@@ -890,7 +890,7 @@ packages:
     dev: false
     resolution:
       integrity: sha1-ef75nr+dZjgk5+UxLm2nKZTbrJw=
-      tarball: 'https://sixriver.jfrog.io/@sixriver/cfs_models/-/@sixriver/cfs_models-9.35.1.tgz'
+      tarball: /@sixriver/cfs_models/-/@sixriver/cfs_models-9.35.1.tgz
   /@sixriver/cfs_models/9.45.6:
     dependencies:
       '@sixriver/blackboard': 1.6.0
@@ -914,7 +914,7 @@ packages:
     dev: false
     resolution:
       integrity: sha1-WcnEEkmu3ZF8XLQTjkL0/VaRKvM=
-      tarball: 'https://sixriver.jfrog.io/@sixriver/cfs_models/-/@sixriver/cfs_models-9.45.6.tgz'
+      tarball: /@sixriver/cfs_models/-/@sixriver/cfs_models-9.45.6.tgz
   /@sixriver/cfs_models/9.51.0:
     dependencies:
       '@sixriver/blackboard': 1.6.0
@@ -948,7 +948,7 @@ packages:
       husky: ^1.1.2
     resolution:
       integrity: sha1-MA/PLJ28wGuYfKEEdpZ9QnzUzSo=
-      tarball: 'https://sixriver.jfrog.io/@sixriver/commitlint-config-6river/-/@sixriver/commitlint-config-6river-2.0.0.tgz'
+      tarball: /@sixriver/commitlint-config-6river/-/@sixriver/commitlint-config-6river-2.0.0.tgz
   /@sixriver/config-schema/1.1.2:
     dependencies:
       '@types/glob': 5.0.36
@@ -962,7 +962,7 @@ packages:
     dev: false
     resolution:
       integrity: sha1-HmFEUeL45Q6LfCSSiKXWY94Mmvk=
-      tarball: 'https://sixriver.jfrog.io/@sixriver/config-schema/-/@sixriver/config-schema-1.1.2.tgz'
+      tarball: /@sixriver/config-schema/-/@sixriver/config-schema-1.1.2.tgz
   /@sixriver/config-schema/1.1.4:
     dependencies:
       '@types/glob': 5.0.36
@@ -1014,7 +1014,7 @@ packages:
       loopback-connector-postgresql: 3.6.0
     resolution:
       integrity: sha1-MvV4qqKfDAfQ+9Og++hpbm2Oxa0=
-      tarball: 'https://sixriver.jfrog.io/@sixriver/event-ingestor-lib/-/@sixriver/event-ingestor-lib-1.2.6.tgz'
+      tarball: /@sixriver/event-ingestor-lib/-/@sixriver/event-ingestor-lib-1.2.6.tgz
   /@sixriver/event-ingestor-lib/1.2.6_4a2198d062dbc80f32816f17cce29352:
     dependencies:
       '@google-cloud/pubsub': 0.28.1
@@ -1041,7 +1041,7 @@ packages:
       loopback-connector-postgresql: 3.6.0
     resolution:
       integrity: sha1-MvV4qqKfDAfQ+9Og++hpbm2Oxa0=
-      tarball: 'https://sixriver.jfrog.io/@sixriver/event-ingestor-lib/-/@sixriver/event-ingestor-lib-1.2.6.tgz'
+      tarball: /@sixriver/event-ingestor-lib/-/@sixriver/event-ingestor-lib-1.2.6.tgz
   /@sixriver/wis-common/1.43.0:
     dependencies:
       '@loopback/context': 1.5.0
@@ -1065,7 +1065,7 @@ packages:
     dev: false
     resolution:
       integrity: sha1-Do4RMwRoC48DsB8HCSIg+OF6bLE=
-      tarball: 'https://sixriver.jfrog.io/@sixriver/wis-common/-/@sixriver/wis-common-1.43.0.tgz'
+      tarball: /@sixriver/wis-common/-/@sixriver/wis-common-1.43.0.tgz
   /@sixriver/wis-contracts/1.43.0:
     dependencies:
       '@sixriver/cfs_models': 9.51.0
@@ -2297,7 +2297,7 @@ packages:
     dev: false
     resolution:
       integrity: sha1-sffn/HPSXn/R1FWtyU4UODAYK1o=
-  /chokidar/2.1.5:
+  /chokidar/2.1.6:
     dependencies:
       anymatch: 2.0.0
       async-each: 1.0.3
@@ -2314,7 +2314,7 @@ packages:
     optionalDependencies:
       fsevents: 1.2.9
     resolution:
-      integrity: sha512-i0TprVWp+Kj4WRPtInjexJ8Q+BqTE909VpH8xVhXrJkoc5QC8VO9TryGOqTr+2hljzc1sC62t22h5tZePodM/A==
+      integrity: sha512-V2jUo67OKkc6ySiRpJrjlpJKl9kDuG+Xb8VgsGzb+aEouhgS1D0weyPU4lEzdAcsCAvrih2J2BqyXqHWvVLw5g==
   /chownr/1.1.1:
     dev: false
     resolution:
@@ -3972,12 +3972,12 @@ packages:
       node: '>=6 <7 || >=8'
     resolution:
       integrity: sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==
-  /fs-minipass/1.2.5:
+  /fs-minipass/1.2.6:
     dependencies:
       minipass: 2.3.5
     dev: false
     resolution:
-      integrity: sha512-JhBl0skXjUPCFH7x6x61gQxrKyXsxB5gcgePLZCwfyCGGsTISMoIeObbrvVeP6Xmyaudw4TT43qV2Gz+iyd2oQ==
+      integrity: sha512-crhvyXcMejjv3Z5d2Fa9sf5xLYVCF5O1c71QxbVnbLsmYMBEvDAftewesN/HhY03YRoA7zOMxjNGrF5svGaaeQ==
   /fs-mkdirp-stream/1.0.0:
     dependencies:
       graceful-fs: 4.1.15
@@ -4155,7 +4155,7 @@ packages:
     dependencies:
       anymatch: 2.0.0
       async-done: 1.3.1
-      chokidar: 2.1.5
+      chokidar: 2.1.6
       is-negated-glob: 1.0.0
       just-debounce: 1.0.0
       object.defaults: 1.1.0
@@ -4376,7 +4376,7 @@ packages:
       gaxios: 1.8.4
       google-p12-pem: 1.0.4
       jws: 3.2.2
-      mime: 2.4.2
+      mime: 2.4.3
       pify: 4.0.1
     dev: false
     engines:
@@ -6128,13 +6128,13 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==
-  /mime/2.4.2:
+  /mime/2.4.3:
     dev: false
     engines:
       node: '>=4.0.0'
     hasBin: true
     resolution:
-      integrity: sha512-zJBfZDkwRu+j3Pdd2aHsR5GfH2jIWhmL1ZzBoc+X+3JEti2hbArWcyJ+1laC1D2/U/W1a/+Cegj0/OnEU2ybjg==
+      integrity: sha512-QgrPRJfE+riq5TPZMcHZOtm8c6K/yYrMbKIoRfapfiGLxS8OTeIfRhUGW5LU7MlRa52KOAGCfUNruqLrIBvWZw==
   /mimic-fn/1.2.0:
     dev: false
     engines:
@@ -8994,7 +8994,7 @@ packages:
   /tar/4.4.2:
     dependencies:
       chownr: 1.1.1
-      fs-minipass: 1.2.5
+      fs-minipass: 1.2.6
       minipass: 2.3.5
       minizlib: 1.2.1
       mkdirp: 0.5.1
@@ -9008,7 +9008,7 @@ packages:
   /tar/4.4.8:
     dependencies:
       chownr: 1.1.1
-      fs-minipass: 1.2.5
+      fs-minipass: 1.2.6
       minipass: 2.3.5
       minizlib: 1.2.1
       mkdirp: 0.5.1
@@ -10113,7 +10113,6 @@ packages:
       integrity: sha512-AP5EM3LTlLp/7J3+8+B8lNST45uGj1Iph/4rBGUuMHEvB4yXRUl3jLuKNAW1uXZo4EGr8tMjaGUYz5AO4uEIGA==
       tarball: 'file:projects/template-service.tgz'
     version: 0.0.0
-registry: ''
 specifiers:
   '@commitlint/cli': ^7.2.1
   '@google-cloud/pubsub': 0.28.1
