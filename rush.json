@@ -18,13 +18,13 @@
     "postRushBuild": []
   },
   "projects": [
-		{
-			"packageName": "@sixriver/template-repo-tools",
+    {
+      "packageName": "@sixriver/template-repo-tools",
       "projectFolder": "repo-tools",
       "shouldPublish": false
     },
     {
-			"packageName": "@sixriver/template-common",
+      "packageName": "@sixriver/template-common",
       "projectFolder": "packages/common",
       "versionPolicyName": "prerelease",
       "shouldPublish": true
