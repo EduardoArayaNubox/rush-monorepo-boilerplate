@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+readonly DIR="$(dirname "$(realpath "$0")")"
+
+rush install
+"$DIR"/build
