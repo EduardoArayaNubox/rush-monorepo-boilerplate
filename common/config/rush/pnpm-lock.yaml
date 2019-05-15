@@ -20,8 +20,8 @@ dependencies:
   '@sixriver/cfs_models': 9.45.6
   '@sixriver/commitlint-config-6river': 2.0.0
   '@sixriver/event-ingestor-lib': 1.2.6
-  '@sixriver/wis-common': 1.33.1
-  '@sixriver/wis-contracts': 1.33.1
+  '@sixriver/wis-common': 1.43.0
+  '@sixriver/wis-contracts': 1.43.0
   '@types/bunyan': 1.8.4
   '@types/chai': 4.1.7
   '@types/chai-as-promised': 7.1.0
@@ -258,7 +258,7 @@ packages:
       '@commitlint/execute-rule': 7.6.0
       '@commitlint/resolve-extends': 7.6.0
       babel-runtime: 6.26.0
-      cosmiconfig: 5.2.0
+      cosmiconfig: 5.2.1
       lodash: 4.17.11
       resolve-from: 5.0.0
     dev: false
@@ -672,7 +672,7 @@ packages:
     dependencies:
       '@loopback/context': 1.5.0
       '@loopback/core': 1.1.5
-      loopback-datasource-juggler: 4.7.1
+      loopback-datasource-juggler: 4.6.2
     dev: false
     engines:
       node: '>=8.9'
@@ -891,31 +891,6 @@ packages:
     resolution:
       integrity: sha1-ef75nr+dZjgk5+UxLm2nKZTbrJw=
       tarball: 'https://sixriver.jfrog.io/@sixriver/cfs_models/-/@sixriver/cfs_models-9.35.1.tgz'
-  /@sixriver/cfs_models/9.45.3:
-    dependencies:
-      '@sixriver/blackboard': 1.6.0
-      '@types/bunyan': 1.8.4
-      '@types/glob': 5.0.36
-      '@types/handlebars': 4.0.39
-      '@types/mathjs': 0.0.35
-      ajv: 6.10.0
-      ajv-keywords: 3.4.0_ajv@6.10.0
-      bunyan: 1.8.12
-      double-ended-queue: 2.1.0-0
-      es-nodeify: 1.0.0
-      glob: 7.1.4
-      handlebars: 4.0.11
-      json-schema-defaults: 0.3.0
-      json-schema-ref-parser: 4.1.1
-      mathjs: 3.20.2
-      nanotimer: 0.3.15
-      source-map-support: 0.5.9
-      url-join: 4.0.0
-      uuid: 3.3.2
-    dev: false
-    resolution:
-      integrity: sha1-DmAJGHxK7to99Y7eTKF4YyognUo=
-      tarball: /@sixriver/cfs_models/-/@sixriver/cfs_models-9.45.3.tgz
   /@sixriver/cfs_models/9.45.6:
     dependencies:
       '@sixriver/blackboard': 1.6.0
@@ -940,6 +915,30 @@ packages:
     resolution:
       integrity: sha1-WcnEEkmu3ZF8XLQTjkL0/VaRKvM=
       tarball: 'https://sixriver.jfrog.io/@sixriver/cfs_models/-/@sixriver/cfs_models-9.45.6.tgz'
+  /@sixriver/cfs_models/9.51.0:
+    dependencies:
+      '@sixriver/blackboard': 1.6.0
+      '@sixriver/config-schema': 1.1.4
+      '@types/bunyan': 1.8.4
+      '@types/glob': 5.0.36
+      '@types/handlebars': 4.0.39
+      '@types/mathjs': 0.0.35
+      ajv: 6.10.0
+      ajv-keywords: 3.4.0_ajv@6.10.0
+      bunyan: 1.8.12
+      double-ended-queue: 2.1.0-0
+      es-nodeify: 1.0.0
+      glob: 7.1.4
+      handlebars: 4.0.11
+      mathjs: 3.20.2
+      nanotimer: 0.3.15
+      source-map-support: 0.5.9
+      url-join: 4.0.0
+      uuid: 3.3.2
+    dev: false
+    resolution:
+      integrity: sha1-DVP13sYdPcfs0Rz4GH8yiMJYkBA=
+      tarball: /@sixriver/cfs_models/-/@sixriver/cfs_models-9.51.0.tgz
   /@sixriver/commitlint-config-6river/2.0.0:
     dependencies:
       '@commitlint/config-conventional': 7.6.0
@@ -964,6 +963,34 @@ packages:
     resolution:
       integrity: sha1-HmFEUeL45Q6LfCSSiKXWY94Mmvk=
       tarball: 'https://sixriver.jfrog.io/@sixriver/config-schema/-/@sixriver/config-schema-1.1.2.tgz'
+  /@sixriver/config-schema/1.1.4:
+    dependencies:
+      '@types/glob': 5.0.36
+      ajv: 6.10.0
+      ajv-keywords: 3.4.0_ajv@6.10.0
+      glob: 7.1.4
+      json-schema-defaults: 0.3.0
+      json-schema-ref-parser: 4.1.1
+      url-join: 4.0.0
+      uuid: 3.3.2
+    dev: false
+    resolution:
+      integrity: sha1-9LIAMepQD3k87qwoNRAQRgRvitc=
+      tarball: /@sixriver/config-schema/-/@sixriver/config-schema-1.1.4.tgz
+  /@sixriver/config-schema/1.1.9:
+    dependencies:
+      '@types/glob': 5.0.36
+      ajv: 6.10.0
+      ajv-keywords: 3.4.0_ajv@6.10.0
+      glob: 7.1.4
+      json-schema-defaults: 0.3.0
+      json-schema-ref-parser: 4.1.1
+      url-join: 4.0.0
+      uuid: 3.3.2
+    dev: false
+    resolution:
+      integrity: sha1-7BzjePot09Dvp9D2pZ6dGcru5mA=
+      tarball: /@sixriver/config-schema/-/@sixriver/config-schema-1.1.9.tgz
   /@sixriver/event-ingestor-lib/1.2.6:
     dependencies:
       '@google-cloud/pubsub': 0.28.1
@@ -1015,7 +1042,7 @@ packages:
     resolution:
       integrity: sha1-MvV4qqKfDAfQ+9Og++hpbm2Oxa0=
       tarball: 'https://sixriver.jfrog.io/@sixriver/event-ingestor-lib/-/@sixriver/event-ingestor-lib-1.2.6.tgz'
-  /@sixriver/wis-common/1.33.1:
+  /@sixriver/wis-common/1.43.0:
     dependencies:
       '@loopback/context': 1.5.0
       '@loopback/core': 1.1.5
@@ -1024,27 +1051,28 @@ packages:
       '@loopback/rest': 1.5.4
       '@loopback/rest-explorer': 1.1.7
       '@loopback/service-proxy': 1.0.7
-      '@sixriver/cfs_models': 9.45.3
+      '@sixriver/cfs_models': 9.51.0
+      '@sixriver/config-schema': 1.1.9
       '@types/express': 4.16.1
       '@types/nock': 9.3.1
       axios: 0.18.0
       bunyan: 1.8.12
       bunyan-prettystream: 0.1.3
       lodash: 4.17.10
-      loopback-datasource-juggler: github.com/mgabeler-lee-6rs/loopback-datasource-juggler/f04a4a479c55ebfeac38309db3975769c0392ca7
+      loopback-datasource-juggler: 4.6.2
       nock: 10.0.2
       url-join: 4.0.0
     dev: false
     resolution:
-      integrity: sha1-4gDhnx9T4GBK896V2MtJcFfN+eo=
-      tarball: 'https://sixriver.jfrog.io/@sixriver/wis-common/-/@sixriver/wis-common-1.33.1.tgz'
-  /@sixriver/wis-contracts/1.33.1:
+      integrity: sha1-Do4RMwRoC48DsB8HCSIg+OF6bLE=
+      tarball: 'https://sixriver.jfrog.io/@sixriver/wis-common/-/@sixriver/wis-common-1.43.0.tgz'
+  /@sixriver/wis-contracts/1.43.0:
     dependencies:
-      '@sixriver/cfs_models': 9.45.3
+      '@sixriver/cfs_models': 9.51.0
     dev: false
     resolution:
-      integrity: sha1-TpObckgPv07AvsZHa+FbtBZ4VV8=
-      tarball: 'https://sixriver.jfrog.io/@sixriver/wis-contracts/-/@sixriver/wis-contracts-1.33.1.tgz'
+      integrity: sha1-wAGwcAHRkqA4ryfD/3UQpMZ5CEI=
+      tarball: /@sixriver/wis-contracts/-/@sixriver/wis-contracts-1.43.0.tgz
   /@types/body-parser/1.17.0:
     dependencies:
       '@types/connect': 3.4.32
@@ -2650,7 +2678,7 @@ packages:
       node: '>= 0.10'
     resolution:
       integrity: sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==
-  /cosmiconfig/5.2.0:
+  /cosmiconfig/5.2.1:
     dependencies:
       import-fresh: 2.0.0
       is-directory: 0.3.1
@@ -2660,7 +2688,7 @@ packages:
     engines:
       node: '>=4'
     resolution:
-      integrity: sha512-nxt+Nfc3JAqf4WIWd0jXLjTJZmsPLrA9DDc4nRw2KFJQJK7DNooqSXrNI7tzLG50CF8axczly5UV929tBmh/7g==
+      integrity: sha512-H65gsXo1SKjf8zmrJ67eJk8aIRKV5ff2D4uKZIBZShbhGSpEmsQOPW/SKMKYhSTrqR7ufy6RP69rPogdaPh/kA==
   /cross-spawn/6.0.5:
     dependencies:
       nice-try: 1.0.5
@@ -4656,7 +4684,7 @@ packages:
       integrity: sha512-HPCTS1LW51bcyMYbxUIOO4HEOlQ1/1qRaFWcyxvwaqUS9TY88aoEuHUY33kuAh1YhVVaDQhLZsnPd+XNARWZlQ==
   /husky/1.3.1:
     dependencies:
-      cosmiconfig: 5.2.0
+      cosmiconfig: 5.2.1
       execa: 1.0.0
       find-up: 3.0.0
       get-stdin: 6.0.0
@@ -5752,6 +5780,25 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-NIN8XB9CILRsXtu6TWjliaM1yadOolGi9tCc6tP3f1nKdN749TjvjfWXZyO+fB+EWuhWOHyh1UApr9DtptgIqg==
+  /loopback-datasource-juggler/4.6.2:
+    dependencies:
+      async: 2.6.2
+      debug: 4.1.1
+      depd: 2.0.0
+      inflection: 1.12.0
+      lodash: 4.17.11
+      loopback-connector: 4.7.0
+      minimatch: 3.0.4
+      qs: 6.7.0
+      shortid: 2.2.14
+      strong-globalize: 4.1.3
+      traverse: 0.6.6
+      uuid: 3.3.2
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-Ot2f5ZweWKJFcBNIdopRWfCA6818sGtSbaro6qS/Q4XxAazfPA6l5U/6AQBV2hHfWQX7Q/NNgaKvieyb6+KVDQ==
   /loopback-datasource-juggler/4.7.1:
     dependencies:
       async: 2.6.2
@@ -10016,8 +10063,8 @@ packages:
       '@pact-foundation/pact-node': 8.3.0
       '@sixriver/cfs_models': 9.45.6
       '@sixriver/event-ingestor-lib': 1.2.6_4a2198d062dbc80f32816f17cce29352
-      '@sixriver/wis-common': 1.33.1
-      '@sixriver/wis-contracts': 1.33.1
+      '@sixriver/wis-common': 1.43.0
+      '@sixriver/wis-contracts': 1.43.0
       '@types/bunyan': 1.8.4
       '@types/chai': 4.1.7
       '@types/chai-as-promised': 7.1.0
@@ -10063,31 +10110,9 @@ packages:
     dev: false
     name: '@rush-temp/template-service'
     resolution:
-      integrity: sha512-vqs4h/CfbZyMzzQhxiepKDX/ivLXjeqs6lwPK70lNuyRZpv2X4/MUe75JJU3ILzybdxo1VCHSJCdLjvQ3Dma1g==
+      integrity: sha512-AP5EM3LTlLp/7J3+8+B8lNST45uGj1Iph/4rBGUuMHEvB4yXRUl3jLuKNAW1uXZo4EGr8tMjaGUYz5AO4uEIGA==
       tarball: 'file:projects/template-service.tgz'
     version: 0.0.0
-  github.com/mgabeler-lee-6rs/loopback-datasource-juggler/f04a4a479c55ebfeac38309db3975769c0392ca7:
-    dependencies:
-      async: 2.6.2
-      bluebird: 3.5.4
-      debug: 3.2.6
-      depd: 1.1.2
-      inflection: 1.12.0
-      lodash: 4.17.11
-      loopback-connector: 4.7.0
-      minimatch: 3.0.4
-      qs: 6.7.0
-      shortid: 2.2.14
-      strong-globalize: 4.1.3
-      traverse: 0.6.6
-      uuid: 3.3.2
-    dev: false
-    engines:
-      node: '>=6'
-    name: loopback-datasource-juggler
-    resolution:
-      tarball: 'https://codeload.github.com/mgabeler-lee-6rs/loopback-datasource-juggler/tar.gz/f04a4a479c55ebfeac38309db3975769c0392ca7'
-    version: 3.24.0
 registry: ''
 specifiers:
   '@commitlint/cli': ^7.2.1
@@ -10111,8 +10136,8 @@ specifiers:
   '@sixriver/cfs_models': 9.45.6
   '@sixriver/commitlint-config-6river': ^2.0.0
   '@sixriver/event-ingestor-lib': 1.2.6
-  '@sixriver/wis-common': 1.33.1
-  '@sixriver/wis-contracts': 1.33.1
+  '@sixriver/wis-common': 1.43.0
+  '@sixriver/wis-contracts': 1.43.0
   '@types/bunyan': 1.8.4
   '@types/chai': 4.1.7
   '@types/chai-as-promised': 7.1.0

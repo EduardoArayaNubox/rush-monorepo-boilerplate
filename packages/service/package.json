@@ -65,6 +65,7 @@
     "@sixriver/template-common": "0.0.0-development",
     "@sixriver/template-oas": "0.0.0-development",
     "@sixriver/wis-common": "1.43.0",
+    "@sixriver/wis-contracts": "1.43.0",
     "ajv": "6.5.5",
     "axios": "0.18.0",
     "db-migrate": "0.11.5",

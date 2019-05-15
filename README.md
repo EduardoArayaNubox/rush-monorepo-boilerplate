@@ -25,3 +25,5 @@ TODO
 	* `ServiceDirectoryProvider`
 	  * This one needs to be shared as the split version that can provide both
 		  internal and external directories.
+* Update `gulp-typescript` so that the `incremental` flag in `tsconfig-base.json` 
+  will actually work
