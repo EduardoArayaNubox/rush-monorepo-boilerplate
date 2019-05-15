@@ -1,15 +1,33 @@
 {
-  "name": "repo-tools",
+  "name": "@sixriver/template-repo-tools",
   "version": "0.0.0-development",
-  "description": "repo build tools",
+  "description": "Utilities for building the @sixriver/template packages",
   "scripts": {
+    "clean": "true",
     "build": "true",
-    "test": "true"
+    "test": "true",
+    "test-ci": "true",
+    "test-ci-pact": "true",
+    "publish-pacts": "true",
+    "docker-publish": "true",
+    "release": "true"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/6RiverSystems/monorepo-example.git"
+    "url": "https://github.com/6RiverSystems/rush-template.git"
+  },
+  "publishConfig": {
+    "registry": "https://sixriver.jfrog.io/sixriver/npm-local/"
+  },
+  "dependencies": {
   },
   "devDependencies": {
+    "@pact-foundation/pact-node": "8.3.0",
+    "gulp": "4.0.2",
+    "gulp-typescript": "5.0.1",
+    "gulp-sourcemaps": "2.6.5",
+    "merge2": "1.2.3",
+    "child_process": "1.0.2",
+    "jsmin": "1.0.1"
   }
 }

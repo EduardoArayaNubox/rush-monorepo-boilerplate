@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+if [[ -n "${DEBUG:-}" ]]; then
+	set -x
+fi
+IFS=$'\n\t'
+readonly DIR=$(dirname $(realpath ${BASH_SOURCE[0]}))
+
+export readonly DB_NAME='template_service'
+
+~/src/infrastructure/scripts/create-pg-dbs

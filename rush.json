@@ -1,25 +1,44 @@
-// Comments are allowed in all Rush config files :-)
 {
-  // Don't forget to update these versions periodically:
-  "rushVersion": "5.0.0-dev.23",
-  "npmVersion": "5.6.0",
-  // cannot enable until this is fixed:
-  // https://github.com/zkat/cacache/pull/136
-  //  "npmVersion": "6.1.0",
-  "nodeSupportedVersionRange": "10.4.1",
-
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
+  "rushVersion": "5.7.3",
+  "pnpmVersion": "3.3.1",
+  "pnpmOptions": {
+    "strictPeerDependencies": false
+  },
+  "nodeSupportedVersionRange": "10.15.3",
+  "ensureConsistentVersions": true,
+  "repository": {
+    "url": "https://github.com/6RiverSystems/rush-template"
+  },
+  "eventHooks": {
+    "preRushInstall": [
+    ],
+    "postRushInstall": [],
+    "preRushBuild": [],
+    "postRushBuild": []
+  },
   "projects": [
-    {
-      "packageName": "repo-tools",
-      "projectFolder": "repo-tools"
+		{
+			"packageName": "@sixriver/template-repo-tools",
+      "projectFolder": "repo-tools",
+      "shouldPublish": false
     },
     {
-      "packageName": "lib1",
-      "projectFolder": "lib1"
+			"packageName": "@sixriver/template-common",
+      "projectFolder": "packages/common",
+      "versionPolicyName": "prerelease",
+      "shouldPublish": true
     },
     {
-      "packageName": "app1",
-      "projectFolder": "app1",
+      "packageName": "@sixriver/template-oas",
+      "projectFolder": "packages/oas",
+      "versionPolicyName": "prerelease",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@sixriver/template-service",
+      "projectFolder": "packages/service",
+      "versionPolicyName": "prerelease",
       "shouldPublish": true
     }
   ]

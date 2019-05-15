@@ -1,0 +1,10 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/common-versions.schema.json",
+  "preferredVersions": {
+    "babel-runtime": "^6.26.0",
+    "@commitlint/cli": "^7.2.1",
+		"@sixriver/commitlint-config-6river": "^2.0.0",
+    "husky": "^1.1.2"
+  },
+  "allowedAlternativeVersions": {}
+}

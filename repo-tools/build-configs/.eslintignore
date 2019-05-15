@@ -1,0 +1,5 @@
+gulpfile.js
+migrations/
+coverage/
+dist*/
+*.d.ts

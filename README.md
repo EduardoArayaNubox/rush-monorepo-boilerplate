@@ -1,23 +1,27 @@
-# Warehouse Integration Service
+# Template Rush Project
 
-[![CircleCI](https://circleci.com/gh/6RiverSystems/wis/tree/develop.svg?style=svg&circle-token=23a0f02161e4587e91d28a624c12056c172db6ab)](https://circleci.com/gh/6RiverSystems/wis/tree/develop)
+## Instantiating It
 
-## Developer Guide
+TODO
 
-Pre-requisite: npm i -g @microsoft/rush
+## What It Provides
 
-* rush update
--> Run this whenever you modify package.json
+TODO
 
-* rush install
--> The equivalent of `npm install && npm link` (linking all project inter-dependencies)
--> Run this whenever you do a `git pull`
+## TODO
 
-* rush build
--> Will build all your source code
-
-* rush test
--> Run all tests... hopefully?
-
-* You can also run regular npm scripts from inside your specific project
-** (Except `npm install` might not work so well)
+* Remove `@sixriver/wis-common` dependency
+  * This pulls in a bunch of Loopback 4 helper classes from there,
+	  which really should be split out into a different package.
+* Move shared code to a shared package
+  * Like with the `wis-common` issue, several classes that are copied here should be put in one or more shared locations
+	* `DbMigrateBooter`
+	* `JsonSchema4Validator`
+	* `Validator`
+	* `ObjectIdModel`
+	* `DataSourceUrlBuilder`
+	* `JsonSchema4ValidatorProvider`
+	* `MinimalLogWrapperProvider`
+	* `ServiceDirectoryProvider`
+	  * This one needs to be shared as the split version that can provide both
+		  internal and external directories.
