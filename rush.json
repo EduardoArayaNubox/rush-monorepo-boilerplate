@@ -1,7 +1,9 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
   "rushVersion": "5.7.3",
-  "pnpmVersion": "3.3.1",
+  // pnpm 3.x is incompatible with our jfrog registry
+  // see https://github.com/pnpm/pnpm/issues/1827
+  "pnpmVersion": "2.25.7",
   "pnpmOptions": {
     "strictPeerDependencies": false
   },
