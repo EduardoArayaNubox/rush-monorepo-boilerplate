@@ -22,7 +22,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - dependencies-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
+            - dependencies-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
             - dependencies-v1-
             - dependencies-v1
       - run:
