@@ -73,7 +73,7 @@ jobs:
       - store_test_results:
           path: /home/circleci/project/reports/junit/
       - save_cache:
-          key: dependencies-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
+          key: dependencies-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
           paths:
             - "/home/circleci/.rush"
             - "./common/temp"
