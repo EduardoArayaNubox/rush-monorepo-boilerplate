@@ -92,7 +92,7 @@ jobs:
           at: ./
       - restore_cache:
           keys:
-            - dependencies-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
+            - dependencies-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
       - run:
           name: Setup CI Environment
           command: |
