@@ -28,20 +28,17 @@
     {
       "packageName": "@sixriver/template-common",
       "projectFolder": "packages/common",
-      "versionPolicyName": "prerelease",
-      "shouldPublish": true
+      "versionPolicyName": "prerelease"
     },
     {
       "packageName": "@sixriver/template-oas",
       "projectFolder": "packages/oas",
-      "versionPolicyName": "prerelease",
-      "shouldPublish": true
+      "versionPolicyName": "prerelease"
     },
     {
       "packageName": "@sixriver/template-service",
       "projectFolder": "packages/service",
-      "versionPolicyName": "prerelease",
-      "shouldPublish": true
+      "versionPolicyName": "prerelease"
     }
   ]
 }
