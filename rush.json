@@ -10,7 +10,7 @@
   "nodeSupportedVersionRange": "10.15.3",
   "ensureConsistentVersions": true,
   "repository": {
-    "url": "https://github.com/6RiverSystems/rush-template"
+    "url": "https://github.com/6RiverSystems/rush-monorepo-boilerplate"
   },
   "eventHooks": {
     "preRushInstall": [

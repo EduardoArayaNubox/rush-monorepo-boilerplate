@@ -94,11 +94,6 @@ jobs:
           keys:
             - dependencies-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
       - run:
-          name: Setup CI Environment
-          command: |
-            git submodule update --init --recursive
-            ci_scripts/ci_tool.sh --setup_npm
-      - run:
           name: Setup Tag for new version and then release
           command: |
             ./repo-tools/scripts/version.sh
