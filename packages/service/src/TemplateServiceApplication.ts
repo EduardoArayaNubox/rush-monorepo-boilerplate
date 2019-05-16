@@ -122,9 +122,6 @@ export class TemplateServiceApplication extends BootMixin(RepositoryMixin(RestAp
 		this.bind(CommonBindings.PROCESS_ENV).to(args.env);
 
 		configureLogging(this, TemplateServiceApplication.getLoggingConfigOptions(args.loggingOptions));
-		this.bind(CommonBindings.LOG_FACTORY)
-		.toProvider(BunyanMinimalLogFactoryProvider)
-		.inScope(BindingScope.SINGLETON);
 		// TODO: not sure what's the right thing to do here for configuring dependencies... maybe "Component"s?
 		// TODO: this is probably not right, LB4 config is not fully baked yet, for example:
 		//		https://github.com/strongloop/loopback.io/issues/540)
