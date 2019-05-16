@@ -88,11 +88,11 @@ jobs:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
       - setup_remote_docker
-      - attach_workspace:
-          at: ./
       - restore_cache:
           keys:
             - dependencies-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
+      - attach_workspace:
+          at: ./
       - run:
           name: Setup Tag for new version and then release
           command: |
