@@ -8,14 +8,13 @@ import * as Ajv from 'ajv';
 import {Console} from 'console';
 import * as uuidv4 from 'uuid/v4';
 
-import {EntityCrudRepository, EntityNotFoundError} from '@loopback/repository';
 import {Response} from '@loopback/rest';
 
-import {MinimalLogFactory, MinimalLogger} from '@sixriver/cfs_models';
+import {MinimalLogFactory, MinimalLogger} from '@sixriver/typescript-support';
+import {Validator} from '@sixriver/loopback4-support';
 
 import {TemplateMessage} from '@sixriver/template-oas';
 
-import {Validator} from '../../../src/components';
 import {TemplateController} from '../../../src/controllers';
 import {TemplateMessageModel} from '../../../src/models';
 
@@ -70,10 +69,14 @@ describe(TemplateController.name, function() {
 
 	context('create', function() {
 		it('should return the created object id in the happy path', async function() {
+			const validateMessage = sinon.stub(requestValidator, 'tryValidate').callThrough();
+			validateMessage.withArgs(sinon.match(requestMessage)).resolves(true);
+
 			const result = await controller.create(requestMessage);
 
 			assert.isOk(result);
 			assert.propertyVal(result, 'id', requestMessage.id);
+			sinon.assert.calledOnce(validateMessage);
 		});
 
 		// TODO: should have more forms of invalid entities
@@ -90,7 +93,7 @@ describe(TemplateController.name, function() {
 				await controller.create(requestMessage);
 				assert.fail(undefined, undefined, 'Should have thrown an exception');
 			} catch (err) {
-				assert.match(err.message, /invalid.*request/i);
+				assert.match(err.message, /invalid.*message/i);
 				assert.nestedProperty(err, 'details.errors');
 				assert.lengthOf(err.details.errors, 1);
 				assert.nestedPropertyVal(err, 'details.errors[0].message', inducedErrorMessage);

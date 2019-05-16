@@ -3,16 +3,16 @@ const path = require('path');
 
 const config = require('./server-defaults');
 
-const pactProvider = 'packout-ingestion';
+const pactProvider = 'template-service';
 
 const pactClients = [
 	// List pact clients here (strings must match pact-broker)
 	'asset-manager',
 ];
 
-describe('packout-ingestion', () => {
+describe(pactProvider, function() {
 	pactClients.forEach((pactClient) => {
-		it(`verify pacts againt ${pactClient}`, (done) => {
+		it(`verify pacts againt ${pactClient}`, async function() {
 			const opts = {
 				// where your service will be running during the test, either staging or localhost on CI
 				providerBaseUrl: `http://localhost:${config.providerPort}`,
@@ -23,11 +23,7 @@ describe('packout-ingestion', () => {
 				publishVerificationResult: true,
 				providerVersion: '1.0.0', // TODO - make dynamic, keep in sync
 			};
-			pact.verifyPacts(opts).then(() => {
-				done();
-			}).catch((err) => {
-				done(err);
-			});
+			await pact.verifyPacts(opts);
 		});
 	});
 });

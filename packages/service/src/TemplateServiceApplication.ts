@@ -4,21 +4,20 @@ if (process.env.NODE_ENV === 'production' && process.env.APM === 'true') {
 }
 
 import * as _ from 'lodash';
+import * as path from 'path';
 
 import {ApplicationConfig, Provider, BindingScope} from '@loopback/core';
 import {RestApplication, RestServer, RestBindings} from '@loopback/rest';
-import {Constructor, inject} from '@loopback/context';
+import {Constructor, inject, Getter} from '@loopback/context';
 
-import {RepositoryMixin} from '@loopback/repository';
+import {RepositoryMixin, juggler} from '@loopback/repository';
 import {BootMixin} from '@loopback/boot';
 
 import {
 	configureServiceConfig,
 	ServiceConfig,
-	ServiceConfigBindings,
-	ServiceConfigOptions,
-	Logger,
-	LoggerBindings,
+	getServiceConfigOptions,
+	CommonBindings,
 	LoggingConfigOptions,
 	getDefaultLoggingConfiguration,
 	configureLogging,
@@ -26,27 +25,28 @@ import {
 	envRestOptions,
 	UptimeController,
 	bindPathAwareExplorer,
-} from '@sixriver/wis-common';
-import {MinimalLogFactory} from '@sixriver/cfs_models';
+	JsonSchema4ValidatorProvider,
+	BunyanMinimalLogFactoryProvider,
+	InternalServiceDirectoryProvider,
+	DbMigrateBooterBase,
+} from '@sixriver/loopback4-support';
+import {MinimalLogFactory, MinimalLogger} from '@sixriver/typescript-support';
+import {ServicePortFactory, getEnvironment} from '@sixriver/service-directory';
 
 import {TemplateMessage, TemplateMessageSchema} from '@sixriver/template-oas';
 
-import {
-	MinimalLogWrapperProvider,
-	TemplateServiceProviderKeys,
-	JsonSchema4ValidatorProvider,
-	ServiceDirectoryProvider,
-} from './providers';
-import {DbMigrateBooter} from './components';
+import {TemplateServiceProviderKeys} from './providers';
 
 import {TemplateServiceSequence} from './TemplateServiceSequence';
+import {TemplateDataSource} from './datasources';
 
 const defaultListenHost = '0.0.0.0';
-// FIXME: we want to get this out of the service directory, but there's a chicken/egg problem with that
-const defaultDefaultListenPort = 9999;
 
-const defaultListenPort = ['development', 'production'].includes(process.env.NODE_ENV || '')
-	? defaultDefaultListenPort : defaultDefaultListenPort + 10000;
+const defaultListenPort =
+	new ServicePortFactory(() => console)
+	.manufacture(getEnvironment(process.env))
+	// FIXME: replace this with your service name and remove the `as any`
+	.getPort('template-service' as any);
 
 export type TemplateServiceApplicationArguments = {
 	options?: ApplicationConfig,
@@ -57,7 +57,7 @@ export type TemplateServiceApplicationArguments = {
 
 // eslint-disable-next-line 6river/new-cap
 export class TemplateServiceApplication extends BootMixin(RepositoryMixin(RestApplication)) {
-	private logger?: Logger;
+	private logger?: MinimalLogger;
 
 	public constructor(args: TemplateServiceApplicationArguments) {
 		if (!args.options) {
@@ -102,7 +102,16 @@ export class TemplateServiceApplication extends BootMixin(RepositoryMixin(RestAp
 			},
 		};
 
-		this.bind(TemplateServiceProviderKeys.DB_MIGRATE_SCOPE).to('packoutRequest').inScope(BindingScope.SINGLETON);
+		class DbMigrateBooter extends DbMigrateBooterBase {
+			constructor(
+				@inject(CommonBindings.LOG_FACTORY)
+					loggerFactory: MinimalLogFactory,
+				@inject.getter('datasources.' + TemplateDataSource.name)
+					datasource: Getter<juggler.DataSource>
+			) {
+				super(loggerFactory, datasource, 'service', path.join(__dirname, '../../'));
+			}
+		}
 		this.booters(DbMigrateBooter);
 
 		// register dependencies
@@ -110,27 +119,29 @@ export class TemplateServiceApplication extends BootMixin(RepositoryMixin(RestAp
 		if (!args.env) {
 			args.env = process.env;
 		}
-		this.bind(TemplateServiceProviderKeys.PROCESS_ENV).to(args.env);
+		this.bind(CommonBindings.PROCESS_ENV).to(args.env);
 
 		configureLogging(this, TemplateServiceApplication.getLoggingConfigOptions(args.loggingOptions));
-		this.bind(TemplateServiceProviderKeys.LOG_FACTORY)
-		.toProvider(MinimalLogWrapperProvider).inScope(BindingScope.SINGLETON);
+		this.bind(CommonBindings.LOG_FACTORY)
+		.toProvider(BunyanMinimalLogFactoryProvider)
+		.inScope(BindingScope.SINGLETON);
 		// TODO: not sure what's the right thing to do here for configuring dependencies... maybe "Component"s?
 		// TODO: this is probably not right, LB4 config is not fully baked yet, for example:
 		//		https://github.com/strongloop/loopback.io/issues/540)
 		//		https://github.com/strongloop/loopback-next/issues/1054)
-		this.configureServiceConfig(args.serviceConfig);
+		configureServiceConfig(this, getServiceConfigOptions(), args.serviceConfig);
 
 		// Add the standard controllers
 		this.controller(KillController);
 		this.controller(UptimeController);
 
-		this.bind(TemplateServiceProviderKeys.SERVICE_DIRECTORY).toProvider(ServiceDirectoryProvider)
+		this.bind(TemplateServiceProviderKeys.SERVICE_DIRECTORY)
+		.toProvider(InternalServiceDirectoryProvider)
 		.inScope(BindingScope.SINGLETON);
 
 		class TemplateMessageValidatorProvider extends JsonSchema4ValidatorProvider<TemplateMessage> {
 			constructor(
-				@inject(TemplateServiceProviderKeys.LOG_FACTORY)
+				@inject(CommonBindings.LOG_FACTORY)
 					logFactory: MinimalLogFactory,
 			) {
 				super(TemplateMessageSchema, 'TemplateMessage', logFactory);
@@ -145,8 +156,8 @@ export class TemplateServiceApplication extends BootMixin(RepositoryMixin(RestAp
 	public async start() {
 		this.bind(UptimeController.STARTED_TIME).to(new Date());
 
-		const loggerFactory = await this.get(LoggerBindings.LOGGER_FACTORY);
-		this.logger = loggerFactory.createLogger(TemplateServiceApplication);
+		const loggerFactory = await this.get(CommonBindings.LOG_FACTORY);
+		this.logger = loggerFactory(TemplateServiceApplication.name);
 
 		await super.start();
 
@@ -162,60 +173,8 @@ export class TemplateServiceApplication extends BootMixin(RepositoryMixin(RestAp
 		loggingConfigOptions = loggingConfigOptions || {};
 		// if a logger factory is given, we don't need the logger config
 		if (!loggingConfigOptions.loggerFactory && !loggingConfigOptions.logging) {
-			loggingConfigOptions.logging = getDefaultLoggingConfiguration('packout-ingestion');
+			loggingConfigOptions.logging = getDefaultLoggingConfiguration('template-service');
 		}
 		return loggingConfigOptions;
-	}
-
-	private configureServiceConfig(serviceConfig?: Constructor<Provider<ServiceConfig>> | ServiceConfig) {
-		if (serviceConfig) {
-			this.bindServiceConfig(serviceConfig);
-		} else {
-			const options = TemplateServiceApplication.getServiceConfigOptions();
-
-			if (options) {
-				configureServiceConfig(this, options);
-			} else {
-				this.bindServiceConfig({});
-			}
-		}
-	}
-
-	public static getServiceConfigOptions(env?: NodeJS.ProcessEnv): ServiceConfigOptions | undefined {
-		env = env || process.env;
-		if (env.NODE_ENV === 'production') {
-			if (!env.SITE_NAME) {
-				throw new Error('SITE_NAME not set');
-			}
-			return {
-				grmUrl: env.GRM_URL || 'https://grm.6river.org/v1',
-				siteName: env.SITE_NAME,
-			};
-		}
-
-		if (env.USE_GRM) {
-			if (!env.SITE_NAME) {
-				throw new Error('SITE_NAME not set');
-			}
-			return {
-				grmUrl: env.GRM_URL || 'http://localhost:3004/v1',
-				siteName: env.SITE_NAME,
-			};
-		}
-
-		return undefined;
-	}
-
-	private bindServiceConfig(serviceConfig: Constructor<Provider<ServiceConfig>> | ServiceConfig) {
-		if (typeof serviceConfig === 'function') {
-			this.bind(ServiceConfigBindings.SERVICE_CONFIGURATION)
-			// Doesn't seem to be a good way to do a runtime type guard for a constructable
-			.toProvider(serviceConfig as Constructor<Provider<ServiceConfig>>)
-			.scope = BindingScope.SINGLETON;
-		} else {
-			this.bind(ServiceConfigBindings.SERVICE_CONFIGURATION)
-			.to(serviceConfig)
-			.scope = BindingScope.SINGLETON;
-		}
 	}
 }

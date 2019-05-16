@@ -4,17 +4,13 @@ import * as Ajv from 'ajv';
 import {inject} from '@loopback/context';
 import {post, api, HttpErrors, RestBindings, requestBody, Response} from '@loopback/rest';
 
-import {
-	MinimalLogFactory,
-	MinimalLogger,
-} from '@sixriver/cfs_models';
-import {ApiSchemaBuilder} from '@sixriver/wis-common';
+import {MinimalLogFactory, MinimalLogger} from '@sixriver/typescript-support';
+import {ApiSchemaBuilder, Validator, CommonBindings} from '@sixriver/loopback4-support';
 
 import {TemplateMessage} from '@sixriver/template-oas';
 
 import {ObjectIdModel, TemplateMessageModel} from '../models';
 import {TemplateServiceProviderKeys} from '../providers';
-import {Validator} from '../components';
 
 const schemaBuilder = new ApiSchemaBuilder();
 schemaBuilder.appendModel(TemplateMessageModel);
@@ -33,7 +29,7 @@ export class TemplateController {
 		private readonly requestValidator: Validator<TemplateMessage, Ajv.ErrorObject>,
 		@inject(RestBindings.Http.RESPONSE)
 		private readonly response: Response,
-		@inject(TemplateServiceProviderKeys.LOG_FACTORY)
+		@inject(CommonBindings.LOG_FACTORY)
 		loggerFactory: MinimalLogFactory
 	) {
 		this.logger = loggerFactory(this.constructor.name);
@@ -58,7 +54,7 @@ export class TemplateController {
 		try {
 			this.logger.info(
 				{message: _.pick(message, 'id', 'timestamp', 'source', 'destinations')},
-				'Received packout request',
+				'Received template request',
 			);
 
 			const validationResult = await this.requestValidator.tryValidate(message);

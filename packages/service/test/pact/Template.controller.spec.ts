@@ -9,32 +9,28 @@ import {TemplateServiceApplication} from '../../src';
 import {TemplateServiceProviderKeys} from '../../src/providers';
 
 
-describe('packout ingestion', () => {
+describe('template service', function() {
 	let app: TemplateServiceApplication;
 	let apiBaseUrl: string;
 
 	beforeEach(async function() {
 		app = new TemplateServiceApplication({});
 		const sd = await app.get(TemplateServiceProviderKeys.SERVICE_DIRECTORY);
-		const baseUrl = sd.getBaseUrl('packout-ingestion');
+		const baseUrl = sd.getBaseUrl('template-service' as any);
 		apiBaseUrl = `${baseUrl}/template`;
 	});
 
-	beforeEach(async () => {
+	beforeEach(async function() {
 		await app.boot();
 		await app.start();
 	});
 
-	afterEach(async () => {
+	afterEach(async function() {
 		await app.stop();
 	});
 
-	/*
-	 * Packout Requests
-	 */
-
-	describe('POST template-message', async () => {
-		it(`for a valid body should return a 201 (Created) status code and an id`, async () => {
+	describe('POST template-message', async function() {
+		it('for a valid body should return a 201 (Created) status code and an id', async function() {
 			const url = `${apiBaseUrl}`;
 			const postBody: TemplateMessage = {
 				id: uuidv4(),
@@ -55,7 +51,7 @@ describe('packout ingestion', () => {
 			assert.isString(result.data.id);
 		});
 
-		it('for an invalid body should return a 422 (Unprocessable Entity) status code', async () => {
+		it('for an invalid body should return a 422 (Unprocessable Entity) status code', async function() {
 			const url = `${apiBaseUrl}`;
 			const postBody = {
 				_bad_id: uuidv4(),

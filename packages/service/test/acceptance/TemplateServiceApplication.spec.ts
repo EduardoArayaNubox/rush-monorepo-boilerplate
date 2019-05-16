@@ -4,6 +4,8 @@ import axios from 'axios';
 import {AxiosError} from 'axios';
 import * as uuidv4 from 'uuid/v4';
 
+import {CommonBindings} from '@sixriver/loopback4-support';
+
 import {TemplateServiceApplication} from '../../src';
 import {TemplateServiceProviderKeys} from '../../src/providers';
 
@@ -14,7 +16,7 @@ describe(`acceptance/${TemplateServiceApplication.name}`, function() {
 		app = new TemplateServiceApplication({});
 		const fakeEnv = {...process.env};
 		fakeEnv.TEST_MODE = 'acceptance';
-		app.bind(TemplateServiceProviderKeys.PROCESS_ENV).to(fakeEnv);
+		app.bind(CommonBindings.PROCESS_ENV).to(fakeEnv);
 	});
 
 	afterEach(async function() {
@@ -35,8 +37,8 @@ describe(`acceptance/${TemplateServiceApplication.name}`, function() {
 			await app.start();
 
 			const sd = await app.get(TemplateServiceProviderKeys.SERVICE_DIRECTORY);
-			baseUrl = sd.getBaseUrl('packout-ingestion');
-			apiBaseUrl = `${baseUrl}/packout-requests`;
+			baseUrl = sd.getBaseUrl('template-service' as any);
+			apiBaseUrl = `${baseUrl}/template`;
 		});
 
 		it('should host an uptime controller', async function() {

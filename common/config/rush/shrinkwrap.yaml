@@ -1,15 +1,15 @@
 dependencies:
   '@commitlint/cli': 7.6.1
   '@google-cloud/pubsub': 0.28.1
-  '@loopback/boot': 1.0.11
+  '@loopback/boot': 1.2.7
   '@loopback/build': 1.2.0
-  '@loopback/context': 1.5.0
-  '@loopback/core': 1.1.5
-  '@loopback/openapi-v3': 1.2.0
-  '@loopback/openapi-v3-types': 1.0.5
-  '@loopback/repository': 1.1.4
-  '@loopback/rest': 1.5.4
-  '@loopback/rest-explorer': 1.1.7
+  '@loopback/context': 1.15.0
+  '@loopback/core': 1.7.0
+  '@loopback/openapi-v3': 1.3.11
+  '@loopback/openapi-v3-types': 1.0.18
+  '@loopback/repository': 1.5.5
+  '@loopback/rest': 1.11.2
+  '@loopback/rest-explorer': 1.1.22
   '@loopback/testlab': 1.0.4
   '@pact-foundation/pact': 8.2.2
   '@pact-foundation/pact-node': 8.3.0
@@ -17,10 +17,11 @@ dependencies:
   '@rush-temp/template-oas': 'file:projects/template-oas.tgz'
   '@rush-temp/template-repo-tools': 'file:projects/template-repo-tools.tgz'
   '@rush-temp/template-service': 'file:projects/template-service.tgz'
-  '@sixriver/cfs_models': sixriver.jfrog.io/@sixriver/cfs_models/9.45.6
   '@sixriver/commitlint-config-6river': sixriver.jfrog.io/@sixriver/commitlint-config-6river/2.0.0
-  '@sixriver/wis-common': sixriver.jfrog.io/@sixriver/wis-common/1.43.0
-  '@sixriver/wis-contracts': sixriver.jfrog.io/@sixriver/wis-contracts/1.43.0
+  '@sixriver/config-schema': sixriver.jfrog.io/@sixriver/config-schema/1.8.2
+  '@sixriver/loopback4-support': sixriver.jfrog.io/@sixriver/loopback4-support/1.0.16
+  '@sixriver/service-directory': sixriver.jfrog.io/@sixriver/service-directory/1.0.16
+  '@sixriver/typescript-support': sixriver.jfrog.io/@sixriver/typescript-support/1.0.16
   '@types/bunyan': 1.8.4
   '@types/chai': 4.1.7
   '@types/chai-as-promised': 7.1.0
@@ -33,8 +34,10 @@ dependencies:
   '@types/sinon': 5.0.2
   '@types/swagger-parser': 4.0.3
   '@types/uuid': 3.4.4
+  ajv: 6.10.0
   axios: 0.18.0
   babel-runtime: 6.26.0
+  bunyan: 1.8.12
   bunyan-prettystream: 0.1.3
   chai: 4.2.0
   chai-as-promised: 7.1.1
@@ -73,7 +76,6 @@ dependencies:
   swagger-parser: 6.0.5
   typescript: 3.4.5
   typescript-eslint-parser: 22.0.0
-  url-mask: 1.0.5
   uuid: 3.3.2
 packages:
   /@babel/code-frame/7.0.0:
@@ -441,13 +443,13 @@ packages:
       node: '>= 0.10'
     resolution:
       integrity: sha1-iQrnxdjId/bThIYCFazp1+yUW9o=
-  /@loopback/boot/1.0.11:
+  /@loopback/boot/1.2.7:
     dependencies:
-      '@loopback/context': 1.5.0
-      '@loopback/core': 1.1.5
-      '@loopback/repository': 1.1.4
+      '@loopback/context': 1.15.0
+      '@loopback/core': 1.7.0
+      '@loopback/repository': 1.5.5
       '@loopback/service-proxy': 1.1.10
-      '@types/debug': 0.0.30
+      '@types/debug': 4.1.4
       '@types/glob': 7.1.1
       debug: 4.1.1
       glob: 7.1.4
@@ -455,7 +457,7 @@ packages:
     engines:
       node: '>=8.9'
     resolution:
-      integrity: sha512-NX6lfPgHh23eBbvs6CuqdIs0Fhg/W+75TM5MwPxJeWyDGC2gsjmzIhiiVlyfqsizf7FJ191sMlge1AOBlnxMBA==
+      integrity: sha512-AaeQeE85enSzHwcHMOgwhYfxNK3x2Y+dfJyG7oSeWbKfmihMUkiNScTMyXN72JGnfklC6+idRT8yoV0VAplCrg==
   /@loopback/build/1.2.0:
     dependencies:
       '@loopback/tslint-config': /@loopback/tslint-config/2.0.4/tslint@5.16.0+typescript@3.4.5
@@ -490,24 +492,6 @@ packages:
       node: '>=8.9'
     resolution:
       integrity: sha512-J7iH0AZ2P72jPnzhMFH4yMHjs6oWOQS+4DUssndzb8jGZ1JyDyLON4BXt95/+b5MxdBUIFa7ID7AU+re8FoQHQ==
-  /@loopback/context/1.5.0:
-    dependencies:
-      '@loopback/metadata': 1.1.4
-      debug: 4.1.1
-      uuid: 3.3.2
-    dev: false
-    engines:
-      node: '>=8.9'
-    resolution:
-      integrity: sha512-L8ZSOpaG7neT/BstZOVpappk68M2wN0AYnGaMVmSUbISPaw5xWlMTe/c8s/zl9CU+Kof8W0ttMI1Qsz5RuucVw==
-  /@loopback/core/1.1.5:
-    dependencies:
-      '@loopback/context': 1.5.0
-    dev: false
-    engines:
-      node: '>=8.9'
-    resolution:
-      integrity: sha512-3gxFc6Z40keGtNkwjhTcL5F0ozZGSHfhBVCRg606+uWBV2rZX26H2jGM81SGpoWdIMa0cpRaExdeSAw51amJ/A==
   /@loopback/core/1.7.0:
     dependencies:
       '@loopback/context': 1.15.0
@@ -535,26 +519,18 @@ packages:
       node: '>=8.9'
     resolution:
       integrity: sha512-JNMfqYQUBODUB9iJ0y+9asQO+dgPU1+d1mraa2ZaRJydGt3v8sdzAwUub8w8te5eNgb+5kCciWSTKyBUQ3RBfw==
-  /@loopback/openapi-v3-types/1.0.4:
+  /@loopback/openapi-v3-types/1.0.18:
     dependencies:
       openapi3-ts: 1.2.0
     dev: false
     engines:
       node: '>=8.9'
     resolution:
-      integrity: sha512-ZdtMWIuPm8G9KB4LmaRHrshQKA6Klw0vrkMtjI3jABwrR5VNBEZwTYOtDtfmhYIQCS78UBWJ5eiXEsXzFei4HQ==
-  /@loopback/openapi-v3-types/1.0.5:
+      integrity: sha512-MARbxrR41+N847pSzmx/NgjGYFgdVRuLLiz4PmJhlCop/5+SOF3wN1YA41nyt8czGlLCTBO0PdnHgfz1+eCBMA==
+  /@loopback/openapi-v3/1.3.11:
     dependencies:
-      openapi3-ts: 1.2.0
-    dev: false
-    engines:
-      node: '>=8.9'
-    resolution:
-      integrity: sha512-lJQ2Hm2kRsKz+EBK/4Kr4Ok2U1xojtRZQ2irKAuAhTslyQXPPqo2u0abOhZOHtEO/MnTdM5le4KPJ2QWaY7r5w==
-  /@loopback/openapi-v3/1.2.0:
-    dependencies:
-      '@loopback/context': 1.5.0
-      '@loopback/openapi-v3-types': 1.0.5
+      '@loopback/context': 1.15.0
+      '@loopback/openapi-v3-types': 1.0.18
       '@loopback/repository-json-schema': 1.4.7
       debug: 4.1.1
       lodash: 4.17.11
@@ -562,7 +538,7 @@ packages:
     engines:
       node: '>=8.9'
     resolution:
-      integrity: sha512-Gw429IuwATBe9FhSC2k+CWMTwQKapgL3ZPGiR+PWAntEiaYH3Wq9UBGq7DrWNzc90c9gMaaBMJJSItfZ8kF+cw==
+      integrity: sha512-/sodgJBMYae2vXeoe3XjS96798jPtYcSYfqpKrmDSmNxMqpOPo8IYvKBiJkATruD4kB2dE730WfO9icW6NOUDQ==
   /@loopback/repository-json-schema/1.4.7:
     dependencies:
       '@loopback/context': 1.15.0
@@ -574,19 +550,6 @@ packages:
       node: '>=8.9'
     resolution:
       integrity: sha512-FD/2JYD/bfWubMk+DqfFRoWgregQr1W/o+VyDyGqwa7VVbWRa3sDOnORImKIqs68y7LjugbHse6sdjzcXJ0i3w==
-  /@loopback/repository/1.1.4:
-    dependencies:
-      '@loopback/context': 1.5.0
-      '@loopback/core': 1.1.5
-      '@types/debug': 0.0.30
-      debug: 4.1.1
-      lodash: 4.17.11
-      loopback-datasource-juggler: 4.7.1
-    dev: false
-    engines:
-      node: '>=8.9'
-    resolution:
-      integrity: sha512-VEf5GQj9XnPoBnLmv3hEWOjkc42VdIY0a9tWNVQmxrRqdtcHeBMwl6FCwJKoL1bTzKdMJnaKSYtI4MvnfgWeKA==
   /@loopback/repository/1.5.5:
     dependencies:
       '@loopback/context': 1.15.0
@@ -600,42 +563,31 @@ packages:
       node: '>=8.9'
     resolution:
       integrity: sha512-dhUU9CxUEs2cW2WqxWVn5dXHob8IezbqYPeaMkp4xBdBVESpbS4q5ivPGxccK6zkKNNlXazuLXmbjifkzzvz9g==
-  /@loopback/rest-explorer/1.1.6:
+  /@loopback/rest-explorer/1.1.22:
     dependencies:
-      '@loopback/context': 1.5.0
-      '@loopback/core': 1.1.5
-      '@loopback/rest': 1.5.4
+      '@loopback/context': 1.15.0
+      '@loopback/core': 1.7.0
+      '@loopback/rest': 1.11.2
       ejs: 2.6.1
       swagger-ui-dist: 3.22.1
     dev: false
     engines:
       node: '>=8.9'
     resolution:
-      integrity: sha512-5FTutKITct5b/ZwvbfO8pjUW6TGXlAd8lj9FPXhd8YwreQZSK1v/vc4xIBAyrAx+3k0FcHxSfjGoUvM5H1b7DA==
-  /@loopback/rest-explorer/1.1.7:
+      integrity: sha512-gxqxJS2IJ8IhhMejPi3Zy0wkb1Cyzd0E+menaQuim/HGsXqPCggCtATxUWPWSSNgW9j1yyzGxVuPmCnmjTedjg==
+  /@loopback/rest/1.11.2:
     dependencies:
-      '@loopback/context': 1.5.0
-      '@loopback/core': 1.1.5
-      '@loopback/rest': 1.5.4
-      ejs: 2.6.1
-      swagger-ui-dist: 3.22.1
-    dev: false
-    engines:
-      node: '>=8.9'
-    resolution:
-      integrity: sha512-ArLmk6THen+JlEXBwE05nn9VX2rtSdfF45yyZp/SBZIBFukniYubL0nPrPODuk5x4QnEucoEPUTLnus2QKtwvg==
-  /@loopback/rest/1.5.4:
-    dependencies:
-      '@loopback/context': 1.5.0
-      '@loopback/core': 1.1.5
+      '@loopback/context': 1.15.0
+      '@loopback/core': 1.7.0
       '@loopback/http-server': 1.2.3
-      '@loopback/openapi-v3': 1.2.0
-      '@loopback/openapi-v3-types': 1.0.5
+      '@loopback/openapi-v3': 1.3.11
+      '@loopback/openapi-v3-types': 1.0.18
       '@types/body-parser': 1.17.0
       '@types/cors': 2.8.5
       '@types/express': 4.16.1
       '@types/express-serve-static-core': 4.16.4
       '@types/http-errors': 1.6.1
+      '@types/on-finished': 2.3.1
       '@types/serve-static': 1.13.2
       '@types/type-is': 1.6.2
       ajv: 6.10.0
@@ -646,9 +598,10 @@ packages:
       http-errors: 1.7.2
       js-yaml: 3.13.1
       lodash: 4.17.11
+      on-finished: 2.3.0
       openapi-schema-to-json-schema: 2.2.0
       openapi3-ts: 1.2.0
-      path-to-regexp: 2.4.0
+      path-to-regexp: 3.0.0
       qs: 6.7.0
       strong-error-handler: 3.2.0
       type-is: 1.6.18
@@ -657,27 +610,7 @@ packages:
     engines:
       node: '>=8.9'
     resolution:
-      integrity: sha512-Gl3PsRLgDnEFx83Wg+K+0JPlMj8bmBqjOzw0YMvCwBEYAbBMNVu7zWwXFvfOAtBXrXeRnUsfFBdHcdMkfFYACA==
-  /@loopback/service-proxy/1.0.6:
-    dependencies:
-      '@loopback/context': 1.5.0
-      '@loopback/core': 1.1.5
-      loopback-datasource-juggler: 4.7.1
-    dev: false
-    engines:
-      node: '>=8.9'
-    resolution:
-      integrity: sha512-B2f/FMZAbqlOx3JnE6a71DArk4KGRRp2GI6DNuxIztglvNeD3pvTsL16P5nlxd1/3eZbIRtcuVUCyVNiEmnHxw==
-  /@loopback/service-proxy/1.0.7:
-    dependencies:
-      '@loopback/context': 1.5.0
-      '@loopback/core': 1.1.5
-      loopback-datasource-juggler: 4.7.1
-    dev: false
-    engines:
-      node: '>=8.9'
-    resolution:
-      integrity: sha512-T3PVVL23yG0uuwv51XHxnUcUAMEh7EoQ2zgNPEMppCJgV/VbGU/yHdMqC5QHDIOhYeWxuEbCU4LxlGUgk5iGKg==
+      integrity: sha512-+RaH7BkqYBPl28StPeNmG8dPa9fpBuBkNd5d1HZ0xmet5wy8FYvkw0p4SnN1wEDzfpyl6R2iBl6xO/nTMB0u7g==
   /@loopback/service-proxy/1.1.10:
     dependencies:
       '@loopback/context': 1.15.0
@@ -909,10 +842,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-GmK8AKu8i+s+EChK/uZ5IbrXPcPaQKWaNSGevDT/7o3gFObwSUQwqb1jMqxuo+YPvj0ckGzINI+EO7EHcmJjKg==
-  /@types/debug/0.0.30:
-    dev: false
-    resolution:
-      integrity: sha512-orGL5LXERPYsLov6CWs3Fh6203+dXzJkR7OnddIr2514Hsecwc8xRpzCapshBbKFImCsvS/mk6+FWiN5LyZJAQ==
   /@types/debug/4.1.4:
     dev: false
     resolution:
@@ -964,10 +893,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-1Bh06cbWJUHMC97acuD6UMG29nMt0Aqz1vF3guLfG+kHHJhy3AyohZFFxYk2f7Q1SQIrNwvncxAE0N/9s70F2w==
-  /@types/handlebars/4.0.39:
-    dev: false
-    resolution:
-      integrity: sha512-vjaS7Q0dVqFp85QhyPSZqDKnTTCemcSHNHFvDdalO1s0Ifz5KuE64jQD5xoUkfdWwF4WpqdJEl7LsWH8rzhKJA==
   /@types/handlebars/4.1.0:
     dependencies:
       handlebars: 4.1.2
@@ -999,10 +924,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-cDB930/7MbzaGF6U3IwSQp6XBru8xWajF5PV2YZZeV8DyiliTuld11afVztGI9+yJZ29il5E+NpGA6ooV/Cjkg==
-  /@types/mathjs/0.0.35:
-    dev: false
-    resolution:
-      integrity: sha512-vPzSajQdcOQelSYPOveFy7eceAuwKNw26Io9/Iufxbhd1xg8jU+Ho6LY4w1Cb4HNfNhlwFhNXCkPtiWQV55zPQ==
   /@types/mime/2.0.1:
     dev: false
     resolution:
@@ -1039,6 +960,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-leUNzbFTMX94TWaIKz8N15Chu55F9QSH+INKayQr5xpkasBQBRF3qQXfo3/dOnMU/dEIit+Y/SU8HyOjq++GwA==
+  /@types/on-finished/2.3.1:
+    dependencies:
+      '@types/node': 10.14.6
+    dev: false
+    resolution:
+      integrity: sha512-mzVYaYcFs5Jd2n/O6uYIRUsFRR1cHyZLRvkLCU0E7+G5WhY0qBDAR5fUCeZbvecYOSh9ikhlesyi2UfI8B9ckQ==
   /@types/p-defer/1.0.3:
     dev: false
     resolution:
@@ -1212,32 +1139,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-nffhOpkymDECQyR0mnsUtoCE8RlX38G0rYP+wgLWFyZuUyuuojSSvi/+euOiQBIn63whYwYVIIH1TvE3tu4OEg==
-  /ajv/6.5.5:
-    dependencies:
-      fast-deep-equal: 2.0.1
-      fast-json-stable-stringify: 2.0.0
-      json-schema-traverse: 0.4.1
-      uri-js: 4.2.2
-    dev: false
-    resolution:
-      integrity: sha512-7q7gtRQDJSyuEHjuVgHoUa2VuemFiCMrfQc9Tc08XTAc4Zj/5U1buQJ0HU6i7fKjXU09SVgSmxa4sLvuvS8Iyg==
-  /align-text/0.1.4:
-    dependencies:
-      kind-of: 3.2.2
-      longest: 1.0.1
-      repeat-string: 1.6.1
-    dev: false
-    engines:
-      node: '>=0.10.0'
-    optional: true
-    resolution:
-      integrity: sha1-DNkKVhCT810KmSVsIrcGlDP60Rc=
-  /amdefine/1.0.1:
-    dev: false
-    engines:
-      node: '>=0.4.2'
-    resolution:
-      integrity: sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
   /ansi-colors/1.1.0:
     dependencies:
       ansi-wrap: 0.1.0
@@ -1918,13 +1819,6 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha1-oqpfsa9oh1glnDLBQUJteJI7m3c=
-  /camelcase/1.2.1:
-    dev: false
-    engines:
-      node: '>=0.10.0'
-    optional: true
-    resolution:
-      integrity: sha1-m7UwTS4LVmmLLHWLCKPqqdqlijk=
   /camelcase/2.1.1:
     dev: false
     engines:
@@ -1972,16 +1866,6 @@ packages:
     dev: false
     resolution:
       integrity: sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
-  /center-align/0.1.3:
-    dependencies:
-      align-text: 0.1.4
-      lazy-cache: 1.0.4
-    dev: false
-    engines:
-      node: '>=0.10.0'
-    optional: true
-    resolution:
-      integrity: sha1-qg0yYptu6XIgBBHL1EYckHvCt60=
   /chai-as-promised/7.1.1:
     dependencies:
       check-error: 1.0.2
@@ -2185,15 +2069,6 @@ packages:
     optional: true
     resolution:
       integrity: sha512-Vw26VSLRpJfBofiVaFb/I8PVfdI1OxKcYShe6fm0sP/DtmiWQNCjhM/okTvdCo0G+lMMm1rMYbk4IK4x1X+kgQ==
-  /cliui/2.1.0:
-    dependencies:
-      center-align: 0.1.3
-      right-align: 0.1.3
-      wordwrap: 0.0.2
-    dev: false
-    optional: true
-    resolution:
-      integrity: sha1-S0dXYP+AJkx2LDoXGQMukcf+oNE=
   /cliui/3.2.0:
     dependencies:
       string-width: 1.0.2
@@ -2355,10 +2230,6 @@ packages:
     dev: false
     resolution:
       integrity: sha1-md0LpFfh+bxyKxLAjsM+6rMfpkg=
-  /complex.js/2.0.4:
-    dev: false
-    resolution:
-      integrity: sha512-Syl95HpxUTS0QjwNxencZsKukgh1zdS9uXeXX2Us0pHaqBR6kiZZi0AkZ9VpZFwHJyVIUVzI4EumjWdXP3fy6w==
   /component-emitter/1.3.0:
     dev: false
     resolution:
@@ -2627,10 +2498,6 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-9lNNFRSCabIDUue+4m9QH5oZEpA=
-  /decimal.js/9.0.1:
-    dev: false
-    resolution:
-      integrity: sha512-2h0iKbJwnImBk4TGk7CG1xadoA0g3LDPlQhQzbZ221zvG0p2YVUedbKIPsOZXKZGx6YmZMJKYOalpCMxSdDqTQ==
   /decko/1.2.0:
     dev: false
     resolution:
@@ -2859,10 +2726,6 @@ packages:
       node: '>=4.6.0'
     resolution:
       integrity: sha512-4As8uPrjfwb7VXC+WnLCbXK7y+Ueb2B3zgNCePYfhxS1PYeaO1YTeplffTEcbfLhvFNGLAz90VvJs9yomG7bow==
-  /double-ended-queue/2.1.0-0:
-    dev: false
-    resolution:
-      integrity: sha1-ED01J/0xUo9AGIEwyEHv3XgmTlw=
   /dox/0.9.0:
     dependencies:
       commander: 2.9.0
@@ -2972,11 +2835,6 @@ packages:
       node: '>= 0.4'
     resolution:
       integrity: sha512-vDZfg/ykNxQVwup/8E1BZhVzFfBxs9NqMzGcvIJrqg5k2/5Za2bWo40dK2J1pgLngZ7c+Shh8lwYtLGyrwPutg==
-  /es-nodeify/1.0.0:
-    deprecated: Please see util.promisify()
-    dev: false
-    resolution:
-      integrity: sha1-RYFxHiN7HMYMU+wYylkb66Ju1CA=
   /es-to-primitive/1.2.0:
     dependencies:
       is-callable: 1.1.4
@@ -3041,10 +2899,6 @@ packages:
     dev: false
     resolution:
       integrity: sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg=
-  /escape-latex/1.2.0:
-    dev: false
-    resolution:
-      integrity: sha512-nV5aVWW1K0wEiUIEdZ4erkGGH8mDxGyxSeqPzRNtWP7ataw+/olFObw7hujFWlVjNsaDFw5VZ5NzVSIqRgfTiw==
   /escape-string-regexp/1.0.5:
     dev: false
     engines:
@@ -3734,10 +3588,6 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
-  /fraction.js/4.0.4:
-    dev: false
-    resolution:
-      integrity: sha512-aK/oGatyYLTtXRHjfEsytX5fieeR5H4s8sLorzcT12taFS+dbMZejnvm9gRa8mZAPwci24ucjq9epDyaq5u8Iw==
   /fragment-cache/0.2.1:
     dependencies:
       map-cache: 0.2.2
@@ -3838,7 +3688,7 @@ packages:
       abort-controller: 3.0.0
       extend: 3.0.2
       https-proxy-agent: 2.2.1
-      node-fetch: 2.5.0
+      node-fetch: 2.6.0
     dev: false
     resolution:
       integrity: sha512-BoENMnu1Gav18HcpV9IleMPZ9exM+AvUjrAOV4Mzs/vfz2Lu/ABv451iEXByKiMPn2M140uul1txXCg83sAENw==
@@ -4261,19 +4111,6 @@ packages:
       node: '>= 0.10'
     resolution:
       integrity: sha1-4oxNRdBey77YGDY86PnFkmIp/+U=
-  /handlebars/4.0.11:
-    dependencies:
-      async: 1.5.2
-      optimist: 0.6.1
-      source-map: 0.4.4
-    dev: false
-    engines:
-      node: '>=0.4.7'
-    hasBin: true
-    optionalDependencies:
-      uglify-js: 2.8.29
-    resolution:
-      integrity: sha1-Ywo13+ApS8KB7a5v/F0yn8eYLcw=
   /handlebars/4.1.2:
     dependencies:
       neo-async: 2.6.1
@@ -5026,10 +4863,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-yynBb1g+RFUPY64fTrFv7nsjRrENBQJaX2UL+2Szc9REFrSNm1rpSXHGzhmAy7a9uv3vlvgBlXnf9RqmPH1/DA==
-  /javascript-natural-sort/0.7.1:
-    dev: false
-    resolution:
-      integrity: sha1-+eIwPUUH9tdDVac2ZNFED7Wg71k=
   /joi/14.3.1:
     dependencies:
       hoek: 6.1.3
@@ -5288,13 +5121,6 @@ packages:
       node: '>= 0.10'
     resolution:
       integrity: sha1-RblpQsF7HHnHchmCWbqUO+v4yls=
-  /lazy-cache/1.0.4:
-    dev: false
-    engines:
-      node: '>=0.10.0'
-    optional: true
-    resolution:
-      integrity: sha1-odePw6UEdMuAhF07O24dpJpEbo4=
   /lazystream/1.0.0:
     dependencies:
       readable-stream: 2.3.6
@@ -5519,10 +5345,6 @@ packages:
     dev: false
     resolution:
       integrity: sha1-W/Rejkm6QYnhfUgnid/RW9FAt7Y=
-  /lodash/4.17.10:
-    dev: false
-    resolution:
-      integrity: sha512-UejweD1pDoXu+AD825lWwp4ZGtSwgnpZxb3JDViD7StjQz+Nb/6l093lx4OQ0foGWNRoc19mWy7BzL+UAK2iVg==
   /lodash/4.17.11:
     dev: false
     resolution:
@@ -5545,13 +5367,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==
-  /longest/1.0.1:
-    dev: false
-    engines:
-      node: '>=0.10.0'
-    optional: true
-    resolution:
-      integrity: sha1-MKCy2jj3N3DoKUoNIuZiXtd9AJc=
   /loopback-connector-postgresql/3.6.0:
     dependencies:
       async: 0.9.2
@@ -5579,25 +5394,6 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-NIN8XB9CILRsXtu6TWjliaM1yadOolGi9tCc6tP3f1nKdN749TjvjfWXZyO+fB+EWuhWOHyh1UApr9DtptgIqg==
-  /loopback-datasource-juggler/4.6.2:
-    dependencies:
-      async: 2.6.2
-      debug: 4.1.1
-      depd: 2.0.0
-      inflection: 1.12.0
-      lodash: 4.17.11
-      loopback-connector: 4.7.0
-      minimatch: 3.0.4
-      qs: 6.7.0
-      shortid: 2.2.14
-      strong-globalize: 4.1.3
-      traverse: 0.6.6
-      uuid: 3.3.2
-    dev: false
-    engines:
-      node: '>=8'
-    resolution:
-      integrity: sha512-Ot2f5ZweWKJFcBNIdopRWfCA6818sGtSbaro6qS/Q4XxAazfPA6l5U/6AQBV2hHfWQX7Q/NNgaKvieyb6+KVDQ==
   /loopback-datasource-juggler/4.7.1:
     dependencies:
       async: 2.6.2
@@ -5760,22 +5556,6 @@ packages:
       node: '>= 0.10.0'
     resolution:
       integrity: sha1-xvNINKDY28OzfCfui7yyfHd1WC4=
-  /mathjs/3.20.2:
-    dependencies:
-      complex.js: 2.0.4
-      decimal.js: 9.0.1
-      escape-latex: 1.2.0
-      fraction.js: 4.0.4
-      javascript-natural-sort: 0.7.1
-      seed-random: 2.2.0
-      tiny-emitter: 2.0.2
-      typed-function: 0.10.7
-    dev: false
-    engines:
-      node: '>= 0.1'
-    hasBin: true
-    resolution:
-      integrity: sha512-3f6/+uf1cUtIz1rYFz775wekl/UEDSQ3mU6xdxW7qzpvvhc2v28i3UtLsGTRB+u8OqDWoSX6Dz8gehaGFs6tCA==
   /md5/2.2.1:
     dependencies:
       charenc: 0.0.2
@@ -6141,10 +5921,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-TghvYc72wlMGMVMluVo9WRJc0mB8KxxF/gZ4YYFy7V2ZQX9l7rgbPg7vjS9mt6U5HXODVFVI2bOduCzwOMv/lw==
-  /nanoid/2.0.1:
+  /nanoid/2.0.2:
     dev: false
     resolution:
-      integrity: sha512-k1u2uemjIGsn25zmujKnotgniC/gxQ9sdegdezeDiKdkDW56THUMqlz3urndKCXJxA6yPzSZbXx/QCMe/pxqsA==
+      integrity: sha512-X4yQ8VHoFvHcykGunT2Jxrsm1c4vH5UKtau7LLJYXO1istCRE3jD8JxDyGCzN+h7dpWBCvWaSYgloRuphKRqUQ==
   /nanomatch/1.2.13:
     dependencies:
       arr-diff: 4.0.0
@@ -6163,10 +5943,6 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-fpoe2T0RbHwBTBUOftAfBPaDEi06ufaUai0mE6Yn1kacc3SnTErfb/h+X94VXzI64rKFHYImXSvdwGGCmwOqCA==
-  /nanotimer/0.3.15:
-    dev: false
-    resolution:
-      integrity: sha1-KA0nfbkUbspvilcLVyq68qmsx1Q=
   /natural-compare/1.4.0:
     dev: false
     resolution:
@@ -6252,22 +6028,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-sa0RRbj53dovjc7wombHmVli9ZihXbXCQ2uH3TNm03DyvOSIQbxg+pbqDKrk2oxMK1rtLGVlKxcB9rrc6X5YjA==
-  /nock/10.0.2:
-    dependencies:
-      chai: 4.2.0
-      debug: 4.1.1
-      deep-equal: 1.0.1
-      json-stringify-safe: 5.0.1
-      lodash: 4.17.11
-      mkdirp: 0.5.1
-      propagate: 1.0.0
-      qs: 6.7.0
-      semver: 5.7.0
-    dev: false
-    engines:
-      '0': node >= 4.0
-    resolution:
-      integrity: sha512-uWrdlRzG28SXM5yqYsUHfYBRqljF8P6aTRDh6Y5kTgs/Q4GB59QWlpiegmDHQouvmX/rDyKkC/nk+k4nA+QPNw==
   /nock/10.0.6:
     dependencies:
       chai: 4.2.0
@@ -6292,12 +6052,12 @@ packages:
       node: 4.x || >=6.0.0
     resolution:
       integrity: sha512-ofRW94Ab0T4AOh5Fk8t0h8OBWrmjb0SSB20xh1H8YnPV9EJ+f5AMoYSUQ2zgJ4Iq2HAK0I2l5/Nequ8YzFS3Hg==
-  /node-fetch/2.5.0:
+  /node-fetch/2.6.0:
     dev: false
     engines:
       node: 4.x || >=6.0.0
     resolution:
-      integrity: sha512-YuZKluhWGJwCcUu4RlZstdAxr8bFfOVHakc1mplwHkk8J+tqM1Y5yraYvIUpeX8aY7+crCwiELJq7Vl0o0LWXw==
+      integrity: sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
   /node-forge/0.8.3:
     dev: false
     resolution:
@@ -6980,10 +6740,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-Wf3g9DW62suhA6hOnTvGTpa5k30=
-  /path-to-regexp/2.4.0:
+  /path-to-regexp/3.0.0:
     dev: false
     resolution:
-      integrity: sha512-G6zHoVqC6GGTQkZwF4lkuEyMbVOjoBKAEybQUypI1WTkqinCOrq2x6U2+phkJ1XsEMTy4LjtwPI7HW+NVrRR2w==
+      integrity: sha512-ZOtfhPttCrqp2M1PBBH4X13XlvnfhIwD7yCLx+GoGoXRPQyxGOTdQMpIzPSPKXAJT/JQrdfFrgdJOyAzvgpQ9A==
   /path-type/1.1.0:
     dependencies:
       graceful-fs: 4.1.15
@@ -7444,7 +7204,7 @@ packages:
       react-dom: ^0.14.7 || ^15.0.0-0 || ^16.0.0
     resolution:
       integrity: sha512-zTlNRZ6vzjEPsodBNgh6Xjp9IempEx9sReH3crT2Jw4S6KW2wS/BRIH3d/grYf/iXARadDRD91//uUCs9yjoLg==
-  /react-hot-loader/4.8.4:
+  /react-hot-loader/4.8.5:
     dependencies:
       fast-levenshtein: 2.0.6
       global: 4.3.2
@@ -7462,7 +7222,7 @@ packages:
       react: ^15.0.0 || ^16.0.0
       react-dom: ^15.0.0 || ^16.0.0
     resolution:
-      integrity: sha512-O98btZXcm24ZgP+aPBD0W9N+GEnkOg6vlLEy/IMZ53u3K/dGqO0I/RU4qrmQzE+wMDLpwNo5TwxaAjVw9Y+IBA==
+      integrity: sha512-9Stc+7C2p23O9iOB78t+fKNxSxNfgXJpwsiToRuZZe7rNFJ0IMCyesXF2ls70XIxAzgnU36FzfW9c9mXhTz2xQ==
   /react-is/16.8.6:
     dev: false
     resolution:
@@ -7608,7 +7368,7 @@ packages:
       prismjs: 1.16.0
       prop-types: 15.7.2
       react-dropdown: 1.6.4
-      react-hot-loader: 4.8.4
+      react-hot-loader: 4.8.5
       react-tabs: 2.3.0
       slugify: 1.3.4
       stickyfill: 1.1.1
@@ -7863,15 +7623,6 @@ packages:
       node: '>= 0.4.0'
     resolution:
       integrity: sha1-/s5hv6DBtSoga9axgZgYS91SOjs=
-  /right-align/0.1.3:
-    dependencies:
-      align-text: 0.1.4
-    dev: false
-    engines:
-      node: '>=0.10.0'
-    optional: true
-    resolution:
-      integrity: sha1-YTObci/mo1FWiSENJOFMlhSGE+8=
   /rimraf/2.4.5:
     dependencies:
       glob: 6.0.4
@@ -7948,10 +7699,6 @@ packages:
     dev: false
     resolution:
       integrity: sha1-8MgtmKOxOah3aogIBQuCRDEIf8o=
-  /seed-random/2.2.0:
-    dev: false
-    resolution:
-      integrity: sha1-KpsZ4lCoFwmSMaW5mk2vgLf77VQ=
   /seek-bzip/1.0.5:
     dependencies:
       commander: 2.8.1
@@ -8120,7 +7867,7 @@ packages:
       integrity: sha512-sQTKC1Re/rM6XyFM6fIAGHRPVGvyXfgzIDvzoq608vM+jeyVD0Tu1E6Np0Kc2zAIFWIj963V2800iF/9LPieQw==
   /shortid/2.2.14:
     dependencies:
-      nanoid: 2.0.1
+      nanoid: 2.0.2
     dev: false
     resolution:
       integrity: sha512-4UnZgr9gDdA1kaKj/38IiudfC3KHKhDc1zi/HSxd9FQDR0VLwH3/y79tZJLsVYPsJgIjeHjqIWaWVRJUj9qZOQ==
@@ -8274,14 +8021,6 @@ packages:
     dev: false
     resolution:
       integrity: sha1-PpNdfd1zYxuXZZlW1VEo6HtQhKM=
-  /source-map/0.4.4:
-    dependencies:
-      amdefine: 1.0.1
-    dev: false
-    engines:
-      node: '>=0.8.0'
-    resolution:
-      integrity: sha1-66T12pwNyZneaAMti092FzZSA2s=
   /source-map/0.5.7:
     dev: false
     engines:
@@ -8345,7 +8084,7 @@ packages:
       json-schema-to-openapi-schema: 0.3.0
       nconf: 0.10.0
       nconf-yaml: /nconf-yaml/1.0.2/nconf@0.10.0
-      node-fetch: 2.5.0
+      node-fetch: 2.6.0
       node-readfiles: 0.2.0
       oas-linter: 3.0.1
       oas-resolver: 2.2.4
@@ -8882,10 +8621,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-b85NUNzTSdodShTIbky6ZF02e8STtVVfD+fu4aXXShEELpozH+bCpJLYMPZbsABN2wDH7fJpqIoXxJpzbf0NqQ==
-  /tiny-emitter/2.0.2:
-    dev: false
-    resolution:
-      integrity: sha512-2NM0auVBGft5tee/OxP4PI3d8WItkDM+fPnaRAVo6xTDI2knbz9eC5ArWGqtGlYqiH3RU5yMpdyTTO7MguC4ow==
   /tiny-emitter/2.1.0:
     dev: false
     optional: true
@@ -9120,12 +8855,6 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-TkRKr9sUTxEH8MdfuCSP7VizJyzRNMjj2J2do2Jr3Kym598JVdEksuzPQCnlFPW4ky9Q+iA+ma9BGm06XQBy8g==
-  /typed-function/0.10.7:
-    dev: false
-    engines:
-      node: '>= 0.10'
-    resolution:
-      integrity: sha512-3mlZ5AwRMbLvUKkc8a1TI4RUJUS2H27pmD5q0lHRObgsoWzhDAX01yg82kwSP1FUw922/4Y9ZliIEh0qJZcz+g==
   /typedarray/0.0.6:
     dev: false
     resolution:
@@ -9236,19 +8965,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==
-  /uglify-js/2.8.29:
-    dependencies:
-      source-map: 0.5.7
-      yargs: 3.10.0
-    dev: false
-    engines:
-      node: '>=0.8.0'
-    hasBin: true
-    optional: true
-    optionalDependencies:
-      uglify-to-browserify: 1.0.2
-    resolution:
-      integrity: sha1-KcVzMUgFe7Th913zW3qcty5qWd0=
   /uglify-js/3.5.12:
     dependencies:
       commander: 2.20.0
@@ -9260,11 +8976,6 @@ packages:
     optional: true
     resolution:
       integrity: sha512-KeQesOpPiZNgVwJj8Ge3P4JYbQHUdZzpx6Fahy6eKAYRSV4zhVmLXoC+JtOeYxcHCHTve8RG1ZGdTvpeOUM26Q==
-  /uglify-to-browserify/1.0.2:
-    dev: false
-    optional: true
-    resolution:
-      integrity: sha1-bgkk1r2mta/jSeOabWMoUKD4grc=
   /unbzip2-stream/1.3.3:
     dependencies:
       buffer: 5.2.1
@@ -9558,13 +9269,6 @@ packages:
     optional: true
     resolution:
       integrity: sha512-QGkOQc8XL6Bt5PwnsExKBPuMKBxnGxWWW3fU55Xt4feHozMUhdUMaBCk290qpm/wG5u/RSKzwdAC4i51YigihA==
-  /window-size/0.1.0:
-    dev: false
-    engines:
-      node: '>= 0.8.0'
-    optional: true
-    resolution:
-      integrity: sha1-VDjNLqk7IC76Ohn+iIeu58lPnJ0=
   /window-size/0.1.4:
     dev: false
     engines:
@@ -9599,13 +9303,6 @@ packages:
       node: '>= 0.10.0'
     resolution:
       integrity: sha512-NBo2Pepn4hK4V01UfcWcDlmiVTs7VTB1h7bgnB0rgP146bYhMxX0ypCz3lBOfNxCO4Zuek7yeT+y/zM1OfMw4Q==
-  /wordwrap/0.0.2:
-    dev: false
-    engines:
-      node: '>=0.4.0'
-    optional: true
-    resolution:
-      integrity: sha1-t5Zpu0LstAn4PVg8rVLKF+qhZD8=
   /wordwrap/0.0.3:
     dev: false
     engines:
@@ -9715,16 +9412,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-Lhz8TLaYnxq/2ObqHDql8dX8CJi97oHxrjUcYtzKbbykPtVW9WB+poxI+NM2UIzsMgNCZTIf0AQwsjK5yMAqZw==
-  /yargs/3.10.0:
-    dependencies:
-      camelcase: 1.2.1
-      cliui: 2.1.0
-      decamelize: 1.2.0
-      window-size: 0.1.0
-    dev: false
-    optional: true
-    resolution:
-      integrity: sha1-9+572FfdfB0tOMDnTvvWgdFDH9E=
   /yargs/3.32.0:
     dependencies:
       camelcase: 2.1.1
@@ -9859,22 +9546,22 @@ packages:
   'file:projects/template-service.tgz':
     dependencies:
       '@google-cloud/pubsub': 0.28.1
-      '@loopback/boot': 1.0.11
+      '@loopback/boot': 1.2.7
       '@loopback/build': 1.2.0
-      '@loopback/context': 1.5.0
-      '@loopback/core': 1.1.5
-      '@loopback/openapi-v3': 1.2.0
-      '@loopback/openapi-v3-types': 1.0.5
-      '@loopback/repository': 1.1.4
-      '@loopback/rest': 1.5.4
-      '@loopback/rest-explorer': 1.1.7
+      '@loopback/context': 1.15.0
+      '@loopback/core': 1.7.0
+      '@loopback/openapi-v3': 1.3.11
+      '@loopback/openapi-v3-types': 1.0.18
+      '@loopback/repository': 1.5.5
+      '@loopback/rest': 1.11.2
+      '@loopback/rest-explorer': 1.1.22
       '@loopback/testlab': 1.0.4
       '@pact-foundation/pact': 8.2.2
       '@pact-foundation/pact-node': 8.3.0
-      '@sixriver/cfs_models': sixriver.jfrog.io/@sixriver/cfs_models/9.45.6
-      '@sixriver/event-ingestor-lib': sixriver.jfrog.io/@sixriver/event-ingestor-lib/1.2.6/4a2198d062dbc80f32816f17cce29352
-      '@sixriver/wis-common': sixriver.jfrog.io/@sixriver/wis-common/1.43.0
-      '@sixriver/wis-contracts': sixriver.jfrog.io/@sixriver/wis-contracts/1.43.0
+      '@sixriver/config-schema': sixriver.jfrog.io/@sixriver/config-schema/1.8.2
+      '@sixriver/loopback4-support': sixriver.jfrog.io/@sixriver/loopback4-support/1.0.16/dd8d4ee48c5c09218772e7efddc0a81f
+      '@sixriver/service-directory': sixriver.jfrog.io/@sixriver/service-directory/1.0.16
+      '@sixriver/typescript-support': sixriver.jfrog.io/@sixriver/typescript-support/1.0.16
       '@types/bunyan': 1.8.4
       '@types/chai': 4.1.7
       '@types/chai-as-promised': 7.1.0
@@ -9886,8 +9573,9 @@ packages:
       '@types/node': 10.14.6
       '@types/sinon': 5.0.2
       '@types/uuid': 3.4.4
-      ajv: 6.5.5
+      ajv: 6.10.0
       axios: 0.18.0
+      bunyan: 1.8.12
       bunyan-prettystream: 0.1.3
       chai: 4.2.0
       chai-as-promised: /chai-as-promised/7.1.1/chai@4.2.0
@@ -9920,105 +9608,9 @@ packages:
     dev: false
     name: '@rush-temp/template-service'
     resolution:
-      integrity: sha512-VvqUWtb+vrBab1VXRElAGDzB3ubZNWt4RpANFpiNckNkRLKu8JN2iI7wmHxSHNxa6pBnXgSqnAYRqgW/isRG8A==
+      integrity: sha512-C6cvx/d2Ff9GTpN6pieyMTQPzRac4yPqITs6Wyb+xsTd7PXUd0lBDQALlaRslXXUb68UbU5lWuEGZEZWcUoBiA==
       tarball: 'file:projects/template-service.tgz'
     version: 0.0.0
-  sixriver.jfrog.io/@sixriver/blackboard/1.6.0:
-    dependencies:
-      archy: 1.0.0
-      lodash: 4.17.11
-      source-map-support: 0.5.9
-      uuid: 3.3.2
-    dev: false
-    engines:
-      node: '>=8.9'
-    name: '@sixriver/blackboard'
-    resolution:
-      integrity: sha1-EZM4NhIQBp5N+XaNPFNz9PnlvBg=
-      registry: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/'
-      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/blackboard/-/@sixriver/blackboard-1.6.0.tgz'
-    version: 1.6.0
-  sixriver.jfrog.io/@sixriver/cfs_models/9.35.1:
-    dependencies:
-      '@sixriver/blackboard': sixriver.jfrog.io/@sixriver/blackboard/1.6.0
-      '@types/bunyan': 1.8.4
-      '@types/glob': 5.0.36
-      '@types/handlebars': 4.0.39
-      '@types/mathjs': 0.0.35
-      ajv: 6.10.0
-      ajv-keywords: /ajv-keywords/3.4.0/ajv@6.10.0
-      bunyan: 1.8.12
-      double-ended-queue: 2.1.0-0
-      es-nodeify: 1.0.0
-      glob: 7.1.4
-      handlebars: 4.0.11
-      json-schema-defaults: 0.3.0
-      json-schema-ref-parser: 4.1.1
-      mathjs: 3.20.2
-      nanotimer: 0.3.15
-      source-map-support: 0.5.9
-      uuid: 3.3.2
-    dev: false
-    name: '@sixriver/cfs_models'
-    resolution:
-      integrity: sha1-ef75nr+dZjgk5+UxLm2nKZTbrJw=
-      registry: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/'
-      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/cfs_models/-/@sixriver/cfs_models-9.35.1.tgz'
-    version: 9.35.1
-  sixriver.jfrog.io/@sixriver/cfs_models/9.45.6:
-    dependencies:
-      '@sixriver/blackboard': sixriver.jfrog.io/@sixriver/blackboard/1.6.0
-      '@sixriver/config-schema': sixriver.jfrog.io/@sixriver/config-schema/1.1.2
-      '@types/bunyan': 1.8.4
-      '@types/glob': 5.0.36
-      '@types/handlebars': 4.0.39
-      '@types/mathjs': 0.0.35
-      ajv: 6.10.0
-      ajv-keywords: /ajv-keywords/3.4.0/ajv@6.10.0
-      bunyan: 1.8.12
-      double-ended-queue: 2.1.0-0
-      es-nodeify: 1.0.0
-      glob: 7.1.4
-      handlebars: 4.0.11
-      mathjs: 3.20.2
-      nanotimer: 0.3.15
-      source-map-support: 0.5.9
-      url-join: 4.0.0
-      uuid: 3.3.2
-    dev: false
-    name: '@sixriver/cfs_models'
-    resolution:
-      integrity: sha1-WcnEEkmu3ZF8XLQTjkL0/VaRKvM=
-      registry: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/'
-      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/cfs_models/-/@sixriver/cfs_models-9.45.6.tgz'
-    version: 9.45.6
-  sixriver.jfrog.io/@sixriver/cfs_models/9.51.0:
-    dependencies:
-      '@sixriver/blackboard': sixriver.jfrog.io/@sixriver/blackboard/1.6.0
-      '@sixriver/config-schema': sixriver.jfrog.io/@sixriver/config-schema/1.1.4
-      '@types/bunyan': 1.8.4
-      '@types/glob': 5.0.36
-      '@types/handlebars': 4.0.39
-      '@types/mathjs': 0.0.35
-      ajv: 6.10.0
-      ajv-keywords: /ajv-keywords/3.4.0/ajv@6.10.0
-      bunyan: 1.8.12
-      double-ended-queue: 2.1.0-0
-      es-nodeify: 1.0.0
-      glob: 7.1.4
-      handlebars: 4.0.11
-      mathjs: 3.20.2
-      nanotimer: 0.3.15
-      source-map-support: 0.5.9
-      url-join: 4.0.0
-      uuid: 3.3.2
-    dev: false
-    name: '@sixriver/cfs_models'
-    resolution:
-      integrity: sha1-DVP13sYdPcfs0Rz4GH8yiMJYkBA=
-      registry: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/'
-      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/cfs_models/-/@sixriver/cfs_models-9.51.0.tgz'
-    version: 9.51.0
   sixriver.jfrog.io/@sixriver/commitlint-config-6river/2.0.0:
     dependencies:
       '@commitlint/config-conventional': 7.6.0
@@ -10048,7 +9640,7 @@ packages:
       registry: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/'
       tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/commitlint-config-6river/-/@sixriver/commitlint-config-6river-2.0.0.tgz'
     version: 2.0.0
-  sixriver.jfrog.io/@sixriver/config-schema/1.1.2:
+  sixriver.jfrog.io/@sixriver/config-schema/1.8.2:
     dependencies:
       '@types/glob': 5.0.36
       ajv: 6.10.0
@@ -10061,127 +9653,127 @@ packages:
     dev: false
     name: '@sixriver/config-schema'
     resolution:
-      integrity: sha1-HmFEUeL45Q6LfCSSiKXWY94Mmvk=
+      integrity: sha1-o4gEQJiJNAQS8rGNfyo6rwo66sA=
       registry: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/'
-      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/config-schema/-/@sixriver/config-schema-1.1.2.tgz'
-    version: 1.1.2
-  sixriver.jfrog.io/@sixriver/config-schema/1.1.4:
+      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/config-schema/-/@sixriver/config-schema-1.8.2.tgz'
+    version: 1.8.2
+  sixriver.jfrog.io/@sixriver/loopback4-support/1.0.16:
     dependencies:
-      '@types/glob': 5.0.36
-      ajv: 6.10.0
-      ajv-keywords: /ajv-keywords/3.4.0/ajv@6.10.0
-      glob: 7.1.4
-      json-schema-defaults: 0.3.0
-      json-schema-ref-parser: 4.1.1
+      '@sixriver/service-directory': sixriver.jfrog.io/@sixriver/service-directory/1.0.16
+      '@sixriver/typescript-support': sixriver.jfrog.io/@sixriver/typescript-support/1.0.16
+      lodash: 4.17.11
       url-join: 4.0.0
-      uuid: 3.3.2
-    dev: false
-    name: '@sixriver/config-schema'
-    resolution:
-      integrity: sha1-9LIAMepQD3k87qwoNRAQRgRvitc=
-      registry: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/'
-      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/config-schema/-/@sixriver/config-schema-1.1.4.tgz'
-    version: 1.1.4
-  sixriver.jfrog.io/@sixriver/config-schema/1.1.9:
-    dependencies:
-      '@types/glob': 5.0.36
-      ajv: 6.10.0
-      ajv-keywords: /ajv-keywords/3.4.0/ajv@6.10.0
-      glob: 7.1.4
-      json-schema-defaults: 0.3.0
-      json-schema-ref-parser: 4.1.1
-      url-join: 4.0.0
-      uuid: 3.3.2
-    dev: false
-    name: '@sixriver/config-schema'
-    resolution:
-      integrity: sha1-7BzjePot09Dvp9D2pZ6dGcru5mA=
-      registry: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/'
-      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/config-schema/-/@sixriver/config-schema-1.1.9.tgz'
-    version: 1.1.9
-  sixriver.jfrog.io/@sixriver/event-ingestor-lib/1.2.6/4a2198d062dbc80f32816f17cce29352:
-    dependencies:
-      '@google-cloud/pubsub': 0.28.1
-      '@loopback/boot': 1.0.11
-      '@loopback/context': 1.5.0
-      '@loopback/core': 1.1.5
-      '@loopback/openapi-v3': 1.2.0
-      '@loopback/openapi-v3-types': 1.0.4
-      '@loopback/repository': 1.1.4
-      '@loopback/rest': 1.5.4
-      '@loopback/rest-explorer': 1.1.6
-      '@loopback/service-proxy': 1.0.6
-      '@sixriver/cfs_models': sixriver.jfrog.io/@sixriver/cfs_models/9.35.1
-      db-migrate: 0.11.5
-      db-migrate-pg: 0.4.0
-      lodash: 4.17.10
-      loopback-connector-postgresql: 3.6.0
       url-mask: 1.0.5
-      uuid: 3.3.2
     dev: false
-    id: sixriver.jfrog.io/@sixriver/event-ingestor-lib/1.2.6
-    name: '@sixriver/event-ingestor-lib'
+    engines:
+      node: 10.15.3
+    name: '@sixriver/loopback4-support'
     peerDependencies:
-      db-migrate: 0.11.5
-      db-migrate-pg: 0.4.0
-      loopback-connector-postgresql: 3.6.0
+      '@loopback/boot': '>=1.2.7'
+      '@loopback/context': '>=1.15.0'
+      '@loopback/core': '>=1.7.0'
+      '@loopback/openapi-v3': '>=1.3.11'
+      '@loopback/openapi-v3-types': '>=1.0.18'
+      '@loopback/repository': '>=1.5.5'
+      '@loopback/rest': '>=1.11.2'
+      '@loopback/rest-explorer': '>=1.1.22'
+      '@sixriver/config-schema': '>=1.8.2'
+      ajv: '>=6.10.0'
+      axios: '>=0.18.0'
+      bunyan: '>=1.8.12'
+      bunyan-prettystream: '>=0.1.3'
+      db-migrate: '>=0.11.5'
     resolution:
-      integrity: sha1-MvV4qqKfDAfQ+9Og++hpbm2Oxa0=
+      integrity: sha1-cls8v3sUqMb3PJnbBxG2028IkXc=
       registry: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/'
-      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/event-ingestor-lib/-/@sixriver/event-ingestor-lib-1.2.6.tgz'
-    version: 1.2.6
-  sixriver.jfrog.io/@sixriver/wis-common/1.43.0:
+      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/loopback4-support/-/@sixriver/loopback4-support-1.0.16.tgz'
+    version: 1.0.16
+  sixriver.jfrog.io/@sixriver/loopback4-support/1.0.16/dd8d4ee48c5c09218772e7efddc0a81f:
     dependencies:
-      '@loopback/context': 1.5.0
-      '@loopback/core': 1.1.5
-      '@loopback/openapi-v3': 1.2.0
-      '@loopback/openapi-v3-types': 1.0.5
-      '@loopback/rest': 1.5.4
-      '@loopback/rest-explorer': 1.1.7
-      '@loopback/service-proxy': 1.0.7
-      '@sixriver/cfs_models': sixriver.jfrog.io/@sixriver/cfs_models/9.51.0
-      '@sixriver/config-schema': sixriver.jfrog.io/@sixriver/config-schema/1.1.9
-      '@types/express': 4.16.1
-      '@types/nock': 9.3.1
+      '@loopback/boot': 1.2.7
+      '@loopback/context': 1.15.0
+      '@loopback/core': 1.7.0
+      '@loopback/openapi-v3': 1.3.11
+      '@loopback/openapi-v3-types': 1.0.18
+      '@loopback/repository': 1.5.5
+      '@loopback/rest': 1.11.2
+      '@loopback/rest-explorer': 1.1.22
+      '@sixriver/config-schema': sixriver.jfrog.io/@sixriver/config-schema/1.8.2
+      '@sixriver/service-directory': sixriver.jfrog.io/@sixriver/service-directory/1.0.16
+      '@sixriver/typescript-support': sixriver.jfrog.io/@sixriver/typescript-support/1.0.16
+      ajv: 6.10.0
       axios: 0.18.0
       bunyan: 1.8.12
       bunyan-prettystream: 0.1.3
-      lodash: 4.17.10
-      loopback-datasource-juggler: 4.6.2
-      nock: 10.0.2
+      db-migrate: 0.11.5
+      lodash: 4.17.11
+      url-join: 4.0.0
+      url-mask: 1.0.5
+    dev: false
+    engines:
+      node: 10.15.3
+    id: sixriver.jfrog.io/@sixriver/loopback4-support/1.0.16
+    name: '@sixriver/loopback4-support'
+    peerDependencies:
+      '@loopback/boot': '>=1.2.7'
+      '@loopback/context': '>=1.15.0'
+      '@loopback/core': '>=1.7.0'
+      '@loopback/openapi-v3': '>=1.3.11'
+      '@loopback/openapi-v3-types': '>=1.0.18'
+      '@loopback/repository': '>=1.5.5'
+      '@loopback/rest': '>=1.11.2'
+      '@loopback/rest-explorer': '>=1.1.22'
+      '@sixriver/config-schema': '>=1.8.2'
+      ajv: '>=6.10.0'
+      axios: '>=0.18.0'
+      bunyan: '>=1.8.12'
+      bunyan-prettystream: '>=0.1.3'
+      db-migrate: '>=0.11.5'
+    resolution:
+      integrity: sha1-cls8v3sUqMb3PJnbBxG2028IkXc=
+      registry: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/'
+      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/loopback4-support/-/@sixriver/loopback4-support-1.0.16.tgz'
+    version: 1.0.16
+  sixriver.jfrog.io/@sixriver/service-directory/1.0.16:
+    dependencies:
+      '@sixriver/typescript-support': sixriver.jfrog.io/@sixriver/typescript-support/1.0.16
       url-join: 4.0.0
     dev: false
-    name: '@sixriver/wis-common'
+    engines:
+      node: 10.15.3
+    name: '@sixriver/service-directory'
     resolution:
-      integrity: sha1-Do4RMwRoC48DsB8HCSIg+OF6bLE=
+      integrity: sha1-8XRcahBaEAYGZBDw6t+wsyN0iuk=
       registry: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/'
-      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/wis-common/-/@sixriver/wis-common-1.43.0.tgz'
-    version: 1.43.0
-  sixriver.jfrog.io/@sixriver/wis-contracts/1.43.0:
+      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/service-directory/-/@sixriver/service-directory-1.0.16.tgz'
+    version: 1.0.16
+  sixriver.jfrog.io/@sixriver/typescript-support/1.0.16:
     dependencies:
-      '@sixriver/cfs_models': sixriver.jfrog.io/@sixriver/cfs_models/9.51.0
+      lodash: 4.17.11
     dev: false
-    name: '@sixriver/wis-contracts'
+    engines:
+      node: 10.15.3
+    name: '@sixriver/typescript-support'
     resolution:
-      integrity: sha1-wAGwcAHRkqA4ryfD/3UQpMZ5CEI=
+      integrity: sha1-dNVuwQXiMU919a6SeOyHOszSc6Q=
       registry: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/'
-      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/wis-contracts/-/@sixriver/wis-contracts-1.43.0.tgz'
-    version: 1.43.0
+      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/typescript-support/-/@sixriver/typescript-support-1.0.16.tgz'
+    version: 1.0.16
 registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
   '@commitlint/cli': ^7.2.1
   '@google-cloud/pubsub': 0.28.1
-  '@loopback/boot': 1.0.11
+  '@loopback/boot': 1.2.7
   '@loopback/build': 1.2.0
-  '@loopback/context': 1.5.0
-  '@loopback/core': 1.1.5
-  '@loopback/openapi-v3': 1.2.0
-  '@loopback/openapi-v3-types': 1.0.5
-  '@loopback/repository': 1.1.4
-  '@loopback/rest': 1.5.4
-  '@loopback/rest-explorer': 1.1.7
+  '@loopback/context': 1.15.0
+  '@loopback/core': 1.7.0
+  '@loopback/openapi-v3': 1.3.11
+  '@loopback/openapi-v3-types': 1.0.18
+  '@loopback/repository': 1.5.5
+  '@loopback/rest': 1.11.2
+  '@loopback/rest-explorer': 1.1.22
   '@loopback/testlab': 1.0.4
   '@pact-foundation/pact': 8.2.2
   '@pact-foundation/pact-node': 8.3.0
@@ -10189,10 +9781,11 @@ specifiers:
   '@rush-temp/template-oas': 'file:./projects/template-oas.tgz'
   '@rush-temp/template-repo-tools': 'file:./projects/template-repo-tools.tgz'
   '@rush-temp/template-service': 'file:./projects/template-service.tgz'
-  '@sixriver/cfs_models': 9.45.6
   '@sixriver/commitlint-config-6river': ^2.0.0
-  '@sixriver/wis-common': 1.43.0
-  '@sixriver/wis-contracts': 1.43.0
+  '@sixriver/config-schema': 1.8.2
+  '@sixriver/loopback4-support': 1.0.16
+  '@sixriver/service-directory': 1.0.16
+  '@sixriver/typescript-support': 1.0.16
   '@types/bunyan': 1.8.4
   '@types/chai': 4.1.7
   '@types/chai-as-promised': 7.1.0
@@ -10205,8 +9798,10 @@ specifiers:
   '@types/sinon': 5.0.2
   '@types/swagger-parser': 4.0.3
   '@types/uuid': 3.4.4
+  ajv: 6.10.0
   axios: 0.18.0
   babel-runtime: ^6.26.0
+  bunyan: 1.8.12
   bunyan-prettystream: 0.1.3
   chai: 4.2.0
   chai-as-promised: 7.1.1
@@ -10245,5 +9840,4 @@ specifiers:
   swagger-parser: 6.0.5
   typescript: 3.4.5
   typescript-eslint-parser: 22.0.0
-  url-mask: 1.0.5
   uuid: 3.3.2

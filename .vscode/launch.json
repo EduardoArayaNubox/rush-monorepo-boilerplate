@@ -1,0 +1,150 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Run template common mocha",
+			"request": "launch",
+			"type": "node",
+			"program": "${workspaceFolder}/packages/typescript/node_modules/mocha/bin/_mocha",
+			"outputCapture": "std",
+			"stopOnEntry": false,
+			"args": ["--no-timeouts"],
+			"cwd": "${workspaceFolder}/packages/common/",
+			"runtimeExecutable": null,
+			"env": {
+				"USE_GRM": "true",
+				"NODE_ENV": "test",
+				"SITE_NAME": "chuckulator",
+				"LOG_PRETTY": "true",
+				"PUBSUB_EMULATOR_HOST": "localhost:8802",
+				"PUBSUB_GCLOUD_PROJECT": "test",
+			},
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"preLaunchTask": "rush build template common",
+		},
+		{
+			"name": "Run template common mocha subset",
+			"request": "launch",
+			"type": "node",
+			"program": "${workspaceFolder}/packages/common/node_modules/mocha/bin/_mocha",
+			"outputCapture": "std",
+			"stopOnEntry": false,
+			"args": ["--no-timeouts", "--grep", "${input:mochaGrep}"],
+			"cwd": "${workspaceFolder}/packages/common/",
+			"runtimeExecutable": null,
+			"env": {
+				"USE_GRM": "true",
+				"NODE_ENV": "development",
+				"SITE_NAME": "development",
+				"LOG_PRETTY": "true",
+				"PUBSUB_EMULATOR_HOST": "localhost:8802",
+				"PUBSUB_GCLOUD_PROJECT": "development",
+			},
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"preLaunchTask": "rush build template common",
+    },
+		{
+			"name": "Run template oas mocha",
+			"request": "launch",
+			"type": "node",
+			"program": "${workspaceFolder}/packages/oas/node_modules/mocha/bin/_mocha",
+			"outputCapture": "std",
+			"stopOnEntry": false,
+			"args": ["--no-timeouts"],
+			"cwd": "${workspaceFolder}/packages/oas/",
+			"runtimeExecutable": null,
+			"env": {
+				"USE_GRM": "true",
+				"NODE_ENV": "test",
+				"SITE_NAME": "chuckulator",
+				"LOG_PRETTY": "true",
+				"PUBSUB_EMULATOR_HOST": "localhost:8802",
+				"PUBSUB_GCLOUD_PROJECT": "test",
+			},
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"preLaunchTask": "rush build template oas",
+		},
+		{
+			"name": "Run template oas mocha subset",
+			"request": "launch",
+			"type": "node",
+			"program": "${workspaceFolder}/packages/oas/node_modules/mocha/bin/_mocha",
+			"outputCapture": "std",
+			"stopOnEntry": false,
+			"args": ["--no-timeouts", "--grep", "${input:mochaGrep}"],
+			"cwd": "${workspaceFolder}/packages/oas/",
+			"runtimeExecutable": null,
+			"env": {
+				"USE_GRM": "true",
+				"NODE_ENV": "development",
+				"SITE_NAME": "development",
+				"LOG_PRETTY": "true",
+				"PUBSUB_EMULATOR_HOST": "localhost:8802",
+				"PUBSUB_GCLOUD_PROJECT": "development",
+			},
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"preLaunchTask": "rush build template oas",
+		},
+		{
+			"name": "Run template service mocha",
+			"request": "launch",
+			"type": "node",
+			"program": "${workspaceFolder}/packages/service/node_modules/mocha/bin/_mocha",
+			"outputCapture": "std",
+			"stopOnEntry": false,
+			"args": ["--no-timeouts"],
+			"cwd": "${workspaceFolder}/packages/service/",
+			"runtimeExecutable": null,
+			"env": {
+				"USE_GRM": "true",
+				"NODE_ENV": "test",
+				"SITE_NAME": "chuckulator",
+				"LOG_PRETTY": "true",
+				"PUBSUB_EMULATOR_HOST": "localhost:8802",
+				"PUBSUB_GCLOUD_PROJECT": "test",
+			},
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"preLaunchTask": "rush build template service",
+		},
+		{
+			"name": "Run template service mocha subset",
+			"request": "launch",
+			"type": "node",
+			"program": "${workspaceFolder}/packages/service/node_modules/mocha/bin/_mocha",
+			"outputCapture": "std",
+			"stopOnEntry": false,
+			"args": ["--no-timeouts", "--grep", "${input:mochaGrep}"],
+			"cwd": "${workspaceFolder}/packages/service/",
+			"runtimeExecutable": null,
+			"env": {
+				"USE_GRM": "true",
+				"NODE_ENV": "development",
+				"SITE_NAME": "development",
+				"LOG_PRETTY": "true",
+				"PUBSUB_EMULATOR_HOST": "localhost:8802",
+				"PUBSUB_GCLOUD_PROJECT": "development",
+			},
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"preLaunchTask": "rush build template service",
+		}
+	],
+	"inputs": [
+		{
+			"id": "mochaGrep",
+			"description": "Regex to pass to mocha --grep",
+			"type": "promptString"
+		}
+	],
+}

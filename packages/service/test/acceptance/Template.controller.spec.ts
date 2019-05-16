@@ -6,15 +6,13 @@ const assert = chai.assert;
 import * as Chance from 'chance';
 const chance = new Chance();
 import * as nock from 'nock';
-import * as sinon from 'sinon';
 
 import axios from 'axios';
 import * as url from 'url';
 import * as uuidv4 from 'uuid/v4';
 
-import {EntityCrudRepository} from '@loopback/repository';
-
-import {ServiceDirectory} from '@sixriver/cfs_models';
+import {CommonBindings} from '@sixriver/loopback4-support';
+import {ServiceDirectory} from '@sixriver/service-directory';
 
 import {TemplateServiceApplication} from '../../src';
 import {TemplateController} from '../../src/controllers';
@@ -36,7 +34,7 @@ describe(`acceptance/${TemplateController.name}`, function() {
 		app = new TemplateServiceApplication({});
 		const fakeEnv = {...process.env};
 		fakeEnv.TEST_MODE = 'acceptance';
-		app.bind(TemplateServiceProviderKeys.PROCESS_ENV).to(fakeEnv);
+		app.bind(CommonBindings.PROCESS_ENV).to(fakeEnv);
 		await app.boot();
 		await app.start();
 
