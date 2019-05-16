@@ -102,6 +102,11 @@ jobs:
           keys:
             - rush-global-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
       - run:
+          name: Set Up Environment
+          # have to repeat this step because it stores stuff in ~/.npmrc which isn't cached
+          command: |
+            ci_scripts/ci_tool.sh --setup_npm
+      - run:
           name: Setup Tag for new version and then release
           command: |
             ./repo-tools/scripts/version.sh
