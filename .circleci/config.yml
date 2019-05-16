@@ -22,9 +22,14 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - dependencies-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
-            - dependencies-v1-
-            - dependencies-v1
+            - rush-global-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
+            - rush-global-v1-
+            - rush-global-v1
+      - restore_cache:
+          keys:
+            - rush-local-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
+            - rush-local-v1-
+            - rush-local-v1
       - run:
           name: Set Up Environment
           command: |
@@ -73,9 +78,12 @@ jobs:
       - store_test_results:
           path: /home/circleci/project/reports/junit/
       - save_cache:
-          key: dependencies-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
+          key: rush-global-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
           paths:
             - "/home/circleci/.rush"
+      - save_cache:
+          key: rush-local-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
+          paths:
             - "./common/temp"
       - persist_to_workspace:
           root: ./
@@ -88,11 +96,11 @@ jobs:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
       - setup_remote_docker
-      - restore_cache:
-          keys:
-            - dependencies-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
       - attach_workspace:
           at: ./
+      - restore_cache:
+          keys:
+            - rush-global-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
       - run:
           name: Setup Tag for new version and then release
           command: |
