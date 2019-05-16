@@ -7,7 +7,6 @@ const pactProvider = 'template-service';
 
 const pactClients = [
 	// List pact clients here (strings must match pact-broker)
-	'asset-manager',
 ];
 
 describe(pactProvider, function() {
