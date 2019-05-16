@@ -45,6 +45,14 @@ jobs:
           name: Install Dependencies
           command: |
             repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js install
+      - save_cache:
+          key: rush-global-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
+          paths:
+            - "/home/circleci/.rush"
+      - save_cache:
+          key: rush-local-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
+          paths:
+            - "./common/temp"
       - run:
           name: Build
           command: |
@@ -77,14 +85,6 @@ jobs:
           path: /home/circleci/project/reports/junit/
       - store_test_results:
           path: /home/circleci/project/reports/junit/
-      - save_cache:
-          key: rush-global-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
-          paths:
-            - "/home/circleci/.rush"
-      - save_cache:
-          key: rush-local-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
-          paths:
-            - "./common/temp"
       - persist_to_workspace:
           root: ./
           paths:
