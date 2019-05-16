@@ -138,7 +138,27 @@
 				"<node_internals>/**"
 			],
 			"preLaunchTask": "rush build template service",
-		}
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Run template service server",
+			"outputCapture": "std",
+			"env": {
+				"USE_GRM": "true",
+				"NODE_ENV": "development",
+				"SITE_NAME": "development",
+				"LOG_PRETTY": "true",
+				"PUBSUB_EMULATOR_HOST": "localhost:8802",
+				"PUBSUB_GCLOUD_PROJECT": "development",
+			},
+			"program": "${workspaceFolder}/packages/service/index.js",
+			"cwd": "${workspaceFolder}/packages/service",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"preLaunchTask": "rush build template service",
+		},
 	],
 	"inputs": [
 		{

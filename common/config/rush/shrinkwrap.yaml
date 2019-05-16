@@ -3643,7 +3643,7 @@ packages:
     bundledDependencies:
       - node-pre-gyp
     dependencies:
-      nan: 2.13.2
+      nan: 2.14.0
     dev: false
     engines:
       node: '>=4.0'
@@ -5921,6 +5921,11 @@ packages:
     dev: false
     resolution:
       integrity: sha512-TghvYc72wlMGMVMluVo9WRJc0mB8KxxF/gZ4YYFy7V2ZQX9l7rgbPg7vjS9mt6U5HXODVFVI2bOduCzwOMv/lw==
+  /nan/2.14.0:
+    dev: false
+    optional: true
+    resolution:
+      integrity: sha512-INOFj37C7k3AfaNTtX8RhsTw7qRy7eLET14cROi9+5HAVbbHuIWUHEauBv5qT4Av2tWasiTY1Jw6puUNqRJXQg==
   /nanoid/2.0.2:
     dev: false
     resolution:

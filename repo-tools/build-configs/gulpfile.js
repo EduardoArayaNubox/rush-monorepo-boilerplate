@@ -20,7 +20,7 @@ let node;
 
 gulp.task('startServer', async function startServer() {
 	if (node) node.kill();
-	node = await spawn('node', ['dist/server/server.js'], {env, stdio: 'inherit'});
+	node = await spawn('node', ['dist/src/index.js'], {env, stdio: 'inherit'});
 
 	node.on('close', function(code) {
 		if (code === 8) {
@@ -30,7 +30,7 @@ gulp.task('startServer', async function startServer() {
 });
 
 gulp.task('compile', function() {
-	const tsResult = gulp.src('{lib,src,server,test}/**/*.ts')
+	const tsResult = gulp.src(['{lib,src,server,test}/**/*.ts', './*.ts'])
 	.pipe(sourcemaps.init({loadMaps: true}))
 	.pipe(tsProject());
 	const resources = gulp.src('{lib,src,server,test}/**/*.json');

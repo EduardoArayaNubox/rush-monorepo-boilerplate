@@ -26,12 +26,13 @@
     "lib": [
       "es2018",
       "esnext.asynciterable"
-    ],
+    ]
   },
   "exclude": [
-    "coverage",
-    "dist",
-    "node_modules",
-    "scripts"
+    "**/coverage/",
+    "**/dist*/",
+    "**/node_modules/",
+    "**/scripts/",
+    "**/*.d.ts"
   ]
 }
