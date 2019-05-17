@@ -19,9 +19,9 @@ dependencies:
   '@rush-temp/template-service': 'file:projects/template-service.tgz'
   '@sixriver/commitlint-config-6river': sixriver.jfrog.io/@sixriver/commitlint-config-6river/2.0.0
   '@sixriver/config-schema': sixriver.jfrog.io/@sixriver/config-schema/1.8.2
-  '@sixriver/loopback4-support': sixriver.jfrog.io/@sixriver/loopback4-support/1.0.16
-  '@sixriver/service-directory': sixriver.jfrog.io/@sixriver/service-directory/1.0.16
-  '@sixriver/typescript-support': sixriver.jfrog.io/@sixriver/typescript-support/1.0.16
+  '@sixriver/loopback4-support': sixriver.jfrog.io/@sixriver/loopback4-support/1.0.18
+  '@sixriver/service-directory': sixriver.jfrog.io/@sixriver/service-directory/1.0.18
+  '@sixriver/typescript-support': sixriver.jfrog.io/@sixriver/typescript-support/1.0.18
   '@types/bunyan': 1.8.4
   '@types/chai': 4.1.7
   '@types/chai-as-promised': 7.1.0
@@ -9564,9 +9564,9 @@ packages:
       '@pact-foundation/pact': 8.2.2
       '@pact-foundation/pact-node': 8.3.0
       '@sixriver/config-schema': sixriver.jfrog.io/@sixriver/config-schema/1.8.2
-      '@sixriver/loopback4-support': sixriver.jfrog.io/@sixriver/loopback4-support/1.0.16/dd8d4ee48c5c09218772e7efddc0a81f
-      '@sixriver/service-directory': sixriver.jfrog.io/@sixriver/service-directory/1.0.16
-      '@sixriver/typescript-support': sixriver.jfrog.io/@sixriver/typescript-support/1.0.16
+      '@sixriver/loopback4-support': sixriver.jfrog.io/@sixriver/loopback4-support/1.0.18/dd8d4ee48c5c09218772e7efddc0a81f
+      '@sixriver/service-directory': sixriver.jfrog.io/@sixriver/service-directory/1.0.18
+      '@sixriver/typescript-support': sixriver.jfrog.io/@sixriver/typescript-support/1.0.18
       '@types/bunyan': 1.8.4
       '@types/chai': 4.1.7
       '@types/chai-as-promised': 7.1.0
@@ -9613,7 +9613,7 @@ packages:
     dev: false
     name: '@rush-temp/template-service'
     resolution:
-      integrity: sha512-C6cvx/d2Ff9GTpN6pieyMTQPzRac4yPqITs6Wyb+xsTd7PXUd0lBDQALlaRslXXUb68UbU5lWuEGZEZWcUoBiA==
+      integrity: sha512-8xJNvjN0REtn8uThPhm27MevqR4ALat16BFsQoBn/sVu7ccgIHiIHGyfxISwCGhyraiFGXy5cWWeGi0JX5Herg==
       tarball: 'file:projects/template-service.tgz'
     version: 0.0.0
   sixriver.jfrog.io/@sixriver/commitlint-config-6river/2.0.0:
@@ -9662,10 +9662,10 @@ packages:
       registry: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/'
       tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/config-schema/-/@sixriver/config-schema-1.8.2.tgz'
     version: 1.8.2
-  sixriver.jfrog.io/@sixriver/loopback4-support/1.0.16:
+  sixriver.jfrog.io/@sixriver/loopback4-support/1.0.18:
     dependencies:
-      '@sixriver/service-directory': sixriver.jfrog.io/@sixriver/service-directory/1.0.16
-      '@sixriver/typescript-support': sixriver.jfrog.io/@sixriver/typescript-support/1.0.16
+      '@sixriver/service-directory': sixriver.jfrog.io/@sixriver/service-directory/1.0.18
+      '@sixriver/typescript-support': sixriver.jfrog.io/@sixriver/typescript-support/1.0.18
       lodash: 4.17.11
       url-join: 4.0.0
       url-mask: 1.0.5
@@ -9689,11 +9689,11 @@ packages:
       bunyan-prettystream: '>=0.1.3'
       db-migrate: '>=0.11.5'
     resolution:
-      integrity: sha1-cls8v3sUqMb3PJnbBxG2028IkXc=
+      integrity: sha1-h1m47F5C2gh+VAVEgLypYmsIWe4=
       registry: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/'
-      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/loopback4-support/-/@sixriver/loopback4-support-1.0.16.tgz'
-    version: 1.0.16
-  sixriver.jfrog.io/@sixriver/loopback4-support/1.0.16/dd8d4ee48c5c09218772e7efddc0a81f:
+      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/loopback4-support/-/@sixriver/loopback4-support-1.0.18.tgz'
+    version: 1.0.18
+  sixriver.jfrog.io/@sixriver/loopback4-support/1.0.18/dd8d4ee48c5c09218772e7efddc0a81f:
     dependencies:
       '@loopback/boot': 1.2.7
       '@loopback/context': 1.15.0
@@ -9704,8 +9704,8 @@ packages:
       '@loopback/rest': 1.11.2
       '@loopback/rest-explorer': 1.1.22
       '@sixriver/config-schema': sixriver.jfrog.io/@sixriver/config-schema/1.8.2
-      '@sixriver/service-directory': sixriver.jfrog.io/@sixriver/service-directory/1.0.16
-      '@sixriver/typescript-support': sixriver.jfrog.io/@sixriver/typescript-support/1.0.16
+      '@sixriver/service-directory': sixriver.jfrog.io/@sixriver/service-directory/1.0.18
+      '@sixriver/typescript-support': sixriver.jfrog.io/@sixriver/typescript-support/1.0.18
       ajv: 6.10.0
       axios: 0.18.0
       bunyan: 1.8.12
@@ -9717,7 +9717,7 @@ packages:
     dev: false
     engines:
       node: 10.15.3
-    id: sixriver.jfrog.io/@sixriver/loopback4-support/1.0.16
+    id: sixriver.jfrog.io/@sixriver/loopback4-support/1.0.18
     name: '@sixriver/loopback4-support'
     peerDependencies:
       '@loopback/boot': '>=1.2.7'
@@ -9735,24 +9735,24 @@ packages:
       bunyan-prettystream: '>=0.1.3'
       db-migrate: '>=0.11.5'
     resolution:
-      integrity: sha1-cls8v3sUqMb3PJnbBxG2028IkXc=
+      integrity: sha1-h1m47F5C2gh+VAVEgLypYmsIWe4=
       registry: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/'
-      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/loopback4-support/-/@sixriver/loopback4-support-1.0.16.tgz'
-    version: 1.0.16
-  sixriver.jfrog.io/@sixriver/service-directory/1.0.16:
+      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/loopback4-support/-/@sixriver/loopback4-support-1.0.18.tgz'
+    version: 1.0.18
+  sixriver.jfrog.io/@sixriver/service-directory/1.0.18:
     dependencies:
-      '@sixriver/typescript-support': sixriver.jfrog.io/@sixriver/typescript-support/1.0.16
+      '@sixriver/typescript-support': sixriver.jfrog.io/@sixriver/typescript-support/1.0.18
       url-join: 4.0.0
     dev: false
     engines:
       node: 10.15.3
     name: '@sixriver/service-directory'
     resolution:
-      integrity: sha1-8XRcahBaEAYGZBDw6t+wsyN0iuk=
+      integrity: sha1-Dhhy7mITgD0Y/rSMkbbO+9NXmf4=
       registry: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/'
-      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/service-directory/-/@sixriver/service-directory-1.0.16.tgz'
-    version: 1.0.16
-  sixriver.jfrog.io/@sixriver/typescript-support/1.0.16:
+      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/service-directory/-/@sixriver/service-directory-1.0.18.tgz'
+    version: 1.0.18
+  sixriver.jfrog.io/@sixriver/typescript-support/1.0.18:
     dependencies:
       lodash: 4.17.11
     dev: false
@@ -9760,10 +9760,10 @@ packages:
       node: 10.15.3
     name: '@sixriver/typescript-support'
     resolution:
-      integrity: sha1-dNVuwQXiMU919a6SeOyHOszSc6Q=
+      integrity: sha1-ftynHPn5+0yz6dRXaH2yZgdmCEs=
       registry: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/'
-      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/typescript-support/-/@sixriver/typescript-support-1.0.16.tgz'
-    version: 1.0.16
+      tarball: 'https://sixriver.jfrog.io/sixriver/api/npm/npm-local/@sixriver/typescript-support/-/@sixriver/typescript-support-1.0.18.tgz'
+    version: 1.0.18
 registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
@@ -9788,9 +9788,9 @@ specifiers:
   '@rush-temp/template-service': 'file:./projects/template-service.tgz'
   '@sixriver/commitlint-config-6river': ^2.0.0
   '@sixriver/config-schema': 1.8.2
-  '@sixriver/loopback4-support': 1.0.16
-  '@sixriver/service-directory': 1.0.16
-  '@sixriver/typescript-support': 1.0.16
+  '@sixriver/loopback4-support': 1.0.18
+  '@sixriver/service-directory': 1.0.18
+  '@sixriver/typescript-support': 1.0.18
   '@types/bunyan': 1.8.4
   '@types/chai': 4.1.7
   '@types/chai-as-promised': 7.1.0
