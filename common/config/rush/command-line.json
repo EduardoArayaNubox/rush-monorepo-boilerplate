@@ -1,68 +1,68 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/command-line.schema.json",
-  "commands": [
-    {
-      "commandKind": "global",
-      "name": "semrel",
-      "shellCommand": "./repo-tools/scripts/version.sh",
-      "summary": "Updates the Package versions based on semantic-release",
-      "description": "Updates the Package versions based on semantic-release"
-    },
-    {
-      "commandKind": "bulk",
-      "name": "test",
-      "summary": "Builds and then executes tests in each project.",
-      "description": "Builds and then executes tests in each project",
-      "enableParallelism": true
-    },
-    {
-      "commandKind": "bulk",
-      "name": "test-ci",
-      "summary": "Execute tests in each project.",
-      "description": "Runs tests in each project",
-      "enableParallelism": true
-    },
-    {
-      "commandKind": "bulk",
-      "name": "test-ci-pact",
-      "summary": "Execute pact acceptance tests in each project.",
-      "description": "Runs pact acceptance tests in each project",
-      "enableParallelism": false
-    },
-    {
-      "commandKind": "bulk",
-      "name": "docker-publish",
-      "summary": "",
-      "description": "",
-      "enableParallelism": false
-    },
+	"$schema": "https://developer.microsoft.com/json-schemas/rush/v5/command-line.schema.json",
+	"commands": [
 		{
-      "commandKind": "bulk",
-      "name": "publish-pacts",
-      "summary": "Publish pacts to the pact broker",
-      "description": "",
-      "enableParallelism": true
-    },
-    {
-      "commandKind": "bulk",
-      "name": "release",
-      "summary": "Have each project do whatever it should do to release",
-      "description": "Release projects",
-      "enableParallelism": true
-    },
-    {
-      "commandKind": "bulk",
-      "name": "clean",
-      "summary": "Clean all compiled files",
-      "description": "Clean all compiled files",
-      "enableParallelism": true
-    },
-    {
-      "commandKind": "global",
-      "name": "coverage",
-      "summary": "Publish coverage for each project.",
-      "description": "Publish coverage for each project",
-      "shellCommand": "bash repo-tools/scripts/coverage.sh"
-    }
-  ]
+			"commandKind": "global",
+			"name": "semrel",
+			"shellCommand": "./repo-tools/scripts/version.sh",
+			"summary": "Updates the Package versions based on semantic-release",
+			"description": "Updates the Package versions based on semantic-release"
+		},
+		{
+			"commandKind": "bulk",
+			"name": "test",
+			"summary": "Builds and then executes tests in each project.",
+			"description": "Builds and then executes tests in each project",
+			"enableParallelism": true
+		},
+		{
+			"commandKind": "bulk",
+			"name": "test-ci",
+			"summary": "Execute tests in each project.",
+			"description": "Runs tests in each project",
+			"enableParallelism": true
+		},
+		{
+			"commandKind": "bulk",
+			"name": "test-ci-pact",
+			"summary": "Execute pact acceptance tests in each project.",
+			"description": "Runs pact acceptance tests in each project",
+			"enableParallelism": false
+		},
+		{
+			"commandKind": "bulk",
+			"name": "docker-publish",
+			"summary": "",
+			"description": "",
+			"enableParallelism": false
+		},
+		{
+			"commandKind": "bulk",
+			"name": "publish-pacts",
+			"summary": "Publish pacts to the pact broker",
+			"description": "",
+			"enableParallelism": true
+		},
+		{
+			"commandKind": "bulk",
+			"name": "release",
+			"summary": "Have each project do whatever it should do to release",
+			"description": "Release projects",
+			"enableParallelism": true
+		},
+		{
+			"commandKind": "bulk",
+			"name": "clean",
+			"summary": "Clean all compiled files",
+			"description": "Clean all compiled files",
+			"enableParallelism": true
+		},
+		{
+			"commandKind": "global",
+			"name": "coverage",
+			"summary": "Publish coverage for each project.",
+			"description": "Publish coverage for each project",
+			"shellCommand": "bash repo-tools/scripts/coverage.sh"
+		}
+	]
 }

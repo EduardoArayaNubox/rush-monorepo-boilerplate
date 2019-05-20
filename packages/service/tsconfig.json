@@ -1,13 +1,13 @@
 {
-  "$schema": "http://json.schemastore.org/tsconfig",
-  "extends": "../../tsconfig-base.json",
-  "compilerOptions": {
-    "rootDir": ".",
-    "outDir": "dist"
-  },
-  "include": [
-    "src",
-    "test",
-    "index.ts"
-  ]
+	"$schema": "http://json.schemastore.org/tsconfig",
+	"extends": "../../tsconfig-base.json",
+	"compilerOptions": {
+		"rootDir": ".",
+		"outDir": "dist"
+	},
+	"include": [
+		"src",
+		"test",
+		"index.ts"
+	]
 }

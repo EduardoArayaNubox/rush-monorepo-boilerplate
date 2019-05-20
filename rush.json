@@ -1,44 +1,43 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
-  "rushVersion": "5.7.3",
-  // pnpm 3.x is incompatible with our jfrog registry
-  // see https://github.com/pnpm/pnpm/issues/1827
-  "pnpmVersion": "2.25.7",
-  "pnpmOptions": {
-    "strictPeerDependencies": false
-  },
-  "nodeSupportedVersionRange": "10.15.3",
-  "ensureConsistentVersions": true,
-  "repository": {
-    "url": "https://github.com/6RiverSystems/rush-monorepo-boilerplate"
-  },
-  "eventHooks": {
-    "preRushInstall": [
-    ],
-    "postRushInstall": [],
-    "preRushBuild": [],
-    "postRushBuild": []
-  },
-  "projects": [
-    {
-      "packageName": "@sixriver/template-repo-tools",
-      "projectFolder": "repo-tools",
-      "shouldPublish": false
-    },
-    {
-      "packageName": "@sixriver/template-common",
-      "projectFolder": "packages/common",
-      "versionPolicyName": "prerelease"
-    },
-    {
-      "packageName": "@sixriver/template-oas",
-      "projectFolder": "packages/oas",
-      "versionPolicyName": "prerelease"
-    },
-    {
-      "packageName": "@sixriver/template-service",
-      "projectFolder": "packages/service",
-      "versionPolicyName": "prerelease"
-    }
-  ]
+	"$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
+	"rushVersion": "5.7.3",
+	// pnpm 3.x is incompatible with our jfrog registry
+	// see https://github.com/pnpm/pnpm/issues/1827
+	"pnpmVersion": "2.25.7",
+	"pnpmOptions": {
+		"strictPeerDependencies": false
+	},
+	"nodeSupportedVersionRange": "10.15.3",
+	"ensureConsistentVersions": true,
+	"repository": {
+		"url": "https://github.com/6RiverSystems/rush-monorepo-boilerplate"
+	},
+	"eventHooks": {
+		"preRushInstall": [],
+		"postRushInstall": [],
+		"preRushBuild": [],
+		"postRushBuild": []
+	},
+	"projects": [
+		{
+			"packageName": "@sixriver/template-repo-tools",
+			"projectFolder": "repo-tools",
+			"shouldPublish": false
+		},
+		{
+			"packageName": "@sixriver/template-common",
+			"projectFolder": "packages/common",
+			"versionPolicyName": "prerelease"
+		},
+		{
+			"packageName": "@sixriver/template-oas",
+			"projectFolder": "packages/oas",
+			"versionPolicyName": "prerelease"
+		},
+		{
+			"packageName": "@sixriver/template-service",
+			"projectFolder": "packages/service",
+			"versionPolicyName": "prerelease"
+		}
+	]
 }

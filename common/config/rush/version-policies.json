@@ -1,9 +1,9 @@
 [
-  {
-    "policyName": "prerelease",
-    "definitionName": "lockStepVersion",
-    "version": "0.0.0-development",
-    "nextBump": "prerelease",
-    "mainProject": "@sixriver/template-repo-tools"
-  }
+	{
+		"policyName": "prerelease",
+		"definitionName": "lockStepVersion",
+		"version": "0.0.0-development",
+		"nextBump": "prerelease",
+		"mainProject": "@sixriver/template-repo-tools"
+	}
 ]

@@ -1,38 +1,38 @@
 {
-  "compileOnSave": true,
-  "compilerOptions": {
-    "allowUnreachableCode": false,
-    "declaration": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "incremental": true,
-    "noEmitOnError": true,
-    "noImplicitReturns": true,
-    "outDir": "dist",
-    "preserveConstEnums": true,
-    "removeComments": false,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strict": true,
-    "target": "es2018",
-    "types": [
-      "node",
-      "mocha"
-    ],
-    "lib": [
-      "es2018",
-      "esnext.asynciterable"
-    ]
-  },
-  "exclude": [
-    "**/coverage/",
-    "**/dist*/",
-    "**/node_modules/",
-    "**/scripts/",
-    "**/*.d.ts"
-  ]
+	"compileOnSave": true,
+	"compilerOptions": {
+		"allowUnreachableCode": false,
+		"declaration": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"forceConsistentCasingInFileNames": true,
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"incremental": true,
+		"noEmitOnError": true,
+		"noImplicitReturns": true,
+		"outDir": "dist",
+		"preserveConstEnums": true,
+		"removeComments": false,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"strict": true,
+		"target": "es2018",
+		"types": [
+			"node",
+			"mocha"
+		],
+		"lib": [
+			"es2018",
+			"esnext.asynciterable"
+		]
+	},
+	"exclude": [
+		"**/coverage/",
+		"**/dist*/",
+		"**/node_modules/",
+		"**/scripts/",
+		"**/*.d.ts"
+	]
 }

@@ -1,5 +1,5 @@
 {
-    "monitor": [
-			"packages/service"
-    ]
+	"monitor": [
+		"packages/service"
+	]
 }

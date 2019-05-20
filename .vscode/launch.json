@@ -8,7 +8,9 @@
 			"program": "${workspaceFolder}/packages/typescript/node_modules/mocha/bin/_mocha",
 			"outputCapture": "std",
 			"stopOnEntry": false,
-			"args": ["--no-timeouts"],
+			"args": [
+				"--no-timeouts"
+			],
 			"cwd": "${workspaceFolder}/packages/common/",
 			"runtimeExecutable": null,
 			"env": {
@@ -31,7 +33,11 @@
 			"program": "${workspaceFolder}/packages/common/node_modules/mocha/bin/_mocha",
 			"outputCapture": "std",
 			"stopOnEntry": false,
-			"args": ["--no-timeouts", "--grep", "${input:mochaGrep}"],
+			"args": [
+				"--no-timeouts",
+				"--grep",
+				"${input:mochaGrep}"
+			],
 			"cwd": "${workspaceFolder}/packages/common/",
 			"runtimeExecutable": null,
 			"env": {
@@ -46,7 +52,7 @@
 				"<node_internals>/**"
 			],
 			"preLaunchTask": "rush build template common",
-    },
+		},
 		{
 			"name": "Run template oas mocha",
 			"request": "launch",
@@ -54,7 +60,9 @@
 			"program": "${workspaceFolder}/packages/oas/node_modules/mocha/bin/_mocha",
 			"outputCapture": "std",
 			"stopOnEntry": false,
-			"args": ["--no-timeouts"],
+			"args": [
+				"--no-timeouts"
+			],
 			"cwd": "${workspaceFolder}/packages/oas/",
 			"runtimeExecutable": null,
 			"env": {
@@ -77,7 +85,11 @@
 			"program": "${workspaceFolder}/packages/oas/node_modules/mocha/bin/_mocha",
 			"outputCapture": "std",
 			"stopOnEntry": false,
-			"args": ["--no-timeouts", "--grep", "${input:mochaGrep}"],
+			"args": [
+				"--no-timeouts",
+				"--grep",
+				"${input:mochaGrep}"
+			],
 			"cwd": "${workspaceFolder}/packages/oas/",
 			"runtimeExecutable": null,
 			"env": {
@@ -100,7 +112,9 @@
 			"program": "${workspaceFolder}/packages/service/node_modules/mocha/bin/_mocha",
 			"outputCapture": "std",
 			"stopOnEntry": false,
-			"args": ["--no-timeouts"],
+			"args": [
+				"--no-timeouts"
+			],
 			"cwd": "${workspaceFolder}/packages/service/",
 			"runtimeExecutable": null,
 			"env": {
@@ -123,7 +137,11 @@
 			"program": "${workspaceFolder}/packages/service/node_modules/mocha/bin/_mocha",
 			"outputCapture": "std",
 			"stopOnEntry": false,
-			"args": ["--no-timeouts", "--grep", "${input:mochaGrep}"],
+			"args": [
+				"--no-timeouts",
+				"--grep",
+				"${input:mochaGrep}"
+			],
 			"cwd": "${workspaceFolder}/packages/service/",
 			"runtimeExecutable": null,
 			"env": {
