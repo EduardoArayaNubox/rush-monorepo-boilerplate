@@ -22,12 +22,12 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - rush-global-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
+            - rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
             - rush-global-v1-
             - rush-global-v1
       - restore_cache:
           keys:
-            - rush-local-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
+            - rush-local-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
             - rush-local-v1-
             - rush-local-v1
       - run:
@@ -46,11 +46,11 @@ jobs:
           command: |
             repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js install
       - save_cache:
-          key: rush-global-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
+          key: rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
           paths:
             - "/home/circleci/.rush"
       - save_cache:
-          key: rush-local-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
+          key: rush-local-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
           paths:
             - "./common/temp"
       - run:
@@ -100,7 +100,7 @@ jobs:
           at: ./
       - restore_cache:
           keys:
-            - rush-global-v1-{{ checksum "common/config/rush/shrinkwrap.yaml" }}
+            - rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
       - run:
           name: Set Up Environment
           # have to repeat this step because it stores stuff in ~/.npmrc which isn't cached
