@@ -1,3 +1,8 @@
 {
-	"eslint.autoFixOnSave": true
+	"eslint.autoFixOnSave": true,
+	"eslint.validate": [
+		{"language": "javascript", "autoFix": true},
+		{"language": "typescript", "autoFix": true}
+	],
+	"typescript.tsdk": "repo-tools/node_modules/typescript/lib"
 }
