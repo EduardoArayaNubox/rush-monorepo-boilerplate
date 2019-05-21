@@ -209,6 +209,8 @@ workflows:
           context: 6rs-circle
       - save_local_cache:
           context: 6rs-circle
+          requires:
+            - build
       - test:
           context: 6rs-circle
           requires:
