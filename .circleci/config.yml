@@ -6,18 +6,6 @@ jobs:
         environment:
           DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
-      - image: postgres:9
-        environment:
-          POSTGRES_USER: root
-          POSTGRES_DB: circle_test
-      - image: singularities/pubsub-emulator
-        environment:
-          PUBSUB_PROJECT_ID: test
-          PUBSUB_LISTEN_ADDRESS: 0.0.0.0:8802
-      - image: singularities/datastore-emulator
-        environment:
-          DATASTORE_PROJECT_ID: test
-          DATASTORE_LISTEN_ADDRESS: 0.0.0.0:8803
     steps:
       - checkout
       - restore_cache:
@@ -57,10 +45,88 @@ jobs:
           name: Build
           command: |
             repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js rebuild
+      - store_artifacts:
+          path: rush-logs
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - .
+
+  test:
+    docker:
+      - image: circleci/node:10.15.3
+        environment:
+          DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
+          RUSH_ABSOLUTE_SYMLINKS: "true"
+      - image: postgres:9
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: circle_test
+      - image: singularities/pubsub-emulator
+        environment:
+          PUBSUB_PROJECT_ID: test
+          PUBSUB_LISTEN_ADDRESS: 0.0.0.0:8802
+      - image: singularities/datastore-emulator
+        environment:
+          DATASTORE_PROJECT_ID: test
+          DATASTORE_LISTEN_ADDRESS: 0.0.0.0:8803
+    steps:
+      - setup_remote_docker
+      - attach_workspace:
+          at: ./
+      - restore_cache:
+          keys:
+            - rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
       - run:
           name: Test
           command: |
             repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js test-ci
+      - run:
+          name: Coverage
+          command: |
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js coverage
+            mkdir -p coverage
+            for p in packages/* ; do [ -d "$p" -a -d "$p/coverage" ] || continue ; pp="$(basename "$p")" ; cp -av "$p/coverage" "coverage/$pp" ; done
+      - run:
+          name: upload coverage
+          command: |
+            sudo npm i -g lcov-result-merger codecov
+            lcov-result-merger 'packages/*/coverage/lcov.info' 'lcov-merged.out'
+            cat "lcov-merged.out" | codecov || true
+      - store_artifacts:
+          path: coverage
+      - store_artifacts:
+          path: rush-logs
+      - store_artifacts:
+          path: /home/circleci/project/reports/junit/
+      - store_test_results:
+          path: /home/circleci/project/reports/junit/
+
+  pact:
+    docker:
+      - image: circleci/node:10.15.3
+        environment:
+          DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
+          RUSH_ABSOLUTE_SYMLINKS: "true"
+      - image: postgres:9
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: circle_test
+      - image: singularities/pubsub-emulator
+        environment:
+          PUBSUB_PROJECT_ID: test
+          PUBSUB_LISTEN_ADDRESS: 0.0.0.0:8802
+      - image: singularities/datastore-emulator
+        environment:
+          DATASTORE_PROJECT_ID: test
+          DATASTORE_LISTEN_ADDRESS: 0.0.0.0:8803
+    steps:
+      - setup_remote_docker
+      - attach_workspace:
+          at: ./
+      - restore_cache:
+          keys:
+            - rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
       - run:
           name: Pact Acceptance Tests
           command: |
@@ -85,10 +151,7 @@ jobs:
           path: /home/circleci/project/reports/junit/
       - store_test_results:
           path: /home/circleci/project/reports/junit/
-      - persist_to_workspace:
-          root: ./
-          paths:
-            - .
+
   deploy:
     docker:
       - image: circleci/node:10.15.3
@@ -136,7 +199,17 @@ workflows:
     jobs:
       - build:
           context: 6rs-circle
+      - test:
+          context: 6rs-circle
+          requires:
+            - build
+      - pact:
+          context: 6rs-circle
+          requires:
+            - build
       - deploy:
           context: 6rs-circle
           requires:
             - build
+            - test
+            - pact
