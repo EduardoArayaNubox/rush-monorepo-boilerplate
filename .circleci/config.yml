@@ -37,10 +37,6 @@ jobs:
           key: rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
           paths:
             - "/home/circleci/.rush"
-      - save_cache:
-          key: rush-local-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
-          paths:
-            - "./common/temp"
       - run:
           name: Build
           command: |
@@ -51,6 +47,20 @@ jobs:
           root: ./
           paths:
             - .
+
+  save_local_cache:
+    docker:
+      - image: circleci/node:10.15.3
+        environment:
+          DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
+          RUSH_ABSOLUTE_SYMLINKS: "true"
+    steps:
+      - attach_workspace:
+          at: ./
+      - save_cache:
+          key: rush-local-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
+          paths:
+            - "./common/temp"
 
   test:
     docker:
@@ -71,7 +81,6 @@ jobs:
           DATASTORE_PROJECT_ID: test
           DATASTORE_LISTEN_ADDRESS: 0.0.0.0:8803
     steps:
-      - setup_remote_docker
       - attach_workspace:
           at: ./
       - restore_cache:
@@ -121,7 +130,6 @@ jobs:
           DATASTORE_PROJECT_ID: test
           DATASTORE_LISTEN_ADDRESS: 0.0.0.0:8803
     steps:
-      - setup_remote_docker
       - attach_workspace:
           at: ./
       - restore_cache:
@@ -198,6 +206,8 @@ workflows:
   build-deploy:
     jobs:
       - build:
+          context: 6rs-circle
+      - save_local_cache:
           context: 6rs-circle
       - test:
           context: 6rs-circle
