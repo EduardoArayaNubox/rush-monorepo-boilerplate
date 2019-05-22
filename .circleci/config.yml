@@ -102,6 +102,10 @@ jobs:
           keys:
             - rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
       - run:
+          name: rush link
+          command: |
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js link --force
+      - run:
           name: Lint
           command: |
             repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js lint
@@ -210,7 +214,7 @@ jobs:
       - store_test_results:
           path: /home/circleci/project/reports/junit/
 
-  pre-deploy-1:
+  pre-deploy-docker:
     docker:
       - image: circleci/node:10.15.3
         environment:
@@ -219,32 +223,21 @@ jobs:
       - setup_remote_docker
       - attach_workspace:
           at: ./
+      - run:
+          name: Initalize Docker
+          command: |
+            repo-tools/scripts/create-base-docker-init.sh
       - run:
           name: Build Rush Cache Image Part 1
           command: |
             repo-tools/scripts/create-base-docker-1.sh
 
-  pre-deploy-2:
+  deploy-npm:
     docker:
       - image: circleci/node:10.15.3
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
-      - setup_remote_docker
-      - attach_workspace:
-          at: ./
-      - run:
-          name: Build Rush Cache Image Part 2
-          command: |
-            repo-tools/scripts/create-base-docker-2.sh
-
-  deploy:
-    docker:
-      - image: circleci/node:10.15.3
-        environment:
-          RUSH_ABSOLUTE_SYMLINKS: "true"
-    steps:
-      - setup_remote_docker
       - attach_workspace:
           at: ./
       - restore_cache:
@@ -260,15 +253,37 @@ jobs:
           command: |
             repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js publish --include-all -r https://sixriver.jfrog.io/sixriver/api/npm/npm-local/ -p --version-policy prerelease
       - run:
-          name: Release
-          command: |
-            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js release
-      - run:
           name: Publish Pacts
           command: |
             repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js publish-pacts
       - store_artifacts:
           path: rush-logs
+
+  deploy-docker:
+    docker:
+      - image: circleci/node:10.15.3
+        environment:
+          RUSH_ABSOLUTE_SYMLINKS: "true"
+    steps:
+      - setup_remote_docker
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Initalize Docker
+          command: |
+            repo-tools/scripts/create-base-docker-init.sh
+      - run:
+          name: Fetch ush Cache Part 1
+          command: |
+            repo-tools/scripts/create-base-docker-2-prep.sh
+      - run:
+          name: Build Rush Cache Image Part 2
+          command: |
+            repo-tools/scripts/create-base-docker-2-build.sh
+      - run:
+          name: Release Package Docker Images
+          command: |
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js release
 
 workflows:
   version: 2
@@ -297,19 +312,20 @@ workflows:
           context: 6rs-circle
           requires:
             - build
-      - pre-deploy-1:
+      - pre-deploy-docker:
           context: 6rs-circle
           requires:
             - install
-      - pre-deploy-2:
+      - deploy-npm:
           context: 6rs-circle
           requires:
-            - pre-deploy-1
+            - lint
             - build
-      - deploy:
+            - test
+      - deploy-docker:
           context: 6rs-circle
           requires:
-            - pre-deploy-2
+            - pre-deploy-docker
             - lint
             - build
             - test
