@@ -88,6 +88,7 @@ jobs:
           root: ./
           paths:
             # shouldn't need to re-persist all the higher layer things, just wastes time
+            # this does mean later steps have to re-run rush link though
             - ./packages/
 
   lint:
@@ -142,6 +143,10 @@ jobs:
           keys:
             - rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
       - run:
+          name: rush link
+          command: |
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js link --force
+      - run:
           name: Test
           command: |
             repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js test-ci
@@ -190,6 +195,10 @@ jobs:
       - restore_cache:
           keys:
             - rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
+      - run:
+          name: rush link
+          command: |
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js link --force
       - run:
           name: Pact Acceptance Tests
           command: |
