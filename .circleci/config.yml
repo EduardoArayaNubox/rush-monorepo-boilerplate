@@ -93,6 +93,7 @@ jobs:
           paths:
             # shouldn't need to re-persist all the higher layer things, just wastes time
             - ./packages/
+            - ./common/temp/rush-link.json
 
   lint:
     docker:
@@ -224,6 +225,7 @@ jobs:
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
+      - checkout
       - restore_cache:
           name: Restore Base Docker 1 Flag Cache
           keys:
@@ -231,17 +233,9 @@ jobs:
       - run:
           # this will skip the rest of this job if it doesn't need to be executed
           # saves lots of time restoring workspace and larger caches
-          # have to inline this script because we don't have even the git checkout yet here
           name: Check For Skippability
           command: |
-            set -xeuo pipefail
-            shasum="$(cat common/config/rush/pnpm-lock.yaml rush_cache_1.dockerfile | sha1sum | cut -d' ' -f1)"
-            flagdir="rush_cache_1.built"
-            flagfile="${flagdir}/rush_cache_1_${shasum}.built"
-            if [ -f "${flagfile}" ]; then
-              echo "Found flag file, assuming rush_cache_1 is already built for ${shasum}"
-              circleci-agent step halt
-            fi
+            repo-tools/scripts/base-docker-1-skip.sh
       - setup_remote_docker
       - attach_workspace:
           at: ./
