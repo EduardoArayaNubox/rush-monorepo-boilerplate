@@ -19,17 +19,6 @@ if [ ${CI} ]; then
   export ESLINT_OPTS="--quiet --format junit -o ${REPORTDIR}/eslint.xml"
 fi
 
-# don't re-run lint when running pact tests
-if [ "$NODE_ENV" = "test" ]; then
-  echo "Linting ${BASENAME}..."
-  ./node_modules/.bin/eslint --ext .ts,.js ${ESLINT_OPTS} .
-  retVal=$?
-  if [ $retVal -ne 0 ]; then
-    echo "Linter Error"
-    exit $retVal
-  fi
-fi
-
 # don't wipe out pre-existing coverage files if running acceptance (pact) tests
 if [ "$NODE_ENV" != "test" ]; then
   NYC_OPTS="${NYC_OPTS} --clean=false"

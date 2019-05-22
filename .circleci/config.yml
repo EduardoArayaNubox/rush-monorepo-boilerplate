@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  install:
     docker:
       - image: circleci/node:10.15.3
         environment:
@@ -32,15 +32,15 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
-            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js install
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js install --no-link
+      - run:
+          name: Setup new version
+          command: |
+            ./repo-tools/scripts/version.sh
       - save_cache:
           key: rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
           paths:
             - "/home/circleci/.rush"
-      - run:
-          name: Build
-          command: |
-            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js rebuild
       - store_artifacts:
           path: rush-logs
       - persist_to_workspace:
@@ -61,6 +61,56 @@ jobs:
           key: rush-local-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
           paths:
             - "./common/temp"
+
+  build:
+    docker:
+      - image: circleci/node:10.15.3
+        environment:
+          DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
+          RUSH_ABSOLUTE_SYMLINKS: "true"
+    steps:
+      - attach_workspace:
+          at: ./
+      - restore_cache:
+          keys:
+            - rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
+      - run:
+          name: rush link
+          command: |
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js link --force
+      - run:
+          name: Build
+          command: |
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js rebuild
+      - store_artifacts:
+          path: rush-logs
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - .
+
+  lint:
+    docker:
+      - image: circleci/node:10.15.3
+        environment:
+          DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
+          RUSH_ABSOLUTE_SYMLINKS: "true"
+    steps:
+      - attach_workspace:
+          at: ./
+      - restore_cache:
+          keys:
+            - rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
+      - run:
+          name: Lint
+          command: |
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js lint
+      - store_artifacts:
+          path: rush-logs
+      - store_artifacts:
+          path: /home/circleci/project/reports/junit/
+      - store_test_results:
+          path: /home/circleci/project/reports/junit/
 
   test:
     docker:
@@ -160,6 +210,34 @@ jobs:
       - store_test_results:
           path: /home/circleci/project/reports/junit/
 
+  pre-deploy-1:
+    docker:
+      - image: circleci/node:10.15.3
+        environment:
+          RUSH_ABSOLUTE_SYMLINKS: "true"
+    steps:
+      - setup_remote_docker
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Build Rush Cache Image Part 1
+          command: |
+            repo-tools/scripts/create-base-docker-1.sh
+
+  pre-deploy-2:
+    docker:
+      - image: circleci/node:10.15.3
+        environment:
+          RUSH_ABSOLUTE_SYMLINKS: "true"
+    steps:
+      - setup_remote_docker
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Build Rush Cache Image Part 2
+          command: |
+            repo-tools/scripts/create-base-docker-2.sh
+
   deploy:
     docker:
       - image: circleci/node:10.15.3
@@ -178,17 +256,9 @@ jobs:
           command: |
             ci_scripts/ci_tool.sh --setup_npm
       - run:
-          name: Setup Tag for new version and then release
-          command: |
-            ./repo-tools/scripts/version.sh
-      - run:
           name: Publish
           command: |
             repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js publish --include-all -r https://sixriver.jfrog.io/sixriver/api/npm/npm-local/ -p --version-policy prerelease
-      - run:
-          name: Build Rush Cache Image
-          command: |
-            repo-tools/scripts/create-base-docker.sh
       - run:
           name: Release
           command: |
@@ -205,12 +275,20 @@ workflows:
 
   build-deploy:
     jobs:
-      - build:
+      - install:
           context: 6rs-circle
       - save_local_cache:
           context: 6rs-circle
           requires:
-            - build
+            - install
+      - build:
+          context: 6rs-circle
+          requires:
+            - install
+      - lint:
+          context: 6rs-circle
+          requires:
+            - install
       - test:
           context: 6rs-circle
           requires:
@@ -219,9 +297,19 @@ workflows:
           context: 6rs-circle
           requires:
             - build
+      - pre-deploy-1:
+          context: 6rs-circle
+          requires:
+            - install
+      - pre-deploy-2:
+          context: 6rs-circle
+          requires:
+            - pre-deploy-1
+            - build
       - deploy:
           context: 6rs-circle
           requires:
+            - pre-deploy-2
+            - lint
             - build
             - test
-            - pact

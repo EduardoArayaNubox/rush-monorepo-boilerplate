@@ -6,6 +6,7 @@
     "clean": "true",
     "build": "true",
     "test": "true",
+    "lint": "true",
     "test-ci": "true",
     "test-ci-pact": "true",
     "publish-pacts": "true",

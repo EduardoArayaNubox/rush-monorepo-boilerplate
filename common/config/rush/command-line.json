@@ -17,6 +17,13 @@
 		},
 		{
 			"commandKind": "bulk",
+			"name": "lint",
+			"summary": "Run linting rules in each project",
+			"description": "Run linting rules in each project",
+			"enableParallelism": true
+		},
+		{
+			"commandKind": "bulk",
 			"name": "test-ci",
 			"summary": "Execute tests in each project.",
 			"description": "Runs tests in each project",
