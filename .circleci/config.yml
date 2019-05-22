@@ -1,4 +1,5 @@
 version: 2
+
 jobs:
   install:
     docker:
@@ -11,9 +12,7 @@ jobs:
       - restore_cache:
           name: Restore Rush Global Cache
           keys:
-            - rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
-            - rush-global-v1-
-            - rush-global-v1
+            - rush-global-v1-{{ checksum "rush.json" }}-{{ checksum ".node-version" }}
       - restore_cache:
           name: Restore Rush Local Cache
           keys:
@@ -36,7 +35,11 @@ jobs:
           command: |
             repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js install --no-link
       - run:
-          name: Setup new version
+          name: Link Dependencies
+          command: |
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js link --force
+      - run:
+          name: Determine New Version Number
           command: |
             ./repo-tools/scripts/version.sh
       - save_cache:
@@ -78,11 +81,7 @@ jobs:
       - restore_cache:
           name: Restore Rush Global Cache
           keys:
-            - rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
-      - run:
-          name: rush link
-          command: |
-            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js link --force
+            - rush-global-v1-{{ checksum "rush.json" }}-{{ checksum ".node-version" }}
       - run:
           name: Build
           command: |
@@ -93,8 +92,8 @@ jobs:
           root: ./
           paths:
             # shouldn't need to re-persist all the higher layer things, just wastes time
-            # this does mean later steps have to re-run rush link though
             - ./packages/
+            - ./common/temp/rush-link.json
 
   lint:
     docker:
@@ -108,11 +107,7 @@ jobs:
       - restore_cache:
           name: Restore Rush Global Cache
           keys:
-            - rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
-      - run:
-          name: rush link
-          command: |
-            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js link --force
+            - rush-global-v1-{{ checksum "rush.json" }}-{{ checksum ".node-version" }}
       - run:
           name: Lint
           command: |
@@ -148,11 +143,7 @@ jobs:
       - restore_cache:
           name: Restore Rush Global Cache
           keys:
-            - rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
-      - run:
-          name: rush link
-          command: |
-            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js link --force
+            - rush-global-v1-{{ checksum "rush.json" }}-{{ checksum ".node-version" }}
       - run:
           name: Test
           command: |
@@ -202,11 +193,7 @@ jobs:
       - restore_cache:
           name: Restore Rush Global Cache
           keys:
-            - rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
-      - run:
-          name: rush link
-          command: |
-            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js link --force
+            - rush-global-v1-{{ checksum "rush.json" }}-{{ checksum ".node-version" }}
       - run:
           name: Pact Acceptance Tests
           command: |
@@ -238,13 +225,19 @@ jobs:
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
-      - setup_remote_docker
-      - attach_workspace:
-          at: ./
       - restore_cache:
           name: Restore Base Docker 1 Flag Cache
           keys:
             - base-docker-1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-{{ checksum "rush_cache_1.dockerfile" }}
+      - run:
+          # this will skip the rest of this job if it doesn't need to be executed
+          # saves lots of time restoring workspace and larger caches
+          name: Check For Skippability
+          command: |
+            repo-tools/scripts/base-docker-1-skip.sh
+      - setup_remote_docker
+      - attach_workspace:
+          at: ./
       - run:
           name: Initalize Docker
           command: |
@@ -301,7 +294,7 @@ jobs:
       - restore_cache:
           name: Restore Rush Global Cache
           keys:
-            - rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
+            - rush-global-v1-{{ checksum "rush.json" }}-{{ checksum ".node-version" }}
       - run:
           name: Set Up Environment
           # have to repeat this step because it stores stuff in ~/.npmrc which isn't cached
@@ -345,9 +338,10 @@ workflows:
 
   build-deploy:
     jobs:
+      # order here seems to matter a little, when all else is equal, so put the critical path first
       - install:
           context: 6rs-circle
-      - save_local_cache:
+      - pre-deploy-docker-1:
           context: 6rs-circle
           requires:
             - install
@@ -355,6 +349,12 @@ workflows:
           context: 6rs-circle
           requires:
             - install
+      - pre-deploy-docker-2:
+          context: 6rs-circle
+          requires:
+            - install
+            - pre-deploy-docker-1
+            - build
       - lint:
           context: 6rs-circle
           requires:
@@ -366,16 +366,6 @@ workflows:
       - pact:
           context: 6rs-circle
           requires:
-            - build
-      - pre-deploy-docker-1:
-          context: 6rs-circle
-          requires:
-            - install
-      - pre-deploy-docker-2:
-          context: 6rs-circle
-          requires:
-            - install
-            - pre-deploy-docker-1
             - build
       - deploy-npm:
           context: 6rs-circle
@@ -392,3 +382,7 @@ workflows:
             - build
             - test
             - pact
+      - save_local_cache:
+          context: 6rs-circle
+          requires:
+            - install
