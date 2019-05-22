@@ -44,7 +44,7 @@ jobs:
             ./repo-tools/scripts/version.sh
       - save_cache:
           name: Save Rush Global Cache
-          key: rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
+          key: rush-global-v1-{{ checksum "rush.json" }}-{{ checksum ".node-version" }}
           paths:
             - "/home/circleci/.rush"
       - store_artifacts:
@@ -274,15 +274,11 @@ jobs:
           name: Build Rush Cache Image Part 2
           command: |
             repo-tools/scripts/base-docker-2-build.sh
-      - run:
-          name: Save Rush Cache Image Part 2
-          command: |
-            docker save -o rush_cache.tar rush_cache
       - persist_to_workspace:
           root: ./
           paths:
-            - rush_cache.tar
             - .dockerignore
+            - rush_cache_2.rev
 
   deploy-npm:
     docker:
@@ -326,9 +322,9 @@ jobs:
           command: |
             ci_scripts/ci_tool.sh --docker_login
       - run:
-          name: Load Rush Cache Part 2
+          name: Pull Rush Cache Part 2
           command: |
-            docker load -i rush_cache.tar
+            repo-tools/scripts/base-docker-2-pull.sh
       - run:
           name: Release Package Docker Images
           command: |
