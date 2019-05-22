@@ -54,7 +54,7 @@ jobs:
           paths:
             - .
 
-  save_local_cache:
+  save-local-cache:
     docker:
       - image: circleci/node:10.15.3
         environment:
@@ -379,7 +379,7 @@ workflows:
             - build
             - test
             - pact
-      - save_local_cache:
+      - save-local-cache:
           context: 6rs-circle
           requires:
             - install
