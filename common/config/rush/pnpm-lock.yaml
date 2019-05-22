@@ -1,4 +1,3 @@
-# this is a comment to be removed, just to test cache update performance
 dependencies:
   '@commitlint/cli': 7.6.1
   '@google-cloud/pubsub': 0.28.1
