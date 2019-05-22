@@ -69,7 +69,7 @@
 			"name": "coverage",
 			"summary": "Build coverage report for each project.",
 			"description": "Build coverage report for each project",
-			"shellCommand": "bash repo-tools/scripts/coverage.sh"
+			"enableParallelism": true
 		}
 	]
 }
