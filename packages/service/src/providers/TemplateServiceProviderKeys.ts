@@ -2,7 +2,6 @@ import * as Ajv from 'ajv';
 
 import {BindingKey} from '@loopback/context';
 
-import {MinimalLogFactory} from '@sixriver/typescript-support';
 import {ServiceDirectory} from '@sixriver/service-directory';
 import {Validator} from '@sixriver/loopback4-support';
 

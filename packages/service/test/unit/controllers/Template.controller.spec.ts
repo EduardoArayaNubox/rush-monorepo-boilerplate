@@ -3,7 +3,6 @@ import * as Chance from 'chance';
 const chance = new Chance();
 import * as sinon from 'sinon';
 
-import * as _ from 'lodash';
 import * as Ajv from 'ajv';
 import {Console} from 'console';
 import * as uuidv4 from 'uuid/v4';
@@ -19,16 +18,9 @@ import {TemplateController} from '../../../src/controllers';
 import {TemplateMessageModel} from '../../../src/models';
 
 class MockValidator<T, TError = any> implements Validator<T, TError> {
-	public async tryValidate(object: T): Promise<true | TError[]> {
+	public async tryValidate(): Promise<true | TError[]> {
 		throw new Error('Stub method tryValidate not implemented');
 	}
-}
-
-function createNamedStub(target: any, name: string): sinon.SinonStub {
-	target[name] = function(...args: any[]) {
-		throw new Error(`Stub method '${name}' not implemented: ${JSON.stringify(args)}`);
-	};
-	return sinon.stub(target, name).callThrough();
 }
 
 describe(TemplateController.name, function() {
@@ -44,7 +36,7 @@ describe(TemplateController.name, function() {
 		log = new Console(process.stdout, process.stderr);
 		sinon.stub(log, 'trace').returns(undefined);
 		sinon.stub(log, 'debug').returns(undefined);
-		logFactory = (component: string) => log;
+		logFactory = () => log;
 
 		requestValidator = new MockValidator<TemplateMessage, Ajv.ErrorObject>();
 

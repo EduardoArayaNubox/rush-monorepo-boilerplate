@@ -1,5 +1,4 @@
 const pact = require('@pact-foundation/pact-node');
-const path = require('path');
 
 const config = require('./server-defaults');
 
