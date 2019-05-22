@@ -1,0 +1,68 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "rush build template all",
+			"type": "shell",
+			"group": "build",
+			"command": "rush build -v",
+			"options": {
+				"cwd": "."
+			},
+			"problemMatcher": {
+				"base": "$tsc",
+				"fileLocation": [
+					"relative",
+				]
+			}
+		},
+		{
+			"label": "rush build template common",
+			"type": "shell",
+			"group": "build",
+			"command": "rush build -vt @sixriver/template-common",
+			"options": {
+				"cwd": "packages/common"
+			},
+			"problemMatcher": {
+				"base": "$tsc",
+				"fileLocation": [
+					"relative",
+					"${workspaceRoot}/packages/common/"
+				]
+			}
+		},
+		{
+			"label": "rush build template oas",
+			"type": "shell",
+			"group": "build",
+			"command": "rush build -vt @sixriver/template-oas",
+			"options": {
+				"cwd": "packages/oas"
+			},
+			"problemMatcher": {
+				"base": "$tsc",
+				"fileLocation": [
+					"relative",
+					"${workspaceRoot}/packages/oas/"
+				]
+			}
+		},
+		{
+			"label": "rush build template service",
+			"type": "shell",
+			"group": "build",
+			"command": "rush build -vt @sixriver/template-service",
+			"options": {
+				"cwd": "packages/service/"
+			},
+			"problemMatcher": {
+				"base": "$tsc",
+				"fileLocation": [
+					"relative",
+					"${workspaceRoot}/packages/service/"
+				]
+			}
+		}
+	]
+}

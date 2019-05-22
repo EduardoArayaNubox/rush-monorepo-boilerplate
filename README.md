@@ -1,23 +1,76 @@
-# Warehouse Integration Service
+# Template Rush Project
 
-[![CircleCI](https://circleci.com/gh/6RiverSystems/wis/tree/develop.svg?style=svg&circle-token=23a0f02161e4587e91d28a624c12056c172db6ab)](https://circleci.com/gh/6RiverSystems/wis/tree/develop)
+## Instantiating It
 
-## Developer Guide
+### Get a Clean Copy
 
-Pre-requisite: npm i -g @microsoft/rush
+1. Option 1: Do a git clone of this repo, and then delete the `.git` directory
+2. Option 2: Use `git archive` (read the manpage) to make an export of this repo
+   and then extract that archive to the folder in which you are going to create
+   the new repo
 
-* rush update
--> Run this whenever you modify package.json
+### Replace the placeholders
 
-* rush install
--> The equivalent of `npm install && npm link` (linking all project inter-dependencies)
--> Run this whenever you do a `git pull`
+* Search this repository, case insensitively, for the whole word `template`.
+  Pretty much every single instance you find of that string needs to be
+  replaced.
+* Also search for files that have `template` in their name, they almost
+  certainly need to be renamed.
+* You may wish to rename the `service` package to have a more descriptive name.
+* Make sure the copyright date in `LICENSE` is up to date.
 
-* rush build
--> Will build all your source code
+### Update `infrastructure`
 
-* rush test
--> Run all tests... hopefully?
+Make a PR to the `infrastructure` project to add your repository to the
+appropriate lists of repos to be cloned for various groups, and to have `6mon`
+start your service(s).
 
-* You can also run regular npm scripts from inside your specific project
-** (Except `npm install` might not work so well)
+### Enabling CI
+
+* The `.circleci/config.yml` should have everything you need for CircleCI to
+  build your copy of this project.
+* However, you will need to edit the project settings in the CircleCI web
+  interface and add the `CODECOV_TOKEN` environment variable generated from the
+  CodeCov web interface before coverage uploads and analysis will work.
+
+### Replace this file
+
+Replace this file (and the other `README.md` files) with material appropriate to
+your new project.
+
+### Adding new packages
+
+* If your new package doesn't need "resource" style files (anything other
+  than `.ts` sources) copied to its `dist` dir, then use `common` as a
+  template so that you use `tsc` directly and get incremental builds.
+* If your new pacakge uses loopback, use `service` as a template (you will
+  almost certainly have resource files)
+* Update `.6mon.json` if your new package provides a service that `6mon` should
+  launch
+
+## What It Provides
+
+### Common
+
+The `common` package (in `packages/common`, not to be confused with `common`)
+provides boilerplate for a package where you might store common utility code
+and types.  It is also useful as an example of a pure-typescript package if you
+need more of them, as opposed to a loopback-enabled package.
+
+### OAS
+
+The `oas` package provides the boilerplate to define the OAS spec for your
+service(s).  This is for "internal" or "privileged" APIs, not customer-facing
+ones (those must go in the `standard-api` repo)
+
+### Service
+
+The `service` package provides boilerplate for a Loopback 4 service including
+database, models, datasource, repositories, and controllers.
+
+## TODO
+
+* Update `gulp-typescript` so that the `incremental` flag in
+  `tsconfig-base.json` will actually work for the loopback4 project setup.
+  As of May 2019, this is blocked awaiting APIs from Microsoft for
+  typescript itself.

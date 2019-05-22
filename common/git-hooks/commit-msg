@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+common/temp/node_modules/.bin/commitlint --edit ./.git/COMMIT_EDITMSG

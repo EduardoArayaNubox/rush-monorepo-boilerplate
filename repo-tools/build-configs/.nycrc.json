@@ -1,0 +1,17 @@
+{
+	"extension": [
+		".ts"
+	],
+	"exclude": [
+		"**/*.d.ts",
+		"test/",
+		"**/migrations/**",
+		"coverage/**",
+		"**/node_modules/**"
+	],
+	"require": [],
+	"sourceMap": true,
+	"instrument": true,
+	"temp-directory": "./coverage/.nyc_output",
+	"report-dir": "./coverage/.nyc_output"
+}

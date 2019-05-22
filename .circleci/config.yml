@@ -1,52 +1,387 @@
 version: 2
+
 jobs:
-  build:
+  install:
     docker:
-      - image: circleci/node:10.4.1
+      - image: circleci/node:10.15.3
         environment:
-          - DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
-      - image: postgres:9
-        environment:
-          - POSTGRES_USER: root
-          - POSTGRES_DB: circle_test
+          DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
+          RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
       - checkout
+      - restore_cache:
+          name: Restore Rush Global Cache
+          keys:
+            - rush-global-v1-{{ checksum "rush.json" }}-{{ checksum ".node-version" }}
+      - restore_cache:
+          name: Restore Rush Local Cache
+          keys:
+            - rush-local-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
+            - rush-local-v1-
+            - rush-local-v1
       - run:
-          name: rush install
+          name: Set Up Environment
           command: |
-            sudo npm i -g @microsoft/rush
+            mkdir ci_scripts
+            curl -H "Authorization: token $GITHUB_TOKEN" -H "Accept:application/vnd.github.v3.raw"  https://api.github.com/repos/6RiverSystems/ci_scripts/contents/ci_tool.sh > ci_scripts/ci_tool.sh
+            chmod +x ci_scripts/ci_tool.sh
+            ci_scripts/ci_tool.sh --setup_npm
       - run:
-          name: dependency install
+          name: Check Dependencies
           command: |
-            rush install --purge
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js check
       - run:
-          name: check dependencies
+          name: Install Dependencies
           command: |
-            rush check
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js install --no-link
       - run:
-          name: build
-          command: rush build
-      - run:
-          name: test
+          name: Link Dependencies
           command: |
-            rush test-ci
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js link --force
+      - run:
+          name: Determine New Version Number
+          command: |
+            ./repo-tools/scripts/version.sh
+      - save_cache:
+          name: Save Rush Global Cache
+          key: rush-global-v1-{{ checksum "rush.json" }}-{{ checksum ".node-version" }}
+          paths:
+            - "/home/circleci/.rush"
       - store_artifacts:
-          path: coverage
-          prefix: coverage
+          path: rush-logs
       - store_artifacts:
-          path: reports/junit/
-          prefix: reports/junit/
-      - store_test_results:
-          path: reports/junit/
+          path: .version
       - persist_to_workspace:
           root: ./
           paths:
-            - node_modules
-            - dist
+            - .
+
+  save-local-cache:
+    docker:
+      - image: circleci/node:10.15.3
+        environment:
+          DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
+          RUSH_ABSOLUTE_SYMLINKS: "true"
+    steps:
+      - attach_workspace:
+          at: ./
+      - save_cache:
+          name: Save Rush Local Cache
+          key: rush-local-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
+          paths:
+            - "./common/temp"
+
+  build:
+    docker:
+      - image: circleci/node:10.15.3
+        environment:
+          DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
+          RUSH_ABSOLUTE_SYMLINKS: "true"
+    steps:
+      - attach_workspace:
+          at: ./
+      - restore_cache:
+          name: Restore Rush Global Cache
+          keys:
+            - rush-global-v1-{{ checksum "rush.json" }}-{{ checksum ".node-version" }}
+      - run:
+          name: Build
+          command: |
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js rebuild
+      - store_artifacts:
+          path: rush-logs
+      - persist_to_workspace:
+          root: ./
+          paths:
+            # shouldn't need to re-persist all the higher layer things, just wastes time
+            - ./packages/
+            - ./common/temp/rush-link.json
+
+  lint:
+    docker:
+      - image: circleci/node:10.15.3
+        environment:
+          DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
+          RUSH_ABSOLUTE_SYMLINKS: "true"
+    steps:
+      - attach_workspace:
+          at: ./
+      - restore_cache:
+          name: Restore Rush Global Cache
+          keys:
+            - rush-global-v1-{{ checksum "rush.json" }}-{{ checksum ".node-version" }}
+      - run:
+          name: Lint
+          command: |
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js lint
+      - store_artifacts:
+          path: rush-logs
+      - store_artifacts:
+          path: /home/circleci/project/reports/junit/
+      - store_test_results:
+          path: /home/circleci/project/reports/junit/
+
+  test:
+    docker:
+      - image: circleci/node:10.15.3
+        environment:
+          DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
+          RUSH_ABSOLUTE_SYMLINKS: "true"
+      - image: postgres:9
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: circle_test
+      - image: singularities/pubsub-emulator
+        environment:
+          PUBSUB_PROJECT_ID: test
+          PUBSUB_LISTEN_ADDRESS: 0.0.0.0:8802
+      - image: singularities/datastore-emulator
+        environment:
+          DATASTORE_PROJECT_ID: test
+          DATASTORE_LISTEN_ADDRESS: 0.0.0.0:8803
+    steps:
+      - attach_workspace:
+          at: ./
+      - restore_cache:
+          name: Restore Rush Global Cache
+          keys:
+            - rush-global-v1-{{ checksum "rush.json" }}-{{ checksum ".node-version" }}
+      - run:
+          name: Test
+          command: |
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js test-ci
+      - run:
+          name: Coverage
+          command: |
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js coverage
+            mkdir -p coverage
+            for p in packages/* ; do [ -d "$p" -a -d "$p/coverage" ] || continue ; pp="$(basename "$p")" ; cp -av "$p/coverage" "coverage/$pp" ; done
+      - run:
+          name: upload coverage
+          command: |
+            sudo npm i -g lcov-result-merger codecov
+            lcov-result-merger 'packages/*/coverage/lcov.info' 'lcov-merged.out'
+            cat "lcov-merged.out" | codecov || true
+      - store_artifacts:
+          path: coverage
+      - store_artifacts:
+          path: rush-logs
+      - store_artifacts:
+          path: /home/circleci/project/reports/junit/
+      - store_test_results:
+          path: /home/circleci/project/reports/junit/
+
+  pact:
+    docker:
+      - image: circleci/node:10.15.3
+        environment:
+          DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
+          RUSH_ABSOLUTE_SYMLINKS: "true"
+      - image: postgres:9
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: circle_test
+      - image: singularities/pubsub-emulator
+        environment:
+          PUBSUB_PROJECT_ID: test
+          PUBSUB_LISTEN_ADDRESS: 0.0.0.0:8802
+      - image: singularities/datastore-emulator
+        environment:
+          DATASTORE_PROJECT_ID: test
+          DATASTORE_LISTEN_ADDRESS: 0.0.0.0:8803
+    steps:
+      - attach_workspace:
+          at: ./
+      - restore_cache:
+          name: Restore Rush Global Cache
+          keys:
+            - rush-global-v1-{{ checksum "rush.json" }}-{{ checksum ".node-version" }}
+      - run:
+          name: Pact Acceptance Tests
+          command: |
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js test-ci-pact
+      - run:
+          name: Coverage
+          command: |
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js coverage
+            mkdir -p coverage
+            for p in packages/* ; do [ -d "$p" -a -d "$p/coverage" ] || continue ; pp="$(basename "$p")" ; cp -av "$p/coverage" "coverage/$pp" ; done
+      - run:
+          name: upload coverage
+          command: |
+            sudo npm i -g lcov-result-merger codecov
+            lcov-result-merger 'packages/*/coverage/lcov.info' 'lcov-merged.out'
+            cat "lcov-merged.out" | codecov || true
+      - store_artifacts:
+          path: coverage
+      - store_artifacts:
+          path: rush-logs
+      - store_artifacts:
+          path: /home/circleci/project/reports/junit/
+      - store_test_results:
+          path: /home/circleci/project/reports/junit/
+
+  pre-deploy-docker-1:
+    docker:
+      - image: circleci/node:10.15.3
+        environment:
+          RUSH_ABSOLUTE_SYMLINKS: "true"
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Base Docker 1 Flag Cache
+          keys:
+            - base-docker-1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-{{ checksum "rush_cache_1.dockerfile" }}
+      - run:
+          # this will skip the rest of this job if it doesn't need to be executed
+          # saves lots of time restoring workspace and larger caches
+          name: Check For Skippability
+          command: |
+            repo-tools/scripts/base-docker-1-skip.sh
+      - setup_remote_docker
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Initalize Docker
+          command: |
+            ci_scripts/ci_tool.sh --docker_login
+      - run:
+          name: Build Rush Cache Image Part 1
+          command: |
+            repo-tools/scripts/base-docker-1-build.sh
+      - save_cache:
+          name: Save Base Docker 1 Flag Cache
+          key: base-docker-1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-{{ checksum "rush_cache_1.dockerfile" }}
+          paths:
+            - ./rush_cache_1.built/
+
+  pre-deploy-docker-2:
+    docker:
+      - image: circleci/node:10.15.3
+        environment:
+          RUSH_ABSOLUTE_SYMLINKS: "true"
+    steps:
+      - setup_remote_docker
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Initalize Docker
+          command: |
+            ci_scripts/ci_tool.sh --docker_login
+      - run:
+          name: Fetch Rush Cache Part 1
+          command: |
+            repo-tools/scripts/base-docker-1-pull.sh
+      - run:
+          name: Build Rush Cache Image Part 2
+          command: |
+            repo-tools/scripts/base-docker-2-build.sh
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - .dockerignore
+            - rush_cache_2.rev
+
+  deploy-npm:
+    docker:
+      - image: circleci/node:10.15.3
+        environment:
+          RUSH_ABSOLUTE_SYMLINKS: "true"
+    steps:
+      - attach_workspace:
+          at: ./
+      - restore_cache:
+          name: Restore Rush Global Cache
+          keys:
+            - rush-global-v1-{{ checksum "rush.json" }}-{{ checksum ".node-version" }}
+      - run:
+          name: Set Up Environment
+          # have to repeat this step because it stores stuff in ~/.npmrc which isn't cached
+          command: |
+            ci_scripts/ci_tool.sh --setup_npm
+      - run:
+          name: Publish NPM Packages
+          command: |
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js publish --include-all -r https://sixriver.jfrog.io/sixriver/api/npm/npm-local/ -p --version-policy prerelease
+      - run:
+          name: Publish Pacts
+          command: |
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js publish-pacts
+      - store_artifacts:
+          path: rush-logs
+
+  deploy-docker:
+    docker:
+      - image: circleci/node:10.15.3
+        environment:
+          RUSH_ABSOLUTE_SYMLINKS: "true"
+    steps:
+      - setup_remote_docker
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Initalize Docker
+          command: |
+            ci_scripts/ci_tool.sh --docker_login
+      - run:
+          name: Pull Rush Cache Part 2
+          command: |
+            repo-tools/scripts/base-docker-2-pull.sh
+      - run:
+          name: Release Package Docker Images
+          command: |
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js release
 
 workflows:
   version: 2
 
-  test_and_publish:
+  build-deploy:
     jobs:
-      - build
+      # order here seems to matter a little, when all else is equal, so put the critical path first
+      - install:
+          context: 6rs-circle
+      - pre-deploy-docker-1:
+          context: 6rs-circle
+          requires:
+            - install
+      - build:
+          context: 6rs-circle
+          requires:
+            - install
+      - pre-deploy-docker-2:
+          context: 6rs-circle
+          requires:
+            - install
+            - pre-deploy-docker-1
+            - build
+      - lint:
+          context: 6rs-circle
+          requires:
+            - install
+      - test:
+          context: 6rs-circle
+          requires:
+            - build
+      - pact:
+          context: 6rs-circle
+          requires:
+            - build
+      - deploy-npm:
+          context: 6rs-circle
+          requires:
+            - lint
+            - build
+            - test
+            - pact
+      - deploy-docker:
+          context: 6rs-circle
+          requires:
+            - pre-deploy-docker-2
+            - lint
+            - build
+            - test
+            - pact
+      - save-local-cache:
+          context: 6rs-circle
+          requires:
+            - install
