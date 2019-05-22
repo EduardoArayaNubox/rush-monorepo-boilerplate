@@ -25,7 +25,7 @@
   "devDependencies": {
     "@commitlint/cli": "^7.2.1",
     "@pact-foundation/pact-node": "8.3.0",
-    "@sixriver/commitlint-config-6river": "^2.0.0",
+    "@6river/commitlint-config-6river": "^2.1.2",
     "child_process": "1.0.2",
     "gulp": "4.0.2",
     "gulp-sourcemaps": "2.6.5",

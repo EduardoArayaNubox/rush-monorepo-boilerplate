@@ -1,4 +1,5 @@
 dependencies:
+  '@6river/commitlint-config-6river': 2.1.2
   '@commitlint/cli': 7.6.1
   '@google-cloud/pubsub': 0.28.1
   '@loopback/boot': 1.2.7
@@ -17,7 +18,6 @@ dependencies:
   '@rush-temp/template-oas': 'file:projects/template-oas.tgz'
   '@rush-temp/template-repo-tools': 'file:projects/template-repo-tools.tgz'
   '@rush-temp/template-service': 'file:projects/template-service.tgz'
-  '@sixriver/commitlint-config-6river': 2.0.0
   '@sixriver/config-schema': 1.8.2
   '@sixriver/loopback4-support': 1.0.18
   '@sixriver/service-directory': 1.0.18
@@ -79,6 +79,26 @@ dependencies:
   uuid: 3.3.2
 lockfileVersion: 5
 packages:
+  /@6river/commitlint-config-6river/2.1.2:
+    dependencies:
+      '@commitlint/config-conventional': 7.6.0
+    dev: false
+    peerDependencies:
+      '@commitlint/cli': ^7.6.1
+      husky: ^2.3.0
+    resolution:
+      integrity: sha512-2BcaoJBYjUsBMCC3v0UnRfQzeKGj1+5ib20cOSJ2W31So6OliB1dOJBqvwdiScFOCQftDIvlofgtWyFdxGG7YA==
+  /@6river/commitlint-config-6river/2.1.2_e7b9bca707faba8623a376c3bc5e2fde:
+    dependencies:
+      '@commitlint/cli': 7.6.1
+      '@commitlint/config-conventional': 7.6.0
+      husky: 1.3.1
+    dev: false
+    peerDependencies:
+      '@commitlint/cli': ^7.6.1
+      husky: ^2.3.0
+    resolution:
+      integrity: sha512-2BcaoJBYjUsBMCC3v0UnRfQzeKGj1+5ib20cOSJ2W31So6OliB1dOJBqvwdiScFOCQftDIvlofgtWyFdxGG7YA==
   /@babel/code-frame/7.0.0:
     dependencies:
       '@babel/highlight': 7.0.0
@@ -568,7 +588,7 @@ packages:
       '@loopback/core': 1.7.0
       '@loopback/rest': 1.11.2
       ejs: 2.6.1
-      swagger-ui-dist: 3.22.1
+      swagger-ui-dist: 3.22.2
     dev: false
     engines:
       node: '>=8.9'
@@ -787,28 +807,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-+iTbntw2IZPb/anVDbypzfQa+ay64MW0Zo8aJ8gZPWMMK6/OubMVb6lUPMagqjOPnmtauXnFCACVl3O7ogjeqQ==
-  /@sixriver/commitlint-config-6river/2.0.0:
-    dependencies:
-      '@commitlint/config-conventional': 7.6.0
-    dev: false
-    peerDependencies:
-      '@commitlint/cli': ^7.2.1
-      husky: ^1.1.2
-    resolution:
-      integrity: sha1-MA/PLJ28wGuYfKEEdpZ9QnzUzSo=
-      tarball: '@sixriver/commitlint-config-6river/-/@sixriver/commitlint-config-6river-2.0.0.tgz'
-  /@sixriver/commitlint-config-6river/2.0.0_e7b9bca707faba8623a376c3bc5e2fde:
-    dependencies:
-      '@commitlint/cli': 7.6.1
-      '@commitlint/config-conventional': 7.6.0
-      husky: 1.3.1
-    dev: false
-    peerDependencies:
-      '@commitlint/cli': ^7.2.1
-      husky: ^1.1.2
-    resolution:
-      integrity: sha1-MA/PLJ28wGuYfKEEdpZ9QnzUzSo=
-      tarball: '@sixriver/commitlint-config-6river/-/@sixriver/commitlint-config-6river-2.0.0.tgz'
   /@sixriver/config-schema/1.8.2:
     dependencies:
       '@types/glob': 5.0.36
@@ -3189,15 +3187,6 @@ packages:
       eslint: '>= 4.0.0'
     resolution:
       integrity: sha512-mpRWWsjxRco2bY4qE5DL8SmGoVF0Onb6DZrbgOjFoNo1YNN299K2voIozd8Kce3qC/neWNr2XF27E1ZDMl1yZg==
-  /eslint-plugin-typescript/0.9.0:
-    dependencies:
-      requireindex: 1.1.0
-    deprecated: 'Deprecated: Use @typescript-eslint/eslint-plugin instead'
-    dev: false
-    engines:
-      node: '>=4'
-    resolution:
-      integrity: sha512-zcEAftbsnd1xEyLT4ZOXphbgWO2SFZduU3Mrjj6FA7Up2qOSc2kD++ICxvIgh4/8hKOaq/xJsNNOoDUJSVNyZg==
   /eslint-scope/4.0.3:
     dependencies:
       esrecurse: 4.2.1
@@ -8616,10 +8605,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-cAcEaNbSl3ylI3suUZyn0Gouo/0=
-  /swagger-ui-dist/3.22.1:
+  /swagger-ui-dist/3.22.2:
     dev: false
     resolution:
-      integrity: sha512-KITbEqXkXrjGH12A0lpVZlH3uODFkwUh8d15My1YD4N0PSZDnIiC1iMFT6ryyuJxDYWZh0qezKpPqa5FRowngw==
+      integrity: sha512-37RuIYRKjFfoLPctzA2dWvBMJjWa1GLc0NgmubuRbr16b3pSuf9S0rY+82l6F86VV4xlgdPiLMcOZhqcIg/OOg==
   /symbol-observable/1.0.1:
     dev: false
     engines:
@@ -9032,35 +9021,6 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-aEbgJXV8/KqaVhcedT7xG6d2r+mOvB5ep3eIz1KuB5sc4fDYXcepEEMdU7XSqLFO5hVPu0nllHi1QxX2h/QlpQ==
-  /typescript-eslint-parser/22.0.0_eslint@5.4.0+typescript@3.4.5:
-    dependencies:
-      eslint: 5.4.0
-      eslint-scope: 4.0.3
-      eslint-visitor-keys: 1.0.0
-      typescript: 3.4.5
-      typescript-estree: 18.0.0_typescript@3.4.5
-    deprecated: 'Deprecated: Use @typescript-eslint/parser instead'
-    dev: false
-    engines:
-      node: '>=6.14.0'
-    peerDependencies:
-      eslint: '>=4.19.1'
-      typescript: '*'
-    resolution:
-      integrity: sha512-pD8D7oTeRwWvFVxK3PaY6FYAiZsuRXFkIc2+1xkwCT3NduySgCgjeAkR5/dnIWecOiFVcEHf4ypXurF02Q6Z3Q==
-  /typescript-estree/18.0.0_typescript@3.4.5:
-    dependencies:
-      lodash.unescape: 4.0.1
-      semver: 5.5.0
-      typescript: 3.4.5
-    deprecated: 'This package was moved to @typescript-eslint/typescript-estree, please install the latest version from there instead'
-    dev: false
-    engines:
-      node: '>=6.14.0'
-    peerDependencies:
-      typescript: '*'
-    resolution:
-      integrity: sha512-HxTWrzFyYOPWA91Ij7xL9mNUVpGTKLH2KiaBn28CMbYgX2zgWdJqU9hO7Are+pAPAqY91NxAYoaAyDDZ3rLj2A==
   /typescript/3.2.4:
     dev: false
     engines:
@@ -9596,7 +9556,6 @@ packages:
       eslint-config-google: 0.12.0_eslint@5.4.0
       eslint-plugin-6river: 1.0.6
       eslint-plugin-mocha: 5.0.0_eslint@5.4.0
-      eslint-plugin-typescript: 0.9.0
       lodash: 4.17.11
       mocha: 5.1.1
       mocha-junit-reporter: 1.15.0_mocha@5.1.1
@@ -9606,7 +9565,6 @@ packages:
       sinon: 6.3.4
       source-map-support: 0.5.9
       typescript: 3.4.5
-      typescript-eslint-parser: 22.0.0_eslint@5.4.0+typescript@3.4.5
     dev: false
     name: '@rush-temp/template-common'
     resolution:
@@ -9627,7 +9585,6 @@ packages:
       eslint-config-google: 0.12.0_eslint@5.4.0
       eslint-plugin-6river: 1.0.6
       eslint-plugin-mocha: 5.0.0_eslint@5.4.0
-      eslint-plugin-typescript: 0.9.0
       json-schema-to-typescript: 6.1.3
       lodash: 4.17.11
       npm-run-all: 4.1.3
@@ -9636,7 +9593,6 @@ packages:
       speccy: 0.9.0
       swagger-parser: 6.0.5
       typescript: 3.4.5
-      typescript-eslint-parser: 22.0.0_eslint@5.4.0+typescript@3.4.5
     dev: false
     name: '@rush-temp/template-oas'
     resolution:
@@ -9645,9 +9601,9 @@ packages:
     version: 0.0.0
   'file:projects/template-repo-tools.tgz':
     dependencies:
+      '@6river/commitlint-config-6river': 2.1.2_e7b9bca707faba8623a376c3bc5e2fde
       '@commitlint/cli': 7.6.1
       '@pact-foundation/pact-node': 8.3.0
-      '@sixriver/commitlint-config-6river': 2.0.0_e7b9bca707faba8623a376c3bc5e2fde
       child_process: 1.0.2
       gulp: 4.0.2
       gulp-sourcemaps: 2.6.5
@@ -9659,7 +9615,7 @@ packages:
     dev: false
     name: '@rush-temp/template-repo-tools'
     resolution:
-      integrity: sha512-NVyCfiWJKpe0FHd1e3WbLIwbSJ0WxJe0QFuDwtZacj2ZDnBERElp/Zb76uFMQ+GeYr809B5d1WMkXMcNi9kfHg==
+      integrity: sha512-hGfSPZareMRPTm0Wnjd9w7p06mW4+8V7biu2iKDeQx/7kqMrrIVLRcijTS2PJzGllbqMTCht0vn+QfIUVEdXWA==
       tarball: 'file:projects/template-repo-tools.tgz'
     version: 0.0.0
   'file:projects/template-service.tgz':
@@ -9710,7 +9666,6 @@ packages:
       eslint-config-google: 0.12.0_eslint@5.4.0
       eslint-plugin-6river: 1.0.6
       eslint-plugin-mocha: 5.0.0_eslint@5.4.0
-      eslint-plugin-typescript: 0.9.0
       instana-nodejs-sensor: 1.49.0
       lodash: 4.17.11
       loopback-connector-postgresql: 3.6.0
@@ -9723,7 +9678,6 @@ packages:
       sinon: 6.3.4
       source-map-support: 0.5.9
       typescript: 3.4.5
-      typescript-eslint-parser: 22.0.0_eslint@5.4.0+typescript@3.4.5
       uuid: 3.3.2
     dev: false
     name: '@rush-temp/template-service'
@@ -9731,8 +9685,8 @@ packages:
       integrity: sha512-WLWP1VYd5+vR5McicHgqwYARR8/j4leD8Z1RWCeG0HAiTWC/jb7EArgLGBklpV/nPf3aeAGki6Rc1v0o1iAM+g==
       tarball: 'file:projects/template-service.tgz'
     version: 0.0.0
-registry: ''
 specifiers:
+  '@6river/commitlint-config-6river': ^2.1.2
   '@commitlint/cli': ^7.2.1
   '@google-cloud/pubsub': 0.28.1
   '@loopback/boot': 1.2.7
@@ -9751,7 +9705,6 @@ specifiers:
   '@rush-temp/template-oas': 'file:./projects/template-oas.tgz'
   '@rush-temp/template-repo-tools': 'file:./projects/template-repo-tools.tgz'
   '@rush-temp/template-service': 'file:./projects/template-service.tgz'
-  '@sixriver/commitlint-config-6river': ^2.0.0
   '@sixriver/config-schema': 1.8.2
   '@sixriver/loopback4-support': 1.0.18
   '@sixriver/service-directory': 1.0.18
