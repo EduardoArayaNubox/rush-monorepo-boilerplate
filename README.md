@@ -11,13 +11,13 @@
 
 ### Replace the placeholders
 
-Search this repository, case insensitively, for the whole word `template`.
-Pretty much every single instance you find of that string needs to be replaced.
-
-Also search for files that have `template` in their name, they almost certainly
-need to be renamed.
-
-You may wish to rename the `service` package to have a more descriptive name.
+* Search this repository, case insensitively, for the whole word `template`.
+  Pretty much every single instance you find of that string needs to be
+  replaced.
+* Also search for files that have `template` in their name, they almost
+  certainly need to be renamed.
+* You may wish to rename the `service` package to have a more descriptive name.
+* Make sure the copyright date in `LICENSE` is up to date.
 
 ### Update `infrastructure`
 
@@ -70,6 +70,7 @@ database, models, datasource, repositories, and controllers.
 
 ## TODO
 
-* Update `gulp-typescript` so that the `incremental` flag in `tsconfig-base.json`
-  will actually work for the loopback4 project setup.  As of May 2019, this is
-  blocked awaiting APIs from Microsoft for typescript itself.
+* Update `gulp-typescript` so that the `incremental` flag in
+  `tsconfig-base.json` will actually work for the loopback4 project setup.
+  As of May 2019, this is blocked awaiting APIs from Microsoft for
+  typescript itself.
