@@ -65,10 +65,10 @@
 			"enableParallelism": true
 		},
 		{
-			"commandKind": "global",
+			"commandKind": "bulk",
 			"name": "coverage",
-			"summary": "Publish coverage for each project.",
-			"description": "Publish coverage for each project",
+			"summary": "Build coverage report for each project.",
+			"description": "Build coverage report for each project",
 			"shellCommand": "bash repo-tools/scripts/coverage.sh"
 		}
 	]

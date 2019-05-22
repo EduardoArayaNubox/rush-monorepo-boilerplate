@@ -27,7 +27,7 @@
     "pretest-ci-pact": "rm -rf pacts",
     "test:no-cover": "NODE_ENV=test mocha ${MOCHA_OPTS}",
     "test:debug": "npm run test:no-cover -- --debug-brk",
-    "coverage": "NODE_ENV=test nyc report --reporter=text-lcov > coverage/lcov.info",
+    "coverage": "[ ! -d coverage/.nyc_output ] || NODE_ENV=test nyc report --reporter=text-lcov > coverage/lcov.info",
     "prestart": "npm run build:only",
     "start": "USE_GRM=true NODE_ENV=development SITE_NAME=development PUBSUB_EMULATOR_HOST=localhost:8802 PUBSUB_GCLOUD_PROJECT=development node .",
     "release": "../../ci_scripts/ci_tool.sh --docker_publish --docker_file=$HOME/project/common/Dockerfile ",
