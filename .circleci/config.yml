@@ -87,7 +87,8 @@ jobs:
       - persist_to_workspace:
           root: ./
           paths:
-            - .
+            # shouldn't need to re-persist all the higher layer things, just wastes time
+            - ./packages/
 
   lint:
     docker:
@@ -223,6 +224,9 @@ jobs:
       - setup_remote_docker
       - attach_workspace:
           at: ./
+      - restore_cache:
+          keys:
+            - base-docker-1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-{{ checksum "rush_cache_1.dockerfile" }}
       - run:
           name: Initalize Docker
           command: |
@@ -231,6 +235,10 @@ jobs:
           name: Build Rush Cache Image Part 1
           command: |
             repo-tools/scripts/base-docker-1-build.sh
+      - save_cache:
+          key: base-docker-1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-{{ checksum "rush_cache_1.dockerfile" }}
+          paths:
+            - ./rush_cache_1.built/
 
   pre-deploy-docker-2:
     docker:
@@ -280,7 +288,7 @@ jobs:
           command: |
             ci_scripts/ci_tool.sh --setup_npm
       - run:
-          name: Publish
+          name: Publish NPM Packages
           command: |
             repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js publish --include-all -r https://sixriver.jfrog.io/sixriver/api/npm/npm-local/ -p --version-policy prerelease
       - run:
