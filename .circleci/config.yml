@@ -214,7 +214,7 @@ jobs:
       - store_test_results:
           path: /home/circleci/project/reports/junit/
 
-  pre-deploy-docker:
+  pre-deploy-docker-1:
     docker:
       - image: circleci/node:10.15.3
         environment:
@@ -231,6 +231,37 @@ jobs:
           name: Build Rush Cache Image Part 1
           command: |
             repo-tools/scripts/create-base-docker-1.sh
+
+  pre-deploy-docker-2:
+    docker:
+      - image: circleci/node:10.15.3
+        environment:
+          RUSH_ABSOLUTE_SYMLINKS: "true"
+    steps:
+      - setup_remote_docker
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Initalize Docker
+          command: |
+            repo-tools/scripts/create-base-docker-init.sh
+      - run:
+          name: Fetch Rush Cache Part 1
+          command: |
+            repo-tools/scripts/create-base-docker-2-prep.sh
+      - run:
+          name: Build Rush Cache Image Part 2
+          command: |
+            repo-tools/scripts/create-base-docker-2-build.sh
+      - run:
+          name: Save Rush Cache Image Part 2
+          command: |
+            docker save -o rush_cache.tar rush_cache
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - rush_cache.tar
+            - .dockerignore
 
   deploy-npm:
     docker:
@@ -273,13 +304,9 @@ jobs:
           command: |
             repo-tools/scripts/create-base-docker-init.sh
       - run:
-          name: Fetch ush Cache Part 1
+          name: Load Rush Cache Part 2
           command: |
-            repo-tools/scripts/create-base-docker-2-prep.sh
-      - run:
-          name: Build Rush Cache Image Part 2
-          command: |
-            repo-tools/scripts/create-base-docker-2-build.sh
+            docker load -i rush_cache.tar
       - run:
           name: Release Package Docker Images
           command: |
@@ -312,20 +339,27 @@ workflows:
           context: 6rs-circle
           requires:
             - build
-      - pre-deploy-docker:
+      - pre-deploy-docker-1:
           context: 6rs-circle
           requires:
             - install
+      - pre-deploy-docker-2:
+          context: 6rs-circle
+          requires:
+            - install
+            - build
       - deploy-npm:
           context: 6rs-circle
           requires:
             - lint
             - build
             - test
+            - pact
       - deploy-docker:
           context: 6rs-circle
           requires:
-            - pre-deploy-docker
+            - pre-deploy-docker-2
             - lint
             - build
             - test
+            - pact
