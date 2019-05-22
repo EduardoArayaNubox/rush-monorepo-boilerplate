@@ -347,7 +347,7 @@ workflows:
           context: 6rs-circle
           requires:
             - install
-            - pre-deploy-docker-2
+            - pre-deploy-docker-1
             - build
       - deploy-npm:
           context: 6rs-circle
