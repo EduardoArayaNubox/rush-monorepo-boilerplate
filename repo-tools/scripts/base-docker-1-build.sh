@@ -15,9 +15,10 @@ elif ! docker pull "gcr.io/plasma-column-128721/${CIRCLE_PROJECT_REPONAME}_rush_
   docker build -t rush_cache_1 -f rush_cache_1.dockerfile .
   docker tag rush_cache_1 "gcr.io/plasma-column-128721/${CIRCLE_PROJECT_REPONAME}_rush_cache_1_${shasum}"
   docker push "gcr.io/plasma-column-128721/${CIRCLE_PROJECT_REPONAME}_rush_cache_1_${shasum}"
-	mkdir -p "$flagdir"
-	touch "$flagfile"
 else
   echo "tagging rush_cache docker tag gcr.io/plasma-column-128721/rush_cache_1_$shasum rush_cache"
   docker tag "gcr.io/plasma-column-128721/${CIRCLE_PROJECT_REPONAME}_rush_cache_1_${shasum}" rush_cache_1
 fi
+
+mkdir -p "$flagdir"
+touch "$flagfile"
