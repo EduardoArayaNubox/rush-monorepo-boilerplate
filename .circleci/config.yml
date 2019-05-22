@@ -9,11 +9,13 @@ jobs:
     steps:
       - checkout
       - restore_cache:
+          name: Restore Rush Global Cache
           keys:
             - rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
             - rush-global-v1-
             - rush-global-v1
       - restore_cache:
+          name: Restore Rush Local Cache
           keys:
             - rush-local-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
             - rush-local-v1-
@@ -38,6 +40,7 @@ jobs:
           command: |
             ./repo-tools/scripts/version.sh
       - save_cache:
+          name: Save Rush Global Cache
           key: rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
           paths:
             - "/home/circleci/.rush"
@@ -58,6 +61,7 @@ jobs:
       - attach_workspace:
           at: ./
       - save_cache:
+          name: Save Rush Local Cache
           key: rush-local-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
           paths:
             - "./common/temp"
@@ -72,6 +76,7 @@ jobs:
       - attach_workspace:
           at: ./
       - restore_cache:
+          name: Restore Rush Global Cache
           keys:
             - rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
       - run:
@@ -101,6 +106,7 @@ jobs:
       - attach_workspace:
           at: ./
       - restore_cache:
+          name: Restore Rush Global Cache
           keys:
             - rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
       - run:
@@ -140,6 +146,7 @@ jobs:
       - attach_workspace:
           at: ./
       - restore_cache:
+          name: Restore Rush Global Cache
           keys:
             - rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
       - run:
@@ -193,6 +200,7 @@ jobs:
       - attach_workspace:
           at: ./
       - restore_cache:
+          name: Restore Rush Global Cache
           keys:
             - rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
       - run:
@@ -234,6 +242,7 @@ jobs:
       - attach_workspace:
           at: ./
       - restore_cache:
+          name: Restore Base Docker 1 Flag Cache
           keys:
             - base-docker-1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-{{ checksum "rush_cache_1.dockerfile" }}
       - run:
@@ -245,6 +254,7 @@ jobs:
           command: |
             repo-tools/scripts/base-docker-1-build.sh
       - save_cache:
+          name: Save Base Docker 1 Flag Cache
           key: base-docker-1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-{{ checksum "rush_cache_1.dockerfile" }}
           paths:
             - ./rush_cache_1.built/
@@ -289,6 +299,7 @@ jobs:
       - attach_workspace:
           at: ./
       - restore_cache:
+          name: Restore Rush Global Cache
           keys:
             - rush-global-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
       - run:

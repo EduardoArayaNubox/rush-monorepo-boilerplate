@@ -9,7 +9,7 @@ flagdir="rush_cache_1.built"
 flagfile="${flagdir}/rush_cache_1_${shasum}.built"
 
 if [ -f "${flagfile}" ]; then
-	echo "Found flag file, assuming rush_cache_1 is already built for ${sha1sum}"
+	echo "Found flag file, assuming rush_cache_1 is already built for ${shasum}"
 elif ! docker pull "gcr.io/plasma-column-128721/${CIRCLE_PROJECT_REPONAME}_rush_cache_1_${shasum}" ; then
 	# still needed to do the pull check in case cache was built before flag file caching was added
   docker build -t rush_cache_1 -f rush_cache_1.dockerfile .
