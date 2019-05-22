@@ -9,6 +9,7 @@
     "lint": "true",
     "test-ci": "true",
     "test-ci-pact": "true",
+    "coverage": "true",
     "publish-pacts": "true",
     "docker-publish": "true",
     "release": "true"

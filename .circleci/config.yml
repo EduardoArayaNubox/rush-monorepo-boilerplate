@@ -49,6 +49,8 @@ jobs:
             - "/home/circleci/.rush"
       - store_artifacts:
           path: rush-logs
+      - store_artifacts:
+          path: .version
       - persist_to_workspace:
           root: ./
           paths:
