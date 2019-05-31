@@ -41,7 +41,7 @@
   "files": [
     "README.md",
     "dist/index*",
-    "dist/interfaces",
+    "dist/generated-interfaces",
     "dist/schemas",
     "template-openapi.yaml"
   ],
