@@ -20,7 +20,7 @@
     "test-ci": "npm-run-all test:examples",
     "lint": "npm-run-all lint:eslint lint:speccy",
     "lint:eslint": "../../repo-tools/scripts/lint.sh",
-    "lint:speccy": "speccy lint template-api.yaml",
+    "lint:speccy": "speccy lint template-openapi.yaml",
     "test:examples": "node dist/utils/validateExamplesAgainstSchemas.js",
     "test-ci-pact": "true",
     "unit": "true",
@@ -43,7 +43,7 @@
     "dist/index*",
     "dist/interfaces",
     "dist/schemas",
-    "template-api.yaml"
+    "template-openapi.yaml"
   ],
   "dependencies": {
   },
