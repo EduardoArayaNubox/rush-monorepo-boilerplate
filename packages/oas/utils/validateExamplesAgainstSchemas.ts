@@ -81,7 +81,7 @@ async function testSamplesAgainstApi(apiPath: string, api: any) {
 
 async function run(rootDir: string) {
 	try {
-		const oasFile = join(rootDir, 'template-api.yaml');
+		const oasFile = join(rootDir, 'template-openapi.yaml');
 		const api = await SwaggerParser.dereference(await SwaggerParser.parse(oasFile));
 
 		const failures = await testSamplesAgainstApi(rootDir, api);

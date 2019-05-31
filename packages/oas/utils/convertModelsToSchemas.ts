@@ -96,7 +96,7 @@ async function parseApi(apiFolder: string, yamlName: string) {
 
 async function run(rootDir: string) {
 	try {
-		const api = await parseApi(rootDir, 'template-api.yaml');
+		const api = await parseApi(rootDir, 'template-openapi.yaml');
 		await Promise.all([
 			generateSchemas(join(rootDir, 'dist'), api),
 			generateInterfaces(rootDir, api, 'template-api'),
