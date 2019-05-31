@@ -99,7 +99,7 @@ async function run(rootDir: string) {
 		const api = await parseApi(rootDir, 'template-openapi.yaml');
 		await Promise.all([
 			generateSchemas(join(rootDir, 'dist'), api),
-			generateInterfaces(rootDir, api, 'template-api'),
+			generateInterfaces(rootDir, api, 'template-openapi'),
 		]);
 	} catch (error) {
 		console.log(error);
