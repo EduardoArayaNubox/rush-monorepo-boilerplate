@@ -1,0 +1,74 @@
+openapi: 3.0.1
+
+info:
+  title: 6 River Systems Template API
+  description: |
+    This API describes interactions with the 6RS Template subsystem
+  version: 1.x.x
+  contact:
+    name: 6 River Systems
+    url: https://6river.com
+
+tags:
+  - name: Internal
+    description: |
+      This is an internal API used between 6RS components.
+
+paths:
+  /v1/template-message:
+    post:
+      tags:
+        - Internal
+      summary: Submit a Template Message
+      description: |
+        TODO
+      operationId: TODO
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TemplateMessage'
+      responses:
+        201:
+          description: |
+            TODO
+          content:
+            application/json:
+              schema:
+                $ref: 'https://frontend-apps.6river.org/api/v2.x.x/openapi.yaml#/components/schemas/BaseWithId'
+        400:
+          $ref: 'https://frontend-apps.6river.org/api/v2.x.x/openapi.yaml#/components/responses/BadRequest'
+        403:
+          $ref: 'https://frontend-apps.6river.org/api/v2.x.x/openapi.yaml#/components/responses/Unauthorized'
+        422:
+          $ref: 'https://frontend-apps.6river.org/api/v2.x.x/openapi.yaml#/components/responses/UnprocessableEntity'
+        500:
+          $ref: 'https://frontend-apps.6river.org/api/v2.x.x/openapi.yaml#/components/responses/InternalServerError'
+
+components:
+  schemas:
+    TemplateMessage:
+      allOf:
+        - $ref: '#/components/schemas/ObjectId'
+        - type: object
+          description: |
+            TODO
+          required:
+            - id
+          properties:
+            data:
+              type: object
+
+    ObjectId:
+      type: object
+      description: |
+        An object that has a strong (UUID) identifier
+      properties:
+        id:
+          description: |
+            TODO
+          type: string
+          pattern: ^[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}$
+          example:
+            - d3ae5277-d30a-43a7-8217-48396b1a560e
+
