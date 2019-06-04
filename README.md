@@ -33,6 +33,14 @@ start your service(s).
   interface and add the `CODECOV_TOKEN` environment variable generated from the
   CodeCov web interface before coverage uploads and analysis will work.
 
+### Set up branch protection rules
+
+* Go to settings in github and click on branches
+* Add a new rule for `master` branch
+* Check the boxes for Rule settings in order to require pull request reviews
+  and dismiss stale pull request approvals when new commits are pushed. Require
+  all status checks to be up to date before merging, and include administrators.
+
 ### Replace this file
 
 Replace this file (and the other `README.md` files) with material appropriate to
