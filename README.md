@@ -39,9 +39,12 @@ start your service(s).
   PR checks to appear in the branch settings
 * Go to settings in github and click on branches
 * Add a new rule for `master` branch
-* Check the boxes for Rule settings in order to require pull request reviews
-  and dismiss stale pull request approvals when new commits are pushed. Require
-  all status checks to be up to date before merging, and include administrators.
+* Check the boxes for Rule Settings:
+** Require pull request reviews
+** dismiss stale pull request approvals when new commits are pushed
+** Require all status checks to be up to date before merging
+** Require branches to be up-to-date before merging
+** Include administrators
 
 ### Replace this file
 
