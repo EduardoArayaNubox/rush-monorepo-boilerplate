@@ -35,6 +35,8 @@ start your service(s).
 
 ### Set up branch protection rules
 
+* First, make sure you've got a successful build run in order for all of the
+  PR checks to appear in the branch settings
 * Go to settings in github and click on branches
 * Add a new rule for `master` branch
 * Check the boxes for Rule settings in order to require pull request reviews
