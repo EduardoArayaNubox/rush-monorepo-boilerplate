@@ -42,7 +42,7 @@ start your service(s).
 * Check the boxes for Rule Settings:
   * Require pull request reviews
   * Dismiss stale pull request approvals when new commits are pushed
-  * Require all status checks to be up to date before merging
+  * Require all status checks to pass before merging
   * Require branches to be up-to-date before merging
   * Include administrators
 
