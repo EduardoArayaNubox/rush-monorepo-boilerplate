@@ -8,5 +8,7 @@
 
 --globals verbose,dryRun,params
 
+--exit
+
 dist*/test/bootstrap.js
 dist*/test/!(pact)/**/*.spec.js
