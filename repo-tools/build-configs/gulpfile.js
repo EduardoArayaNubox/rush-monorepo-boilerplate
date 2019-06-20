@@ -22,11 +22,14 @@ gulp.task('startServer', async function startServer() {
 	if (node) node.kill();
 	node = await spawn('node', ['dist/src/index.js'], {env, stdio: 'inherit'});
 
-	node.on('close', function(code) {
-		if (code === 8) {
-			console.log('Error detected, waiting for changes...');
-		}
+	let exited;
+	const exitedP = new Promise((resolve) => exited = resolve);
+	node.on('exit', function(code) {
+		// eslint-disable-next-line no-console
+		console.log(`Server exited with code ${code}`);
+		exited(code);
 	});
+	return await exitedP;
 });
 
 gulp.task('compile', function() {
