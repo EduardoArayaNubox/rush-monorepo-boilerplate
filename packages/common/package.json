@@ -31,9 +31,9 @@
     "start": "false",
     "release": "true",
     "htmlcov:gen": "NODE_ENV=test nyc report --reporter=html",
-    "htmlcov:view": "npm run htmlcov:$(bash -c 'echo $OSTYPE')",
-    "htmlcov:linux-gnu": "xdg-open ./coverage/.nyc_output/index.html",
-    "htmlcov:darwin": "open ./coverage/.nyc_output/index.html",
+    "htmlcov:view": "npm run htmlcov:$(bash -c 'echo ${OSTYPE:0:5}')",
+    "htmlcov:linux": "xdg-open ./coverage/.nyc_output/index.html",
+    "htmlcov:darwi": "open ./coverage/.nyc_output/index.html",
     "htmlcov": "npm-run-all htmlcov:gen htmlcov:view"
   },
   "repository": {
