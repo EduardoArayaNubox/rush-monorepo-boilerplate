@@ -12,9 +12,7 @@
 	},
 	"eventHooks": {
 		"preRushInstall": [],
-		"postRushInstall": [
-			"./repo-tools/scripts/postInstall.sh"
-		],
+		"postRushInstall": [],
 		"preRushBuild": [],
 		"postRushBuild": []
 	},
