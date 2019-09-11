@@ -27,7 +27,7 @@ dependencies:
   '@types/chai-as-promised': 7.1.0
   '@types/chai-string': 1.4.1
   '@types/chance': 1.0.1
-  '@types/lodash': 4.14.129
+  '@types/lodash': 4.14.138
   '@types/mocha': 5.2.6
   '@types/nock': 9.3.1
   '@types/node': 10.14.6
@@ -61,7 +61,7 @@ dependencies:
   instana-nodejs-sensor: 1.49.0
   jsmin: 1.0.1
   json-schema-to-typescript: 6.1.3
-  lodash: 4.17.11
+  lodash: 4.17.15
   loopback-connector-postgresql: 3.6.0
   merge2: 1.2.3
   mocha: 5.1.1
@@ -1071,6 +1071,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-oYaV0eSlnOacOr7i4X1FFdH8ttSlb57gu3I9MuStIv2CYkISEY84dNHYsC3bF6sNH7qYcu1BtVrCtQ8Q4KPTfQ==
+  /@types/lodash/4.14.138:
+    dev: false
+    resolution:
+      integrity: sha512-A4uJgHz4hakwNBdHNPdxOTkYmXNgmUAKLbXZ7PKGslgeV0Mb8P3BlbYfPovExek1qnod4pDfRbxuzcVs3dlFLg==
   /@types/long/4.0.0:
     dev: false
     resolution:
@@ -5547,6 +5551,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
+  /lodash/4.17.15:
+    dev: false
+    resolution:
+      integrity: sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
   /lolex/2.7.5:
     dev: false
     resolution:
@@ -9595,7 +9603,7 @@ packages:
       '@types/chai-as-promised': 7.1.0
       '@types/chai-string': 1.4.1
       '@types/chance': 1.0.1
-      '@types/lodash': 4.14.129
+      '@types/lodash': 4.14.138
       '@types/mocha': 5.2.6
       '@types/node': 10.14.6
       '@types/sinon': 5.0.2
@@ -9610,7 +9618,7 @@ packages:
       eslint-config-google: 0.12.0_eslint@5.4.0
       eslint-plugin-6river: 1.0.6
       eslint-plugin-mocha: 5.0.0_eslint@5.4.0
-      lodash: 4.17.11
+      lodash: 4.17.15
       mocha: 5.1.1
       mocha-junit-reporter: 1.15.0_mocha@5.1.1
       mocha-lcov-reporter: 1.3.0
@@ -9622,12 +9630,12 @@ packages:
     dev: false
     name: '@rush-temp/template-common'
     resolution:
-      integrity: sha512-1iF+MoR8yKTEiohHEeYOr5wPxUR0zVk6uUaotx9jifPyBwTDhxE+myURa9aKGbT7REoV0mcekHZrxtBABYrKSg==
+      integrity: sha512-esMEa629sAVi36KLBUx5utzhlHCT+wATnczl9kEu2jOR6ygqCst2/EQqt0UO5FLn23UuPBoJbjSWmxNCdg8Y+Q==
       tarball: 'file:projects/template-common.tgz'
     version: 0.0.0
   'file:projects/template-oas.tgz':
     dependencies:
-      '@types/lodash': 4.14.129
+      '@types/lodash': 4.14.138
       '@types/mocha': 5.2.6
       '@types/node': 10.14.6
       '@types/swagger-parser': 4.0.3
@@ -9640,7 +9648,7 @@ packages:
       eslint-plugin-6river: 1.0.6
       eslint-plugin-mocha: 5.0.0_eslint@5.4.0
       json-schema-to-typescript: 6.1.3
-      lodash: 4.17.11
+      lodash: 4.17.15
       npm-run-all: 4.1.3
       openapi-schema-to-json-schema: 2.2.0
       source-map-support: 0.5.9
@@ -9650,7 +9658,7 @@ packages:
     dev: false
     name: '@rush-temp/template-oas'
     resolution:
-      integrity: sha512-L4pS69wfKLTv9qaXE7Zl4vsJD507pktUCFcMYaswAO+RH8QF0gOP3P+v5ww5J4GUh8sYDMg8qMjcADeb56ob7w==
+      integrity: sha512-umVfQDpP9363ZywkDgzjklU3rekA7Ln9T5rVCFYe57NH8rXw3OUs0lJEXgnLmTZP0WHGnuYECgIGjry4Qi5Frw==
       tarball: 'file:projects/template-oas.tgz'
     version: 0.0.0
   'file:projects/template-repo-tools.tgz':
@@ -9696,7 +9704,7 @@ packages:
       '@types/chai-as-promised': 7.1.0
       '@types/chai-string': 1.4.1
       '@types/chance': 1.0.1
-      '@types/lodash': 4.14.129
+      '@types/lodash': 4.14.138
       '@types/mocha': 5.2.6
       '@types/nock': 9.3.1
       '@types/node': 10.14.6
@@ -9721,7 +9729,7 @@ packages:
       eslint-plugin-6river: 1.0.6
       eslint-plugin-mocha: 5.0.0_eslint@5.4.0
       instana-nodejs-sensor: 1.49.0
-      lodash: 4.17.11
+      lodash: 4.17.15
       loopback-connector-postgresql: 3.6.0
       mocha: 5.1.1
       mocha-junit-reporter: 1.15.0_mocha@5.1.1
@@ -9736,7 +9744,7 @@ packages:
     dev: false
     name: '@rush-temp/template-service'
     resolution:
-      integrity: sha512-sIwxEHX+FyWLz2uT9j0V7s/eY2liXmIjFRzpuJ+DgfBua58i5a27uRxV0YYBIL9ECYmC7JUxqhp4O1LzJALTMw==
+      integrity: sha512-whhErWzlfMeuVHlc2Km9IRfY4/zR/Xbr9oof9f5ltAwq7OxbpJe2FevAiXKP7Wele+qW4cqWRZFB9jKSiEh3/g==
       tarball: 'file:projects/template-service.tgz'
     version: 0.0.0
 registry: ''
@@ -9769,7 +9777,7 @@ specifiers:
   '@types/chai-as-promised': 7.1.0
   '@types/chai-string': 1.4.1
   '@types/chance': 1.0.1
-  '@types/lodash': 4.14.129
+  '@types/lodash': 4.14.138
   '@types/mocha': 5.2.6
   '@types/nock': 9.3.1
   '@types/node': 10.14.6
@@ -9803,7 +9811,7 @@ specifiers:
   instana-nodejs-sensor: 1.49.0
   jsmin: 1.0.1
   json-schema-to-typescript: 6.1.3
-  lodash: 4.17.11
+  lodash: 4.17.15
   loopback-connector-postgresql: 3.6.0
   merge2: 1.2.3
   mocha: 5.1.1
