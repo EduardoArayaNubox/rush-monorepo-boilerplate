@@ -82,7 +82,7 @@
     "uuid": "3.3.2"
   },
   "devDependencies": {
-    "@google-cloud/pubsub": "0.28.1",
+    "@google-cloud/pubsub": "0.30.1",
     "@loopback/build": "1.2.0",
     "@loopback/testlab": "1.0.4",
     "@pact-foundation/pact": "8.2.2",
