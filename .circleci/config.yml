@@ -220,6 +220,10 @@ jobs:
             sudo npm i -g lcov-result-merger codecov
             lcov-result-merger 'packages/*/coverage/lcov.info' 'lcov-merged.out'
             cat "lcov-merged.out" | codecov || true
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - pacts
       - store_artifacts:
           path: coverage
       - store_artifacts:
