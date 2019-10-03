@@ -20,6 +20,8 @@ const ajv = new Ajv({
 	schemaId: 'id',
 	unknownFormats: ['int32', 'float'],
 	format: 'full',
+	// do not log output from AJV, it goes to stderr and that makes rush test fail
+	logger: false,
 });
 
 ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'));
