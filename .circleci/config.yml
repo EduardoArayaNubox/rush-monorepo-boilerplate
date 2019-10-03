@@ -31,7 +31,7 @@ jobs:
           name: Initalize ci_scripts
           command: |
             mkdir ci_scripts
-            curl -H "Authorization: token $GITHUB_TOKEN" -H "Accept:application/vnd.github.v3.raw" https://api.github.com/repos/6RiverSystems/ci_scripts/contents/ci_tool.sh?ref=fix/docker-login-passwd-stdin > ci_scripts/ci_tool.sh
+            curl -H "Authorization: token $GITHUB_TOKEN" -H "Accept:application/vnd.github.v3.raw" https://api.github.com/repos/6RiverSystems/ci_scripts/contents/ci_tool.sh > ci_scripts/ci_tool.sh
             chmod +x ci_scripts/ci_tool.sh
             ci_scripts/ci_tool.sh --setup_npm
       - run:
