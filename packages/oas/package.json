@@ -4,9 +4,6 @@
   "description": "Sixriver Template OpenAPI Schema",
   "keywords": [],
   "main": "dist/index.js",
-  "engines": {
-    "node": "10.15.1"
-  },
   "scripts": {
     "build": "npm-run-all build:utils build:models build:compile",
     "rebuild": "npm-run-all clean build",

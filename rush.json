@@ -1,11 +1,11 @@
 {
 	"$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
-	"rushVersion": "5.7.3",
-	"pnpmVersion": "3.3.4",
+	"rushVersion": "5.14.0",
+	"pnpmVersion": "3.8.1",
 	"pnpmOptions": {
 		"strictPeerDependencies": false
 	},
-	"nodeSupportedVersionRange": "10.15.3",
+	"nodeSupportedVersionRange": "10.16.3",
 	"ensureConsistentVersions": true,
 	"repository": {
 		"url": "https://github.com/6RiverSystems/rush-monorepo-boilerplate"

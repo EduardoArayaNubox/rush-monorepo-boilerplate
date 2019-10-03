@@ -3,10 +3,18 @@ version: 2
 jobs:
   install:
     docker:
-      - image: circleci/node:10.15.3
+      - image: circleci/node:10.16.3
         environment:
           DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
+      - image: postgres:9
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: circle_test
+      - image: singularities/pubsub-emulator
+        environment:
+          PUBSUB_PROJECT_ID: test
+          PUBSUB_LISTEN_ADDRESS: 0.0.0.0:8802
     steps:
       - checkout
       - restore_cache:
@@ -20,10 +28,10 @@ jobs:
             - rush-local-v1-
             - rush-local-v1
       - run:
-          name: Set Up Environment
+          name: Initalize ci_scripts
           command: |
             mkdir ci_scripts
-            curl -H "Authorization: token $GITHUB_TOKEN" -H "Accept:application/vnd.github.v3.raw"  https://api.github.com/repos/6RiverSystems/ci_scripts/contents/ci_tool.sh > ci_scripts/ci_tool.sh
+            curl -H "Authorization: token $GITHUB_TOKEN" -H "Accept:application/vnd.github.v3.raw" https://api.github.com/repos/6RiverSystems/ci_scripts/contents/ci_tool.sh > ci_scripts/ci_tool.sh
             chmod +x ci_scripts/ci_tool.sh
             ci_scripts/ci_tool.sh --setup_npm
       - run:
@@ -58,7 +66,7 @@ jobs:
 
   save-local-cache:
     docker:
-      - image: circleci/node:10.15.3
+      - image: circleci/node:10.16.3
         environment:
           DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
@@ -73,7 +81,7 @@ jobs:
 
   build:
     docker:
-      - image: circleci/node:10.15.3
+      - image: circleci/node:10.16.3
         environment:
           DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
@@ -99,7 +107,7 @@ jobs:
 
   lint:
     docker:
-      - image: circleci/node:10.15.3
+      - image: circleci/node:10.16.3
         environment:
           DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
@@ -123,7 +131,7 @@ jobs:
 
   test:
     docker:
-      - image: circleci/node:10.15.3
+      - image: circleci/node:10.16.3
         environment:
           DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
@@ -135,10 +143,6 @@ jobs:
         environment:
           PUBSUB_PROJECT_ID: test
           PUBSUB_LISTEN_ADDRESS: 0.0.0.0:8802
-      - image: singularities/datastore-emulator
-        environment:
-          DATASTORE_PROJECT_ID: test
-          DATASTORE_LISTEN_ADDRESS: 0.0.0.0:8803
     steps:
       - attach_workspace:
           at: ./
@@ -173,7 +177,7 @@ jobs:
 
   pact:
     docker:
-      - image: circleci/node:10.15.3
+      - image: circleci/node:10.16.3
         environment:
           DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
@@ -185,10 +189,6 @@ jobs:
         environment:
           PUBSUB_PROJECT_ID: test
           PUBSUB_LISTEN_ADDRESS: 0.0.0.0:8802
-      - image: singularities/datastore-emulator
-        environment:
-          DATASTORE_PROJECT_ID: test
-          DATASTORE_LISTEN_ADDRESS: 0.0.0.0:8803
     steps:
       - attach_workspace:
           at: ./
@@ -212,6 +212,10 @@ jobs:
             sudo npm i -g lcov-result-merger codecov
             lcov-result-merger 'packages/*/coverage/lcov.info' 'lcov-merged.out'
             cat "lcov-merged.out" | codecov || true
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - packages/*/pacts
       - store_artifacts:
           path: coverage
       - store_artifacts:
@@ -223,7 +227,7 @@ jobs:
 
   pre-deploy-docker-1:
     docker:
-      - image: circleci/node:10.15.3
+      - image: circleci/node:10.16.3
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
@@ -257,7 +261,7 @@ jobs:
 
   pre-deploy-docker-2:
     docker:
-      - image: circleci/node:10.15.3
+      - image: circleci/node:10.16.3
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
@@ -284,7 +288,7 @@ jobs:
 
   deploy-npm:
     docker:
-      - image: circleci/node:10.15.3
+      - image: circleci/node:10.16.3
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
@@ -312,7 +316,7 @@ jobs:
 
   deploy-docker:
     docker:
-      - image: circleci/node:10.15.3
+      - image: circleci/node:10.16.3
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
@@ -337,7 +341,6 @@ workflows:
 
   build-deploy:
     jobs:
-      # order here seems to matter a little, when all else is equal, so put the critical path first
       - install:
           context: 6rs-circle
       - pre-deploy-docker-1:
