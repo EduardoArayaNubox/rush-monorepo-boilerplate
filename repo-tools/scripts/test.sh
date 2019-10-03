@@ -24,6 +24,8 @@ fi
 # don't wipe out pre-existing coverage files if running acceptance (pact) tests
 if [ "$NODE_ENV" != "test" ]; then
   NYC_OPTS="${NYC_OPTS} --clean=false"
+  # make sure the directory exists so that CI doesn't fail if no pacts are emitted
+  mkdir -p pacts
 fi
 
 echo "Testing ${BASENAME}..."

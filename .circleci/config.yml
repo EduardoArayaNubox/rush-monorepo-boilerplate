@@ -223,7 +223,7 @@ jobs:
       - persist_to_workspace:
           root: ./
           paths:
-            - pacts
+            - packages/*/pacts
       - store_artifacts:
           path: coverage
       - store_artifacts:
