@@ -28,10 +28,10 @@ jobs:
             - rush-local-v1-
             - rush-local-v1
       - run:
-          name: Setup CI Environment
+          name: Initalize ci_scripts
           command: |
             mkdir ci_scripts
-            curl -H "Authorization: token $GITHUB_TOKEN" -H "Accept:application/vnd.github.v3.raw"  https://api.github.com/repos/6RiverSystems/ci_scripts/contents/ci_tool.sh > ci_scripts/ci_tool.sh
+            curl -H "Authorization: token $GITHUB_TOKEN" -H "Accept:application/vnd.github.v3.raw" https://api.github.com/repos/6RiverSystems/ci_scripts/contents/ci_tool.sh > ci_scripts/ci_tool.sh
             chmod +x ci_scripts/ci_tool.sh
             ci_scripts/ci_tool.sh --setup_npm
       - run:
