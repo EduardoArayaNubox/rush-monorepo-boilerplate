@@ -5,7 +5,7 @@
   "keywords": [],
   "main": "dist/src/index.js",
   "engines": {
-    "node": "10.15.3"
+    "node": "10.16.3"
   },
   "scripts": {
     "build": "npm run build:only",
