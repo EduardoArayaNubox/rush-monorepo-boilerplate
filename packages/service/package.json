@@ -23,7 +23,7 @@
     "test-ci": "../../repo-tools/scripts/test.sh",
     "test-ci-pact": "NODE_ENV=acceptance ../../repo-tools/scripts/test.sh --opts test/pact.opts",
     "unit": "../../repo-tools/scripts/test.sh --opts test/unit.opts",
-    "publish-pacts": "node ../../repo-tools/scripts/publish_pact.js",
+    "publish-pacts": "node ../../repo-tools/scripts/publish_pact.js --allow-empty",
     "pretest-ci-pact": "rm -rf pacts",
     "test:no-cover": "NODE_ENV=test mocha ${MOCHA_OPTS}",
     "test:debug": "npm run test:no-cover -- --debug-brk",
