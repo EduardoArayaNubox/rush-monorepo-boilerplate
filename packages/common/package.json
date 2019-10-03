@@ -4,9 +4,6 @@
   "description": "Sixriver Template Common",
   "keywords": [],
   "main": "dist/src/index.js",
-  "engines": {
-    "node": "10.16.3"
-  },
   "scripts": {
     "build": "npm run build:only",
     "rebuild": "npm-run-all clean build",
