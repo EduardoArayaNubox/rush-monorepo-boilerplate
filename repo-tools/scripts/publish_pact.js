@@ -6,10 +6,7 @@ const pactsPath = './pacts';
 
 // stderr output will fail the build, gracefully skip this if there are no pacts to publish
 if (process.argv.some((arg) => arg == '--allow-empty')) {
-	if (!fs.existsSync(pactsPath)) {
-		console.log('No pacts dir found');
-		process.exit(0);
-	} else if (!fs.readdirSync(pactsPath).length) {
+	if (!fs.readdirSync(pactsPath).length) {
 		console.log('No pacts found in dir');
 		process.exit(0);
 	}
