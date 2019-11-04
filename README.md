@@ -4,8 +4,10 @@
 
 ### Get a Clean Copy
 
-1. Option 1: Do a git clone of this repo, and then delete the `.git` directory
-2. Option 2: Use `git archive` (read the manpage) to make an export of this repo
+1. Option 1: This repo is setup as a template you can use as the initial contents
+   when creating a new repo in GitHub. This is by far the easiest way to start.
+2. Option 2: Do a git clone of this repo, and then delete the `.git` directory
+3. Option 3: Use `git archive` (read the manpage) to make an export of this repo
    and then extract that archive to the folder in which you are going to create
    the new repo
 
