@@ -56,7 +56,7 @@ describe(TemplateController.name, function() {
 		});
 
 		const infoStub = sinon.stub(log, 'info').callThrough();
-		infoStub.withArgs(sinon.match({message: {id: requestMessage.id}})).returns(undefined);
+		infoStub.withArgs(sinon.match({message: {id: requestMessage.id}}), sinon.match.any).returns(undefined);
 	});
 
 	context('create', function() {
@@ -77,9 +77,9 @@ describe(TemplateController.name, function() {
 			const validateMessage = sinon.stub(requestValidator, 'tryValidate').callThrough();
 			const vmStub = validateMessage.withArgs(sinon.match(requestMessage));
 			const inducedErrorMessage = 'induced validation failure';
-			vmStub.resolves([new Error(inducedErrorMessage)]);
+			vmStub.resolves([new Error(inducedErrorMessage) as any]);
 			sinon.stub(log, 'error').callThrough()
-			.withArgs(sinon.match({err: {status: 422}})).returns(undefined);
+			.withArgs(sinon.match({err: {status: 422}}), sinon.match.any).returns(undefined);
 
 			try {
 				await controller.create(requestMessage);
