@@ -16,7 +16,7 @@
 			"env": {
 				"USE_GRM": "true",
 				"NODE_ENV": "test",
-				"SITE_NAME": "chuckulator",
+				"SITE_NAME": "test",
 				"LOG_PRETTY": "true",
 				"PUBSUB_EMULATOR_HOST": "localhost:8802",
 				"PUBSUB_GCLOUD_PROJECT": "test",
@@ -42,11 +42,11 @@
 			"runtimeExecutable": null,
 			"env": {
 				"USE_GRM": "true",
-				"NODE_ENV": "development",
-				"SITE_NAME": "development",
+				"NODE_ENV": "test",
+				"SITE_NAME": "test",
 				"LOG_PRETTY": "true",
 				"PUBSUB_EMULATOR_HOST": "localhost:8802",
-				"PUBSUB_GCLOUD_PROJECT": "development",
+				"PUBSUB_GCLOUD_PROJECT": "test",
 			},
 			"skipFiles": [
 				"<node_internals>/**"
@@ -68,7 +68,7 @@
 			"env": {
 				"USE_GRM": "true",
 				"NODE_ENV": "test",
-				"SITE_NAME": "chuckulator",
+				"SITE_NAME": "test",
 				"LOG_PRETTY": "true",
 				"PUBSUB_EMULATOR_HOST": "localhost:8802",
 				"PUBSUB_GCLOUD_PROJECT": "test",
@@ -94,11 +94,11 @@
 			"runtimeExecutable": null,
 			"env": {
 				"USE_GRM": "true",
-				"NODE_ENV": "development",
-				"SITE_NAME": "development",
+				"NODE_ENV": "test",
+				"SITE_NAME": "test",
 				"LOG_PRETTY": "true",
 				"PUBSUB_EMULATOR_HOST": "localhost:8802",
-				"PUBSUB_GCLOUD_PROJECT": "development",
+				"PUBSUB_GCLOUD_PROJECT": "test",
 			},
 			"skipFiles": [
 				"<node_internals>/**"
@@ -120,7 +120,7 @@
 			"env": {
 				"USE_GRM": "true",
 				"NODE_ENV": "test",
-				"SITE_NAME": "chuckulator",
+				"SITE_NAME": "test",
 				"LOG_PRETTY": "true",
 				"PUBSUB_EMULATOR_HOST": "localhost:8802",
 				"PUBSUB_GCLOUD_PROJECT": "test",
@@ -146,11 +146,11 @@
 			"runtimeExecutable": null,
 			"env": {
 				"USE_GRM": "true",
-				"NODE_ENV": "development",
-				"SITE_NAME": "development",
+				"NODE_ENV": "test",
+				"SITE_NAME": "test",
 				"LOG_PRETTY": "true",
 				"PUBSUB_EMULATOR_HOST": "localhost:8802",
-				"PUBSUB_GCLOUD_PROJECT": "development",
+				"PUBSUB_GCLOUD_PROJECT": "test",
 			},
 			"skipFiles": [
 				"<node_internals>/**"
