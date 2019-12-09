@@ -7,6 +7,9 @@ import {join} from 'path';
 const SwaggerParser = require('swagger-parser');
 import {promisify} from 'util';
 import {compile, DEFAULT_OPTIONS} from 'json-schema-to-typescript';
+import applyDateFormat from './applyDateFormat';
+import jsonParser from './jsonParser';
+import yamlParser from './yamlParser';
 
 const mkdir = promisify(fs.mkdir);
 const writeFile = promisify(fs.writeFile);
@@ -38,6 +41,7 @@ function magicRefs(obj: any) {
 	}
 }
 
+
 async function generateSchemas(path: string, api: any) {
 	const schemasPath = join(path, 'schemas');
 	await safeMkdir(schemasPath);
@@ -59,9 +63,9 @@ async function generateInterfaces(path: string, api: any, apiName: string, ...sc
 	await safeMkdir(interfacesPath);
 
 	// if only exporting for some schemas, need to dereference things first
-	if (schemaNames.length) {
-		api = await SwaggerParser.dereference(_.cloneDeep(api));
-	}
+	// if (schemaNames.length) {
+	api = await SwaggerParser.dereference(_.cloneDeep(api));
+	// }
 
 	let schemas = Object.assign({}, _.get(api, 'components.schemas', {}));
 	if (!schemaNames.length) {
@@ -76,9 +80,16 @@ async function generateInterfaces(path: string, api: any, apiName: string, ...sc
 		magicRefs(s);
 	}
 	const schema = toJsonSchema({definitions: schemas});
-	const content = await compile(schema, apiName, {
+	const preparedSchema = applyDateFormat(schema);
+	const content = await compile(preparedSchema, apiName, {
 		unreachableDefinitions: true,
 		bannerComment: '/* eslint-disable */\n' + DEFAULT_OPTIONS.bannerComment,
+		$refOptions: {
+			parse: {
+				json: jsonParser,
+				yaml: yamlParser,
+			},
+		},
 	});
 	const file = join(interfacesPath, `${apiName}.ts`);
 	await write('typescript interfaces', file, content);
