@@ -63,9 +63,9 @@ async function generateInterfaces(path: string, api: any, apiName: string, ...sc
 	await safeMkdir(interfacesPath);
 
 	// if only exporting for some schemas, need to dereference things first
-	// if (schemaNames.length) {
-	api = await SwaggerParser.dereference(_.cloneDeep(api));
-	// }
+	if (schemaNames.length) {
+		api = await SwaggerParser.dereference(_.cloneDeep(api));
+	}
 
 	let schemas = Object.assign({}, _.get(api, 'components.schemas', {}));
 	if (!schemaNames.length) {
