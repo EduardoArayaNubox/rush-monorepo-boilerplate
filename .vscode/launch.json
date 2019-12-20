@@ -106,6 +106,18 @@
 			"preLaunchTask": "rush build template oas",
 		},
 		{
+			"name": "Run oas convertModelsToSchemas",
+			"type": "node",
+			"request": "launch",
+			"outputCapture": "std",
+			"program": "${workspaceFolder}/packages/oas/dist/utils/convertModelsToSchemas.js",
+			"cwd": "${workspaceFolder}/packages/oas",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"preLaunchTask": "oas build utils",
+		},
+		{
 			"name": "Run template service mocha",
 			"request": "launch",
 			"type": "node",
@@ -176,7 +188,7 @@
 				"<node_internals>/**"
 			],
 			"preLaunchTask": "rush build template service",
-		},
+		}
 	],
 	"inputs": [
 		{

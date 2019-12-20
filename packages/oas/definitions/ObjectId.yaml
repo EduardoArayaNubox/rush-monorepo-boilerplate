@@ -1,0 +1,11 @@
+type: object
+description: |
+  An object that has a strong (UUID) identifier
+properties:
+  id:
+    description: |
+      TODO
+    type: string
+    pattern: ^[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}$
+    example:
+      - d3ae5277-d30a-43a7-8217-48396b1a560e

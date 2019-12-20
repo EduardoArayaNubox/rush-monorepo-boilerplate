@@ -7,6 +7,9 @@ import {join} from 'path';
 const SwaggerParser = require('swagger-parser');
 import {promisify} from 'util';
 import {compile, DEFAULT_OPTIONS} from 'json-schema-to-typescript';
+import {applyDateFormat} from './applyDateFormat';
+import {JsonParser} from './jsonParser';
+import {YamlParser} from './yamlParser';
 
 const mkdir = promisify(fs.mkdir);
 const writeFile = promisify(fs.writeFile);
@@ -76,9 +79,16 @@ async function generateInterfaces(path: string, api: any, apiName: string, ...sc
 		magicRefs(s);
 	}
 	const schema = toJsonSchema({definitions: schemas});
-	const content = await compile(schema, apiName, {
+	const preparedSchema = applyDateFormat(schema);
+	const content = await compile(preparedSchema, apiName, {
 		unreachableDefinitions: true,
 		bannerComment: '/* eslint-disable */\n' + DEFAULT_OPTIONS.bannerComment,
+		$refOptions: {
+			parse: {
+				json: JsonParser,
+				yaml: YamlParser,
+			},
+		},
 	});
 	const file = join(interfacesPath, `${apiName}.ts`);
 	await write('typescript interfaces', file, content);

@@ -1,0 +1,14 @@
+type: object
+allOf:
+  - $ref: 'ObjectId.yaml'
+  - type: object
+    description: |
+      TODO
+    required:
+      - id
+    properties:
+      data:
+        type: object
+      someDate:
+        type: string
+        format: date-time

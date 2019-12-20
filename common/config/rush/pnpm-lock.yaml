@@ -60,6 +60,7 @@ dependencies:
   husky: 1.3.1
   instana-nodejs-sensor: 1.49.0
   jsmin: 1.0.1
+  json-schema-ref-parser: 6.1.0
   json-schema-to-typescript: 6.1.3
   lodash: 4.17.15
   loopback-connector-postgresql: 3.6.0
@@ -9662,7 +9663,7 @@ packages:
     dev: false
     name: '@rush-temp/template-common'
     resolution:
-      integrity: sha512-P9HJ0oVTSQYbKL+5x+zsD4O1YGC5HPlJxT/7LOsTRNa908oFZwqvKmy6ZFkGQEB+fAQLi3QN9PJpYRiw5At5BQ==
+      integrity: sha512-OMWBazCp1ue7ALkvlUws8j6MfU6B1opMTEypGJ9g3xSExS3FPaxrB8E7D8iCmPO22QaAtT0mTyupXtLe5J4RSg==
       tarball: 'file:projects/template-common.tgz'
     version: 0.0.0
   'file:projects/template-oas.tgz':
@@ -9679,6 +9680,7 @@ packages:
       eslint-config-google: 0.12.0_eslint@5.4.0
       eslint-plugin-6river: 1.0.6
       eslint-plugin-mocha: 5.0.0_eslint@5.4.0
+      json-schema-ref-parser: 6.1.0
       json-schema-to-typescript: 6.1.3
       lodash: 4.17.15
       npm-run-all: 4.1.5
@@ -9690,7 +9692,7 @@ packages:
     dev: false
     name: '@rush-temp/template-oas'
     resolution:
-      integrity: sha512-6jB4oO18/5uz9Q1EIxxLzp0DPcmZKab12PqBEUCL8yv6OvAlkcsXPg3QDW40BhUodTU3csGfiI4B0JiEWIVe5g==
+      integrity: sha512-c9ZwU93dPiU7vAb8v1/uCJxjThv19V/Vu+II8pN5Y9BYTtk8P7rCIfZ46wyblLvQoJF1gZ11W1VNU24EWRXkIg==
       tarball: 'file:projects/template-oas.tgz'
     version: 0.0.0
   'file:projects/template-repo-tools.tgz':
@@ -9709,7 +9711,7 @@ packages:
     dev: false
     name: '@rush-temp/template-repo-tools'
     resolution:
-      integrity: sha512-1l6bImkC50x1ugEknY9VzVyrkMptzeooYfEW0MWl8F4x2zNZ/OMipTii5y6jCePL48CPsb9AJYTE3izrb4wi6A==
+      integrity: sha512-t1t9aWKqElHYu1q5TfXlo9jhLwnLUl88LUdvl7TKz42aYQ483XEqiSpgN5Xd317S9dljP8zs//mkArqHQBISXA==
       tarball: 'file:projects/template-repo-tools.tgz'
     version: 0.0.0
   'file:projects/template-service.tgz':
@@ -9776,7 +9778,7 @@ packages:
     dev: false
     name: '@rush-temp/template-service'
     resolution:
-      integrity: sha512-1j/KidPfKwyatFs5nUjTUs61nxOBu+fhFUV/w82mOdxJp9YFja6PewskwgJ39AzxV8AvjMTQo79bQ1+XF9sEbQ==
+      integrity: sha512-alnWIzKUAKVvG3CHRcePaBK8Mh00ozDH6d8ZzK4tE7qekZE/9/YjN+iY8esqaJx0RYD816YsYjehg0UyeMb+Fg==
       tarball: 'file:projects/template-service.tgz'
     version: 0.0.0
 registry: ''
@@ -9842,6 +9844,7 @@ specifiers:
   husky: ^1.1.2
   instana-nodejs-sensor: 1.49.0
   jsmin: 1.0.1
+  json-schema-ref-parser: ^6.1.0
   json-schema-to-typescript: 6.1.3
   lodash: 4.17.15
   loopback-connector-postgresql: 3.6.0

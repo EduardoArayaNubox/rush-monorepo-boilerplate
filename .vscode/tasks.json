@@ -63,6 +63,22 @@
 					"${workspaceRoot}/packages/service/"
 				]
 			}
+		},
+		{
+			"label": "oas build utils",
+			"type": "shell",
+			"group": "build",
+			"command": "npm run build:utils",
+			"options": {
+				"cwd": "packages/oas/"
+			},
+			"problemMatcher": {
+				"base": "$tsc",
+				"fileLocation": [
+					"relative",
+					"${workspaceRoot}/packages/oas/"
+				]
+			}
 		}
 	]
 }
