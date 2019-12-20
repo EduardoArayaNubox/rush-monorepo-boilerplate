@@ -7,7 +7,10 @@ import {JSONSchema4} from './JSONSchema4';
  * Recursively update a json schema object to add annotations for `json-schema-to-typescript`
  * to mark any `date` or `date-time` string properties as being `Date | string`.
  *
- * @param schema Schema to adjust, will be modified in-place
+ * The schema will not be modified in place, but portions of it which don't need
+ * modification may be re-used as-is in the output.
+ *
+ * @param schema Schema to adjust, will be cloned if modifications are needed
  * @returns Adjusted schema
  */
 export function applyDateFormat(schema: JSONSchema4): JSONSchema4 {
@@ -15,20 +18,21 @@ export function applyDateFormat(schema: JSONSchema4): JSONSchema4 {
 		return schema;
 	}
 	if (Array.isArray(schema)) {
-		for (let i = 0; i < schema.length; ++i) {
-			schema[i] = applyDateFormat(schema[i]);
-		}
+		return schema.map((i) => applyDateFormat(i));
 	} else {
 		if (schema.format === 'date' || schema.format === 'date-time') {
 			// don't overwrite `tsType` if it was already provided
-			if (!('tsType' in schema)) {
-				schema.tsType = 'Date | string';
+			if ('tsType' in schema) {
+				return schema;
+			} else {
+				return {...schema, tsType: 'Date | string'};
 			}
-			return schema;
 		}
+		// shallow-clone schema before we modify it
+		schema = {...schema};
 		for (const [key, value] of Object.entries(schema)) {
 			schema[key] = applyDateFormat(value);
 		}
+		return schema;
 	}
-	return schema;
 }
