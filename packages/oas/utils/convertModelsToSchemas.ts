@@ -7,9 +7,9 @@ import {join} from 'path';
 const SwaggerParser = require('swagger-parser');
 import {promisify} from 'util';
 import {compile, DEFAULT_OPTIONS} from 'json-schema-to-typescript';
-import applyDateFormat from './applyDateFormat';
-import jsonParser from './jsonParser';
-import yamlParser from './yamlParser';
+import {applyDateFormat} from './applyDateFormat';
+import {JsonParser} from './jsonParser';
+import {YamlParser} from './yamlParser';
 
 const mkdir = promisify(fs.mkdir);
 const writeFile = promisify(fs.writeFile);
@@ -40,7 +40,6 @@ function magicRefs(obj: any) {
 		}
 	}
 }
-
 
 async function generateSchemas(path: string, api: any) {
 	const schemasPath = join(path, 'schemas');
@@ -86,8 +85,8 @@ async function generateInterfaces(path: string, api: any, apiName: string, ...sc
 		bannerComment: '/* eslint-disable */\n' + DEFAULT_OPTIONS.bannerComment,
 		$refOptions: {
 			parse: {
-				json: jsonParser,
-				yaml: yamlParser,
+				json: JsonParser,
+				yaml: YamlParser,
 			},
 		},
 	});

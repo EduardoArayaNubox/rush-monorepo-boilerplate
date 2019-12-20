@@ -106,7 +106,7 @@
 			"preLaunchTask": "rush build template oas",
 		},
 		{
-			"name": "Run oas build utils",
+			"name": "Run oas convertModelsToSchemas",
 			"type": "node",
 			"request": "launch",
 			"outputCapture": "std",

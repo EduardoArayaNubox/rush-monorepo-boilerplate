@@ -52,4 +52,3 @@ components:
 
     ObjectId:
       $ref: 'definitions/ObjectId.yaml'
-

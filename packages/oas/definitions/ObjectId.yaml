@@ -1,4 +1,3 @@
-
 type: object
 description: |
   An object that has a strong (UUID) identifier
