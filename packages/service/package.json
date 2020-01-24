@@ -62,7 +62,7 @@
     "@loopback/repository": "1.5.5",
     "@loopback/rest": "1.11.2",
     "@loopback/rest-explorer": "1.1.22",
-    "@sixriver/config-schema": "1.8.2",
+    "@sixriver/config-schema": "1.46.1",
     "@sixriver/loopback4-support": "3.22.1",
     "@sixriver/service-directory": "3.22.1",
     "@sixriver/template-common": "0.0.0-development",
