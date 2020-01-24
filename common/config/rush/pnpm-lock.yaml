@@ -6,6 +6,7 @@ dependencies:
   '@loopback/build': 1.2.0
   '@loopback/context': 1.15.0
   '@loopback/core': 1.7.0
+  '@loopback/metadata': 1.3.2
   '@loopback/openapi-v3': 1.3.11
   '@loopback/openapi-v3-types': 1.0.18
   '@loopback/repository': 1.5.5
@@ -19,9 +20,9 @@ dependencies:
   '@rush-temp/template-repo-tools': 'file:projects/template-repo-tools.tgz'
   '@rush-temp/template-service': 'file:projects/template-service.tgz'
   '@sixriver/config-schema': 1.8.2
-  '@sixriver/loopback4-support': 1.0.18_9ac4f2446baa0d5380f36033ecd7696a
-  '@sixriver/service-directory': 1.0.18
-  '@sixriver/typescript-support': 1.0.18
+  '@sixriver/loopback4-support': 3.22.1_2389f55da84f6df949a7035c1c24c479
+  '@sixriver/service-directory': 3.22.1
+  '@sixriver/typescript-support': 3.22.1
   '@types/bunyan': 1.8.4
   '@types/chai': 4.2.5
   '@types/chai-as-promised': 7.1.0
@@ -91,6 +92,10 @@ packages:
       husky: '*'
     resolution:
       integrity: sha512-FHBkI/g8mFeidrY7cMM37YX3FA79Pu6Z6kh795CnYHSx3o9nMIg9iLSWkmzvhRwAOLVSkDWUVCGXR9lhwzJ99Q==
+  /@6river/reason-guard/1.3.1:
+    dev: false
+    resolution:
+      integrity: sha512-dVb5Og7BZGjiiuOWBU+v+RfUZLaUD1GOk8mj9jPn3hTdzS6QeuGFNfvuz8+sTezJUE/wZ0mPavzVGOOeFKEdHA==
   /@babel/code-frame/7.0.0-beta.51:
     dependencies:
       '@babel/highlight': 7.0.0-beta.51
@@ -858,67 +863,88 @@ packages:
     resolution:
       integrity: sha1-o4gEQJiJNAQS8rGNfyo6rwo66sA=
       tarball: '@sixriver/config-schema/-/@sixriver/config-schema-1.8.2.tgz'
-  /@sixriver/loopback4-support/1.0.18_9ac4f2446baa0d5380f36033ecd7696a:
+  /@sixriver/loopback4-support/3.22.1_2389f55da84f6df949a7035c1c24c479:
     dependencies:
+      '@6river/reason-guard': 1.3.1
       '@loopback/boot': 1.2.7
       '@loopback/context': 1.15.0
       '@loopback/core': 1.7.0
+      '@loopback/metadata': 1.3.2
       '@loopback/openapi-v3': 1.3.11
       '@loopback/openapi-v3-types': 1.0.18
       '@loopback/repository': 1.5.5
       '@loopback/rest': 1.11.2
       '@loopback/rest-explorer': 1.1.22
       '@sixriver/config-schema': 1.8.2
-      '@sixriver/service-directory': 1.0.18
-      '@sixriver/typescript-support': 1.0.18
+      '@sixriver/oas-support': 3.22.1
+      '@sixriver/service-directory': 3.22.1
+      '@sixriver/typescript-support': 3.22.1
       ajv: 6.10.0
       axios: 0.19.0
       bunyan: 1.8.12
       bunyan-prettystream: 0.1.3
       db-migrate: 0.11.5
-      lodash: 4.17.11
+      lodash: 4.17.15
+      parse-database-url: 0.3.0
       url-join: 4.0.0
       url-mask: 1.0.5
+      uuid: 3.3.2
     dev: false
     engines:
-      node: 10.15.3
+      node: '>=10.16.3'
     peerDependencies:
-      '@loopback/boot': '>=1.2.7'
-      '@loopback/context': '>=1.15.0'
-      '@loopback/core': '>=1.7.0'
-      '@loopback/openapi-v3': '>=1.3.11'
-      '@loopback/openapi-v3-types': '>=1.0.18'
-      '@loopback/repository': '>=1.5.5'
-      '@loopback/rest': '>=1.11.2'
-      '@loopback/rest-explorer': '>=1.1.22'
-      '@sixriver/config-schema': '>=1.8.2'
-      ajv: '>=6.10.0'
-      axios: '>=0.18.0'
-      bunyan: '>=1.8.12'
-      bunyan-prettystream: '>=0.1.3'
-      db-migrate: '>=0.11.5'
+      '@loopback/boot': ^1.5.5
+      '@loopback/context': ^1.22.1
+      '@loopback/core': ^1.10.1
+      '@loopback/metadata': ^1.3.4
+      '@loopback/openapi-v3': ^1.9.6
+      '@loopback/openapi-v3-types': ^1.2.1
+      '@loopback/repository': ^1.13.1
+      '@loopback/rest': ^1.18.1
+      '@loopback/rest-explorer': ~1.3.6
+      '@sixriver/config-schema': ^1.8.2
+      ajv: ^6.10.0
+      axios: ^0.18.1
+      bunyan: ^1.8.12
+      bunyan-prettystream: ^0.1.3
+      db-migrate: ^0.11.5
+      uuid: ^3.3.3
     resolution:
-      integrity: sha1-h1m47F5C2gh+VAVEgLypYmsIWe4=
-      tarball: '@sixriver/loopback4-support/-/@sixriver/loopback4-support-1.0.18.tgz'
-  /@sixriver/service-directory/1.0.18:
+      integrity: sha1-xYbtuweYZw5CJGAynLMmkYdhhCs=
+      tarball: '@sixriver/loopback4-support/-/@sixriver/loopback4-support-3.22.1.tgz'
+  /@sixriver/oas-support/3.22.1:
     dependencies:
-      '@sixriver/typescript-support': 1.0.18
+      '@sixriver/typescript-support': 3.22.1
+      ajv: 6.10.0
+    dev: false
+    engines:
+      node: '>=10.16.3'
+    resolution:
+      integrity: sha1-p9rhDpthjO07kEYDg+rvhnjVIgE=
+      tarball: '@sixriver/oas-support/-/@sixriver/oas-support-3.22.1.tgz'
+  /@sixriver/service-directory/3.22.1:
+    dependencies:
+      '@sixriver/typescript-support': 3.22.1
       url-join: 4.0.0
     dev: false
     engines:
-      node: 10.15.3
+      node: '>=10.16.3'
     resolution:
-      integrity: sha1-Dhhy7mITgD0Y/rSMkbbO+9NXmf4=
-      tarball: '@sixriver/service-directory/-/@sixriver/service-directory-1.0.18.tgz'
-  /@sixriver/typescript-support/1.0.18:
+      integrity: sha1-JQed2uiGnSbUHeK0vSHnr0oZ1sc=
+      tarball: '@sixriver/service-directory/-/@sixriver/service-directory-3.22.1.tgz'
+  /@sixriver/typescript-support/3.22.1:
     dependencies:
-      lodash: 4.17.11
+      '@6river/reason-guard': 1.3.1
+      double-ended-queue: 2.1.0-0
+      lodash: 4.17.15
+      nanotimer: 0.3.15
+      promise.allsettled: 1.0.1
     dev: false
     engines:
-      node: 10.15.3
+      node: '>=10.16.3'
     resolution:
-      integrity: sha1-ftynHPn5+0yz6dRXaH2yZgdmCEs=
-      tarball: '@sixriver/typescript-support/-/@sixriver/typescript-support-1.0.18.tgz'
+      integrity: sha1-MU7F/euwRIY4oTt/GwMjxGsK7Kw=
+      tarball: '@sixriver/typescript-support/-/@sixriver/typescript-support-3.22.1.tgz'
   /@types/body-parser/1.17.1:
     dependencies:
       '@types/connect': 3.4.32
@@ -2901,6 +2927,10 @@ packages:
       node: '>=4.6.0'
     resolution:
       integrity: sha512-4As8uPrjfwb7VXC+WnLCbXK7y+Ueb2B3zgNCePYfhxS1PYeaO1YTeplffTEcbfLhvFNGLAz90VvJs9yomG7bow==
+  /double-ended-queue/2.1.0-0:
+    dev: false
+    resolution:
+      integrity: sha1-ED01J/0xUo9AGIEwyEHv3XgmTlw=
   /dox/0.9.0:
     dependencies:
       commander: 2.9.0
@@ -3010,11 +3040,29 @@ packages:
       node: '>= 0.4'
     resolution:
       integrity: sha512-xdQnfykZ9JMEiasTAJZJdMWCQ1Vm00NBw79/AWi7ELfZuuPCSOMDZbT9mkOfSctVtfhb+sAAzrm+j//GjjLHLg==
+  /es-abstract/1.17.4:
+    dependencies:
+      es-to-primitive: 1.2.1
+      function-bind: 1.1.1
+      has: 1.0.3
+      has-symbols: 1.0.1
+      is-callable: 1.1.5
+      is-regex: 1.0.5
+      object-inspect: 1.7.0
+      object-keys: 1.1.1
+      object.assign: 4.1.0
+      string.prototype.trimleft: 2.1.1
+      string.prototype.trimright: 2.1.1
+    dev: false
+    engines:
+      node: '>= 0.4'
+    resolution:
+      integrity: sha512-Ae3um/gb8F0mui/jPL+QiqmglkUsaQf7FwBEHYIFkztkneosu9imhqHpBzQ3h1vit8t5iQ74t6PEVvphBZiuiQ==
   /es-to-primitive/1.2.1:
     dependencies:
-      is-callable: 1.1.4
-      is-date-object: 1.0.1
-      is-symbol: 1.0.2
+      is-callable: 1.1.5
+      is-date-object: 1.0.2
+      is-symbol: 1.0.3
     dev: false
     engines:
       node: '>= 0.4'
@@ -3714,10 +3762,10 @@ packages:
       node: '>= 0.12'
     resolution:
       integrity: sha512-m21N3WOmEEURgk6B9GLOE4RuWOFf28Lhh9qGYeNlGq4VDXUlJy2th2slBNU8Gp8EzloYZOibZJ7t5ecIrFSjVA==
-  /format-util/1.0.3:
+  /format-util/1.0.5:
     dev: false
     resolution:
-      integrity: sha1-Ay3KShFiYqEsQ/TD7IVmQWxbLZU=
+      integrity: sha512-varLbTj0e0yVyRpqQhuWV+8hlePAgaoFRhNFj50BNjEIrw1/DphHSObtqwskVCPWNgzwPoQrZAbfa/SBiicNeg==
   /formidable/1.2.1:
     dev: false
     resolution:
@@ -4328,12 +4376,6 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha1-tdRU3CGZriJWmfNGfloH87lVuv0=
-  /has-symbols/1.0.0:
-    dev: false
-    engines:
-      node: '>= 0.4'
-    resolution:
-      integrity: sha1-uhqPGvKg/DllD1yFA2dwQSIGO0Q=
   /has-symbols/1.0.1:
     dev: false
     engines:
@@ -4764,6 +4806,12 @@ packages:
       node: '>= 0.4'
     resolution:
       integrity: sha512-r5p9sxJjYnArLjObpjA4xu5EKI3CuKHkJXMhT7kwbpUyIFD1n5PMAsoPvWnvtZiNz7LjkYDRZhd7FlI0eMijEA==
+  /is-callable/1.1.5:
+    dev: false
+    engines:
+      node: '>= 0.4'
+    resolution:
+      integrity: sha512-ESKv5sMCJB2jnHTWZ3O5itG+O128Hsus4K4Qh1h2/cgn2vbgnLSVqfV46AeJA9D5EeeLa9w81KUXMtn34zhX+Q==
   /is-ci/2.0.0:
     dependencies:
       ci-info: 2.0.0
@@ -4793,6 +4841,12 @@ packages:
       node: '>= 0.4'
     resolution:
       integrity: sha1-mqIOtq7rv/d/vTPnTKAbM1gdOhY=
+  /is-date-object/1.0.2:
+    dev: false
+    engines:
+      node: '>= 0.4'
+    resolution:
+      integrity: sha512-USlDT524woQ08aoZFzh3/Z6ch9Y/EWXEHQ/AaRN0SkKq4t2Jw2R2339tSXmwuVoY7LLlBCbOIlx2myP/L5zk0g==
   /is-descriptor/0.1.6:
     dependencies:
       is-accessor-descriptor: 0.1.6
@@ -4925,6 +4979,14 @@ packages:
       node: '>= 0.4'
     resolution:
       integrity: sha1-VRdIm1RwkbCTDglWVM7SXul+lJE=
+  /is-regex/1.0.5:
+    dependencies:
+      has: 1.0.3
+    dev: false
+    engines:
+      node: '>= 0.4'
+    resolution:
+      integrity: sha512-vlKW17SNq44owv5AQR3Cq0bQPEb8+kF3UKZ2fiZNOWtztYE5i0CzCZxFDwO58qAOWtxdBRVO/V5Qin1wjCqFYQ==
   /is-relative/1.0.0:
     dependencies:
       is-unc-path: 1.0.0
@@ -4947,14 +5009,14 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-EtSj3U5o4Lec6428hBc66A2RykQ=
-  /is-symbol/1.0.2:
+  /is-symbol/1.0.3:
     dependencies:
       has-symbols: 1.0.1
     dev: false
     engines:
       node: '>= 0.4'
     resolution:
-      integrity: sha512-HS8bZ9ox60yCJLH9snBpIwv9pYUAkcuLhSA1oero1UB5y9aiQpRA8y2ex945AOtCZL1lJDeIk3G5LthswI46Lw==
+      integrity: sha512-OwijhaRSgqvhm/0ZdAcXNZt9lYdKFpcRDT5ULUuYXPoT794UNOdU+gpT6Rzo7b4V2HUl/op6GqY894AZwv9faQ==
   /is-text-path/1.0.1:
     dependencies:
       text-extensions: 1.9.0
@@ -6128,6 +6190,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-fpoe2T0RbHwBTBUOftAfBPaDEi06ufaUai0mE6Yn1kacc3SnTErfb/h+X94VXzI64rKFHYImXSvdwGGCmwOqCA==
+  /nanotimer/0.3.15:
+    dev: false
+    resolution:
+      integrity: sha1-KA0nfbkUbspvilcLVyq68qmsx1Q=
   /natural-compare/1.4.0:
     dev: false
     resolution:
@@ -6548,7 +6614,7 @@ packages:
     dependencies:
       define-properties: 1.1.3
       function-bind: 1.1.1
-      has-symbols: 1.0.0
+      has-symbols: 1.0.1
       object-keys: 1.1.1
     dev: false
     engines:
@@ -6622,7 +6688,7 @@ packages:
       integrity: sha1-BnQoIw/WdEOyeUsiu6UotoZ5YtQ=
   /ono/4.0.11:
     dependencies:
-      format-util: 1.0.3
+      format-util: 1.0.5
     dev: false
     resolution:
       integrity: sha512-jQ31cORBFE6td25deYeD80wxKBMj+zBmHTrVxnc6CKhx8gho6ipmWM5zj/oeoqioZ99yqBls9Z/9Nss7J26G2g==
@@ -7222,6 +7288,16 @@ packages:
       node: '>=0.4.0'
     resolution:
       integrity: sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
+  /promise.allsettled/1.0.1:
+    dependencies:
+      define-properties: 1.1.3
+      es-abstract: 1.17.4
+      function-bind: 1.1.1
+    dev: false
+    engines:
+      node: '>= 0.4'
+    resolution:
+      integrity: sha512-3ST7RS7TY3TYLOIe+OACZFvcWVe1osbgz2x07nTb446pa3t4GUZWidMDzQ4zf9jC2l6mRa1/3X81icFYbi+D/g==
   /prompt/1.0.0:
     dependencies:
       colors: 1.4.0
@@ -8439,6 +8515,15 @@ packages:
       node: '>= 0.4'
     resolution:
       integrity: sha512-FJ6b7EgdKxxbDxc79cOlok6Afd++TTs5szo+zJTUyow3ycrRfJVE2pq3vcN53XexvKZu/DJMDfeI/qMiZTrjTw==
+  /string.prototype.trimleft/2.1.1:
+    dependencies:
+      define-properties: 1.1.3
+      function-bind: 1.1.1
+    dev: false
+    engines:
+      node: '>= 0.4'
+    resolution:
+      integrity: sha512-iu2AGd3PuP5Rp7x2kEZCrB2Nf41ehzh+goo8TV7z8/XDBbsvc6HQIlUl9RjkZ4oyrW1XM5UwlGl1oVEaDjg6Ag==
   /string.prototype.trimright/2.1.0:
     dependencies:
       define-properties: 1.1.3
@@ -8448,6 +8533,15 @@ packages:
       node: '>= 0.4'
     resolution:
       integrity: sha512-fXZTSV55dNBwv16uw+hh5jkghxSnc5oHq+5K/gXgizHwAvMetdAJlHqqoFC1FSDVPYWLkAKl2cxpUT41sV7nSg==
+  /string.prototype.trimright/2.1.1:
+    dependencies:
+      define-properties: 1.1.3
+      function-bind: 1.1.1
+    dev: false
+    engines:
+      node: '>= 0.4'
+    resolution:
+      integrity: sha512-qFvWL3/+QIgZXVmJBfpHmxLB7xsUXz6HsUmP8+5dRaC3Q7oKUv9Vo6aMCRZC1smrtyECFsIT30PqBJ1gTjAs+g==
   /string_decoder/1.1.1:
     dependencies:
       safe-buffer: 5.1.2
@@ -9663,11 +9757,12 @@ packages:
     dev: false
     name: '@rush-temp/template-common'
     resolution:
-      integrity: sha512-OMWBazCp1ue7ALkvlUws8j6MfU6B1opMTEypGJ9g3xSExS3FPaxrB8E7D8iCmPO22QaAtT0mTyupXtLe5J4RSg==
+      integrity: sha512-P9HJ0oVTSQYbKL+5x+zsD4O1YGC5HPlJxT/7LOsTRNa908oFZwqvKmy6ZFkGQEB+fAQLi3QN9PJpYRiw5At5BQ==
       tarball: 'file:projects/template-common.tgz'
     version: 0.0.0
   'file:projects/template-oas.tgz':
     dependencies:
+      '@sixriver/oas-support': 3.22.1
       '@types/lodash': 4.14.148
       '@types/mocha': 5.2.7
       '@types/node': 10.17.5
@@ -9692,7 +9787,7 @@ packages:
     dev: false
     name: '@rush-temp/template-oas'
     resolution:
-      integrity: sha512-c9ZwU93dPiU7vAb8v1/uCJxjThv19V/Vu+II8pN5Y9BYTtk8P7rCIfZ46wyblLvQoJF1gZ11W1VNU24EWRXkIg==
+      integrity: sha512-sXZVPAGg7j31FE91qgSGSpdbGEOP02TwgnqQJqSPUOoV+vqTabmKBXJHjXbNaBg7j2laC1Os5c+QDdjhsO2fWQ==
       tarball: 'file:projects/template-oas.tgz'
     version: 0.0.0
   'file:projects/template-repo-tools.tgz':
@@ -9711,7 +9806,7 @@ packages:
     dev: false
     name: '@rush-temp/template-repo-tools'
     resolution:
-      integrity: sha512-t1t9aWKqElHYu1q5TfXlo9jhLwnLUl88LUdvl7TKz42aYQ483XEqiSpgN5Xd317S9dljP8zs//mkArqHQBISXA==
+      integrity: sha512-1l6bImkC50x1ugEknY9VzVyrkMptzeooYfEW0MWl8F4x2zNZ/OMipTii5y6jCePL48CPsb9AJYTE3izrb4wi6A==
       tarball: 'file:projects/template-repo-tools.tgz'
     version: 0.0.0
   'file:projects/template-service.tgz':
@@ -9721,6 +9816,7 @@ packages:
       '@loopback/build': 1.2.0
       '@loopback/context': 1.15.0
       '@loopback/core': 1.7.0
+      '@loopback/metadata': 1.3.2
       '@loopback/openapi-v3': 1.3.11
       '@loopback/openapi-v3-types': 1.0.18
       '@loopback/repository': 1.5.5
@@ -9730,9 +9826,9 @@ packages:
       '@pact-foundation/pact': 8.2.2
       '@pact-foundation/pact-node': 8.3.0
       '@sixriver/config-schema': 1.8.2
-      '@sixriver/loopback4-support': 1.0.18_9ac4f2446baa0d5380f36033ecd7696a
-      '@sixriver/service-directory': 1.0.18
-      '@sixriver/typescript-support': 1.0.18
+      '@sixriver/loopback4-support': 3.22.1_2389f55da84f6df949a7035c1c24c479
+      '@sixriver/service-directory': 3.22.1
+      '@sixriver/typescript-support': 3.22.1
       '@types/bunyan': 1.8.4
       '@types/chai': 4.2.5
       '@types/chai-as-promised': 7.1.0
@@ -9778,7 +9874,7 @@ packages:
     dev: false
     name: '@rush-temp/template-service'
     resolution:
-      integrity: sha512-alnWIzKUAKVvG3CHRcePaBK8Mh00ozDH6d8ZzK4tE7qekZE/9/YjN+iY8esqaJx0RYD816YsYjehg0UyeMb+Fg==
+      integrity: sha512-LJLD4nTFgq5CHh8dfwU/lZFoAQhpR9U7yeK3iWX/3PtfV7qciCutOlRBUk3/fK74r/ktPOlmqqNhcZ2JQ8oV0g==
       tarball: 'file:projects/template-service.tgz'
     version: 0.0.0
 registry: ''
@@ -9790,6 +9886,7 @@ specifiers:
   '@loopback/build': 1.2.0
   '@loopback/context': 1.15.0
   '@loopback/core': 1.7.0
+  '@loopback/metadata': 1.3.2
   '@loopback/openapi-v3': 1.3.11
   '@loopback/openapi-v3-types': 1.0.18
   '@loopback/repository': 1.5.5
@@ -9803,9 +9900,9 @@ specifiers:
   '@rush-temp/template-repo-tools': 'file:./projects/template-repo-tools.tgz'
   '@rush-temp/template-service': 'file:./projects/template-service.tgz'
   '@sixriver/config-schema': 1.8.2
-  '@sixriver/loopback4-support': 1.0.18
-  '@sixriver/service-directory': 1.0.18
-  '@sixriver/typescript-support': 1.0.18
+  '@sixriver/loopback4-support': 3.22.1
+  '@sixriver/service-directory': 3.22.1
+  '@sixriver/typescript-support': 3.22.1
   '@types/bunyan': 1.8.4
   '@types/chai': 4.2.5
   '@types/chai-as-promised': 7.1.0
@@ -9844,7 +9941,7 @@ specifiers:
   husky: ^1.1.2
   instana-nodejs-sensor: 1.49.0
   jsmin: 1.0.1
-  json-schema-ref-parser: ^6.1.0
+  json-schema-ref-parser: 6.1.0
   json-schema-to-typescript: 6.1.3
   lodash: 4.17.15
   loopback-connector-postgresql: 3.6.0

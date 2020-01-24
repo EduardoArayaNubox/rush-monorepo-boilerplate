@@ -4,8 +4,8 @@ import * as Ajv from 'ajv';
 import {inject} from '@loopback/context';
 import {post, api, HttpErrors, RestBindings, requestBody, Response} from '@loopback/rest';
 
-import {MinimalLogFactory, MinimalLogger} from '@sixriver/typescript-support';
-import {ApiSchemaBuilder, Validator, CommonBindings} from '@sixriver/loopback4-support';
+import {MinimalLogFactory, MinimalLogger, Validator} from '@sixriver/typescript-support';
+import {ApiSchemaBuilder, CommonBindings} from '@sixriver/loopback4-support';
 
 import {TemplateMessage} from '@sixriver/template-oas';
 
@@ -57,9 +57,9 @@ export class TemplateController {
 				'Received template request',
 			);
 
-			const validationResult = await this.requestValidator.tryValidate(message);
-			if (validationResult !== true) {
-				return await this.handleInvalidRequest(message, validationResult);
+			const validationErrors: Error[] = [];
+			if (!(await this.requestValidator.tryValidate(message, validationErrors))) {
+				return await this.handleInvalidRequest(message, validationErrors);
 			}
 
 			this.response.statusCode = 201;

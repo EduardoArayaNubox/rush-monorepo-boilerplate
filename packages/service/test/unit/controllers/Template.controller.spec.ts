@@ -9,8 +9,7 @@ import * as uuidv4 from 'uuid/v4';
 
 import {Response} from '@loopback/rest';
 
-import {MinimalLogFactory, MinimalLogger} from '@sixriver/typescript-support';
-import {Validator} from '@sixriver/loopback4-support';
+import {MinimalLogFactory, MinimalLogger, Validator} from '@sixriver/typescript-support';
 
 import {TemplateMessage} from '@sixriver/template-oas';
 
@@ -18,7 +17,8 @@ import {TemplateController} from '../../../src/controllers';
 import {TemplateMessageModel} from '../../../src/models';
 
 class MockValidator<T, TError = any> implements Validator<T, TError> {
-	public async tryValidate(): Promise<true | TError[]> {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public tryValidate(value: unknown, errors?: Error[], confirmations?: string[]): value is T {
 		throw new Error('Stub method tryValidate not implemented');
 	}
 }
@@ -62,7 +62,7 @@ describe(TemplateController.name, function() {
 	context('create', function() {
 		it('should return the created object id in the happy path', async function() {
 			const validateMessage = sinon.stub(requestValidator, 'tryValidate').callThrough();
-			validateMessage.withArgs(sinon.match(requestMessage)).resolves(true);
+			validateMessage.withArgs(sinon.match(requestMessage)).returns(true);
 
 			const result = await controller.create(requestMessage);
 
@@ -77,7 +77,11 @@ describe(TemplateController.name, function() {
 			const validateMessage = sinon.stub(requestValidator, 'tryValidate').callThrough();
 			const vmStub = validateMessage.withArgs(sinon.match(requestMessage));
 			const inducedErrorMessage = 'induced validation failure';
-			vmStub.resolves([new Error(inducedErrorMessage) as any]);
+			vmStub.callsFake((input: unknown, output?: Error[]) => {
+				assert.isOk(output);
+				output?.push(new Error(inducedErrorMessage));
+				return false;
+			});
 			sinon.stub(log, 'error').callThrough()
 			.withArgs(sinon.match({err: {status: 422}}), sinon.match.any).returns(undefined);
 

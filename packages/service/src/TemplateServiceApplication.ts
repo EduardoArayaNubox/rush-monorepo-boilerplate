@@ -32,7 +32,7 @@ import {
 import {MinimalLogFactory, MinimalLogger} from '@sixriver/typescript-support';
 import {ServicePortFactory, getEnvironment} from '@sixriver/service-directory';
 
-import {TemplateMessage, TemplateMessageSchema} from '@sixriver/template-oas';
+import {TemplateMessage, TemplateSchemas} from '@sixriver/template-oas';
 
 import {TemplateServiceProviderKeys} from './providers';
 
@@ -136,7 +136,7 @@ export class TemplateServiceApplication extends BootMixin(RepositoryMixin(RestAp
 				@inject(CommonBindings.LOG_FACTORY)
 					logFactory: MinimalLogFactory,
 			) {
-				super(TemplateMessageSchema, 'TemplateMessage', logFactory);
+				super(TemplateSchemas.TemplateMessageSchema, 'TemplateMessage', logFactory);
 			}
 		}
 		this.bind(TemplateServiceProviderKeys.REQUEST_VALIDATOR)
