@@ -18,7 +18,7 @@ jobs:
           keys:
             - rush-local-v1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}
       - run:
-          name: Initalize ci_scripts
+          name: Initialize ci_scripts
           command: |
             mkdir ci_scripts
             curl -H "Authorization: token $GITHUB_TOKEN" -H "Accept:application/vnd.github.v3.raw" https://api.github.com/repos/6RiverSystems/ci_scripts/contents/ci_tool.sh > ci_scripts/ci_tool.sh
@@ -236,7 +236,7 @@ jobs:
       - attach_workspace:
           at: ./
       - run:
-          name: Initalize Docker
+          name: Initialize Docker
           command: |
             ci_scripts/ci_tool.sh --docker_login
       - run:
@@ -259,7 +259,7 @@ jobs:
       - attach_workspace:
           at: ./
       - run:
-          name: Initalize Docker
+          name: Initialize Docker
           command: |
             ci_scripts/ci_tool.sh --docker_login
       - run:
@@ -314,7 +314,7 @@ jobs:
       - attach_workspace:
           at: ./
       - run:
-          name: Initalize Docker
+          name: Initialize Docker
           command: |
             ci_scripts/ci_tool.sh --docker_login
       - run:

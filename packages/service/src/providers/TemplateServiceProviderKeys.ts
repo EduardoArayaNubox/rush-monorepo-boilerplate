@@ -3,7 +3,7 @@ import * as Ajv from 'ajv';
 import {BindingKey} from '@loopback/context';
 
 import {ServiceDirectory} from '@sixriver/service-directory';
-import {Validator} from '@sixriver/loopback4-support';
+import {Validator} from '@sixriver/typescript-support';
 
 import {TemplateMessage} from '@sixriver/template-oas';
 

@@ -1,5 +1,5 @@
-const TemplateMessageSchema = require('../schemas/TemplateMessage.json');
+import {JsonSchema} from '@sixriver/oas-support';
 
-export {
-	TemplateMessageSchema,
+export namespace TemplateSchemas {
+	export const TemplateMessageSchema: JsonSchema = require('../schemas/TemplateMessage.json');
 };
