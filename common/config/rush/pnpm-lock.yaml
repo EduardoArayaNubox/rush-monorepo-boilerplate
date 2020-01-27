@@ -2,16 +2,16 @@ dependencies:
   '@6river/commitlint-config-6river': 2.1.7_e7b9bca707faba8623a376c3bc5e2fde
   '@commitlint/cli': 7.6.1
   '@google-cloud/pubsub': 0.30.1
-  '@loopback/boot': 1.2.7
+  '@loopback/boot': 1.5.5
   '@loopback/build': 1.2.0
-  '@loopback/context': 1.15.0
-  '@loopback/core': 1.7.0
-  '@loopback/metadata': 1.3.2
-  '@loopback/openapi-v3': 1.3.11
-  '@loopback/openapi-v3-types': 1.0.18
-  '@loopback/repository': 1.5.5
-  '@loopback/rest': 1.11.2
-  '@loopback/rest-explorer': 1.1.22
+  '@loopback/context': 1.25.1
+  '@loopback/core': 1.10.1
+  '@loopback/metadata': 1.3.4
+  '@loopback/openapi-v3': 1.9.6
+  '@loopback/openapi-v3-types': 1.2.1
+  '@loopback/repository': 1.13.1
+  '@loopback/rest': 1.18.1
+  '@loopback/rest-explorer': 1.3.6
   '@loopback/testlab': 1.0.4
   '@pact-foundation/pact': 8.2.2
   '@pact-foundation/pact-node': 8.3.0
@@ -20,7 +20,7 @@ dependencies:
   '@rush-temp/template-repo-tools': 'file:projects/template-repo-tools.tgz'
   '@rush-temp/template-service': 'file:projects/template-service.tgz'
   '@sixriver/config-schema': 1.46.1
-  '@sixriver/loopback4-support': 3.22.1_0cab96aa97f1e56b0d0c4fabb922f4f0
+  '@sixriver/loopback4-support': 3.22.1_051fe290eb63bc924785e392f9f8cd8f
   '@sixriver/service-directory': 3.22.1
   '@sixriver/typescript-support': 3.22.1
   '@types/bunyan': 1.8.4
@@ -34,7 +34,7 @@ dependencies:
   '@types/node': 10.17.13
   '@types/sinon': 7.5.0
   '@types/swagger-parser': 4.0.3
-  '@types/uuid': 3.4.4
+  '@types/uuid': 3.4.6
   '@typescript-eslint/eslint-plugin': 2.8.0_1b2cb053a7472ad3b0acf63cd96ef0dd
   '@typescript-eslint/parser': 2.8.0_eslint@5.4.0+typescript@3.7.2
   ajv: 6.10.0
@@ -78,7 +78,7 @@ dependencies:
   speccy: 0.9.0
   swagger-parser: 6.0.5
   typescript: 3.7.2
-  uuid: 3.3.2
+  uuid: 3.4.0
 lockfileVersion: 5.1
 packages:
   /@6river/commitlint-config-6river/2.1.7_e7b9bca707faba8623a376c3bc5e2fde:
@@ -476,7 +476,7 @@ packages:
       node: '>= 0.10'
     resolution:
       integrity: sha1-iQrnxdjId/bThIYCFazp1+yUW9o=
-  /@loopback/boot/1.2.7:
+  /@loopback/boot/1.5.5:
     dependencies:
       '@loopback/context': 1.25.1
       '@loopback/core': 1.12.1
@@ -490,7 +490,7 @@ packages:
     engines:
       node: '>=8.9'
     resolution:
-      integrity: sha512-AaeQeE85enSzHwcHMOgwhYfxNK3x2Y+dfJyG7oSeWbKfmihMUkiNScTMyXN72JGnfklC6+idRT8yoV0VAplCrg==
+      integrity: sha512-0wE7hL+R7DEgvqPvAVvOnjV9huGW0NJ2Vm/2bvJvTpxveldcCldWrS1fMXHzZgWblWIs6XLzUEmihQmIlzhu+w==
   /@loopback/build/1.2.0:
     dependencies:
       '@loopback/tslint-config': 2.1.0_tslint@5.20.1+typescript@3.7.2
@@ -514,17 +514,6 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-KJI8fzRffdhoS06IzX4XEWMve279kVz0ucxDwjpKCHO2O1T7fFaYdcDAd4ltzZ6BHXacqmMmSwJtAEK8UNhWFA==
-  /@loopback/context/1.15.0:
-    dependencies:
-      '@loopback/metadata': 1.3.10
-      debug: 4.1.1
-      p-event: 4.1.0
-      uuid: 3.4.0
-    dev: false
-    engines:
-      node: '>=8.9'
-    resolution:
-      integrity: sha512-J7iH0AZ2P72jPnzhMFH4yMHjs6oWOQS+4DUssndzb8jGZ1JyDyLON4BXt95/+b5MxdBUIFa7ID7AU+re8FoQHQ==
   /@loopback/context/1.25.1:
     dependencies:
       '@loopback/metadata': 1.3.10
@@ -536,6 +525,15 @@ packages:
       node: '>=8.9'
     resolution:
       integrity: sha512-3Mx5RWDxSkf7DYfsglt8wNLm5Idn06bhRCV5nX2S0HN5NR4u++ogn3rxfebnWOWFP4c0kqWjmXiucp2WJ8W4MA==
+  /@loopback/core/1.10.1:
+    dependencies:
+      '@loopback/context': 1.25.1
+      debug: 4.1.1
+    dev: false
+    engines:
+      node: '>=8.9'
+    resolution:
+      integrity: sha512-Q/S6yE3NguWfc70+6S26fvigOKjb2+te27nZ6Sngu2fuFI1kNW+EOMTMKoxDbwuDcqJe6QT3KInsZn4Zmuiqow==
   /@loopback/core/1.12.1:
     dependencies:
       '@loopback/context': 1.25.1
@@ -546,15 +544,6 @@ packages:
       node: '>=8.9'
     resolution:
       integrity: sha512-30r+F85l5UQTa5V2v/vO7axGjMsil14WDGa7Uk94dZywb/rK3pboA6BJySjptOA1uop/NT0hxu2/L1S3tHgwwg==
-  /@loopback/core/1.7.0:
-    dependencies:
-      '@loopback/context': 1.25.1
-      debug: 4.1.1
-    dev: false
-    engines:
-      node: '>=8.9'
-    resolution:
-      integrity: sha512-YsadPI5hHQWzWV7fvqo5SpTBGU8nnupGVu5s0BNVAB4znpX4x97FXZQog8yGJbyIWZzUAwMa/TLsSSs9Al/hwg==
   /@loopback/http-server/1.5.1:
     dependencies:
       p-event: 4.1.0
@@ -574,7 +563,7 @@ packages:
       node: '>=8.9'
     resolution:
       integrity: sha512-HBD170EnTGIO3UiD4JSG4iF3xHy0nqMx2hnSSmhgLz91oV0GrRJaUYHgJaBf2VyvbshOs7Y22xB2d4fRtEGeOA==
-  /@loopback/metadata/1.3.2:
+  /@loopback/metadata/1.3.4:
     dependencies:
       debug: 4.1.1
       lodash: 4.17.15
@@ -583,27 +572,40 @@ packages:
     engines:
       node: '>=8.9'
     resolution:
-      integrity: sha512-M1CiZerZaBu8l3qi0d1mZ7NbSAnDTsiky+NBBsKjKSTj7mJBbvRMv4tdj1WZRm62G07/fy6tX3ABwRXW7FdtPQ==
-  /@loopback/openapi-v3-types/1.0.18:
+      integrity: sha512-Ob6ZpmYOeqLZ9Jz2o5gyDVbROQOaWmWkCHKfO4H9y9C+IIcdZL9piq3FWv9T/tRL5KZmc87A+s9KQJ9Zqb2uTw==
+  /@loopback/openapi-v3-types/1.2.1:
     dependencies:
       openapi3-ts: 1.3.0
     dev: false
     engines:
       node: '>=8.9'
     resolution:
-      integrity: sha512-MARbxrR41+N847pSzmx/NgjGYFgdVRuLLiz4PmJhlCop/5+SOF3wN1YA41nyt8czGlLCTBO0PdnHgfz1+eCBMA==
-  /@loopback/openapi-v3/1.3.11:
+      integrity: sha512-jg+63mKTDgYPGbbHdeEe+J+eXkZDN+bmo2eK0y90aM8O8J5AimlaaIQpuVOJUp/87B4WueOJCFRjXnsv6VV25A==
+  /@loopback/openapi-v3/1.11.0:
     dependencies:
-      '@loopback/context': 1.25.1
-      '@loopback/openapi-v3-types': 1.0.18
+      '@loopback/core': 1.12.1
       '@loopback/repository-json-schema': 1.11.4
       debug: 4.1.1
+      json-merge-patch: 0.2.3
       lodash: 4.17.15
+      openapi3-ts: 1.3.0
     dev: false
     engines:
       node: '>=8.9'
     resolution:
-      integrity: sha512-/sodgJBMYae2vXeoe3XjS96798jPtYcSYfqpKrmDSmNxMqpOPo8IYvKBiJkATruD4kB2dE730WfO9icW6NOUDQ==
+      integrity: sha512-aAfSTP3c+vzweHiRS8vKyb5QZ6i9SOOM/byFGTdTPSNMyVz53ZSdKxe/XhgHwNo4mjszcEFlAdpGT75ohOAafg==
+  /@loopback/openapi-v3/1.9.6:
+    dependencies:
+      '@loopback/context': 1.25.1
+      '@loopback/repository-json-schema': 1.11.4
+      debug: 4.1.1
+      lodash: 4.17.15
+      openapi3-ts: 1.3.0
+    dev: false
+    engines:
+      node: '>=8.9'
+    resolution:
+      integrity: sha512-H69lAfrEUvgIdAMv0TIXrnjfVvCN8O6pSvWfTxh09H7JrN3P2q7DGU91ApJXsF01riiHSupHv6BSrsH85MgKGA==
   /@loopback/repository-json-schema/1.11.4:
     dependencies:
       '@loopback/context': 1.25.1
@@ -616,6 +618,19 @@ packages:
       node: '>=8.9'
     resolution:
       integrity: sha512-V+7yxbHd38nk9XOFxhm4WqhjUDUVxMAPtYRzTe8lMeo0IeqqdjNnOhjcgYvqUq7qCuEHOwWGx/mIsE0yvb+phw==
+  /@loopback/repository/1.13.1:
+    dependencies:
+      '@loopback/context': 1.25.1
+      '@loopback/core': 1.12.1
+      '@types/debug': 4.1.5
+      debug: 4.1.1
+      lodash: 4.17.15
+      loopback-datasource-juggler: 4.18.0
+    dev: false
+    engines:
+      node: '>=8.9'
+    resolution:
+      integrity: sha512-lpGkNgYYfXFlQz3avHBOqzqPZMx6ZhS3jf6ONPWUNMvYOMBGFMSoa3V30z4ei/Y/y9o1sfaL1sTfKY8zohhyEQ==
   /@loopback/repository/1.17.0:
     dependencies:
       '@loopback/context': 1.25.1
@@ -629,47 +644,34 @@ packages:
       node: '>=8.9'
     resolution:
       integrity: sha512-0OYWDY4MUC0aYoKVeU0aiNQ9UEBYZa4UdjH2cJLJ8U/IPgjjjqyPoU4mZuSxnv9dVVM46Tiw3aiV9bhvBnSGvg==
-  /@loopback/repository/1.5.5:
+  /@loopback/rest-explorer/1.3.6:
     dependencies:
       '@loopback/context': 1.25.1
       '@loopback/core': 1.12.1
-      '@types/debug': 4.1.5
-      debug: 4.1.1
-      lodash: 4.17.15
-      loopback-datasource-juggler: 4.18.0
-    dev: false
-    engines:
-      node: '>=8.9'
-    resolution:
-      integrity: sha512-dhUU9CxUEs2cW2WqxWVn5dXHob8IezbqYPeaMkp4xBdBVESpbS4q5ivPGxccK6zkKNNlXazuLXmbjifkzzvz9g==
-  /@loopback/rest-explorer/1.1.22:
-    dependencies:
-      '@loopback/context': 1.25.1
-      '@loopback/core': 1.12.1
-      '@loopback/rest': 1.11.2
+      '@loopback/rest': 1.25.1
       ejs: 2.7.4
       swagger-ui-dist: 3.25.0
     dev: false
     engines:
       node: '>=8.9'
     resolution:
-      integrity: sha512-gxqxJS2IJ8IhhMejPi3Zy0wkb1Cyzd0E+menaQuim/HGsXqPCggCtATxUWPWSSNgW9j1yyzGxVuPmCnmjTedjg==
-  /@loopback/rest/1.11.2:
+      integrity: sha512-A5iAOTbHJqNTa3RHNXUquvwr5F60n+pqiwheR27Y617LRBMAK4bKJLNm/mRYVuNpwo98ynPVJgBcPUPJe1oQMA==
+  /@loopback/rest/1.18.1:
     dependencies:
       '@loopback/context': 1.25.1
       '@loopback/core': 1.12.1
       '@loopback/http-server': 1.5.1
-      '@loopback/openapi-v3': 1.3.11
-      '@loopback/openapi-v3-types': 1.0.18
+      '@loopback/openapi-v3': 1.11.0
       '@types/body-parser': 1.17.1
       '@types/cors': 2.8.6
       '@types/express': 4.17.2
       '@types/express-serve-static-core': 4.17.2
       '@types/http-errors': 1.6.3
       '@types/on-finished': 2.3.1
-      '@types/serve-static': 1.13.2
+      '@types/serve-static': 1.13.3
       '@types/type-is': 1.6.3
       ajv: 6.11.0
+      ajv-keywords: 3.4.1_ajv@6.11.0
       body-parser: 1.19.0
       cors: 2.8.5
       debug: 4.1.1
@@ -679,17 +681,51 @@ packages:
       lodash: 4.17.15
       on-finished: 2.3.0
       openapi-schema-to-json-schema: 2.2.0
-      openapi3-ts: 1.3.0
       path-to-regexp: 3.2.0
       qs: 6.9.1
       strong-error-handler: 3.4.0
       type-is: 1.6.18
-      validator: 10.11.0
+      validator: 11.1.0
     dev: false
     engines:
       node: '>=8.9'
     resolution:
-      integrity: sha512-+RaH7BkqYBPl28StPeNmG8dPa9fpBuBkNd5d1HZ0xmet5wy8FYvkw0p4SnN1wEDzfpyl6R2iBl6xO/nTMB0u7g==
+      integrity: sha512-slYa7aTZtFTnzq95sQi2S44oIdx8GBTizhMqxhhogXA8YsufGW3h0XzEp5zr3LhdXX5+DLDffn62ljshqBz9Vw==
+  /@loopback/rest/1.25.1:
+    dependencies:
+      '@loopback/context': 1.25.1
+      '@loopback/core': 1.12.1
+      '@loopback/http-server': 1.5.1
+      '@loopback/openapi-v3': 1.11.0
+      '@types/body-parser': 1.17.1
+      '@types/cors': 2.8.6
+      '@types/express': 4.17.2
+      '@types/express-serve-static-core': 4.17.2
+      '@types/http-errors': 1.6.3
+      '@types/on-finished': 2.3.1
+      '@types/serve-static': 1.13.3
+      '@types/type-is': 1.6.3
+      ajv: 6.11.0
+      ajv-keywords: 3.4.1_ajv@6.11.0
+      body-parser: 1.19.0
+      cors: 2.8.5
+      debug: 4.1.1
+      express: 4.17.1
+      http-errors: 1.7.3
+      js-yaml: 3.13.1
+      lodash: 4.17.15
+      on-finished: 2.3.0
+      openapi-schema-to-json-schema: 2.2.0
+      path-to-regexp: 6.1.0
+      qs: 6.9.1
+      strong-error-handler: 3.4.0
+      type-is: 1.6.18
+      validator: 12.2.0
+    dev: false
+    engines:
+      node: '>=8.9'
+    resolution:
+      integrity: sha512-1EDYiorHIEevJycFa0LK6IzW1tJK6JIKBpUwqg41e4doROyyP0LzVjWFbtz1FZgkG2oOx+Xy9apLeogc9Uwx1Q==
   /@loopback/service-proxy/1.3.14:
     dependencies:
       '@loopback/context': 1.25.1
@@ -877,18 +913,18 @@ packages:
     resolution:
       integrity: sha1-S6NBSQta4sqY16v4qB8CI1UGbPU=
       tarball: '@sixriver/config-schema/-/@sixriver/config-schema-1.46.1.tgz'
-  /@sixriver/loopback4-support/3.22.1_0cab96aa97f1e56b0d0c4fabb922f4f0:
+  /@sixriver/loopback4-support/3.22.1_051fe290eb63bc924785e392f9f8cd8f:
     dependencies:
       '@6river/reason-guard': 1.3.1
-      '@loopback/boot': 1.2.7
-      '@loopback/context': 1.15.0
-      '@loopback/core': 1.7.0
-      '@loopback/metadata': 1.3.2
-      '@loopback/openapi-v3': 1.3.11
-      '@loopback/openapi-v3-types': 1.0.18
-      '@loopback/repository': 1.5.5
-      '@loopback/rest': 1.11.2
-      '@loopback/rest-explorer': 1.1.22
+      '@loopback/boot': 1.5.5
+      '@loopback/context': 1.25.1
+      '@loopback/core': 1.10.1
+      '@loopback/metadata': 1.3.4
+      '@loopback/openapi-v3': 1.9.6
+      '@loopback/openapi-v3-types': 1.2.1
+      '@loopback/repository': 1.13.1
+      '@loopback/rest': 1.18.1
+      '@loopback/rest-explorer': 1.3.6
       '@sixriver/config-schema': 1.46.1
       '@sixriver/oas-support': 3.22.1
       '@sixriver/service-directory': 3.22.1
@@ -902,7 +938,7 @@ packages:
       parse-database-url: 0.3.0
       url-join: 4.0.0
       url-mask: 1.0.5
-      uuid: 3.3.2
+      uuid: 3.4.0
     dev: false
     engines:
       node: '>=10.16.3'
@@ -962,7 +998,7 @@ packages:
   /@types/body-parser/1.17.1:
     dependencies:
       '@types/connect': 3.4.33
-      '@types/node': 10.17.13
+      '@types/node': 11.15.4
     dev: false
     resolution:
       integrity: sha512-RoX2EZjMiFMjZh9lmYrwgoP9RTpAjSHiJxdp4oidAQVO02T7HER3xj9UKue5534ULWeqVEkujhWcyvUce+d68w==
@@ -999,7 +1035,7 @@ packages:
       integrity: sha512-KMMp2Km5QYLduPP6bAgydlSDiw1Tem6WDqIV48KY/D3RYsPbevccJ4W/kGDlbubeOq1XGNSqGRgLFpzC/GNNLw==
   /@types/connect/3.4.33:
     dependencies:
-      '@types/node': 10.17.13
+      '@types/node': 11.15.4
     dev: false
     resolution:
       integrity: sha512-2+FrkXY4zllzTNfJth7jOqEHC+enpLeGslEhpnTAkg21GkRrWV4SsAtqchtT4YS9/nODBU2/ZfsBY2X4J/dX7A==
@@ -1033,7 +1069,7 @@ packages:
       integrity: sha512-EaObqwIvayI5a8dCzhFrjKzVwKLxjoG9T6Ppd5CEo07LRKfQ8Yokw54r5+Wq7FaBQ+yXRvQAYPrHwya1/UFt9g==
   /@types/express-serve-static-core/4.17.2:
     dependencies:
-      '@types/node': 10.17.13
+      '@types/node': 11.15.4
       '@types/range-parser': 1.2.3
     dev: false
     resolution:
@@ -1070,7 +1106,7 @@ packages:
     dependencies:
       '@types/events': 3.0.0
       '@types/minimatch': 3.0.3
-      '@types/node': 10.17.13
+      '@types/node': 11.15.4
     dev: false
     resolution:
       integrity: sha512-1Bh06cbWJUHMC97acuD6UMG29nMt0Aqz1vF3guLfG+kHHJhy3AyohZFFxYk2f7Q1SQIrNwvncxAE0N/9s70F2w==
@@ -1143,7 +1179,7 @@ packages:
       integrity: sha512-z7deEbNOPcS7pb7uyaZhbITh18ruGghYh86VmUL2zJPKeu9tEAqF0goQH0dhWamHoBJpkyWroNxPZjzNvbYVCw==
   /@types/on-finished/2.3.1:
     dependencies:
-      '@types/node': 10.17.13
+      '@types/node': 11.15.4
     dev: false
     resolution:
       integrity: sha512-mzVYaYcFs5Jd2n/O6uYIRUsFRR1cHyZLRvkLCU0E7+G5WhY0qBDAR5fUCeZbvecYOSh9ikhlesyi2UfI8B9ckQ==
@@ -1159,13 +1195,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-ewFXqrQHlFsgc09MK5jP5iR7vumV/BYayNC6PgJO2LPe8vrnNFyjQjSppfEngITi0qvfKtzFvgKymGheFM9UOA==
-  /@types/serve-static/1.13.2:
-    dependencies:
-      '@types/express-serve-static-core': 4.17.2
-      '@types/mime': 2.0.1
-    dev: false
-    resolution:
-      integrity: sha512-/BZ4QRLpH/bNYgZgwhKEh+5AsboDBcUdlBYgzoLX0fpj3Y2gp6EApyOlM3bK53wQS/OE1SrdSYBAbux2D1528Q==
   /@types/serve-static/1.13.3:
     dependencies:
       '@types/express-serve-static-core': 4.17.2
@@ -1215,16 +1244,16 @@ packages:
       integrity: sha512-GHdvwZQg7i+6AUMnP+tqYJJbt59SuYu8k9dzX8E6TJ5QFXKW9FxfdfqT5g+VcyuEua+/YaRzumqJ6wcQMuSP5Q==
   /@types/type-is/1.6.3:
     dependencies:
-      '@types/node': 10.17.13
+      '@types/node': 11.15.4
     dev: false
     resolution:
       integrity: sha512-PNs5wHaNcBgCQG5nAeeZ7OvosrEsI9O4W2jAOO9BCCg4ux9ZZvH2+0iSCOIDBiKuQsiNS8CBlmfX9f5YBQ22cA==
-  /@types/uuid/3.4.4:
+  /@types/uuid/3.4.6:
     dependencies:
       '@types/node': 11.15.4
     dev: false
     resolution:
-      integrity: sha512-tPIgT0GUmdJQNSHxp0X2jnpQfBSTfGxUMc/2CXBU2mnyTFVYVa2ojpoQ74w0U2yn2vw3jnC640+77lkFFpdVDw==
+      integrity: sha512-cCdlC/1kGEZdEglzOieLDYBxHsvEOIg7kp/2FYyVR9Pxakq+Qf/inL3RKQ+PA8gOlI/NnL+fXmQH12nwcGzsHw==
   /@typescript-eslint/eslint-plugin/2.8.0_1b2cb053a7472ad3b0acf63cd96ef0dd:
     dependencies:
       '@typescript-eslint/experimental-utils': 2.8.0_eslint@5.4.0+typescript@3.7.2
@@ -5188,6 +5217,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-DM2RLEuCcNBfBW+9E4FLU9OCWx4=
+  /json-merge-patch/0.2.3:
+    dependencies:
+      deep-equal: 1.1.1
+    dev: false
+    resolution:
+      integrity: sha1-+ixrWvh9p3uuKWalidUuI+2B/kA=
   /json-parse-better-errors/1.0.2:
     dev: false
     resolution:
@@ -7060,6 +7095,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-jczvQbCUS7XmS7o+y1aEO9OBVFeZBQ1MDSEqmO7xSoPgOPoowY/SxLpZ6Vh97/8qHZOteiCKb7gkG9gA2ZUxJA==
+  /path-to-regexp/6.1.0:
+    dev: false
+    resolution:
+      integrity: sha512-h9DqehX3zZZDCEm+xbfU0ZmwCGFCAAraPJWMXJ4+v32NjZJilVg3k1TcKsRgIb8IQ/izZSaydDc1OhJCZvs2Dw==
   /path-type/1.1.0:
     dependencies:
       graceful-fs: 4.2.3
@@ -9445,6 +9484,18 @@ packages:
       node: '>= 0.10'
     resolution:
       integrity: sha512-X/p3UZerAIsbBfN/IwahhYaBbY68EN/UQBWHtsbXGT5bfrH/p4NQzUCG1kF/rtKaNpnJ7jAu6NGTdSNtyNIXMw==
+  /validator/11.1.0:
+    dev: false
+    engines:
+      node: '>= 0.10'
+    resolution:
+      integrity: sha512-qiQ5ktdO7CD6C/5/mYV4jku/7qnqzjrxb3C/Q5wR3vGGinHTgJZN/TdFT3ZX4vXhX2R1PXx42fB1cn5W+uJ4lg==
+  /validator/12.2.0:
+    dev: false
+    engines:
+      node: '>= 0.10'
+    resolution:
+      integrity: sha512-jJfE/DW6tIK1Ek8nCfNFqt8Wb3nzMoAbocBF6/Icgg1ZFSBpObdnwVY2jQj6qUqzhx5jc71fpvBWyLGO7Xl+nQ==
   /value-or-function/3.0.0:
     dev: false
     engines:
@@ -9832,21 +9883,21 @@ packages:
   'file:projects/template-service.tgz':
     dependencies:
       '@google-cloud/pubsub': 0.30.1
-      '@loopback/boot': 1.2.7
+      '@loopback/boot': 1.5.5
       '@loopback/build': 1.2.0
-      '@loopback/context': 1.15.0
-      '@loopback/core': 1.7.0
-      '@loopback/metadata': 1.3.2
-      '@loopback/openapi-v3': 1.3.11
-      '@loopback/openapi-v3-types': 1.0.18
-      '@loopback/repository': 1.5.5
-      '@loopback/rest': 1.11.2
-      '@loopback/rest-explorer': 1.1.22
+      '@loopback/context': 1.25.1
+      '@loopback/core': 1.10.1
+      '@loopback/metadata': 1.3.4
+      '@loopback/openapi-v3': 1.9.6
+      '@loopback/openapi-v3-types': 1.2.1
+      '@loopback/repository': 1.13.1
+      '@loopback/rest': 1.18.1
+      '@loopback/rest-explorer': 1.3.6
       '@loopback/testlab': 1.0.4
       '@pact-foundation/pact': 8.2.2
       '@pact-foundation/pact-node': 8.3.0
       '@sixriver/config-schema': 1.46.1
-      '@sixriver/loopback4-support': 3.22.1_0cab96aa97f1e56b0d0c4fabb922f4f0
+      '@sixriver/loopback4-support': 3.22.1_051fe290eb63bc924785e392f9f8cd8f
       '@sixriver/service-directory': 3.22.1
       '@sixriver/typescript-support': 3.22.1
       '@types/bunyan': 1.8.4
@@ -9859,7 +9910,7 @@ packages:
       '@types/nock': 9.3.1
       '@types/node': 10.17.13
       '@types/sinon': 7.5.0
-      '@types/uuid': 3.4.4
+      '@types/uuid': 3.4.6
       '@typescript-eslint/eslint-plugin': 2.8.0_1b2cb053a7472ad3b0acf63cd96ef0dd
       '@typescript-eslint/parser': 2.8.0_eslint@5.4.0+typescript@3.7.2
       ajv: 6.10.0
@@ -9878,6 +9929,9 @@ packages:
       eslint-config-google: 0.12.0_eslint@5.4.0
       eslint-plugin-6river: 1.0.6
       eslint-plugin-mocha: 5.0.0_eslint@5.4.0
+      gulp: 4.0.2
+      gulp-sourcemaps: 2.6.5
+      gulp-typescript: 5.0.1_typescript@3.7.2
       instana-nodejs-sensor: 1.49.0
       lodash: 4.17.15
       loopback-connector-postgresql: 3.6.0
@@ -9890,27 +9944,28 @@ packages:
       sinon: 7.5.0
       source-map-support: 0.5.16
       typescript: 3.7.2
-      uuid: 3.3.2
+      uuid: 3.4.0
     dev: false
     name: '@rush-temp/template-service'
     resolution:
-      integrity: sha512-TRfAPrVNmZM6Ble7CP4bXQIv+wr6NWHetypbMl5WKTHlMTcjh+j3Msl3lIORv44nur2TwrDvSRtj7rERNZFjFg==
+      integrity: sha512-5xZADJyHAdUHV/f0rfTZx/zfUnLz9zCica1ne2rE00tZRdF91AWBQjhBfriPSPEwQ7NaCnxamhSiaTQap7pU/g==
       tarball: 'file:projects/template-service.tgz'
     version: 0.0.0
+registry: ''
 specifiers:
   '@6river/commitlint-config-6river': ^2.1.2
   '@commitlint/cli': ^7.2.1
   '@google-cloud/pubsub': 0.30.1
-  '@loopback/boot': 1.2.7
+  '@loopback/boot': 1.5.5
   '@loopback/build': 1.2.0
-  '@loopback/context': 1.15.0
-  '@loopback/core': 1.7.0
-  '@loopback/metadata': 1.3.2
-  '@loopback/openapi-v3': 1.3.11
-  '@loopback/openapi-v3-types': 1.0.18
-  '@loopback/repository': 1.5.5
-  '@loopback/rest': 1.11.2
-  '@loopback/rest-explorer': 1.1.22
+  '@loopback/context': 1.25.1
+  '@loopback/core': 1.10.1
+  '@loopback/metadata': 1.3.4
+  '@loopback/openapi-v3': 1.9.6
+  '@loopback/openapi-v3-types': 1.2.1
+  '@loopback/repository': 1.13.1
+  '@loopback/rest': 1.18.1
+  '@loopback/rest-explorer': 1.3.6
   '@loopback/testlab': 1.0.4
   '@pact-foundation/pact': 8.2.2
   '@pact-foundation/pact-node': 8.3.0
@@ -9933,7 +9988,7 @@ specifiers:
   '@types/node': ^10.17.0
   '@types/sinon': 7.5.0
   '@types/swagger-parser': 4.0.3
-  '@types/uuid': 3.4.4
+  '@types/uuid': 3.4.6
   '@typescript-eslint/eslint-plugin': 2.8.0
   '@typescript-eslint/parser': 2.8.0
   ajv: 6.10.0
@@ -9977,4 +10032,4 @@ specifiers:
   speccy: 0.9.0
   swagger-parser: 6.0.5
   typescript: 3.7.2
-  uuid: 3.3.2
+  uuid: 3.4.0
