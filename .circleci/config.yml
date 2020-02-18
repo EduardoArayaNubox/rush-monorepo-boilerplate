@@ -129,6 +129,7 @@ jobs:
         environment:
           POSTGRES_USER: root
           POSTGRES_DB: circle_test
+          POSTGRES_HOST_AUTH_METHOD: trust
       - image: singularities/pubsub-emulator
         environment:
           PUBSUB_PROJECT_ID: test
@@ -175,6 +176,7 @@ jobs:
         environment:
           POSTGRES_USER: root
           POSTGRES_DB: circle_test
+          POSTGRES_HOST_AUTH_METHOD: trust
       - image: singularities/pubsub-emulator
         environment:
           PUBSUB_PROJECT_ID: test
