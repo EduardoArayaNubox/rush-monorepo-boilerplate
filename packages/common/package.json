@@ -47,6 +47,7 @@
     "dist*/index*",
     "src"
   ],
+  "prettier": "@6river/prettier-config",
   "devDependencies": {
     "@6river/prettier-config": "1.0.0",
     "@types/chai": "4.2.5",

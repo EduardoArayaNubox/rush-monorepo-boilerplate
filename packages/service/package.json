@@ -52,6 +52,7 @@
     "dist*/index*",
     "src"
   ],
+  "prettier": "@6river/prettier-config",
   "dependencies": {
     "@loopback/boot": "1.5.5",
     "@loopback/context": "1.25.1",

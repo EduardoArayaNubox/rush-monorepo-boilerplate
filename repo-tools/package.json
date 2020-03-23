@@ -21,6 +21,7 @@
   "publishConfig": {
     "registry": "https://sixriver.jfrog.io/sixriver/npm-local/"
   },
+  "prettier": "@6river/prettier-config",
   "devDependencies": {
     "@6river/commitlint-config-6river": "^2.1.2",
     "@6river/prettier-config": "1.0.0",

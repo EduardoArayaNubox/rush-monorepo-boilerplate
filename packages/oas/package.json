@@ -41,6 +41,7 @@
     "dist/schemas",
     "template-openapi.yaml"
   ],
+  "prettier": "@6river/prettier-config",
   "peerDependencies": {
     "@sixriver/oas-support": "^3.22.1",
     "ajv": "6.10.0"
