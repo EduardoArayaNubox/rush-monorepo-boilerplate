@@ -11,12 +11,19 @@ if [ ${CI} ]; then
   export ESLINT_OPTS="--format junit -o ${REPORTDIR}/eslint.xml"
 fi
 
-for lintCheck in $(./node_modules/.bin/eslint --ext .ts,.js ${ESLINT_OPTS} .) $(./node_modules/.bin/pretty-quick --pattern "**/*.*(js|ts)" --check .);
-do
-	echo "Linting ${BASENAME}..."
-	retVal=$?
-	if [ $retVal -ne 0 ]; then
-		echo "Linter Error"
-		exit $retVal
-	fi
-done
+echo "Linting w/eslint ${BASENAME}..."
+./node_modules/.bin/eslint --ext .ts,.js ${ESLINT_OPTS} .
+retVal=$?
+if [ $retVal -ne 0 ]; then
+	echo "Linter Error"
+	exit $retVal
+fi
+
+echo "Linting w/prettier ${BASENAME}..."
+../../repo-tools/node_modules/.bin/pretty-quick --pattern "**/*.*(js|ts)" --check .
+retVal=$?
+if [ $retVal -ne 0 ]; then
+	echo "Linter Error"
+	exit $retVal
+fi
+

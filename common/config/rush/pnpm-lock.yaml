@@ -18,7 +18,7 @@ dependencies:
   '@pact-foundation/pact-node': 8.3.0
   '@rush-temp/template-common': 'file:projects/template-common.tgz'
   '@rush-temp/template-oas': 'file:projects/template-oas.tgz'
-  '@rush-temp/template-repo-tools': 'file:projects/template-repo-tools.tgz'
+  '@rush-temp/template-repo-tools': 'file:projects/template-repo-tools.tgz_prettier@2.0.1'
   '@rush-temp/template-service': 'file:projects/template-service.tgz'
   '@sixriver/config-schema': 1.46.1
   '@sixriver/loopback4-support': 3.22.1_051fe290eb63bc924785e392f9f8cd8f
@@ -34,7 +34,6 @@ dependencies:
   '@types/nock': 9.3.1
   '@types/node': 10.17.13
   '@types/sinon': 7.5.0
-  '@types/swagger-parser': 7.0.1
   '@types/uuid': 3.4.6
   '@typescript-eslint/eslint-plugin': 2.23.0_2510d86781fe783b47b58303c18a0d9b
   '@typescript-eslint/parser': 2.23.0_eslint@6.8.0+typescript@3.8.3
@@ -54,6 +53,7 @@ dependencies:
   eslint: 6.8.0
   eslint-config-6river: 3.0.0_eslint@6.8.0
   eslint-config-google: 0.14.0_eslint@6.8.0
+  eslint-config-prettier: 6.10.1_eslint@6.8.0
   eslint-plugin-6river: 1.0.6
   eslint-plugin-mocha: 6.3.0_eslint@6.8.0
   gulp: 4.0.2
@@ -3339,6 +3339,16 @@ packages:
       eslint: '>=5.16.0'
     resolution:
       integrity: sha512-WsbX4WbjuMvTdeVL6+J3rK1RGhCTqjsFjX7UMSMgZiyxxaNLkoJENbrGExzERFeoTpGw3F3FypTiWAP9ZXzkEw==
+  /eslint-config-prettier/6.10.1_eslint@6.8.0:
+    dependencies:
+      eslint: 6.8.0
+      get-stdin: 6.0.0
+    dev: false
+    hasBin: true
+    peerDependencies:
+      eslint: '>=3.14.1'
+    resolution:
+      integrity: sha512-svTy6zh1ecQojvpbJSgH3aei/Rt7C6i090l5f2WQ4aB05lYHeZIR1qL4wZyyILTbtmnbHP5Yn8MrsOJMGa8RkQ==
   /eslint-plugin-6river/1.0.6:
     dependencies:
       requireindex: 1.1.0
@@ -10239,13 +10249,12 @@ packages:
     dev: false
     name: '@rush-temp/template-oas'
     resolution:
-      integrity: sha512-FD4TKcHbwlvwMpWJpAeoB/RafxnHUp486/+pgWgAlYOHSaaYJSE9cKc6LMce/NhoK8a+f8a7omxPcILdQOLJ0Q==
+      integrity: sha512-Hri6BpvxzC4QsxTK1WO9k0Qnx4FJXFrfLCTLKO5qysTz75at1zucafF8sUQFmUSWfvKj9P46gVjNqECHZp4IGw==
       tarball: 'file:projects/template-oas.tgz'
     version: 0.0.0
-  'file:projects/template-repo-tools.tgz':
+  'file:projects/template-repo-tools.tgz_prettier@2.0.1':
     dependencies:
       '@6river/commitlint-config-6river': 2.1.7_e7b9bca707faba8623a376c3bc5e2fde
-      '@6river/prettier-config': 1.0.0
       '@commitlint/cli': 7.6.1
       '@pact-foundation/pact-node': 8.3.0
       child_process: 1.0.2
@@ -10255,13 +10264,15 @@ packages:
       husky: 1.3.1
       jsmin: 1.0.1
       merge2: 1.2.3
-      prettier: 2.0.1
       pretty-quick: 2.0.1_prettier@2.0.1
       typescript: 3.8.3
     dev: false
+    id: 'file:projects/template-repo-tools.tgz'
     name: '@rush-temp/template-repo-tools'
+    peerDependencies:
+      prettier: '*'
     resolution:
-      integrity: sha512-KLjsufAvE7K5UUrRTVrYDtPnWwQCT65e9rBIEvih/WTnv+ceuucT+OzmSsTfIynv2Tj09QDh3yJvp3QhMxkVgw==
+      integrity: sha512-9PEQPRoVOMKJGhSXpowAuu7Ibes1Jk83AeD6mY+jXUglHcMdMkBuvznaTgsXl+Rm7nCP1ySdLWzhBhjfcaBNaw==
       tarball: 'file:projects/template-repo-tools.tgz'
     version: 0.0.0
   'file:projects/template-service.tgz':
@@ -10312,6 +10323,7 @@ packages:
       eslint: 6.8.0
       eslint-config-6river: 3.0.0_eslint@6.8.0
       eslint-config-google: 0.14.0_eslint@6.8.0
+      eslint-config-prettier: 6.10.1_eslint@6.8.0
       eslint-plugin-6river: 1.0.6
       eslint-plugin-mocha: 6.3.0_eslint@6.8.0
       gulp: 4.0.2
@@ -10334,7 +10346,7 @@ packages:
     dev: false
     name: '@rush-temp/template-service'
     resolution:
-      integrity: sha512-RP8Qr7tCVA6essV7SoY5TO5zllDoeiZH/pTYRZYktaXKBzwz01/kgX2jLUMmKxPCQ9uxX/0MsdXv8vn/eXaalQ==
+      integrity: sha512-qr4dxQRNids3m987Hr3+1F3LZq89B7Z+XWxbCz6s7ZKG837D4ev3yM2qriD166lqTD/A+LtdeRzbJoznQQwMTA==
       tarball: 'file:projects/template-service.tgz'
     version: 0.0.0
 registry: ''
@@ -10374,7 +10386,6 @@ specifiers:
   '@types/nock': 9.3.1
   '@types/node': ^10.17.0
   '@types/sinon': 7.5.0
-  '@types/swagger-parser': 7.0.1
   '@types/uuid': 3.4.6
   '@typescript-eslint/eslint-plugin': 2.23.0
   '@typescript-eslint/parser': 2.23.0
@@ -10394,6 +10405,7 @@ specifiers:
   eslint: 6.8.0
   eslint-config-6river: 3.0.0
   eslint-config-google: 0.14.0
+  eslint-config-prettier: 6.10.1
   eslint-plugin-6river: 1.0.6
   eslint-plugin-mocha: 6.3.0
   gulp: 4.0.2

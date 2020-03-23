@@ -41,7 +41,6 @@
     "dist/schemas",
     "template-openapi.yaml"
   ],
-  "prettier": "@6river/prettier-config",
   "peerDependencies": {
     "@sixriver/oas-support": "^3.22.1",
     "ajv": "6.10.0"
@@ -68,6 +67,6 @@
     "speccy": "0.11.0",
     "swagger-parser": "9.0.1",
     "typescript": "3.8.3",
-    "prettier": "^2.0.1"
+    "prettier": "2.0.1"
   }
 }

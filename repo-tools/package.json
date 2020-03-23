@@ -21,10 +21,8 @@
   "publishConfig": {
     "registry": "https://sixriver.jfrog.io/sixriver/npm-local/"
   },
-  "prettier": "@6river/prettier-config",
   "devDependencies": {
     "@6river/commitlint-config-6river": "^2.1.2",
-    "@6river/prettier-config": "1.0.0",
     "@commitlint/cli": "^7.2.1",
     "@pact-foundation/pact-node": "8.3.0",
     "child_process": "1.0.2",
@@ -34,10 +32,7 @@
     "husky": "^1.1.2",
     "jsmin": "1.0.1",
     "merge2": "1.2.3",
-    "prettier": "^2.0.1",
-    "typescript": "3.8.3"
-  },
-  "dependencies": {
-    "pretty-quick": "^2.0.1"
+    "typescript": "3.8.3",
+    "pretty-quick": "2.0.1"
   }
 }

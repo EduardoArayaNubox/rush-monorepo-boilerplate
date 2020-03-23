@@ -52,7 +52,6 @@
     "dist*/index*",
     "src"
   ],
-  "prettier": "@6river/prettier-config",
   "dependencies": {
     "@loopback/boot": "1.5.5",
     "@loopback/context": "1.25.1",
@@ -122,6 +121,6 @@
     "gulp": "4.0.2",
     "gulp-sourcemaps": "2.6.5",
     "gulp-typescript": "5.0.1",
-    "prettier": "^2.0.1"
+    "prettier": "2.0.1"
   }
 }
