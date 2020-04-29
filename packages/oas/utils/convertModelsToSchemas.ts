@@ -112,11 +112,17 @@ async function run(rootDir: string) {
 			generateInterfaces(rootDir, api, 'template-openapi'),
 		]);
 	} catch (error) {
-		console.log(error);
+		// set the exitCode first, in case serializing the error throws
 		process.exitCode = 1;
+		console.log(error);
 	}
 }
 
 if (require.main === module) {
+	// make sure any weirdness is fatal
+	process.on('unhandledRejection', (err) => {
+		process.exitCode = 1;
+		throw err;
+	})
 	run(process.cwd());
 }
