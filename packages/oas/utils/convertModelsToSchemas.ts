@@ -123,6 +123,6 @@ if (require.main === module) {
 	process.on('unhandledRejection', (err) => {
 		process.exitCode = 1;
 		throw err;
-	})
+	});
 	run(process.cwd());
 }
