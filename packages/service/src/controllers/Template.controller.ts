@@ -4,7 +4,7 @@ import * as Ajv from 'ajv';
 import {inject} from '@loopback/context';
 import {post, api, HttpErrors, RestBindings, requestBody, Response} from '@loopback/rest';
 
-import {MinimalLogFactory, MinimalLogger, Validator} from '@sixriver/typescript-support';
+import {MinimalLogFactory, MinimalLogger, Validator, safeErrors} from '@sixriver/typescript-support';
 import {ApiSchemaBuilder, CommonBindings} from '@sixriver/loopback4-support';
 
 import {TemplateMessage} from '@sixriver/template-oas';
@@ -87,36 +87,4 @@ export class TemplateController {
 		this.logger.error({err}, err.message);
 		throw err;
 	}
-}
-
-function safeErrors<T>(object: T, maxDepth: number = 8): T {
-	const depth = new Map<any, number>();
-	const jsonString = JSON.stringify(object, function(this: any, key, value) {
-		if (key.startsWith('_') || key.endsWith('_')) {
-			return undefined;
-		}
-		if (_.isObject(value)) {
-			if (value instanceof Error) {
-				// errors need special handling else some of their properties dissapear
-				value = {
-					message: value.message,
-					stack: value.stack,
-					...value,
-				};
-			}
-			// eslint-disable-next-line no-invalid-this
-			const thisDepth = depth.get(this) || 0;
-			let valueDepth = depth.get(value);
-			if (valueDepth !== undefined) {
-				return '[Circular]';
-			} else if (thisDepth >= maxDepth && _.isObject(value)) {
-				return '[Trimmed]';
-			} else {
-				valueDepth = thisDepth + 1;
-				depth.set(value, valueDepth);
-			}
-		}
-		return value;
-	});
-	return JSON.parse(jsonString);
 }

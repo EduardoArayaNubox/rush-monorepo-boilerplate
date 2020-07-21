@@ -5,7 +5,7 @@
 	"pnpmOptions": {
 		"strictPeerDependencies": false
 	},
-	"nodeSupportedVersionRange": "^10.16.2",
+	"nodeSupportedVersionRange": ">=10.16.2",
 	"ensureConsistentVersions": true,
 	"repository": {
 		"url": "https://github.com/6RiverSystems/rush-monorepo-boilerplate"

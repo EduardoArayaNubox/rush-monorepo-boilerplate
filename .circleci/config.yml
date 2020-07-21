@@ -3,7 +3,7 @@ version: 2
 jobs:
   install:
     docker:
-      - image: circleci/node:10.17.0
+      - image: circleci/node:12.16.3
         environment:
           DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
@@ -56,7 +56,7 @@ jobs:
 
   save-local-cache:
     docker:
-      - image: circleci/node:10.17.0
+      - image: circleci/node:12.16.3
         environment:
           DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
@@ -71,7 +71,7 @@ jobs:
 
   build:
     docker:
-      - image: circleci/node:10.17.0
+      - image: circleci/node:12.16.3
         environment:
           DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
@@ -97,7 +97,7 @@ jobs:
 
   lint:
     docker:
-      - image: circleci/node:10.17.0
+      - image: circleci/node:12.16.3
         environment:
           DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
@@ -121,7 +121,7 @@ jobs:
 
   test:
     docker:
-      - image: circleci/node:10.17.0
+      - image: circleci/node:12.16.3
         environment:
           DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
@@ -154,9 +154,7 @@ jobs:
       - run:
           name: upload coverage
           command: |
-            sudo npm i -g lcov-result-merger codecov
-            lcov-result-merger 'packages/*/coverage/lcov.info' 'lcov-merged.out'
-            cat "lcov-merged.out" | codecov || true
+            bash <( curl -s https://codecov.io/bash ) -s coverage
       - store_artifacts:
           path: coverage
       - store_artifacts:
@@ -168,7 +166,7 @@ jobs:
 
   pact:
     docker:
-      - image: circleci/node:10.17.0
+      - image: circleci/node:12.16.3
         environment:
           DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
@@ -201,9 +199,7 @@ jobs:
       - run:
           name: upload coverage
           command: |
-            sudo npm i -g lcov-result-merger codecov
-            lcov-result-merger 'packages/*/coverage/lcov.info' 'lcov-merged.out'
-            cat "lcov-merged.out" | codecov || true
+            bash <( curl -s https://codecov.io/bash ) -s coverage
       - persist_to_workspace:
           root: ./
           paths:
@@ -219,7 +215,7 @@ jobs:
 
   pre-deploy-docker-1:
     docker:
-      - image: circleci/node:10.17.0
+      - image: circleci/node:12.16.3
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
@@ -253,7 +249,7 @@ jobs:
 
   pre-deploy-docker-2:
     docker:
-      - image: circleci/node:10.17.0
+      - image: circleci/node:12.16.3
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
@@ -280,7 +276,7 @@ jobs:
 
   deploy-npm:
     docker:
-      - image: circleci/node:10.17.0
+      - image: circleci/node:12.16.3
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
@@ -308,7 +304,7 @@ jobs:
 
   deploy-docker:
     docker:
-      - image: circleci/node:10.17.0
+      - image: circleci/node:12.16.3
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
