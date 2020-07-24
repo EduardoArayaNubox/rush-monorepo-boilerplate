@@ -32,7 +32,7 @@
 		{
 			"commandKind": "bulk",
 			"name": "test-ci-pact",
-			"summary": "Execute pact acceptance tests in each project.",
+			"summary": "Execute pact acceptance tests in each project",
 			"description": "Runs pact acceptance tests in each project",
 			"enableParallelism": false
 		},
