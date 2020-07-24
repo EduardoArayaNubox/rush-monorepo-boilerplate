@@ -13,7 +13,7 @@
     "build:apidocs": "lb-apidocs",
     "build:only": "gulp compile --gulpfile '../../repo-tools/build-configs/gulpfile.js' --cwd './'",
     "build:watch": "gulp watch --gulpfile '../../repo-tools/build-configs/gulpfile.js' --cwd './'",
-    "clean": "rm -rf dist* .rush",
+    "clean": "rm -rf dist* .rush/temp/package-deps*.json",
     "lint": "../../repo-tools/scripts/lint.sh",
     "test": "npm-run-all lint build test-ci",
     "test-pact": "npm-run-all build test-ci-pact",
