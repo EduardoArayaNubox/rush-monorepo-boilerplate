@@ -28,6 +28,13 @@ if [ "$NODE_ENV" != "test" ]; then
   mkdir -p pacts
 fi
 
+# be strict about unhandled rejections
+NODE_OPTIONS="$NODE_OPTIONS --unhandled-rejections=strict"
+# but disable deprecation warnings until axios gets fixed
+# https://github.com/axios/axios/issues/2469
+NODE_OPTIONS="$NODE_OPTIONS --no-deprecation"
+export NODE_OPTIONS
+
 echo "Testing ${BASENAME}..."
 ./node_modules/.bin/nyc ${NYC_OPTS} ./node_modules/.bin/mocha ${MOCHA_OPTS} $@
 retVal=$?
