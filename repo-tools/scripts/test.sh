@@ -4,7 +4,7 @@
 
 BASENAME=$(basename $PWD)
 
-export PUBSUB_EMULATOR_HOST=${PUBSUB_EMULATOR:-localhost:8802}
+export PUBSUB_EMULATOR_HOST=${PUBSUB_EMULATOR_HOST:-localhost:8802}
 export SITE_NAME=${SITE_NAME:-${USER:-chuckulator}}
 export NODE_ENV=${NODE_ENV:-test}
 export PUBSUB_GCLOUD_PROJECT=${SITE_NAME:-${NODE_ENV}}
