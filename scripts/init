@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+if [[ -n "${DEBUG:-}" ]]; then
+	set -x
+fi
+
+readonly DIR="$(dirname "$(realpath "$0")")"
+
+# Find every subdirectory containing package.json, excluding the root with `mindepth` and excluding node_modules and rush-recycler
+PACKAGES=$(find "$DIR/.." \
+	-mindepth 2 \
+	-name package.json \
+	-type f \
+	-not -path "*/node_modules/*" \
+	-not -path "*/rush-recycler/*" \
+	-not -path "*/common/temp/*" \
+)
+
+for PACKAGE in $PACKAGES; do
+	PACKAGE_DIR="$(dirname "$PACKAGE")"
+	PACKAGE_NAME="$(basename "$PACKAGE_DIR")"
+	if [ -x "$PACKAGE_DIR"/scripts/init ]; then
+		(
+			cd $PACKAGE_DIR || exit
+			echo "Initializing ${PACKAGE_NAME}..."
+			./scripts/init
+		)
+	fi
+done

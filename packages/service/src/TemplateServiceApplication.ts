@@ -10,19 +10,19 @@ import {RepositoryMixin, juggler} from '@loopback/repository';
 import {BootMixin} from '@loopback/boot';
 
 import {
-	configureServiceConfig,
-	ServiceConfig,
-	getServiceConfigOptions,
 	CommonBindings,
-	LoggingConfigOptions,
-	getDefaultLoggingConfiguration,
 	configureLogging,
-	KillController,
-	envRestOptions,
-	UptimeController,
-	JsonSchema4ValidatorProvider,
-	InternalServiceDirectoryProvider,
+	configureServiceConfig,
 	DbMigrateBooterBase,
+	envRestOptions,
+	getDefaultLoggingConfiguration,
+	getServiceConfigOptions,
+	InternalServiceDirectoryProvider,
+	JsonSchema4ValidatorProvider,
+	KillController,
+	LoggingConfigOptions,
+	ServiceConfig,
+	UptimeController,
 } from '@sixriver/loopback4-support';
 import {MinimalLogFactory, MinimalLogger} from '@sixriver/typescript-support';
 import {ServicePortFactory, getEnvironment} from '@sixriver/service-directory';
@@ -70,8 +70,6 @@ export class TemplateServiceApplication extends BootMixin(RepositoryMixin(RestAp
 
 		this.projectRoot = __dirname;
 
-		// NOTE: for unknown reasons, things seem to be a bit titchy about where exactly in the constructor we put this line
-		// don't move it without verifying it works both locally on your dev machine AND in a cluster!
 		this.component(RestExplorerComponent);
 
 		// Customize @loopback/boot Booter Conventions here
