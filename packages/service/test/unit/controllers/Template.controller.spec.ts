@@ -1,11 +1,11 @@
 import {assert} from 'chai';
-import * as Chance from 'chance';
+import Chance from 'chance';
 const chance = new Chance();
 import * as sinon from 'sinon';
 
-import * as Ajv from 'ajv';
+import Ajv from 'ajv';
 import {Console} from 'console';
-import * as uuidv4 from 'uuid/v4';
+import uuidv4 from 'uuid/v4';
 
 import {Response} from '@loopback/rest';
 

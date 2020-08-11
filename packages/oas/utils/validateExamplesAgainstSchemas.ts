@@ -1,11 +1,11 @@
 require('source-map-support').install();
 
-import * as Ajv from 'ajv';
+import Ajv from 'ajv';
 import * as fs from 'fs';
 import {get} from 'lodash';
-import * as toJsonSchema from 'openapi-schema-to-json-schema';
+import toJsonSchema from 'openapi-schema-to-json-schema';
 import {join, basename} from 'path';
-import * as SwaggerParser from 'swagger-parser';
+import SwaggerParser from 'swagger-parser';
 import {promisify} from 'util';
 
 const readdir = promisify(fs.readdir);

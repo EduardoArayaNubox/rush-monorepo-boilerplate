@@ -13,28 +13,24 @@
 			"name": "test",
 			"summary": "Builds and then executes tests in each project.",
 			"description": "Builds and then executes tests in each project",
-			"enableParallelism": true
+			"enableParallelism": true,
+			"incremental": true
 		},
 		{
 			"commandKind": "bulk",
 			"name": "lint",
 			"summary": "Run linting rules in each project",
 			"description": "Run linting rules in each project",
-			"enableParallelism": true
+			"enableParallelism": true,
+			"incremental": true
 		},
 		{
 			"commandKind": "bulk",
 			"name": "test-ci",
 			"summary": "Execute tests in each project.",
 			"description": "Runs tests in each project",
-			"enableParallelism": true
-		},
-		{
-			"commandKind": "bulk",
-			"name": "test-ci-pact",
-			"summary": "Execute pact acceptance tests in each project",
-			"description": "Runs pact acceptance tests in each project",
-			"enableParallelism": false
+			"enableParallelism": true,
+			"incremental": true
 		},
 		{
 			"commandKind": "bulk",
@@ -42,13 +38,6 @@
 			"summary": "",
 			"description": "",
 			"enableParallelism": false
-		},
-		{
-			"commandKind": "bulk",
-			"name": "publish-pacts",
-			"summary": "Publish pacts to the pact broker",
-			"description": "",
-			"enableParallelism": true
 		},
 		{
 			"commandKind": "bulk",

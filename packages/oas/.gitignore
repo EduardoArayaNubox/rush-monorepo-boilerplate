@@ -64,6 +64,4 @@ api-docs/
 dist/
 dist*/
 
-pacts/
-
 generated-interfaces/

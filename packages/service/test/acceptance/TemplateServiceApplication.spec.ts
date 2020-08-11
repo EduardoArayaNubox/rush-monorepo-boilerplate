@@ -2,7 +2,7 @@ import {assert} from 'chai';
 
 import axios from 'axios';
 import {AxiosError} from 'axios';
-import * as uuidv4 from 'uuid/v4';
+import uuidv4 from 'uuid/v4';
 
 import {CommonBindings} from '@sixriver/loopback4-support';
 
