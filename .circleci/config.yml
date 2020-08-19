@@ -5,7 +5,6 @@ jobs:
     docker:
       - image: circleci/node:12.16.3
         environment:
-          DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
       - checkout
@@ -58,7 +57,6 @@ jobs:
     docker:
       - image: circleci/node:12.16.3
         environment:
-          DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
       - attach_workspace:
@@ -73,7 +71,6 @@ jobs:
     docker:
       - image: circleci/node:12.16.3
         environment:
-          DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
       - attach_workspace:
@@ -99,7 +96,6 @@ jobs:
     docker:
       - image: circleci/node:12.16.3
         environment:
-          DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
       - attach_workspace:
