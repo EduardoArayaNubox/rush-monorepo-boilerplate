@@ -39,7 +39,7 @@
     "template-openapi.yaml"
   ],
   "peerDependencies": {
-    "@sixriver/oas-support": "^3.22.1",
+    "@sixriver/oas-support": "^4.0.0",
     "ajv": "6.10.0"
   },
   "devDependencies": {
