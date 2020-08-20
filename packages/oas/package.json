@@ -36,6 +36,7 @@
     "dist/index*",
     "dist/generated-interfaces",
     "dist/schemas",
+    "dist/src",
     "template-openapi.yaml"
   ],
   "peerDependencies": {
