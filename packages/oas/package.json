@@ -10,7 +10,7 @@
     "build:utils": "tsc --project utils",
     "build:compile": "tsc",
     "build:models": "node dist/utils/convertModelsToSchemas.js",
-    "clean": "rm -rf dist generated-interfaces .rush",
+    "clean": "rm -rf dist generated-interfaces .rush/temp/package-deps*.json",
     "test": "npm-run-all lint build test-ci",
     "test-ci": "npm-run-all test:examples",
     "lint": "npm-run-all lint:eslint lint:speccy",
