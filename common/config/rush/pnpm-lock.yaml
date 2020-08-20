@@ -24,7 +24,7 @@ dependencies:
   '@rush-temp/template-repo-tools': 'file:projects/template-repo-tools.tgz'
   '@rush-temp/template-service': 'file:projects/template-service.tgz'
   '@sixriver/config-schema': 1.46.1
-  '@sixriver/loopback4-metrics': 4.0.0-lb.21_fa5c44630321edf5b71442478907502b
+  '@sixriver/loopback4-metrics': 4.0.0-lb.21_93427f1a176cf828c513715a5dade76f
   '@sixriver/loopback4-support': 4.0.0-lb.21_18307549ede3fbe5a25b572b31305ef1
   '@sixriver/service-directory': 4.0.0-lb.21
   '@sixriver/typescript-support': 4.0.0-lb.21
@@ -79,6 +79,7 @@ dependencies:
   openapi-schema-to-json-schema: 2.2.0
   pino: 5.16.0
   pino-pretty: 3.2.1
+  prom-client: 12.0.0
   sinon: 7.5.0
   source-map-support: 0.5.16
   speccy: 0.9.0
@@ -1092,11 +1093,12 @@ packages:
     resolution:
       integrity: sha1-S6NBSQta4sqY16v4qB8CI1UGbPU=
       tarball: '@sixriver/config-schema/-/@sixriver/config-schema-1.46.1.tgz'
-  /@sixriver/loopback4-metrics/4.0.0-lb.21_fa5c44630321edf5b71442478907502b:
+  /@sixriver/loopback4-metrics/4.0.0-lb.21_93427f1a176cf828c513715a5dade76f:
     dependencies:
       '@loopback/context': 3.7.0
       '@loopback/core': 2.5.0
       '@loopback/rest': 4.0.0
+      prom-client: 12.0.0
       tslib: 1.13.0
     dev: false
     engines:
@@ -2216,6 +2218,10 @@ packages:
     optional: true
     resolution:
       integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==
+  /bintrees/1.0.1:
+    dev: false
+    resolution:
+      integrity: sha1-DmVcm5wkNeqraL9AJyJtK1WjRSQ=
   /bl/2.2.0:
     dependencies:
       readable-stream: 2.3.7
@@ -7906,6 +7912,14 @@ packages:
       node: '>=0.4.0'
     resolution:
       integrity: sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
+  /prom-client/12.0.0:
+    dependencies:
+      tdigest: 0.1.1
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-JbzzHnw0VDwCvoqf8y1WDtq4wSBAbthMB1pcVI/0lzdqHGJI3KBJDXle70XK+c7Iv93Gihqo0a5LlOn+g8+DrQ==
   /promise.allsettled/1.0.2:
     dependencies:
       array.prototype.map: 1.0.2
@@ -9444,6 +9458,12 @@ packages:
       node: '>=6.0.0'
     resolution:
       integrity: sha512-wmEc8m4fjnob4gt5riFRtTu/6+4rSe12TpAELNSqHMfF3IqnA+CH37USM6/YR3qRZv7e56kAEAtd6nKZaxe0Ug==
+  /tdigest/0.1.1:
+    dependencies:
+      bintrees: 1.0.1
+    dev: false
+    resolution:
+      integrity: sha1-Ljyyw56kSeVdHmzZEReszKRYgCE=
   /test-exclude/6.0.0:
     dependencies:
       '@istanbuljs/schema': 0.1.2
@@ -10352,7 +10372,7 @@ packages:
       '@loopback/rest-explorer': 2.2.0
       '@loopback/testlab': 3.1.3
       '@sixriver/config-schema': 1.46.1
-      '@sixriver/loopback4-metrics': 4.0.0-lb.21_fa5c44630321edf5b71442478907502b
+      '@sixriver/loopback4-metrics': 4.0.0-lb.21_93427f1a176cf828c513715a5dade76f
       '@sixriver/loopback4-support': 4.0.0-lb.21_18307549ede3fbe5a25b572b31305ef1
       '@sixriver/service-directory': 4.0.0-lb.21
       '@sixriver/typescript-support': 4.0.0-lb.21
@@ -10398,6 +10418,7 @@ packages:
       nyc: 13.0.1
       pino: 5.16.0
       pino-pretty: 3.2.1
+      prom-client: 12.0.0
       sinon: 7.5.0
       source-map-support: 0.5.16
       typescript: 3.9.7
@@ -10405,7 +10426,7 @@ packages:
     dev: false
     name: '@rush-temp/template-service'
     resolution:
-      integrity: sha512-t7SQ4HDPOYDomr+G7xhKx0+eUhutdoGTjoy6I+1MICTTF19YJfZi42tIwIBfJX1ld59HgeAI8e2Q2DUAQM49xQ==
+      integrity: sha512-w8G4VnO1ksvCiUVNzuCHZ/ewbPm49AaxyiJBLhruHgiTjugpcEmEHg5jUc8WG7kUuXDWomB2ZE7HVz7EbGtFTg==
       tarball: 'file:projects/template-service.tgz'
     version: 0.0.0
 registry: ''
@@ -10490,6 +10511,7 @@ specifiers:
   openapi-schema-to-json-schema: 2.2.0
   pino: 5.16.0
   pino-pretty: 3.2.1
+  prom-client: 12.0.0
   sinon: 7.5.0
   source-map-support: 0.5.16
   speccy: 0.9.0
