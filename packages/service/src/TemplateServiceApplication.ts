@@ -24,6 +24,7 @@ import {
 	ServiceConfig,
 	UptimeController,
 } from '@sixriver/loopback4-support';
+import {MetricsComponent} from '@sixriver/loopback4-metrics';
 import {MinimalLogFactory, MinimalLogger} from '@sixriver/typescript-support';
 import {ServicePortFactory, getEnvironment} from '@sixriver/service-directory';
 
@@ -71,6 +72,7 @@ export class TemplateServiceApplication extends BootMixin(RepositoryMixin(RestAp
 		this.projectRoot = __dirname;
 
 		this.component(RestExplorerComponent);
+		this.component(MetricsComponent);
 
 		// Customize @loopback/boot Booter Conventions here
 		this.bootOptions = {

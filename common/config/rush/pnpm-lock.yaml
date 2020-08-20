@@ -24,6 +24,7 @@ dependencies:
   '@rush-temp/template-repo-tools': 'file:projects/template-repo-tools.tgz'
   '@rush-temp/template-service': 'file:projects/template-service.tgz'
   '@sixriver/config-schema': 1.46.1
+  '@sixriver/loopback4-metrics': 4.0.0-lb.21_fa5c44630321edf5b71442478907502b
   '@sixriver/loopback4-support': 4.0.0-lb.21_18307549ede3fbe5a25b572b31305ef1
   '@sixriver/service-directory': 4.0.0-lb.21
   '@sixriver/typescript-support': 4.0.0-lb.21
@@ -1091,6 +1092,23 @@ packages:
     resolution:
       integrity: sha1-S6NBSQta4sqY16v4qB8CI1UGbPU=
       tarball: '@sixriver/config-schema/-/@sixriver/config-schema-1.46.1.tgz'
+  /@sixriver/loopback4-metrics/4.0.0-lb.21_fa5c44630321edf5b71442478907502b:
+    dependencies:
+      '@loopback/context': 3.7.0
+      '@loopback/core': 2.5.0
+      '@loopback/rest': 4.0.0
+      tslib: 1.13.0
+    dev: false
+    engines:
+      node: '>=10'
+    peerDependencies:
+      '@loopback/context': ^3.7.0
+      '@loopback/core': ^2.5.0
+      '@loopback/rest': ^4.0.0
+      prom-client: ^12.0.0
+    resolution:
+      integrity: sha1-OVZYb8pdBEnMbnSwkPvAi8243kM=
+      tarball: '@sixriver/loopback4-metrics/-/@sixriver/loopback4-metrics-4.0.0-lb.21.tgz'
   /@sixriver/loopback4-support/4.0.0-lb.21_18307549ede3fbe5a25b572b31305ef1:
     dependencies:
       '@6river/reason-guard': 1.3.1
@@ -10334,6 +10352,7 @@ packages:
       '@loopback/rest-explorer': 2.2.0
       '@loopback/testlab': 3.1.3
       '@sixriver/config-schema': 1.46.1
+      '@sixriver/loopback4-metrics': 4.0.0-lb.21_fa5c44630321edf5b71442478907502b
       '@sixriver/loopback4-support': 4.0.0-lb.21_18307549ede3fbe5a25b572b31305ef1
       '@sixriver/service-directory': 4.0.0-lb.21
       '@sixriver/typescript-support': 4.0.0-lb.21
@@ -10386,7 +10405,7 @@ packages:
     dev: false
     name: '@rush-temp/template-service'
     resolution:
-      integrity: sha512-zLhP88318rI5qXIOZ2TzS6rURNCJw9j+J6Ypy7b/9jxBpa7Ug8MqWIefYqnIWJWVnAjv6jDYmKVnci8FdDoZMA==
+      integrity: sha512-t7SQ4HDPOYDomr+G7xhKx0+eUhutdoGTjoy6I+1MICTTF19YJfZi42tIwIBfJX1ld59HgeAI8e2Q2DUAQM49xQ==
       tarball: 'file:projects/template-service.tgz'
     version: 0.0.0
 registry: ''
@@ -10416,6 +10435,7 @@ specifiers:
   '@rush-temp/template-repo-tools': 'file:./projects/template-repo-tools.tgz'
   '@rush-temp/template-service': 'file:./projects/template-service.tgz'
   '@sixriver/config-schema': 1.46.1
+  '@sixriver/loopback4-metrics': 4.0.0-lb.21
   '@sixriver/loopback4-support': 4.0.0-lb.21
   '@sixriver/service-directory': 4.0.0-lb.21
   '@sixriver/typescript-support': 4.0.0-lb.21
