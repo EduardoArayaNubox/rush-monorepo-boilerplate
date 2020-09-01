@@ -1,14 +1,13 @@
-import * as chai from 'chai';
-import * as chaiAsPromised from 'chai-as-promised';
-chai.use(chaiAsPromised);
-const assert = chai.assert;
-import * as Chance from 'chance';
+import {assert, use as chaiUse} from 'chai';
+import chaiAsPromised from 'chai-as-promised';
+chaiUse(chaiAsPromised);
+import Chance from 'chance';
 const chance = new Chance();
 import * as nock from 'nock';
 
 import axios from 'axios';
 import * as url from 'url';
-import * as uuidv4 from 'uuid/v4';
+import uuidv4 from 'uuid/v4';
 
 import {CommonBindings} from '@sixriver/loopback4-support';
 import {ServiceDirectory} from '@sixriver/service-directory';

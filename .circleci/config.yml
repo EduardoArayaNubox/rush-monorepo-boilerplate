@@ -3,9 +3,8 @@ version: 2
 jobs:
   install:
     docker:
-      - image: circleci/node:10.17.0
+      - image: circleci/node:12.16.3
         environment:
-          DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
       - checkout
@@ -56,9 +55,8 @@ jobs:
 
   save-local-cache:
     docker:
-      - image: circleci/node:10.17.0
+      - image: circleci/node:12.16.3
         environment:
-          DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
       - attach_workspace:
@@ -71,9 +69,8 @@ jobs:
 
   build:
     docker:
-      - image: circleci/node:10.17.0
+      - image: circleci/node:12.16.3
         environment:
-          DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
       - attach_workspace:
@@ -97,9 +94,8 @@ jobs:
 
   lint:
     docker:
-      - image: circleci/node:10.17.0
+      - image: circleci/node:12.16.3
         environment:
-          DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
       - attach_workspace:
@@ -121,7 +117,7 @@ jobs:
 
   test:
     docker:
-      - image: circleci/node:10.17.0
+      - image: circleci/node:12.16.3
         environment:
           DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
@@ -164,58 +160,9 @@ jobs:
       - store_test_results:
           path: /home/circleci/project/reports/junit/
 
-  pact:
-    docker:
-      - image: circleci/node:10.17.0
-        environment:
-          DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
-          RUSH_ABSOLUTE_SYMLINKS: "true"
-      - image: postgres:9
-        environment:
-          POSTGRES_USER: root
-          POSTGRES_DB: circle_test
-          POSTGRES_HOST_AUTH_METHOD: trust
-      - image: singularities/pubsub-emulator
-        environment:
-          PUBSUB_PROJECT_ID: test
-          PUBSUB_LISTEN_ADDRESS: 0.0.0.0:8802
-    steps:
-      - attach_workspace:
-          at: ./
-      - restore_cache:
-          name: Restore Rush Global Cache
-          keys:
-            - rush-global-v1-{{ checksum "rush.json" }}-{{ checksum ".node-version" }}
-      - run:
-          name: Pact Acceptance Tests
-          command: |
-            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js test-ci-pact
-      - run:
-          name: Coverage
-          command: |
-            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js coverage
-            mkdir -p coverage
-            for p in packages/* ; do [ -d "$p" -a -d "$p/coverage" ] || continue ; pp="$(basename "$p")" ; cp -av "$p/coverage" "coverage/$pp" ; done
-      - run:
-          name: upload coverage
-          command: |
-            bash <( curl -s https://codecov.io/bash ) -s coverage
-      - persist_to_workspace:
-          root: ./
-          paths:
-            - packages/*/pacts
-      - store_artifacts:
-          path: coverage
-      - store_artifacts:
-          path: rush-logs
-      - store_artifacts:
-          path: /home/circleci/project/reports/junit/
-      - store_test_results:
-          path: /home/circleci/project/reports/junit/
-
   pre-deploy-docker-1:
     docker:
-      - image: circleci/node:10.17.0
+      - image: circleci/node:12.16.3
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
@@ -249,7 +196,7 @@ jobs:
 
   pre-deploy-docker-2:
     docker:
-      - image: circleci/node:10.17.0
+      - image: circleci/node:12.16.3
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
@@ -276,7 +223,7 @@ jobs:
 
   deploy-npm:
     docker:
-      - image: circleci/node:10.17.0
+      - image: circleci/node:12.16.3
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
@@ -295,16 +242,12 @@ jobs:
           name: Publish NPM Packages
           command: |
             repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js publish --include-all -r https://sixriver.jfrog.io/sixriver/api/npm/npm-local/ -p --version-policy prerelease
-      - run:
-          name: Publish Pacts
-          command: |
-            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js publish-pacts
       - store_artifacts:
           path: rush-logs
 
   deploy-docker:
     docker:
-      - image: circleci/node:10.17.0
+      - image: circleci/node:12.16.3
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
@@ -353,17 +296,12 @@ workflows:
           context: 6rs-circle
           requires:
             - build
-      - pact:
-          context: 6rs-circle
-          requires:
-            - build
       - deploy-npm:
           context: 6rs-circle
           requires:
             - lint
             - build
             - test
-            - pact
       - deploy-docker:
           context: 6rs-circle
           requires:
@@ -371,7 +309,6 @@ workflows:
             - lint
             - build
             - test
-            - pact
       - save-local-cache:
           context: 6rs-circle
           requires:

@@ -21,11 +21,9 @@ fi
 
 # lint is now its own step, don't run it during unit tests
 
-# don't wipe out pre-existing coverage files if running acceptance (pact) tests
+# don't wipe out pre-existing coverage files if running acceptance tests
 if [ "$NODE_ENV" != "test" ]; then
   NYC_OPTS="${NYC_OPTS} --clean=false"
-  # make sure the directory exists so that CI doesn't fail if no pacts are emitted
-  mkdir -p pacts
 fi
 
 # be strict about unhandled rejections

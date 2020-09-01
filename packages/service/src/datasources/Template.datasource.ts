@@ -11,14 +11,26 @@ const defaultConfig = {
 
 export class TemplateDataSource extends juggler.DataSource {
 	constructor(
-	/* eslint-disable indent */ // bug workaround
 		@inject(CommonBindings.PROCESS_ENV)
-		private readonly env: NodeJS.ProcessEnv,
-		@inject('datasources.config.' + TemplateDataSource.name, {optional: true})
-		dsConfig: AnyObject = defaultConfig,
-		/* eslint-enable indent */
+			env: NodeJS.ProcessEnv,
+			@inject('datasources.config.' + TemplateDataSource.name, {optional: true})
+			dsConfig: AnyObject = defaultConfig,
 	) {
-		//
 		super(dsConfig = fillDataSourceConfig(dsConfig, defaultConfig, databaseBaseName, env));
+	}
+
+	/**
+	 * Start the datasource when application is started
+	 */
+	async start(): Promise<void> {
+		// nothing to do here
+	}
+
+	/**
+	 * Disconnect the datasource when application is stopped. This allows the
+	 * application to be shut down gracefully.
+	 */
+	async stop(): Promise<void> {
+		return await super.disconnect();
 	}
 }

@@ -1,34 +1,30 @@
-/* istanbul ignore next */ // ignore boilerplate enabling instrumentation in prod
-if (process.env.NODE_ENV === 'production' && process.env.APM === 'true') {
-	require('instana-nodejs-sensor')();
-}
-
 import * as _ from 'lodash';
 import * as path from 'path';
 
 import {ApplicationConfig, Provider, BindingScope} from '@loopback/core';
-import {RestApplication, RestServer, RestBindings} from '@loopback/rest';
+import {RestApplication, RestServer, RestBindings, DefaultSequence} from '@loopback/rest';
+import {RestExplorerComponent} from '@loopback/rest-explorer';
 import {Constructor, inject, Getter} from '@loopback/context';
 
 import {RepositoryMixin, juggler} from '@loopback/repository';
 import {BootMixin} from '@loopback/boot';
 
 import {
-	configureServiceConfig,
-	ServiceConfig,
-	getServiceConfigOptions,
 	CommonBindings,
-	LoggingConfigOptions,
-	getDefaultLoggingConfiguration,
 	configureLogging,
-	KillController,
-	envRestOptions,
-	UptimeController,
-	bindPathAwareExplorer,
-	JsonSchema4ValidatorProvider,
-	InternalServiceDirectoryProvider,
+	configureServiceConfig,
 	DbMigrateBooterBase,
+	envRestOptions,
+	getDefaultLoggingConfiguration,
+	getServiceConfigOptions,
+	InternalServiceDirectoryProvider,
+	JsonSchema4ValidatorProvider,
+	KillController,
+	LoggingConfigOptions,
+	ServiceConfig,
+	UptimeController,
 } from '@sixriver/loopback4-support';
+import {MetricsComponent} from '@sixriver/loopback4-metrics';
 import {MinimalLogFactory, MinimalLogger} from '@sixriver/typescript-support';
 import {ServicePortFactory, getEnvironment} from '@sixriver/service-directory';
 
@@ -36,7 +32,6 @@ import {TemplateMessage, TemplateSchemas} from '@sixriver/template-oas';
 
 import {TemplateServiceProviderKeys} from './providers';
 
-import {TemplateServiceSequence} from './TemplateServiceSequence';
 import {TemplateDataSource} from './datasources';
 
 const defaultListenHost = '0.0.0.0';
@@ -72,14 +67,12 @@ export class TemplateServiceApplication extends BootMixin(RepositoryMixin(RestAp
 
 		super(args.options);
 
-		// Set up the custom sequence
-		this.sequence(TemplateServiceSequence);
+		this.sequence(DefaultSequence);
 
 		this.projectRoot = __dirname;
 
-		// NOTE: for unknown reasons, things seem to be a bit titchy about where exactly in the constructor we put this line
-		// don't move it without verifying it works both locally on your dev machine AND in a cluster!
-		bindPathAwareExplorer(this);
+		this.component(RestExplorerComponent);
+		this.component(MetricsComponent);
 
 		// Customize @loopback/boot Booter Conventions here
 		this.bootOptions = {

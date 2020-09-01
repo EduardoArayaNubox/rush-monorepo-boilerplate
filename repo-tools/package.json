@@ -8,9 +8,7 @@
     "test": "true",
     "lint": "true",
     "test-ci": "true",
-    "test-ci-pact": "true",
     "coverage": "true",
-    "publish-pacts": "true",
     "docker-publish": "true",
     "release": "true"
   },
@@ -24,7 +22,6 @@
   "devDependencies": {
     "@6river/commitlint-config-6river": "^2.1.2",
     "@commitlint/cli": "^7.2.1",
-    "@pact-foundation/pact-node": "8.3.0",
     "child_process": "1.0.2",
     "gulp": "4.0.2",
     "gulp-sourcemaps": "2.6.5",
@@ -32,6 +29,6 @@
     "husky": "^1.1.2",
     "jsmin": "1.0.1",
     "merge2": "1.2.3",
-    "typescript": "3.7.2"
+    "typescript": "3.9.7"
   }
 }
