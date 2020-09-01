@@ -59,11 +59,11 @@
     "@loopback/rest": "4.0.0",
     "@loopback/rest-explorer": "2.2.0",
     "@sixriver/config-schema": "1.46.1",
-    "@sixriver/loopback4-support": "4.0.0-lb.21",
-    "@sixriver/service-directory": "4.0.0-lb.21",
+    "@sixriver/loopback4-support": "4.0.0",
+    "@sixriver/service-directory": "4.0.0",
     "@sixriver/template-common": "0.0.0-development",
     "@sixriver/template-oas": "0.0.0-development",
-    "@sixriver/typescript-support": "4.0.0-lb.21",
+    "@sixriver/typescript-support": "4.0.0",
     "ajv": "6.10.0",
     "axios": "0.19.0",
     "bunyan": "1.8.12",
@@ -75,7 +75,7 @@
     "uuid": "3.4.0",
     "pino": "5.16.0",
     "pino-pretty": "3.2.1",
-    "@sixriver/loopback4-metrics": "4.0.0-lb.21",
+    "@sixriver/loopback4-metrics": "4.0.0",
     "prom-client": "12.0.0"
   },
   "devDependencies": {

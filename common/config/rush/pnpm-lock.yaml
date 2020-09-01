@@ -24,10 +24,10 @@ dependencies:
   '@rush-temp/template-repo-tools': 'file:projects/template-repo-tools.tgz'
   '@rush-temp/template-service': 'file:projects/template-service.tgz'
   '@sixriver/config-schema': 1.46.1
-  '@sixriver/loopback4-metrics': 4.0.0-lb.21_93427f1a176cf828c513715a5dade76f
-  '@sixriver/loopback4-support': 4.0.0-lb.21_18307549ede3fbe5a25b572b31305ef1
-  '@sixriver/service-directory': 4.0.0-lb.21
-  '@sixriver/typescript-support': 4.0.0-lb.21
+  '@sixriver/loopback4-metrics': 4.0.0_93427f1a176cf828c513715a5dade76f
+  '@sixriver/loopback4-support': 4.0.0_18307549ede3fbe5a25b572b31305ef1
+  '@sixriver/service-directory': 4.0.0
+  '@sixriver/typescript-support': 4.0.0
   '@types/bunyan': 1.8.4
   '@types/chai': 4.2.5
   '@types/chai-as-promised': 7.1.0
@@ -1093,7 +1093,7 @@ packages:
     resolution:
       integrity: sha1-S6NBSQta4sqY16v4qB8CI1UGbPU=
       tarball: '@sixriver/config-schema/-/@sixriver/config-schema-1.46.1.tgz'
-  /@sixriver/loopback4-metrics/4.0.0-lb.21_93427f1a176cf828c513715a5dade76f:
+  /@sixriver/loopback4-metrics/4.0.0_93427f1a176cf828c513715a5dade76f:
     dependencies:
       '@loopback/context': 3.7.0
       '@loopback/core': 2.5.0
@@ -1109,9 +1109,9 @@ packages:
       '@loopback/rest': ^4.0.0
       prom-client: ^12.0.0
     resolution:
-      integrity: sha1-OVZYb8pdBEnMbnSwkPvAi8243kM=
-      tarball: '@sixriver/loopback4-metrics/-/@sixriver/loopback4-metrics-4.0.0-lb.21.tgz'
-  /@sixriver/loopback4-support/4.0.0-lb.21_18307549ede3fbe5a25b572b31305ef1:
+      integrity: sha1-x6yaartj/saPQiptTjSdb27GxYU=
+      tarball: '@sixriver/loopback4-metrics/-/@sixriver/loopback4-metrics-4.0.0.tgz'
+  /@sixriver/loopback4-support/4.0.0_18307549ede3fbe5a25b572b31305ef1:
     dependencies:
       '@6river/reason-guard': 1.3.1
       '@loopback/boot': 2.2.0
@@ -1124,9 +1124,9 @@ packages:
       '@loopback/rest': 4.0.0
       '@loopback/rest-explorer': 2.2.0
       '@sixriver/config-schema': 1.46.1
-      '@sixriver/oas-support': 4.0.0-lb.21
-      '@sixriver/service-directory': 4.0.0-lb.21
-      '@sixriver/typescript-support': 4.0.0-lb.21
+      '@sixriver/oas-support': 4.0.0
+      '@sixriver/service-directory': 4.0.0
+      '@sixriver/typescript-support': 4.0.0
       ajv: 6.10.0
       axios: 0.19.0
       bunyan: 1.8.12
@@ -1162,29 +1162,29 @@ packages:
       pino-pretty: 3.2.1
       uuid: ^7.0.3
     resolution:
-      integrity: sha1-zspuK68O/AtUr6Jawh1MU/6so5Y=
-      tarball: '@sixriver/loopback4-support/-/@sixriver/loopback4-support-4.0.0-lb.21.tgz'
-  /@sixriver/oas-support/4.0.0-lb.21:
+      integrity: sha1-h8g5ZwYrZ1HxNDdGegth6UMXIdc=
+      tarball: '@sixriver/loopback4-support/-/@sixriver/loopback4-support-4.0.0.tgz'
+  /@sixriver/oas-support/4.0.0:
     dependencies:
-      '@sixriver/typescript-support': 4.0.0-lb.21
+      '@sixriver/typescript-support': 4.0.0
       ajv: 6.12.3
     dev: false
     engines:
       node: '>=10.16.3'
     resolution:
-      integrity: sha1-Du7brSWjApjYWGNfdoe+4xXYLSo=
-      tarball: '@sixriver/oas-support/-/@sixriver/oas-support-4.0.0-lb.21.tgz'
-  /@sixriver/service-directory/4.0.0-lb.21:
+      integrity: sha1-8kd4CSNW70lPlyGi01a7qXBJGrk=
+      tarball: '@sixriver/oas-support/-/@sixriver/oas-support-4.0.0.tgz'
+  /@sixriver/service-directory/4.0.0:
     dependencies:
-      '@sixriver/typescript-support': 4.0.0-lb.21
+      '@sixriver/typescript-support': 4.0.0
       url-join: 4.0.0
     dev: false
     engines:
       node: '>=10.16.3'
     resolution:
-      integrity: sha1-5Uie9Kx2ZiXNPzSfyfZOhUwN7ig=
-      tarball: '@sixriver/service-directory/-/@sixriver/service-directory-4.0.0-lb.21.tgz'
-  /@sixriver/typescript-support/4.0.0-lb.21:
+      integrity: sha1-npN8IwlcUMNk/gLYOwdZss8lPQI=
+      tarball: '@sixriver/service-directory/-/@sixriver/service-directory-4.0.0.tgz'
+  /@sixriver/typescript-support/4.0.0:
     dependencies:
       '@6river/reason-guard': 1.3.1
       double-ended-queue: 2.1.0-0
@@ -1196,8 +1196,8 @@ packages:
     engines:
       node: '>=10.16.3'
     resolution:
-      integrity: sha1-fZmUCRtTcl9kglPVXYynOhnjpFg=
-      tarball: '@sixriver/typescript-support/-/@sixriver/typescript-support-4.0.0-lb.21.tgz'
+      integrity: sha1-WA0LEo0vEW6xcAWPUGjJjdkSOFQ=
+      tarball: '@sixriver/typescript-support/-/@sixriver/typescript-support-4.0.0.tgz'
   /@types/body-parser/1.19.0:
     dependencies:
       '@types/connect': 3.4.33
@@ -10312,7 +10312,7 @@ packages:
     version: 0.0.0
   'file:projects/template-oas.tgz':
     dependencies:
-      '@sixriver/oas-support': 4.0.0-lb.21
+      '@sixriver/oas-support': 4.0.0
       '@types/lodash': 4.14.159
       '@types/mocha': 5.2.7
       '@types/node': 12.12.54
@@ -10337,7 +10337,7 @@ packages:
     dev: false
     name: '@rush-temp/template-oas'
     resolution:
-      integrity: sha512-0ZgZehVkhWsoeKaRRHKAuQQAilqhLrSvjE/cedUzeFauR1bKOHEdQOgWs6QU0qx8mKS2e4i/O/GEIVqMu0Oqiw==
+      integrity: sha512-Jfyw2RMWD+lvMfegXAfyrmTIsUomo+Pcp+R8XCOzh7IxjkyYUojCllYj1mPNQAxmmWs+Ab88i3Cww2VdrueefA==
       tarball: 'file:projects/template-oas.tgz'
     version: 0.0.0
   'file:projects/template-repo-tools.tgz':
@@ -10372,10 +10372,10 @@ packages:
       '@loopback/rest-explorer': 2.2.0
       '@loopback/testlab': 3.1.3
       '@sixriver/config-schema': 1.46.1
-      '@sixriver/loopback4-metrics': 4.0.0-lb.21_93427f1a176cf828c513715a5dade76f
-      '@sixriver/loopback4-support': 4.0.0-lb.21_18307549ede3fbe5a25b572b31305ef1
-      '@sixriver/service-directory': 4.0.0-lb.21
-      '@sixriver/typescript-support': 4.0.0-lb.21
+      '@sixriver/loopback4-metrics': 4.0.0_93427f1a176cf828c513715a5dade76f
+      '@sixriver/loopback4-support': 4.0.0_18307549ede3fbe5a25b572b31305ef1
+      '@sixriver/service-directory': 4.0.0
+      '@sixriver/typescript-support': 4.0.0
       '@types/bunyan': 1.8.4
       '@types/chai': 4.2.5
       '@types/chai-as-promised': 7.1.0
@@ -10426,7 +10426,7 @@ packages:
     dev: false
     name: '@rush-temp/template-service'
     resolution:
-      integrity: sha512-w8G4VnO1ksvCiUVNzuCHZ/ewbPm49AaxyiJBLhruHgiTjugpcEmEHg5jUc8WG7kUuXDWomB2ZE7HVz7EbGtFTg==
+      integrity: sha512-CtuhUWUpa1FO55GOelXHCiGgaLOR+BXpX8R0v4TfxQirzTfU0af3e5Pw4WQx15HqiFMo+/rs+wvEwCK3pyMe7A==
       tarball: 'file:projects/template-service.tgz'
     version: 0.0.0
 registry: ''
@@ -10456,10 +10456,10 @@ specifiers:
   '@rush-temp/template-repo-tools': 'file:./projects/template-repo-tools.tgz'
   '@rush-temp/template-service': 'file:./projects/template-service.tgz'
   '@sixriver/config-schema': 1.46.1
-  '@sixriver/loopback4-metrics': 4.0.0-lb.21
-  '@sixriver/loopback4-support': 4.0.0-lb.21
-  '@sixriver/service-directory': 4.0.0-lb.21
-  '@sixriver/typescript-support': 4.0.0-lb.21
+  '@sixriver/loopback4-metrics': 4.0.0
+  '@sixriver/loopback4-support': 4.0.0
+  '@sixriver/service-directory': 4.0.0
+  '@sixriver/typescript-support': 4.0.0
   '@types/bunyan': 1.8.4
   '@types/chai': 4.2.5
   '@types/chai-as-promised': 7.1.0

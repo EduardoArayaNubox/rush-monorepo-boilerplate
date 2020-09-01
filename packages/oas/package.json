@@ -44,7 +44,7 @@
     "ajv": "6.10.0"
   },
   "devDependencies": {
-    "@sixriver/oas-support": "4.0.0-lb.21",
+    "@sixriver/oas-support": "4.0.0",
     "@types/lodash": "4.14.159",
     "@types/mocha": "5.2.7",
     "@types/node": "12.12.54",
