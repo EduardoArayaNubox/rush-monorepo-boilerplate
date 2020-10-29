@@ -127,6 +127,7 @@ jobs:
           POSTGRES_DB: circle_test
           POSTGRES_HOST_AUTH_METHOD: trust
       - image: gcr.io/plasma-column-128721/pubsub-emulator:latest
+        auth:
           username: _json_key
           password: $GCLOUD_SERVICE_KEY
         environment:
