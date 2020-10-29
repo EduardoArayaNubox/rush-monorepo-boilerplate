@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 
 jobs:
   install:
@@ -126,7 +126,10 @@ jobs:
           POSTGRES_USER: root
           POSTGRES_DB: circle_test
           POSTGRES_HOST_AUTH_METHOD: trust
-      - image: singularities/pubsub-emulator
+      - image: gcr.io/plasma-column-128721/pubsub-emulator:latest
+        auth:
+          username: _json_key
+          password: $GCLOUD_SERVICE_KEY
         environment:
           PUBSUB_PROJECT_ID: test
           PUBSUB_LISTEN_ADDRESS: 0.0.0.0:8802
