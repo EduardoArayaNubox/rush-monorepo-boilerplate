@@ -198,7 +198,7 @@ jobs:
       - attach_workspace:
           at: ./
       - run:
-          name: Release Package Docker Images
+          name: Tags built images with proper version
           command: |
             repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js tag-docker
 
@@ -214,11 +214,11 @@ jobs:
           command: |
             ci_scripts/ci_tool.sh --docker_login
       - run:
-          name: Release Package Docker Images
+          name: Run rush deploy init
           command: |
             repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js init-deploy-global
       - run:
-          name: Release Package Docker Images
+          name: Run rush deploy and build docker images
           command: |
             repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js build-publish-docker
 workflows:
