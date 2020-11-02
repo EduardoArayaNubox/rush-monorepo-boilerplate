@@ -34,17 +34,30 @@
 		},
 		{
 			"commandKind": "bulk",
-			"name": "docker-publish",
-			"summary": "",
-			"description": "",
-			"enableParallelism": false
+			"name": "build-publish-docker",
+			"summary": "Build and publish docker image with a tag with of the Git SHA1",
+			"description": "Release projects",
+			"ignoreMissingScript": true,
+			"safeForSimultaneousRushProcesses": true,
+			"enableParallelism": true
 		},
 		{
 			"commandKind": "bulk",
-			"name": "release",
-			"summary": "Have each project do whatever it should do to release",
+			"name": "tag-docker",
+			"summary": "Have each project tag its image with a semantic version in gcr",
 			"description": "Release projects",
+			"allowWarningsInSuccessfulBuild": true,
+			"ignoreMissingScript": true,
 			"enableParallelism": true
+		},
+		{
+			"commandKind": "bulk",
+			"name": "init-deploy-global",
+			"summary": "Have each project that has this target create a deploy.json scenrio",
+			"description": "Release projects",
+			"enableParallelism": false,
+			"safeForSimultaneousRushProcesses": true,
+			"ignoreMissingScript": true
 		},
 		{
 			"commandKind": "bulk",

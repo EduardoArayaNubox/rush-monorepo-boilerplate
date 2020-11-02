@@ -1,9 +1,12 @@
+orbs:
+  gcp-cli: circleci/gcp-cli@1.0.0
+
 version: 2.1
 
 jobs:
   install:
     docker:
-      - image: circleci/node:12.16.3
+      - image: cimg/node:12.16.3
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
@@ -55,7 +58,7 @@ jobs:
 
   save-local-cache:
     docker:
-      - image: circleci/node:12.16.3
+      - image: cimg/node:12.16.3
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
@@ -69,7 +72,7 @@ jobs:
 
   build:
     docker:
-      - image: circleci/node:12.16.3
+      - image: cimg/node:12.16.3
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
@@ -94,7 +97,7 @@ jobs:
 
   lint:
     docker:
-      - image: circleci/node:12.16.3
+      - image: cimg/node:12.16.3
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
@@ -117,7 +120,7 @@ jobs:
 
   test:
     docker:
-      - image: circleci/node:12.16.3
+      - image: cimg/node:12.16.3
         environment:
           DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
@@ -163,70 +166,9 @@ jobs:
       - store_test_results:
           path: /home/circleci/project/reports/junit/
 
-  pre-deploy-docker-1:
-    docker:
-      - image: circleci/node:12.16.3
-        environment:
-          RUSH_ABSOLUTE_SYMLINKS: "true"
-    steps:
-      - checkout
-      - restore_cache:
-          name: Restore Base Docker 1 Flag Cache
-          keys:
-            - base-docker-1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-{{ checksum "rush_cache_1.dockerfile" }}
-      - run:
-          # this will skip the rest of this job if it doesn't need to be executed
-          # saves lots of time restoring workspace and larger caches
-          name: Check For Skippability
-          command: |
-            repo-tools/scripts/base-docker-1-skip.sh
-      - setup_remote_docker
-      - attach_workspace:
-          at: ./
-      - run:
-          name: Initialize Docker
-          command: |
-            ci_scripts/ci_tool.sh --docker_login
-      - run:
-          name: Build Rush Cache Image Part 1
-          command: |
-            repo-tools/scripts/base-docker-1-build.sh
-      - save_cache:
-          name: Save Base Docker 1 Flag Cache
-          key: base-docker-1-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-{{ checksum "rush_cache_1.dockerfile" }}
-          paths:
-            - ./rush_cache_1.built/
-
-  pre-deploy-docker-2:
-    docker:
-      - image: circleci/node:12.16.3
-        environment:
-          RUSH_ABSOLUTE_SYMLINKS: "true"
-    steps:
-      - setup_remote_docker
-      - attach_workspace:
-          at: ./
-      - run:
-          name: Initialize Docker
-          command: |
-            ci_scripts/ci_tool.sh --docker_login
-      - run:
-          name: Fetch Rush Cache Part 1
-          command: |
-            repo-tools/scripts/base-docker-1-pull.sh
-      - run:
-          name: Build Rush Cache Image Part 2
-          command: |
-            repo-tools/scripts/base-docker-2-build.sh
-      - persist_to_workspace:
-          root: ./
-          paths:
-            - .dockerignore
-            - rush_cache_2.rev
-
   deploy-npm:
     docker:
-      - image: circleci/node:12.16.3
+      - image: cimg/node:12.16.3
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
@@ -248,11 +190,21 @@ jobs:
       - store_artifacts:
           path: rush-logs
 
+  tag-docker:
+    docker:
+      - image: cimg/node:12.16.3
+    steps:
+      - gcp-cli/install
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Tags built images with proper version
+          command: |
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js tag-docker
+
   deploy-docker:
     docker:
-      - image: circleci/node:12.16.3
-        environment:
-          RUSH_ABSOLUTE_SYMLINKS: "true"
+      - image: cimg/node:12.16.3
     steps:
       - setup_remote_docker
       - attach_workspace:
@@ -262,14 +214,13 @@ jobs:
           command: |
             ci_scripts/ci_tool.sh --docker_login
       - run:
-          name: Pull Rush Cache Part 2
+          name: Run rush deploy init
           command: |
-            repo-tools/scripts/base-docker-2-pull.sh
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js init-deploy-global
       - run:
-          name: Release Package Docker Images
+          name: Run rush deploy and build docker images
           command: |
-            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js release
-
+            repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js build-publish-docker
 workflows:
   version: 2
 
@@ -277,20 +228,10 @@ workflows:
     jobs:
       - install:
           context: 6rs-circle
-      - pre-deploy-docker-1:
-          context: 6rs-circle
-          requires:
-            - install
       - build:
           context: 6rs-circle
           requires:
             - install
-      - pre-deploy-docker-2:
-          context: 6rs-circle
-          requires:
-            - install
-            - pre-deploy-docker-1
-            - build
       - lint:
           context: 6rs-circle
           requires:
@@ -308,10 +249,13 @@ workflows:
       - deploy-docker:
           context: 6rs-circle
           requires:
-            - pre-deploy-docker-2
-            - lint
             - build
+      - tag-docker:
+          context: 6rs-circle
+          requires:
             - test
+            - lint
+            - deploy-docker
       - save-local-cache:
           context: 6rs-circle
           requires:
