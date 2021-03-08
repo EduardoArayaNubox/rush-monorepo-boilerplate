@@ -124,8 +124,10 @@ jobs:
         environment:
           DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
-      - image: postgres:9
+          LANG: en_US.UTF8
+      - image: postgres:9-alpine
         environment:
+          LANG: en_US.UTF8
           POSTGRES_USER: root
           POSTGRES_DB: circle_test
           POSTGRES_HOST_AUTH_METHOD: trust
