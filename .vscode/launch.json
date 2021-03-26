@@ -5,7 +5,7 @@
 			"name": "Run template common mocha",
 			"request": "launch",
 			"type": "node",
-			"program": "${workspaceFolder}/packages/typescript/node_modules/mocha/bin/_mocha",
+			"program": "${workspaceFolder}/packages/common/node_modules/mocha/bin/_mocha",
 			"outputCapture": "std",
 			"stopOnEntry": false,
 			"args": [
