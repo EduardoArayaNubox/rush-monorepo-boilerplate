@@ -25,7 +25,7 @@ dependencies:
   '@rush-temp/template-service': 'file:projects/template-service.tgz'
   '@sixriver/config-schema': 1.46.1
   '@sixriver/loopback4-metrics': 4.0.0_93427f1a176cf828c513715a5dade76f
-  '@sixriver/loopback4-support': 4.0.0_18307549ede3fbe5a25b572b31305ef1
+  '@sixriver/loopback4-support': 4.0.0_9d59d8fee3734c14be1f488284bea6f5
   '@sixriver/service-directory': 4.0.0
   '@sixriver/typescript-support': 4.0.0
   '@types/bunyan': 1.8.4
@@ -43,7 +43,7 @@ dependencies:
   '@typescript-eslint/eslint-plugin': 2.8.0_28881ceabdd90c323037f561f0148d58
   '@typescript-eslint/parser': 2.8.0_eslint@5.4.0+typescript@3.9.7
   ajv: 6.10.0
-  axios: 0.19.0
+  axios: 0.21.1
   babel-runtime: 6.26.0
   bunyan: 1.8.12
   bunyan-prettystream: 0.1.3
@@ -1115,7 +1115,7 @@ packages:
     resolution:
       integrity: sha1-x6yaartj/saPQiptTjSdb27GxYU=
       tarball: '@sixriver/loopback4-metrics/-/@sixriver/loopback4-metrics-4.0.0.tgz'
-  /@sixriver/loopback4-support/4.0.0_18307549ede3fbe5a25b572b31305ef1:
+  /@sixriver/loopback4-support/4.0.0_9d59d8fee3734c14be1f488284bea6f5:
     dependencies:
       '@6river/reason-guard': 1.3.1
       '@loopback/boot': 2.2.0
@@ -1132,7 +1132,7 @@ packages:
       '@sixriver/service-directory': 4.0.0
       '@sixriver/typescript-support': 4.0.0
       ajv: 6.10.0
-      axios: 0.19.0
+      axios: 0.21.1
       bunyan: 1.8.12
       bunyan-prettystream: 0.1.3
       db-migrate: 0.11.5
@@ -2096,13 +2096,12 @@ packages:
       node: '>=8.0.0'
     resolution:
       integrity: sha512-kNOjDqAh7px0XWNI+4QbzoiR/nTkHAWNud2uvnJquD1/x5a7EQZMJT0AczqK0Qn67oY/TTQ1LbUKajZpp3I9tQ==
-  /axios/0.19.0:
+  /axios/0.21.1:
     dependencies:
-      follow-redirects: 1.5.10
-      is-buffer: 2.0.4
+      follow-redirects: 1.13.3
     dev: false
     resolution:
-      integrity: sha512-1uvKqKQta3KBxIz14F2v06AEHZ/dIoeKfbTRkK1E5oqjDnuEerLmYTgJB5AiQZHJcljpg1TuRzdjDR06qNk0DQ==
+      integrity: sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
   /babel-code-frame/6.26.0:
     dependencies:
       chalk: 1.1.3
@@ -4290,14 +4289,17 @@ packages:
     dev: false
     resolution:
       integrity: sha512-3Z4XhFZ3992uIq0XOqb9AreonueSYphE6oYbpt5+3u06JWklbsPkNv3ZKkP9Bz/r+1MWCaMoSQ28P85+1Yc77w==
-  /follow-redirects/1.5.10:
-    dependencies:
-      debug: 3.1.0
+  /follow-redirects/1.13.3:
     dev: false
     engines:
       node: '>=4.0'
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
     resolution:
-      integrity: sha512-0V5l4Cizzvqt5D44aTXbFZz+FtyXV1vrDN6qrelxtfYQKW0KO0W2T/hkE8xvGa/540LkZlkaUjO4ailYTFtHVQ==
+      integrity: sha512-DUgl6+HDzB0iEptNQEXLx/KhTmDb8tZUHSeLqpnjpknR70H0nC2t9N73BK6fN4hOvJ84pKlIQVQ4k5FFlBedKA==
   /for-in/1.0.2:
     dev: false
     engines:
@@ -10469,7 +10471,7 @@ packages:
       '@loopback/testlab': 3.1.3
       '@sixriver/config-schema': 1.46.1
       '@sixriver/loopback4-metrics': 4.0.0_93427f1a176cf828c513715a5dade76f
-      '@sixriver/loopback4-support': 4.0.0_18307549ede3fbe5a25b572b31305ef1
+      '@sixriver/loopback4-support': 4.0.0_9d59d8fee3734c14be1f488284bea6f5
       '@sixriver/service-directory': 4.0.0
       '@sixriver/typescript-support': 4.0.0
       '@types/bunyan': 1.8.4
@@ -10486,7 +10488,7 @@ packages:
       '@typescript-eslint/eslint-plugin': 2.8.0_28881ceabdd90c323037f561f0148d58
       '@typescript-eslint/parser': 2.8.0_eslint@5.4.0+typescript@3.9.7
       ajv: 6.10.0
-      axios: 0.19.0
+      axios: 0.21.1
       bunyan: 1.8.12
       bunyan-prettystream: 0.1.3
       chai: 4.2.0
@@ -10522,9 +10524,10 @@ packages:
     dev: false
     name: '@rush-temp/template-service'
     resolution:
-      integrity: sha512-GbtU631fh2A6xU6TX/pOKQC29pHA7zVaNNTXsV49VY5AbiITCjfXsMJDIdSkQRMmEsDEmXozGLtAYT2OowD1Jw==
+      integrity: sha512-lZT3acO1IwUXefaM1O6RecfzlLXLhFHmaXpjbe5PCErdUZe//+3BBN8nvpDbhfYlS78lt1MHsOD4Hiwu03ScPQ==
       tarball: 'file:projects/template-service.tgz'
     version: 0.0.0
+registry: ''
 specifiers:
   '@6river/commitlint-config-6river': ^2.1.2
   '@commitlint/cli': ^7.2.1
@@ -10570,7 +10573,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': 2.8.0
   '@typescript-eslint/parser': 2.8.0
   ajv: 6.10.0
-  axios: 0.19.0
+  axios: 0.21.1
   babel-runtime: ^6.26.0
   bunyan: 1.8.12
   bunyan-prettystream: 0.1.3
