@@ -6,7 +6,7 @@ version: 2.1
 jobs:
   install:
     docker:
-      - image: cimg/node:12.16.3
+      - image: cimg/node:12.22.1
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
@@ -58,7 +58,7 @@ jobs:
 
   save-local-cache:
     docker:
-      - image: cimg/node:12.16.3
+      - image: cimg/node:12.22.1
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
@@ -72,7 +72,7 @@ jobs:
 
   build:
     docker:
-      - image: cimg/node:12.16.3
+      - image: cimg/node:12.22.1
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
@@ -97,7 +97,7 @@ jobs:
 
   lint:
     docker:
-      - image: cimg/node:12.16.3
+      - image: cimg/node:12.22.1
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
@@ -120,7 +120,7 @@ jobs:
 
   test:
     docker:
-      - image: cimg/node:12.16.3
+      - image: cimg/node:12.22.1
         environment:
           DATABASE_URL: postgres://root:@127.0.0.1:5432/circle_test
           RUSH_ABSOLUTE_SYMLINKS: "true"
@@ -170,7 +170,7 @@ jobs:
 
   deploy-npm:
     docker:
-      - image: cimg/node:12.16.3
+      - image: cimg/node:12.22.1
         environment:
           RUSH_ABSOLUTE_SYMLINKS: "true"
     steps:
@@ -194,7 +194,7 @@ jobs:
 
   tag-docker:
     docker:
-      - image: cimg/node:12.16.3
+      - image: cimg/node:12.22.1
     steps:
       - gcp-cli/install
       - attach_workspace:
@@ -206,7 +206,7 @@ jobs:
 
   deploy-docker:
     docker:
-      - image: cimg/node:12.16.3
+      - image: cimg/node:12.22.1
     steps:
       - setup_remote_docker
       - attach_workspace:

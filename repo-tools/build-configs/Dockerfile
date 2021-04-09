@@ -1,1 +1,1 @@
-FROM gcr.io/plasma-column-128721/node_base:12.16.3
+FROM gcr.io/plasma-column-128721/node_base:12.22.1
