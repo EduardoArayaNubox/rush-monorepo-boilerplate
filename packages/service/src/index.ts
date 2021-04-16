@@ -20,6 +20,7 @@ async function main(options?: ApplicationConfig): Promise<void> {
 	await app.start();
 }
 
+/* istanbul ignore next */
 if (require.main === module) {
 	// Run the application
 	main().catch((err) => {
