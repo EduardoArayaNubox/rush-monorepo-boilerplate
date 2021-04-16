@@ -6,19 +6,9 @@
 		"rootDir": ".",
 		"baseUrl": ".",
 		"paths": {
-			"*": [
-				"types/*"
-			]
-		},
+			"*": ["types/*"]
+		}
 	},
-	"include": [
-		"src",
-		"generated-interfaces",
-		"index.ts"
-	],
-	"exclude": [
-		"node_modules/**",
-		"packages/*/node_modules/**",
-		"**/*.d.ts"
-	]
+	"include": ["src", "generated-interfaces", "index.ts"],
+	"exclude": ["node_modules/**", "packages/*/node_modules/**", "**/*.d.ts"]
 }

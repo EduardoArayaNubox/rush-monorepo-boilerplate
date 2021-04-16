@@ -3,7 +3,21 @@
   "version": "0.0.0-development",
   "description": "Sixriver Template OpenAPI Schema",
   "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/6RiverSystems/rush-monorepo-boilerplate.git"
+  },
+  "license": "",
+  "author": "",
   "main": "dist/index.js",
+  "files": [
+    "README.md",
+    "dist/index*",
+    "dist/generated-interfaces",
+    "dist/schemas",
+    "dist/src",
+    "template-openapi.yaml"
+  ],
   "scripts": {
     "build": "npm-run-all build:utils build:models build:compile",
     "rebuild": "npm-run-all clean build",
@@ -22,48 +36,40 @@
     "start": "false",
     "release": "true"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/6RiverSystems/rush-monorepo-boilerplate.git"
-  },
-  "publishConfig": {
-    "registry": "https://sixriver.jfrog.io/sixriver/npm-local/"
-  },
-  "author": "",
-  "license": "",
-  "files": [
-    "README.md",
-    "dist/index*",
-    "dist/generated-interfaces",
-    "dist/schemas",
-    "dist/src",
-    "template-openapi.yaml"
-  ],
-  "peerDependencies": {
-    "@sixriver/oas-support": "^4.0.0",
-    "ajv": "6.10.0"
-  },
   "devDependencies": {
+    "@6river/prettier-config": "1.0.37",
     "@sixriver/oas-support": "4.0.0",
     "@types/lodash": "4.14.159",
     "@types/mocha": "5.2.7",
     "@types/node": "12.12.54",
+    "@types/source-map-support": "~0.5.3",
     "@types/swagger-parser": "4.0.3",
-    "@typescript-eslint/eslint-plugin": "2.8.0",
-    "@typescript-eslint/parser": "2.8.0",
-    "eslint": "5.4.0",
-    "eslint-config-6river": "3.0.0",
+    "@types/swagger-schema-official": "~2.0.21",
+    "@typescript-eslint/eslint-plugin": "4.22.0",
+    "@typescript-eslint/parser": "4.22.0",
+    "eslint": "7.24.0",
+    "eslint-config-6river": "5.1.0",
     "eslint-config-google": "0.12.0",
+    "eslint-config-prettier": "8.2.0",
     "eslint-plugin-6river": "1.0.6",
-    "eslint-plugin-mocha": "5.0.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-mocha": "8.1.0",
     "json-schema-ref-parser": "6.1.0",
     "json-schema-to-typescript": "6.1.3",
     "lodash": "4.17.19",
     "npm-run-all": "4.1.5",
     "openapi-schema-to-json-schema": "2.2.0",
+    "prettier": "2.2.1",
     "source-map-support": "0.5.16",
     "speccy": "0.9.0",
     "swagger-parser": "6.0.5",
     "typescript": "3.9.7"
+  },
+  "peerDependencies": {
+    "@sixriver/oas-support": "^4.0.0",
+    "ajv": "6.10.0"
+  },
+  "publishConfig": {
+    "registry": "https://sixriver.jfrog.io/sixriver/npm-local/"
   }
 }

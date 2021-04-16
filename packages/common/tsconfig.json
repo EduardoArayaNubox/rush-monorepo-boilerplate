@@ -7,14 +7,6 @@
 		// gulp-typescript is not yet compatible with incremental
 		"incremental": false
 	},
-	"include": [
-		"src",
-		"test",
-		"index.ts"
-	],
-	"exclude": [
-		"node_modules/**",
-		"packages/*/node_modules/**",
-		"**/*.d.ts"
-	]
+	"include": ["src", "test", "index.ts"],
+	"exclude": ["node_modules/**", "packages/*/node_modules/**", "**/*.d.ts"]
 }

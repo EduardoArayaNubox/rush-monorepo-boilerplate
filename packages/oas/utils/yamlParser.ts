@@ -1,10 +1,8 @@
+import { FileInfo } from 'json-schema-ref-parser';
+import JsonSchemaRefParser from 'json-schema-ref-parser';
 
-import {FileInfo} from 'json-schema-ref-parser';
-import {applyDateFormat} from './applyDateFormat';
-import {JSONSchema4} from './JSONSchema4';
-
-// NOTE: "YAML" is not included in the type definitions for some reason
-const JsonSchemaRefParser = require('json-schema-ref-parser');
+import { JSONSchema4 } from './JSONSchema4';
+import { applyDateFormat } from './applyDateFormat';
 
 // NOTE: this is the yaml parser copied from v6.1.0 of json-schema-ref-parser (and modified) since it is not exported
 //       and this appears to be the only way to hook into parsing refs in order to fixup date fields
@@ -50,7 +48,8 @@ export const YamlParser = {
 
 		let parsed: JSONSchema4 | undefined;
 		if (typeof data === 'string') {
-			parsed = JsonSchemaRefParser.YAML.parse(data);
+			// YAML property isn't in the types
+			parsed = (JsonSchemaRefParser as any).YAML.parse(data);
 		} else {
 			// data is already a JavaScript value (object, array, number, null, NaN, etc.)
 			parsed = data;

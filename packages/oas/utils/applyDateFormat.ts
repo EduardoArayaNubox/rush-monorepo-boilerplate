@@ -1,4 +1,4 @@
-import {JSONSchema4} from './JSONSchema4';
+import { JSONSchema4 } from './JSONSchema4';
 
 // NOTE: this mainly exists because `json-schema-to-typescript` doesn't understand '"format": "date-time"',
 // see here: https://github.com/bcherny/json-schema-to-typescript/issues/183
@@ -25,11 +25,11 @@ export function applyDateFormat(schema: JSONSchema4): JSONSchema4 {
 			if ('tsType' in schema) {
 				return schema;
 			} else {
-				return {...schema, tsType: 'Date | string'};
+				return { ...schema, tsType: 'Date | string' };
 			}
 		}
 		// shallow-clone schema before we modify it
-		schema = {...schema};
+		schema = { ...schema };
 		for (const [key, value] of Object.entries(schema)) {
 			schema[key] = applyDateFormat(value);
 		}

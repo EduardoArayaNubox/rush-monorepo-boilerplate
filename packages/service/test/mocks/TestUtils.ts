@@ -1,6 +1,6 @@
-import {assert} from 'chai';
+import { assert } from 'chai';
 
-export function assertArray(object: any): object is any[] {
+export function assertArray(object: unknown): object is unknown[] {
 	assert.isArray(object);
 	return true;
 }

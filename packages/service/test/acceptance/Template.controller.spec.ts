@@ -1,28 +1,28 @@
-import {assert, use as chaiUse} from 'chai';
-import chaiAsPromised from 'chai-as-promised';
-chaiUse(chaiAsPromised);
-import Chance from 'chance';
-const chance = new Chance();
-import * as nock from 'nock';
-
-import axios from 'axios';
 import * as url from 'url';
+
+import { CommonBindings } from '@sixriver/loopback4-support';
+import { ServiceDirectory } from '@sixriver/service-directory';
+import axios from 'axios';
+import { assert, use as chaiUse } from 'chai';
+import chaiAsPromised from 'chai-as-promised';
+import Chance from 'chance';
+import * as nock from 'nock';
 import uuidv4 from 'uuid/v4';
 
-import {CommonBindings} from '@sixriver/loopback4-support';
-import {ServiceDirectory} from '@sixriver/service-directory';
+import { TemplateServiceApplication } from '../../src';
+import { TemplateController } from '../../src/controllers';
+import { TemplateMessageModel } from '../../src/models';
+import { TemplateServiceProviderKeys } from '../../src/providers';
 
-import {TemplateServiceApplication} from '../../src';
-import {TemplateController} from '../../src/controllers';
-import {TemplateMessageModel} from '../../src/models';
-import {TemplateServiceProviderKeys} from '../../src/providers';
+chaiUse(chaiAsPromised);
+const chance = new Chance();
 
-describe(`acceptance/${TemplateController.name}`, function() {
+describe(`acceptance/${TemplateController.name}`, function () {
 	let app: TemplateServiceApplication;
 	let sd: ServiceDirectory;
 	let selfBaseUrl: string;
 
-	beforeEach(async function() {
+	beforeEach(async function () {
 		nock.cleanAll();
 		if (!nock.isActive()) {
 			nock.activate();
@@ -30,7 +30,7 @@ describe(`acceptance/${TemplateController.name}`, function() {
 		nock.disableNetConnect();
 
 		app = new TemplateServiceApplication({});
-		const fakeEnv = {...process.env};
+		const fakeEnv = { ...process.env };
 		fakeEnv.TEST_MODE = 'acceptance';
 		app.bind(CommonBindings.PROCESS_ENV).to(fakeEnv);
 		await app.boot();
@@ -40,10 +40,10 @@ describe(`acceptance/${TemplateController.name}`, function() {
 		// TODO: use your real service name here
 		selfBaseUrl = sd.getBaseUrl('template-service' as any);
 		const selfUrl = url.parse(selfBaseUrl);
-		nock.enableNetConnect(url.format({hostname: selfUrl.hostname, port: selfUrl.port}));
+		nock.enableNetConnect(url.format({ hostname: selfUrl.hostname, port: selfUrl.port }));
 	});
 
-	afterEach(async function() {
+	afterEach(async function () {
 		await app.stop();
 
 		nock.cleanAll();
@@ -51,10 +51,10 @@ describe(`acceptance/${TemplateController.name}`, function() {
 		nock.restore();
 	});
 
-	context('ensure semantics / ingestion idempotency', function() {
+	context('ensure semantics / ingestion idempotency', function () {
 		let request: TemplateMessageModel;
 
-		beforeEach(function() {
+		beforeEach(function () {
 			request = new TemplateMessageModel({
 				id: uuidv4(),
 				data: {
@@ -63,13 +63,11 @@ describe(`acceptance/${TemplateController.name}`, function() {
 			});
 		});
 
-		it('should accept requests', async function() {
+		it('should accept requests', async function () {
 			const result = await axios.post(`${selfBaseUrl}/template`, request);
 
 			assert.isOk(result);
-			assert.deepEqual(result.data, {id: request.id});
+			assert.deepEqual(result.data, { id: request.id });
 		});
 	});
 });
-
-

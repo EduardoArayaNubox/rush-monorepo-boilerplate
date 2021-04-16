@@ -1,18 +1,31 @@
-import {TemplateServiceApplication} from './TemplateServiceApplication';
-import {ApplicationConfig} from '@loopback/core';
+import 'source-map-support/register';
+import { ApplicationConfig } from '@loopback/core';
 
-export {TemplateServiceApplication};
+import { TemplateServiceApplication } from './TemplateServiceApplication';
+
+export { TemplateServiceApplication };
 
 // the main function is uninteresting for code coverage
 /* istanbul ignore next */
-export async function main(options?: ApplicationConfig) {
-	const app = new TemplateServiceApplication({options});
+async function main(options?: ApplicationConfig): Promise<void> {
+	const app = new TemplateServiceApplication({ options });
 	await app.boot();
 	if (process.argv.includes('--init-only')) {
-		app['logger']?.info('Running in init container mode, exiting after successful database migration');
+		app['logger']?.info(
+			'Running in init container mode, exiting after successful database migration',
+		);
 		// FIXME: there's gotta be a better way to do this
 		process.exit(0);
 	}
 	await app.start();
-	return app;
+}
+
+/* istanbul ignore next */
+if (require.main === module) {
+	// Run the application
+	main().catch((err) => {
+		// eslint-disable-next-line no-console
+		console.error('Cannot start the application.', err);
+		process.exit(1);
+	});
 }

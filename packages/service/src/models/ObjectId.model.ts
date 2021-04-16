@@ -1,5 +1,5 @@
-import {Model, model, property} from '@loopback/repository';
-import {ObjectId} from '@sixriver/template-oas';
+import { Model, model, property } from '@loopback/repository';
+import { ObjectId } from '@sixriver/template-oas';
 
 @model()
 export class ObjectIdModel extends Model implements ObjectId {

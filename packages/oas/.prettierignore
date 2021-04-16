@@ -1,0 +1,8 @@
+dist
+package.json
+pnpm-lock.yaml
+.rush/temp/**
+coverage/
+
+# special for this project
+generated-interfaces/*-openapi.ts

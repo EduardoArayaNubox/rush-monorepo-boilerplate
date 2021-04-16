@@ -1,18 +1,23 @@
-require('source-map-support').install();
+import 'source-map-support/register';
 
 import * as fs from 'fs';
+import { join } from 'path';
+import { promisify } from 'util';
+
+import { compile, DEFAULT_OPTIONS } from 'json-schema-to-typescript';
 import * as _ from 'lodash';
-const toJsonSchema = require('openapi-schema-to-json-schema');
-import {join} from 'path';
-const SwaggerParser = require('swagger-parser');
-import {promisify} from 'util';
-import {compile, DEFAULT_OPTIONS} from 'json-schema-to-typescript';
-import {applyDateFormat} from './applyDateFormat';
-import {JsonParser} from './jsonParser';
-import {YamlParser} from './yamlParser';
+import toJsonSchema from 'openapi-schema-to-json-schema';
+import SwaggerParser from 'swagger-parser';
+import { Spec } from 'swagger-schema-official';
+
+import { applyDateFormat } from './applyDateFormat';
+import { JsonParser } from './jsonParser';
+import { YamlParser } from './yamlParser';
 
 const mkdir = promisify(fs.mkdir);
 const writeFile = promisify(fs.writeFile);
+
+type StringKeyed = { [k: string]: unknown };
 
 // this is a command line script, it definitely uses the console
 /* eslint-disable no-console */
@@ -29,35 +34,47 @@ async function safeMkdir(directoryPath: string) {
 	}
 }
 
-function magicRefs(obj: any) {
-	if (obj['$ref'] && obj['$ref'].indexOf('#/components/schemas/') === 0) {
+function magicRefs(obj: StringKeyed) {
+	if (
+		obj['$ref'] &&
+		typeof obj['$ref'] === 'string' &&
+		obj['$ref'].indexOf('#/components/schemas/') === 0
+	) {
 		const r = /^#\/components\/schemas\//;
 		obj['$ref'] = obj['$ref'].replace(r, '#/definitions/');
 	}
 	for (const key of Object.keys(obj)) {
 		if (typeof obj[key] === 'object' && obj[key]) {
-			magicRefs(obj[key]);
+			magicRefs(obj[key] as StringKeyed);
 		}
 	}
 }
 
-async function generateSchemas(path: string, api: any) {
+async function generateSchemas(path: string, api: Spec) {
 	const schemasPath = join(path, 'schemas');
 	await safeMkdir(schemasPath);
 
-	const schemas = Object.assign({}, _.get(await SwaggerParser.dereference(_.cloneDeep(api)), 'components.schemas', {}));
+	const schemas = Object.assign(
+		{},
+		_.get(await SwaggerParser.dereference(_.cloneDeep(api)), 'components.schemas', {}),
+	);
 
-	await Promise.all(Object.keys(schemas).map(
-		async (schemaName) => {
+	await Promise.all(
+		Object.keys(schemas).map(async (schemaName) => {
 			const schema = toJsonSchema(schemas[schemaName]);
 			const file = join(schemasPath, `${schemaName}.json`);
 			const content = JSON.stringify(schema, null, 2);
 			await write(schemaName, file, content);
-		}
-	));
+		}),
+	);
 }
 
-async function generateInterfaces(path: string, api: any, apiName: string, ...schemaNames: string[]) {
+async function generateInterfaces(
+	path: string,
+	api: Spec,
+	apiName: string,
+	...schemaNames: string[]
+) {
 	const interfacesPath = join(path, 'generated-interfaces');
 	await safeMkdir(interfacesPath);
 
@@ -76,9 +93,12 @@ async function generateInterfaces(path: string, api: any, apiName: string, ...sc
 
 	// need to fix refs on all schemas, even the ones we are not directly exporting
 	for (const s of Object.values(schemas)) {
-		magicRefs(s);
+		if (typeof s !== 'object') {
+			throw new Error('Unexpected non-object schema entry');
+		}
+		magicRefs(s as StringKeyed);
 	}
-	const schema = toJsonSchema({definitions: schemas});
+	const schema = toJsonSchema({ definitions: schemas });
 	const preparedSchema = applyDateFormat(schema);
 	const content = await compile(preparedSchema, apiName, {
 		unreachableDefinitions: true,
@@ -124,5 +144,8 @@ if (require.main === module) {
 		process.exitCode = 1;
 		throw err;
 	});
-	run(process.cwd());
+	run(process.cwd()).catch((err) => {
+		console.error(err);
+		process.exitCode = 1;
+	});
 }

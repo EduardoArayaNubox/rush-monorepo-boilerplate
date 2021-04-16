@@ -1,26 +1,30 @@
-import * as _ from 'lodash';
+import { inject } from '@loopback/context';
+import { post, api, HttpErrors, RestBindings, requestBody, Response } from '@loopback/rest';
+import { ApiSchemaBuilder, CommonBindings } from '@sixriver/loopback4-support';
+import { TemplateMessage } from '@sixriver/template-oas';
+import {
+	MinimalLogFactory,
+	MinimalLogger,
+	Validator,
+	safeErrors,
+} from '@sixriver/typescript-support';
 import Ajv from 'ajv';
+import * as _ from 'lodash';
 
-import {inject} from '@loopback/context';
-import {post, api, HttpErrors, RestBindings, requestBody, Response} from '@loopback/rest';
-
-import {MinimalLogFactory, MinimalLogger, Validator, safeErrors} from '@sixriver/typescript-support';
-import {ApiSchemaBuilder, CommonBindings} from '@sixriver/loopback4-support';
-
-import {TemplateMessage} from '@sixriver/template-oas';
-
-import {ObjectIdModel, TemplateMessageModel} from '../models';
-import {TemplateServiceProviderKeys} from '../providers';
+import { ObjectIdModel, TemplateMessageModel } from '../models';
+import { TemplateServiceProviderKeys } from '../providers';
 
 const schemaBuilder = new ApiSchemaBuilder();
 schemaBuilder.appendModel(TemplateMessageModel);
 
 const EntityBasePath = '/template';
 
-@api(schemaBuilder.createControllerApiDefinitions({
-	basePath: '/v1',
-	paths: {},
-}))
+@api(
+	schemaBuilder.createControllerApiDefinitions({
+		basePath: '/v1',
+		paths: {},
+	}),
+)
 export class TemplateController {
 	private readonly logger: MinimalLogger;
 
@@ -30,7 +34,7 @@ export class TemplateController {
 		@inject(RestBindings.Http.RESPONSE)
 		private readonly response: Response,
 		@inject(CommonBindings.LOG_FACTORY)
-		loggerFactory: MinimalLogFactory
+		loggerFactory: MinimalLogFactory,
 	) {
 		this.logger = loggerFactory(this.constructor.name);
 	}
@@ -41,7 +45,7 @@ export class TemplateController {
 				description: 'Template accepted',
 				content: {
 					'application/json': {
-						schema: {'x-ts-type': ObjectIdModel},
+						schema: { 'x-ts-type': ObjectIdModel },
 					},
 				},
 			},
@@ -49,11 +53,11 @@ export class TemplateController {
 	})
 	async create(
 		@requestBody()
-			message: TemplateMessageModel,
+		message: TemplateMessageModel,
 	): Promise<ObjectIdModel> {
 		try {
 			this.logger.info(
-				{message: _.pick(message, 'id', 'timestamp', 'source', 'destinations')},
+				{ message: _.pick(message, 'id', 'timestamp', 'source', 'destinations') },
 				'Received template request',
 			);
 
@@ -64,27 +68,31 @@ export class TemplateController {
 
 			this.response.statusCode = 201;
 
-			return new ObjectIdModel({id: message.id});
+			return new ObjectIdModel({ id: message.id });
 		} catch (err) {
 			// don't try to persist this error as an event, as it may have come from trying to persist an event
-			this.logger.error({err}, 'Failed to ingest template message');
+			this.logger.error({ err }, 'Failed to ingest template message');
 			throw err;
 		}
 	}
 
 	// note that we take in the message as an any because, if we got here, we _know_ it is _not_ valid
-	private async handleInvalidRequest(message: any, errors: any[]): Promise<never> {
+	private async handleInvalidRequest(message: unknown, errors: Error[]): Promise<never> {
 		// remove any circular references and deep nested structures from the errors objects
 		// having those causes many problems with both recording events and throwing the HTTP error later
 		errors = safeErrors(errors);
 
 		// TODO: we would like this to send a structured error, but that doesn't work when throwing an HttpError
 		const err = new HttpErrors.UnprocessableEntity('Invalid template message received');
-		err.details = {errors: errors.filter((e) => e !== null && e !== undefined).map((e) => ({
-			message: e.message,
-			...e,
-		}))};
-		this.logger.error({err}, err.message);
+		err.details = {
+			errors: errors
+				.filter((e) => e !== null && e !== undefined)
+				.map((e) => ({
+					...e,
+					message: e.message,
+				})),
+		};
+		this.logger.error({ err }, err.message);
 		throw err;
 	}
 }
