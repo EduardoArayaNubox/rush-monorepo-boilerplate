@@ -1,15 +1,18 @@
 require('source-map-support').install();
 
 import * as fs from 'fs';
+import { join } from 'path';
+import { promisify } from 'util';
+
+import { compile, DEFAULT_OPTIONS } from 'json-schema-to-typescript';
 import * as _ from 'lodash';
+
+import { applyDateFormat } from './applyDateFormat';
+import { JsonParser } from './jsonParser';
+import { YamlParser } from './yamlParser';
+
 const toJsonSchema = require('openapi-schema-to-json-schema');
-import {join} from 'path';
 const SwaggerParser = require('swagger-parser');
-import {promisify} from 'util';
-import {compile, DEFAULT_OPTIONS} from 'json-schema-to-typescript';
-import {applyDateFormat} from './applyDateFormat';
-import {JsonParser} from './jsonParser';
-import {YamlParser} from './yamlParser';
 
 const mkdir = promisify(fs.mkdir);
 const writeFile = promisify(fs.writeFile);
@@ -45,19 +48,27 @@ async function generateSchemas(path: string, api: any) {
 	const schemasPath = join(path, 'schemas');
 	await safeMkdir(schemasPath);
 
-	const schemas = Object.assign({}, _.get(await SwaggerParser.dereference(_.cloneDeep(api)), 'components.schemas', {}));
+	const schemas = Object.assign(
+		{},
+		_.get(await SwaggerParser.dereference(_.cloneDeep(api)), 'components.schemas', {}),
+	);
 
-	await Promise.all(Object.keys(schemas).map(
-		async (schemaName) => {
+	await Promise.all(
+		Object.keys(schemas).map(async (schemaName) => {
 			const schema = toJsonSchema(schemas[schemaName]);
 			const file = join(schemasPath, `${schemaName}.json`);
 			const content = JSON.stringify(schema, null, 2);
 			await write(schemaName, file, content);
-		}
-	));
+		}),
+	);
 }
 
-async function generateInterfaces(path: string, api: any, apiName: string, ...schemaNames: string[]) {
+async function generateInterfaces(
+	path: string,
+	api: any,
+	apiName: string,
+	...schemaNames: string[]
+) {
 	const interfacesPath = join(path, 'generated-interfaces');
 	await safeMkdir(interfacesPath);
 
@@ -78,7 +89,7 @@ async function generateInterfaces(path: string, api: any, apiName: string, ...sc
 	for (const s of Object.values(schemas)) {
 		magicRefs(s);
 	}
-	const schema = toJsonSchema({definitions: schemas});
+	const schema = toJsonSchema({ definitions: schemas });
 	const preparedSchema = applyDateFormat(schema);
 	const content = await compile(preparedSchema, apiName, {
 		unreachableDefinitions: true,

@@ -1,3 +1,3 @@
-describe('template', function() {
+describe('template', function () {
 	it('should have some tests');
 });

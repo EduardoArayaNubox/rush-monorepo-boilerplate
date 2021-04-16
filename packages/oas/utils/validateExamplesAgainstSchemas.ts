@@ -1,17 +1,18 @@
 require('source-map-support').install();
 
-import Ajv from 'ajv';
 import * as fs from 'fs';
-import {get} from 'lodash';
+import { join, basename } from 'path';
+import { promisify } from 'util';
+
+import Ajv from 'ajv';
+import { get } from 'lodash';
 import toJsonSchema from 'openapi-schema-to-json-schema';
-import {join, basename} from 'path';
 import SwaggerParser from 'swagger-parser';
-import {promisify} from 'util';
 
 const readdir = promisify(fs.readdir);
 const readFile = promisify(fs.readFile);
 
-import {getDirectories} from './FileUtils';
+import { getDirectories } from './FileUtils';
 
 // this is a command line script, it definitely uses the console
 /* eslint-disable no-console */
@@ -39,21 +40,23 @@ async function testOneSamplesDir(samplesPath: string, api: any) {
 
 	const schema = toJsonSchema(oasModel);
 	const validate = ajv.compile(schema);
-	await Promise.all(sampleFileNames.map(async (sampleFileName) => {
-		const contents = await readFile(join(samplesPath, sampleFileName));
-		const sample = JSON.parse(contents.toString());
-		const valid = validate(sample);
-		if (valid) {
-			console.log(`${api.info.version} - ${sampleFolder} - ${sampleFileName} - Valid.`);
-		} else {
-			console.error(`${api.info.version} - ${sampleFolder} - ${sampleFileName} - INVALID!`);
-			++failures;
-			validate.errors!.forEach((error) => {
-				console.error(error);
-			});
-			console.log();
-		}
-	}));
+	await Promise.all(
+		sampleFileNames.map(async (sampleFileName) => {
+			const contents = await readFile(join(samplesPath, sampleFileName));
+			const sample = JSON.parse(contents.toString());
+			const valid = validate(sample);
+			if (valid) {
+				console.log(`${api.info.version} - ${sampleFolder} - ${sampleFileName} - Valid.`);
+			} else {
+				console.error(`${api.info.version} - ${sampleFolder} - ${sampleFileName} - INVALID!`);
+				++failures;
+				validate.errors!.forEach((error) => {
+					console.error(error);
+				});
+				console.log();
+			}
+		}),
+	);
 
 	if (failures !== 0) {
 		console.error(`There were ${failures} examples in ${samplesPath} that failed`);
@@ -68,11 +71,13 @@ async function testSamplesAgainstApi(apiPath: string, api: any) {
 
 	let failures = 0;
 
-	await Promise.all(schemaDirs.map(async (schemaDir) => {
-		// ??? doing `failures += await ...` doesn't work, seems to change how `failures` is closed
-		const schemaFailures = await testOneSamplesDir(schemaDir, api);
-		failures += schemaFailures;
-	}));
+	await Promise.all(
+		schemaDirs.map(async (schemaDir) => {
+			// ??? doing `failures += await ...` doesn't work, seems to change how `failures` is closed
+			const schemaFailures = await testOneSamplesDir(schemaDir, api);
+			failures += schemaFailures;
+		}),
+	);
 
 	if (failures !== 0) {
 		console.error(`There were ${failures} examples in ${apiPath} that failed`);

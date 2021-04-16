@@ -1,13 +1,6 @@
 {
-	"extension": [
-		".ts"
-	],
-	"exclude": [
-		"**/*.d.ts",
-		"test/",
-		"dist*/test/",
-		"**/migrations/**"
-	],
+	"extension": [".ts"],
+	"exclude": ["**/*.d.ts", "test/", "dist*/test/", "**/migrations/**"],
 	"require": [],
 	"sourceMap": true,
 	"instrument": true,

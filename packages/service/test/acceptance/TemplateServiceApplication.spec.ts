@@ -1,38 +1,36 @@
-import {assert} from 'chai';
-
+import { CommonBindings } from '@sixriver/loopback4-support';
 import axios from 'axios';
-import {AxiosError} from 'axios';
+import { AxiosError } from 'axios';
+import { assert } from 'chai';
 import uuidv4 from 'uuid/v4';
 
-import {CommonBindings} from '@sixriver/loopback4-support';
+import { TemplateServiceApplication } from '../../src';
+import { TemplateServiceProviderKeys } from '../../src/providers';
 
-import {TemplateServiceApplication} from '../../src';
-import {TemplateServiceProviderKeys} from '../../src/providers';
-
-describe(`acceptance/${TemplateServiceApplication.name}`, function() {
+describe(`acceptance/${TemplateServiceApplication.name}`, function () {
 	let app: TemplateServiceApplication;
 
-	beforeEach(async function() {
+	beforeEach(async function () {
 		app = new TemplateServiceApplication({});
-		const fakeEnv = {...process.env};
+		const fakeEnv = { ...process.env };
 		fakeEnv.TEST_MODE = 'acceptance';
 		app.bind(CommonBindings.PROCESS_ENV).to(fakeEnv);
 	});
 
-	afterEach(async function() {
+	afterEach(async function () {
 		await app.stop();
 	});
 
-	it('should boot', async function() {
+	it('should boot', async function () {
 		await app.boot();
 		await app.start();
 	});
 
-	context('booted', function() {
+	context('booted', function () {
 		let baseUrl: string;
 		let apiBaseUrl: string;
 
-		beforeEach(async function() {
+		beforeEach(async function () {
 			await app.boot();
 			await app.start();
 
@@ -41,7 +39,7 @@ describe(`acceptance/${TemplateServiceApplication.name}`, function() {
 			apiBaseUrl = `${baseUrl}/template`;
 		});
 
-		it('should host an uptime controller', async function() {
+		it('should host an uptime controller', async function () {
 			assert.isTrue(baseUrl.endsWith('/v1'));
 			const result = await axios.get(baseUrl.substr(0, baseUrl.length - 3));
 			assert.isOk(result);
@@ -54,7 +52,7 @@ describe(`acceptance/${TemplateServiceApplication.name}`, function() {
 			assert.isAbove(result.data.uptime, 0);
 		});
 
-		it('should host an ingest controller with a findById endpoint', async function() {
+		it('should host an ingest controller with a findById endpoint', async function () {
 			const url = `${apiBaseUrl}/${uuidv4()}`;
 			try {
 				await axios.get(url);

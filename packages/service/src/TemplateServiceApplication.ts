@@ -1,14 +1,12 @@
-import * as _ from 'lodash';
 import * as path from 'path';
 
-import {ApplicationConfig, Provider, BindingScope} from '@loopback/core';
-import {RestApplication, RestServer, RestBindings, DefaultSequence} from '@loopback/rest';
-import {RestExplorerComponent} from '@loopback/rest-explorer';
-import {Constructor, inject, Getter} from '@loopback/context';
-
-import {RepositoryMixin, juggler} from '@loopback/repository';
-import {BootMixin} from '@loopback/boot';
-
+import { BootMixin } from '@loopback/boot';
+import { Constructor, inject, Getter } from '@loopback/context';
+import { ApplicationConfig, Provider, BindingScope } from '@loopback/core';
+import { RepositoryMixin, juggler } from '@loopback/repository';
+import { RestApplication, RestServer, RestBindings, DefaultSequence } from '@loopback/rest';
+import { RestExplorerComponent } from '@loopback/rest-explorer';
+import { MetricsComponent } from '@sixriver/loopback4-metrics';
 import {
 	CommonBindings,
 	configureLogging,
@@ -24,29 +22,26 @@ import {
 	ServiceConfig,
 	UptimeController,
 } from '@sixriver/loopback4-support';
-import {MetricsComponent} from '@sixriver/loopback4-metrics';
-import {MinimalLogFactory, MinimalLogger} from '@sixriver/typescript-support';
-import {ServicePortFactory, getEnvironment} from '@sixriver/service-directory';
+import { ServicePortFactory, getEnvironment } from '@sixriver/service-directory';
+import { TemplateMessage, TemplateSchemas } from '@sixriver/template-oas';
+import { MinimalLogFactory, MinimalLogger } from '@sixriver/typescript-support';
+import * as _ from 'lodash';
 
-import {TemplateMessage, TemplateSchemas} from '@sixriver/template-oas';
-
-import {TemplateServiceProviderKeys} from './providers';
-
-import {TemplateDataSource} from './datasources';
+import { TemplateDataSource } from './datasources';
+import { TemplateServiceProviderKeys } from './providers';
 
 const defaultListenHost = '0.0.0.0';
 
-const defaultListenPort =
-	new ServicePortFactory(() => console)
+const defaultListenPort = new ServicePortFactory(() => console)
 	.manufacture(getEnvironment(process.env))
 	// FIXME: replace this with your service name and remove the `as any`
 	.getPort('template-service' as any);
 
 export type TemplateServiceApplicationArguments = {
-	options?: ApplicationConfig,
-	loggingOptions?: LoggingConfigOptions,
-	serviceConfig?: Constructor<Provider<ServiceConfig>> | ServiceConfig,
-	env?: NodeJS.ProcessEnv,
+	options?: ApplicationConfig;
+	loggingOptions?: LoggingConfigOptions;
+	serviceConfig?: Constructor<Provider<ServiceConfig>> | ServiceConfig;
+	env?: NodeJS.ProcessEnv;
 };
 
 // eslint-disable-next-line 6river/new-cap
@@ -58,12 +53,15 @@ export class TemplateServiceApplication extends BootMixin(RepositoryMixin(RestAp
 			args.options = {};
 		}
 
-		_.defaults(args.options, envRestOptions({
-			rest: {
-				host: defaultListenHost,
-				port: defaultListenPort,
-			},
-		}));
+		_.defaults(
+			args.options,
+			envRestOptions({
+				rest: {
+					host: defaultListenHost,
+					port: defaultListenPort,
+				},
+			}),
+		);
 
 		super(args.options);
 
@@ -97,9 +95,9 @@ export class TemplateServiceApplication extends BootMixin(RepositoryMixin(RestAp
 		class DbMigrateBooter extends DbMigrateBooterBase {
 			constructor(
 				@inject(CommonBindings.LOG_FACTORY)
-					loggerFactory: MinimalLogFactory,
+				loggerFactory: MinimalLogFactory,
 				@inject.getter('datasources.' + TemplateDataSource.name)
-					datasource: Getter<juggler.DataSource>
+				datasource: Getter<juggler.DataSource>,
 			) {
 				super(loggerFactory, datasource, 'service', path.join(__dirname, '../../'));
 			}
@@ -121,21 +119,21 @@ export class TemplateServiceApplication extends BootMixin(RepositoryMixin(RestAp
 		this.controller(UptimeController);
 
 		this.bind(TemplateServiceProviderKeys.SERVICE_DIRECTORY)
-		.toProvider(InternalServiceDirectoryProvider)
-		.inScope(BindingScope.SINGLETON);
+			.toProvider(InternalServiceDirectoryProvider)
+			.inScope(BindingScope.SINGLETON);
 
 		class TemplateMessageValidatorProvider extends JsonSchema4ValidatorProvider<TemplateMessage> {
 			constructor(
 				@inject(CommonBindings.LOG_FACTORY)
-					logFactory: MinimalLogFactory,
+				logFactory: MinimalLogFactory,
 			) {
 				super(TemplateSchemas.TemplateMessageSchema, 'TemplateMessage', logFactory);
 			}
 		}
 		this.bind(TemplateServiceProviderKeys.REQUEST_VALIDATOR)
-		// note: the JSON schema file doesn't get copied to dist, so have to lift ourselves out of `dist10/src`
-		.toProvider(TemplateMessageValidatorProvider)
-		.inScope(BindingScope.SINGLETON);
+			// note: the JSON schema file doesn't get copied to dist, so have to lift ourselves out of `dist10/src`
+			.toProvider(TemplateMessageValidatorProvider)
+			.inScope(BindingScope.SINGLETON);
 	}
 
 	public async start() {
@@ -154,7 +152,9 @@ export class TemplateServiceApplication extends BootMixin(RepositoryMixin(RestAp
 		this.logger.info(`API explorer: http://127.0.0.1:${port}/explorer`);
 	}
 
-	public static getLoggingConfigOptions(loggingConfigOptions?: LoggingConfigOptions): LoggingConfigOptions {
+	public static getLoggingConfigOptions(
+		loggingConfigOptions?: LoggingConfigOptions,
+	): LoggingConfigOptions {
 		loggingConfigOptions = loggingConfigOptions || {};
 		// if a logger factory is given, we don't need the logger config
 		if (!loggingConfigOptions.loggerFactory && !loggingConfigOptions.logging) {

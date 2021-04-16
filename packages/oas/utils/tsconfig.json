@@ -6,13 +6,9 @@
 		"rootDir": ".",
 		"baseUrl": ".",
 		"paths": {
-			"*": [
-				"../types/*"
-			]
+			"*": ["../types/*"]
 		},
-		"resolveJsonModule": true,
+		"resolveJsonModule": true
 	},
-	"include": [
-		"."
-	]
+	"include": ["."]
 }

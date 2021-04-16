@@ -1,6 +1,5 @@
-import {Model, model, property} from '@loopback/repository';
-
-import {TemplateMessage} from '@sixriver/template-oas';
+import { Model, model, property } from '@loopback/repository';
+import { TemplateMessage } from '@sixriver/template-oas';
 
 // NOTE: the message is a `Model`, but _NOT_ an `Entity` -- it is not persisted
 @model()

@@ -1,6 +1,7 @@
-import {FileInfo} from 'json-schema-ref-parser';
-import {applyDateFormat} from './applyDateFormat';
-import {JSONSchema4} from './JSONSchema4';
+import { FileInfo } from 'json-schema-ref-parser';
+
+import { JSONSchema4 } from './JSONSchema4';
+import { applyDateFormat } from './applyDateFormat';
 
 export const JsonParser = {
 	/**

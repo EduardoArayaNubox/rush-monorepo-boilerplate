@@ -1,20 +1,18 @@
-import {assert} from 'chai';
-import Chance from 'chance';
-const chance = new Chance();
-import * as sinon from 'sinon';
+import { Console } from 'console';
 
+import { Response } from '@loopback/rest';
+import { TemplateMessage } from '@sixriver/template-oas';
+import { MinimalLogFactory, MinimalLogger, Validator } from '@sixriver/typescript-support';
 import Ajv from 'ajv';
-import {Console} from 'console';
+import { assert } from 'chai';
+import Chance from 'chance';
+import * as sinon from 'sinon';
 import uuidv4 from 'uuid/v4';
 
-import {Response} from '@loopback/rest';
+import { TemplateController } from '../../../src/controllers';
+import { TemplateMessageModel } from '../../../src/models';
 
-import {MinimalLogFactory, MinimalLogger, Validator} from '@sixriver/typescript-support';
-
-import {TemplateMessage} from '@sixriver/template-oas';
-
-import {TemplateController} from '../../../src/controllers';
-import {TemplateMessageModel} from '../../../src/models';
+const chance = new Chance();
 
 class MockValidator<T, TError = any> implements Validator<T, TError> {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -23,7 +21,7 @@ class MockValidator<T, TError = any> implements Validator<T, TError> {
 	}
 }
 
-describe(TemplateController.name, function() {
+describe(TemplateController.name, function () {
 	let requestValidator: Validator<TemplateMessage, Ajv.ErrorObject>;
 	let log: MinimalLogger;
 	let logFactory: MinimalLogFactory;
@@ -32,7 +30,7 @@ describe(TemplateController.name, function() {
 
 	let requestMessage: TemplateMessageModel;
 
-	beforeEach(async function() {
+	beforeEach(async function () {
 		log = new Console(process.stdout, process.stderr);
 		sinon.stub(log, 'trace').returns(undefined);
 		sinon.stub(log, 'debug').returns(undefined);
@@ -42,11 +40,7 @@ describe(TemplateController.name, function() {
 
 		response = {} as any;
 
-		controller = new TemplateController(
-			requestValidator,
-			response,
-			logFactory,
-		);
+		controller = new TemplateController(requestValidator, response, logFactory);
 
 		requestMessage = new TemplateMessageModel({
 			id: uuidv4(),
@@ -56,11 +50,13 @@ describe(TemplateController.name, function() {
 		});
 
 		const infoStub = sinon.stub(log, 'info').callThrough();
-		infoStub.withArgs(sinon.match({message: {id: requestMessage.id}}), sinon.match.any).returns(undefined);
+		infoStub
+			.withArgs(sinon.match({ message: { id: requestMessage.id } }), sinon.match.any)
+			.returns(undefined);
 	});
 
-	context('create', function() {
-		it('should return the created object id in the happy path', async function() {
+	context('create', function () {
+		it('should return the created object id in the happy path', async function () {
 			const validateMessage = sinon.stub(requestValidator, 'tryValidate').callThrough();
 			validateMessage.withArgs(sinon.match(requestMessage)).returns(true);
 
@@ -72,7 +68,7 @@ describe(TemplateController.name, function() {
 		});
 
 		// TODO: should have more forms of invalid entities
-		it('should throw UnprocessableEntity if the validator rejects', async function() {
+		it('should throw UnprocessableEntity if the validator rejects', async function () {
 			delete requestMessage.id;
 			const validateMessage = sinon.stub(requestValidator, 'tryValidate').callThrough();
 			const vmStub = validateMessage.withArgs(sinon.match(requestMessage));
@@ -82,8 +78,11 @@ describe(TemplateController.name, function() {
 				output?.push(new Error(inducedErrorMessage));
 				return false;
 			});
-			sinon.stub(log, 'error').callThrough()
-			.withArgs(sinon.match({err: {status: 422}}), sinon.match.any).returns(undefined);
+			sinon
+				.stub(log, 'error')
+				.callThrough()
+				.withArgs(sinon.match({ err: { status: 422 } }), sinon.match.any)
+				.returns(undefined);
 
 			try {
 				await controller.create(requestMessage);
