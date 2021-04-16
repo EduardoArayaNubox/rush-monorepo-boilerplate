@@ -243,20 +243,50 @@ workflows:
           requires:
             - build
       - deploy-npm:
+          name: deploy-npm-release
           context: 6rs-circle
+          filters:
+            branches:
+              only:
+                - main
+                - /^lts
           requires:
             - lint
             - build
             - test
+      - deploy-npm:
+          context: 6rs-circle
+          filters:
+            branches:
+              ignore:
+                - main
+                - /^lts
+          requires:
+            - build
       - deploy-docker:
           context: 6rs-circle
           requires:
             - build
       - tag-docker:
+          name: tag-docker-release
           context: 6rs-circle
+          filters:
+            branches:
+              only:
+                - main
+                - /^lts
           requires:
             - test
             - lint
+            - deploy-docker
+      - tag-docker:
+          context: 6rs-circle
+          filters:
+            branches:
+              ignore:
+                - main
+                - /^lts
+          requires:
             - deploy-docker
       - save-local-cache:
           context: 6rs-circle
