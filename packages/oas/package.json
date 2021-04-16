@@ -49,13 +49,13 @@
     "@types/mocha": "5.2.7",
     "@types/node": "12.12.54",
     "@types/swagger-parser": "4.0.3",
-    "@typescript-eslint/eslint-plugin": "2.8.0",
-    "@typescript-eslint/parser": "2.8.0",
-    "eslint": "5.4.0",
-    "eslint-config-6river": "3.0.0",
+    "@typescript-eslint/eslint-plugin": "4.22.0",
+    "@typescript-eslint/parser": "4.22.0",
+    "eslint": "7.24.0",
+    "eslint-config-6river": "5.0.30",
     "eslint-config-google": "0.12.0",
     "eslint-plugin-6river": "1.0.6",
-    "eslint-plugin-mocha": "5.0.0",
+    "eslint-plugin-mocha": "8.1.0",
     "json-schema-ref-parser": "6.1.0",
     "json-schema-to-typescript": "6.1.3",
     "lodash": "4.17.19",
@@ -64,6 +64,10 @@
     "source-map-support": "0.5.16",
     "speccy": "0.9.0",
     "swagger-parser": "6.0.5",
-    "typescript": "3.9.7"
+    "typescript": "3.9.7",
+    "@6river/prettier-config": "1.0.37",
+    "eslint-config-prettier": "8.2.0",
+    "eslint-plugin-import": "2.22.1",
+    "prettier": "2.2.1"
   }
 }
