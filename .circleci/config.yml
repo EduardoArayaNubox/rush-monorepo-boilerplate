@@ -226,10 +226,17 @@ jobs:
 workflows:
   version: 2
 
-  build-deploy:
+  build-deploy-release:
     jobs:
       - install:
           context: 6rs-circle
+          # everything depends on `install`, so preventing it from running
+          # _should_ prevent all the others too
+          filters:
+            branches:
+              only:
+                - main
+                - /^lts
       - build:
           context: 6rs-circle
           requires:
@@ -257,6 +264,44 @@ workflows:
           requires:
             - test
             - lint
+            - deploy-docker
+      - save-local-cache:
+          context: 6rs-circle
+          requires:
+            - install
+
+  build-deploy-dev:
+    jobs:
+      - install:
+          context: 6rs-circle
+          filters:
+            branches:
+              ignore:
+                - main
+                - /^lts
+      - build:
+          context: 6rs-circle
+          requires:
+            - install
+      - lint:
+          context: 6rs-circle
+          requires:
+            - install
+      - test:
+          context: 6rs-circle
+          requires:
+            - build
+      - deploy-npm:
+          context: 6rs-circle
+          requires:
+            - build
+      - deploy-docker:
+          context: 6rs-circle
+          requires:
+            - build
+      - tag-docker:
+          context: 6rs-circle
+          requires:
             - deploy-docker
       - save-local-cache:
           context: 6rs-circle
