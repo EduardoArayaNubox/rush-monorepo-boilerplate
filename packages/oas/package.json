@@ -36,9 +36,13 @@
     "start": "false",
     "release": "true"
   },
+  "dependencies": {
+    "@sixriver/typescript-support": "6.3.5"
+  },
   "devDependencies": {
     "@6river/prettier-config": "1.0.37",
-    "@sixriver/oas-support": "4.0.0",
+    "@sixriver/oas-support": "6.3.5",
+    "@types/json-schema": "7.0.4",
     "@types/lodash": "4.14.159",
     "@types/mocha": "5.2.7",
     "@types/node": "12.12.54",
@@ -48,8 +52,8 @@
     "@typescript-eslint/eslint-plugin": "4.22.0",
     "@typescript-eslint/parser": "4.22.0",
     "eslint": "7.24.0",
-    "eslint-config-6river": "5.1.0",
-    "eslint-config-google": "0.12.0",
+    "eslint-config-6river": "5.1.1",
+    "eslint-config-google": "0.14.0",
     "eslint-config-prettier": "8.2.0",
     "eslint-plugin-6river": "1.0.6",
     "eslint-plugin-import": "2.22.1",
@@ -66,7 +70,7 @@
     "typescript": "3.9.7"
   },
   "peerDependencies": {
-    "@sixriver/oas-support": "^4.0.0",
+    "@sixriver/oas-support": "^6.0.0",
     "ajv": "6.10.0"
   },
   "publishConfig": {

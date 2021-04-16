@@ -1,5 +1,6 @@
 import 'source-map-support/register';
 import { ApplicationConfig } from '@loopback/core';
+import { CommonBindings } from '@sixriver/loopback4-support';
 
 import { TemplateServiceApplication } from './TemplateServiceApplication';
 
@@ -11,10 +12,8 @@ async function main(options?: ApplicationConfig): Promise<void> {
 	const app = new TemplateServiceApplication({ options });
 	await app.boot();
 	if (process.argv.includes('--init-only')) {
-		app['logger']?.info(
-			'Running in init container mode, exiting after successful database migration',
-		);
-		// FIXME: there's gotta be a better way to do this
+		const logger = await app.get(CommonBindings.ROOT_LOGGER);
+		logger.info('Running in init container mode, exiting after successful database migration');
 		process.exit(0);
 	}
 	await app.start();

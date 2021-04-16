@@ -4,6 +4,7 @@ import * as fs from 'fs';
 import { join } from 'path';
 import { promisify } from 'util';
 
+import { allSettledAndThrow } from '@sixriver/typescript-support';
 import { compile, DEFAULT_OPTIONS } from 'json-schema-to-typescript';
 import * as _ from 'lodash';
 import toJsonSchema from 'openapi-schema-to-json-schema';
@@ -121,13 +122,26 @@ async function write(schemaName: string, file: string, content: string) {
 
 async function parseApi(apiFolder: string, yamlName: string) {
 	const apiFile = join(apiFolder, yamlName);
-	return await SwaggerParser.parse(apiFile);
+	const api = await SwaggerParser.parse(apiFile);
+	// replace `x-tsType` with `tsType`: the latter is what the typescript
+	// generator wants, but it makes YAML validation angry
+	function fixer(value: any, key: string, owner: any) {
+		if (key === 'x-tsType') {
+			owner.tsType = value;
+			delete owner[key];
+		}
+		if (typeof value === 'object') {
+			_.forIn(value, fixer);
+		}
+	}
+	_.forIn(api, fixer);
+	return api;
 }
 
 async function run(rootDir: string) {
 	try {
 		const api = await parseApi(rootDir, 'template-openapi.yaml');
-		await Promise.all([
+		await allSettledAndThrow([
 			generateSchemas(join(rootDir, 'dist'), api),
 			generateInterfaces(rootDir, api, 'template-openapi'),
 		]);

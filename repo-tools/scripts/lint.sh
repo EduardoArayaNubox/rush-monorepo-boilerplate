@@ -1,7 +1,5 @@
 #!/bin/bash
 
-## TODO: Port to TS
-
 BASENAME=$(basename $PWD)
 
 if [ ${CI} ]; then
