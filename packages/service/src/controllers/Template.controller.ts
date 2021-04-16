@@ -77,7 +77,7 @@ export class TemplateController {
 	}
 
 	// note that we take in the message as an any because, if we got here, we _know_ it is _not_ valid
-	private async handleInvalidRequest(message: any, errors: any[]): Promise<never> {
+	private async handleInvalidRequest(message: unknown, errors: Error[]): Promise<never> {
 		// remove any circular references and deep nested structures from the errors objects
 		// having those causes many problems with both recording events and throwing the HTTP error later
 		errors = safeErrors(errors);
@@ -88,8 +88,8 @@ export class TemplateController {
 			errors: errors
 				.filter((e) => e !== null && e !== undefined)
 				.map((e) => ({
-					message: e.message,
 					...e,
+					message: e.message,
 				})),
 		};
 		this.logger.error({ err }, err.message);

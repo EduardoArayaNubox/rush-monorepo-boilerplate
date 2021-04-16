@@ -136,7 +136,7 @@ export class TemplateServiceApplication extends BootMixin(RepositoryMixin(RestAp
 			.inScope(BindingScope.SINGLETON);
 	}
 
-	public async start() {
+	public async start(): Promise<void> {
 		this.bind(UptimeController.STARTED_TIME).to(new Date());
 
 		const loggerFactory = await this.get(CommonBindings.LOG_FACTORY);

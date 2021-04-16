@@ -1,4 +1,4 @@
-require('source-map-support').install();
+import 'source-map-support/register';
 
 import * as fs from 'fs';
 import { join, basename } from 'path';
@@ -8,11 +8,12 @@ import Ajv from 'ajv';
 import { get } from 'lodash';
 import toJsonSchema from 'openapi-schema-to-json-schema';
 import SwaggerParser from 'swagger-parser';
+import { Spec } from 'swagger-schema-official';
+
+import { getDirectories } from './FileUtils';
 
 const readdir = promisify(fs.readdir);
 const readFile = promisify(fs.readFile);
-
-import { getDirectories } from './FileUtils';
 
 // this is a command line script, it definitely uses the console
 /* eslint-disable no-console */
@@ -25,9 +26,10 @@ const ajv = new Ajv({
 	logger: false,
 });
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'));
 
-async function testOneSamplesDir(samplesPath: string, api: any) {
+async function testOneSamplesDir(samplesPath: string, api: Spec) {
 	let failures = 0;
 
 	const sampleFolder = basename(samplesPath);
@@ -45,12 +47,14 @@ async function testOneSamplesDir(samplesPath: string, api: any) {
 			const contents = await readFile(join(samplesPath, sampleFileName));
 			const sample = JSON.parse(contents.toString());
 			const valid = validate(sample);
-			if (valid) {
+			if (await valid) {
 				console.log(`${api.info.version} - ${sampleFolder} - ${sampleFileName} - Valid.`);
+			} else if (!validate.errors) {
+				throw new Error('WAT: AJV invalid but no errors?');
 			} else {
 				console.error(`${api.info.version} - ${sampleFolder} - ${sampleFileName} - INVALID!`);
 				++failures;
-				validate.errors!.forEach((error) => {
+				validate.errors.forEach((error) => {
 					console.error(error);
 				});
 				console.log();
@@ -64,7 +68,7 @@ async function testOneSamplesDir(samplesPath: string, api: any) {
 	return failures;
 }
 
-async function testSamplesAgainstApi(apiPath: string, api: any) {
+async function testSamplesAgainstApi(apiPath: string, api: Spec) {
 	const samplesPath = join(apiPath, 'samples');
 
 	const schemaDirs = (await getDirectories(samplesPath)).map((d) => join(samplesPath, d));
@@ -103,5 +107,13 @@ async function run(rootDir: string) {
 }
 
 if (require.main === module) {
-	run(process.cwd());
+	// make sure any weirdness is fatal
+	process.on('unhandledRejection', (err) => {
+		process.exitCode = 1;
+		throw err;
+	});
+	run(process.cwd()).catch((err) => {
+		console.error(err);
+		process.exitCode = 1;
+	});
 }

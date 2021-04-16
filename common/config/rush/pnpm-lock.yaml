@@ -39,7 +39,9 @@ dependencies:
   '@types/nock': 9.3.1
   '@types/node': 12.12.54
   '@types/sinon': 7.5.0
+  '@types/source-map-support': 0.5.3
   '@types/swagger-parser': 4.0.3
+  '@types/swagger-schema-official': 2.0.21
   '@types/uuid': 3.4.6
   '@typescript-eslint/eslint-plugin': 4.22.0_aa92a0225c0073d6d700bf4add58522c
   '@typescript-eslint/parser': 4.22.0_eslint@7.24.0+typescript@3.9.7
@@ -57,7 +59,7 @@ dependencies:
   db-migrate-pg: 0.4.0
   deep-eql: 3.0.1
   eslint: 7.24.0
-  eslint-config-6river: 5.0.30_eslint@7.24.0
+  eslint-config-6river: 5.1.0-tsStrict.5_eslint@7.24.0
   eslint-config-google: 0.12.0_eslint@7.24.0
   eslint-config-prettier: 8.2.0_eslint@7.24.0
   eslint-plugin-6river: 1.0.6
@@ -1480,6 +1482,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-dIPoZ3g5gcx9zZEszaxLSVTvMReD3xxyyDnQUjA6IYDG9Ba2AV0otMPs+77sG9ojB4Qr2N2Vk5RnKeuA0X/0bg==
+  /@types/source-map-support/0.5.3:
+    dependencies:
+      source-map: 0.6.1
+    dev: false
+    resolution:
+      integrity: sha512-fvjMjVH8Rmokw2dWh1dkj90iX5R8FPjeZzjNH+6eFXReh0QnHFf1YBl3B0CF0RohIAA3SDRJsGeeUWKl6d7HqA==
   /@types/superagent/4.1.10:
     dependencies:
       '@types/cookiejar': 2.1.2
@@ -3729,7 +3737,7 @@ packages:
       node: '>=0.8.0'
     resolution:
       integrity: sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
-  /eslint-config-6river/5.0.30_eslint@7.24.0:
+  /eslint-config-6river/5.1.0-tsStrict.5_eslint@7.24.0:
     dependencies:
       eslint: 7.24.0
       eslint-config-google: 0.14.0_eslint@7.24.0
@@ -3742,7 +3750,7 @@ packages:
     peerDependencies:
       eslint: ^7.2.0
     resolution:
-      integrity: sha512-aNIPxB2eDHdvfP6XXTVqTgPMiT0507N3tmLwETwUJGAr+3U/w3au9hZxSQBGvBE3vckhTPE6MJUWFLb2p9TALQ==
+      integrity: sha512-Q/F8NijGZIFX9llC8rrb45w+uCDxK/b5R8iO7qt1f/+ErSXuEzOg3w72651/L2WSnKfm1OhIufxV4tImliudkA==
   /eslint-config-google/0.12.0_eslint@7.24.0:
     dependencies:
       eslint: 7.24.0
@@ -11049,7 +11057,7 @@ packages:
       chai-string: 1.4.0_chai@4.2.0
       chance: 1.0.13
       eslint: 7.24.0
-      eslint-config-6river: 5.0.30_eslint@7.24.0
+      eslint-config-6river: 5.1.0-tsStrict.5_eslint@7.24.0
       eslint-config-google: 0.12.0_eslint@7.24.0
       eslint-config-prettier: 8.2.0_eslint@7.24.0
       eslint-plugin-6river: 1.0.6
@@ -11068,7 +11076,7 @@ packages:
     dev: false
     name: '@rush-temp/template-common'
     resolution:
-      integrity: sha512-AZdPS//UfQwmQfvqrx8nysN8SENbabsIhG/NNflcL8g0jUerQMH8tq1ybjExQdE0M7qEQV6UsPvQ2OD1xHwH9w==
+      integrity: sha512-02x/N73NW5OxirNaJ/rjRY+dyRR/R7iNX7m+YUdeyWRi+gIjIL8KJq9G6Z57BYB3dLOz0Ze+2Nz6lGzrTTV2ZQ==
       tarball: file:projects/template-common.tgz
     version: 0.0.0
   file:projects/template-oas.tgz:
@@ -11078,12 +11086,14 @@ packages:
       '@types/lodash': 4.14.159
       '@types/mocha': 5.2.7
       '@types/node': 12.12.54
+      '@types/source-map-support': 0.5.3
       '@types/swagger-parser': 4.0.3
+      '@types/swagger-schema-official': 2.0.21
       '@typescript-eslint/eslint-plugin': 4.22.0_aa92a0225c0073d6d700bf4add58522c
       '@typescript-eslint/parser': 4.22.0_eslint@7.24.0+typescript@3.9.7
       ajv: 6.10.0
       eslint: 7.24.0
-      eslint-config-6river: 5.0.30_eslint@7.24.0
+      eslint-config-6river: 5.1.0-tsStrict.5_eslint@7.24.0
       eslint-config-google: 0.12.0_eslint@7.24.0
       eslint-config-prettier: 8.2.0_eslint@7.24.0
       eslint-plugin-6river: 1.0.6
@@ -11102,7 +11112,7 @@ packages:
     dev: false
     name: '@rush-temp/template-oas'
     resolution:
-      integrity: sha512-UDUuBjxF9rVTA8i8kIZUpvwEtUsK0JImZ7U6TynDA2o3H3To0/MADbhB7fx+0tlVCsZVE1j3bgTPJWZ5gaGpOg==
+      integrity: sha512-mBx0igjOCr0Y8tEnkmg1WDN3PWYVNG/ALlkDOMZpi4HAQ6VPA4ygK20J34tsN6MZXYdt3NBhYVZ/0BgyVFTlJg==
       tarball: file:projects/template-oas.tgz
     version: 0.0.0
   file:projects/template-repo-tools.tgz:
@@ -11167,7 +11177,7 @@ packages:
       db-migrate-pg: 0.4.0
       deep-eql: 3.0.1
       eslint: 7.24.0
-      eslint-config-6river: 5.0.30_eslint@7.24.0
+      eslint-config-6river: 5.1.0-tsStrict.5_eslint@7.24.0
       eslint-config-google: 0.12.0_eslint@7.24.0
       eslint-config-prettier: 8.2.0_eslint@7.24.0
       eslint-plugin-6river: 1.0.6
@@ -11195,7 +11205,7 @@ packages:
     dev: false
     name: '@rush-temp/template-service'
     resolution:
-      integrity: sha512-WeqGYn8dh6KzeABRfbbyuCGHjefJwDNpEVTeqQmXJlP0dHYX77HsKeNuBjO+zfhhVxTKwKcRf3m1rCNSNJfI3g==
+      integrity: sha512-hqJLWldmf2GyK+9T64Zx1paZRDGAaw1PF0ioJA+8/QBf1oe1it5StP7LV9kHJOeKv6nUkj31pmLxY4P+KJn05A==
       tarball: file:projects/template-service.tgz
     version: 0.0.0
 registry: ''
@@ -11240,7 +11250,9 @@ specifiers:
   '@types/nock': 9.3.1
   '@types/node': 12.12.54
   '@types/sinon': 7.5.0
+  '@types/source-map-support': ~0.5.3
   '@types/swagger-parser': 4.0.3
+  '@types/swagger-schema-official': ~2.0.21
   '@types/uuid': 3.4.6
   '@typescript-eslint/eslint-plugin': 4.22.0
   '@typescript-eslint/parser': 4.22.0
@@ -11258,7 +11270,7 @@ specifiers:
   db-migrate-pg: 0.4.0
   deep-eql: 3.0.1
   eslint: 7.24.0
-  eslint-config-6river: 5.0.30
+  eslint-config-6river: 5.1.0-tsStrict.5
   eslint-config-google: 0.12.0
   eslint-config-prettier: 8.2.0
   eslint-plugin-6river: 1.0.6

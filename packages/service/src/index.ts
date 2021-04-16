@@ -1,3 +1,4 @@
+import 'source-map-support/register';
 import { ApplicationConfig } from '@loopback/core';
 
 import { TemplateServiceApplication } from './TemplateServiceApplication';
@@ -6,7 +7,7 @@ export { TemplateServiceApplication };
 
 // the main function is uninteresting for code coverage
 /* istanbul ignore next */
-export async function main(options?: ApplicationConfig) {
+async function main(options?: ApplicationConfig): Promise<void> {
 	const app = new TemplateServiceApplication({ options });
 	await app.boot();
 	if (process.argv.includes('--init-only')) {
@@ -17,5 +18,13 @@ export async function main(options?: ApplicationConfig) {
 		process.exit(0);
 	}
 	await app.start();
-	return app;
+}
+
+if (require.main === module) {
+	// Run the application
+	main().catch((err) => {
+		// eslint-disable-next-line no-console
+		console.error('Cannot start the application.', err);
+		process.exit(1);
+	});
 }

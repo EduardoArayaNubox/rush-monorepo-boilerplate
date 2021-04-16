@@ -14,7 +14,7 @@ import { TemplateMessageModel } from '../../../src/models';
 
 const chance = new Chance();
 
-class MockValidator<T, TError = any> implements Validator<T, TError> {
+class MockValidator<T, TError = unknown> implements Validator<T, TError> {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	public tryValidate(value: unknown, errors?: Error[], confirmations?: string[]): value is T {
 		throw new Error('Stub method tryValidate not implemented');
@@ -69,7 +69,7 @@ describe(TemplateController.name, function () {
 
 		// TODO: should have more forms of invalid entities
 		it('should throw UnprocessableEntity if the validator rejects', async function () {
-			delete requestMessage.id;
+			delete (requestMessage as Partial<typeof requestMessage>).id;
 			const validateMessage = sinon.stub(requestValidator, 'tryValidate').callThrough();
 			const vmStub = validateMessage.withArgs(sinon.match(requestMessage));
 			const inducedErrorMessage = 'induced validation failure';
