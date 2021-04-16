@@ -59,7 +59,7 @@ dependencies:
   db-migrate-pg: 0.4.0
   deep-eql: 3.0.1
   eslint: 7.24.0
-  eslint-config-6river: 5.1.0-tsStrict.5_eslint@7.24.0
+  eslint-config-6river: 5.1.0_eslint@7.24.0
   eslint-config-google: 0.12.0_eslint@7.24.0
   eslint-config-prettier: 8.2.0_eslint@7.24.0
   eslint-plugin-6river: 1.0.6
@@ -3737,7 +3737,7 @@ packages:
       node: '>=0.8.0'
     resolution:
       integrity: sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
-  /eslint-config-6river/5.1.0-tsStrict.5_eslint@7.24.0:
+  /eslint-config-6river/5.1.0_eslint@7.24.0:
     dependencies:
       eslint: 7.24.0
       eslint-config-google: 0.14.0_eslint@7.24.0
@@ -3750,7 +3750,7 @@ packages:
     peerDependencies:
       eslint: ^7.2.0
     resolution:
-      integrity: sha512-Q/F8NijGZIFX9llC8rrb45w+uCDxK/b5R8iO7qt1f/+ErSXuEzOg3w72651/L2WSnKfm1OhIufxV4tImliudkA==
+      integrity: sha512-LvP6TMu1N5iy2PlJE+Ud3J4fsO0W5qAamM0OK2VZqwdYuRCiuz1FI7ZuU00IO3FqqwmnvW3oODnjYIgtIGfbiQ==
   /eslint-config-google/0.12.0_eslint@7.24.0:
     dependencies:
       eslint: 7.24.0
@@ -11057,7 +11057,7 @@ packages:
       chai-string: 1.4.0_chai@4.2.0
       chance: 1.0.13
       eslint: 7.24.0
-      eslint-config-6river: 5.1.0-tsStrict.5_eslint@7.24.0
+      eslint-config-6river: 5.1.0_eslint@7.24.0
       eslint-config-google: 0.12.0_eslint@7.24.0
       eslint-config-prettier: 8.2.0_eslint@7.24.0
       eslint-plugin-6river: 1.0.6
@@ -11076,7 +11076,7 @@ packages:
     dev: false
     name: '@rush-temp/template-common'
     resolution:
-      integrity: sha512-02x/N73NW5OxirNaJ/rjRY+dyRR/R7iNX7m+YUdeyWRi+gIjIL8KJq9G6Z57BYB3dLOz0Ze+2Nz6lGzrTTV2ZQ==
+      integrity: sha512-NLhFt4/1CHYv44m+858WrRmeA+MnqujSMpxJzMvFCAry7PdYOrVkwCwRMa4kX6IWYuXM316P9tNJCAuIZovaQQ==
       tarball: file:projects/template-common.tgz
     version: 0.0.0
   file:projects/template-oas.tgz:
@@ -11093,7 +11093,7 @@ packages:
       '@typescript-eslint/parser': 4.22.0_eslint@7.24.0+typescript@3.9.7
       ajv: 6.10.0
       eslint: 7.24.0
-      eslint-config-6river: 5.1.0-tsStrict.5_eslint@7.24.0
+      eslint-config-6river: 5.1.0_eslint@7.24.0
       eslint-config-google: 0.12.0_eslint@7.24.0
       eslint-config-prettier: 8.2.0_eslint@7.24.0
       eslint-plugin-6river: 1.0.6
@@ -11112,7 +11112,7 @@ packages:
     dev: false
     name: '@rush-temp/template-oas'
     resolution:
-      integrity: sha512-mBx0igjOCr0Y8tEnkmg1WDN3PWYVNG/ALlkDOMZpi4HAQ6VPA4ygK20J34tsN6MZXYdt3NBhYVZ/0BgyVFTlJg==
+      integrity: sha512-aMd5STN8+Junnlmdg8TsXunD7zshUWiNqNDreerIoEjjWQ7s27gS+tp2+NRZ9lUetCLbM5YJLsbNIE9kQZkgWw==
       tarball: file:projects/template-oas.tgz
     version: 0.0.0
   file:projects/template-repo-tools.tgz:
@@ -11177,7 +11177,7 @@ packages:
       db-migrate-pg: 0.4.0
       deep-eql: 3.0.1
       eslint: 7.24.0
-      eslint-config-6river: 5.1.0-tsStrict.5_eslint@7.24.0
+      eslint-config-6river: 5.1.0_eslint@7.24.0
       eslint-config-google: 0.12.0_eslint@7.24.0
       eslint-config-prettier: 8.2.0_eslint@7.24.0
       eslint-plugin-6river: 1.0.6
@@ -11205,7 +11205,7 @@ packages:
     dev: false
     name: '@rush-temp/template-service'
     resolution:
-      integrity: sha512-hqJLWldmf2GyK+9T64Zx1paZRDGAaw1PF0ioJA+8/QBf1oe1it5StP7LV9kHJOeKv6nUkj31pmLxY4P+KJn05A==
+      integrity: sha512-NAgosi/4l4mfpUnL2uLPSAStVKz3m6ocSTE8HrhWPpUt76G4KHq0n04S7SyNb5qTJ0eBL1u3d9Kty62LT5XGLw==
       tarball: file:projects/template-service.tgz
     version: 0.0.0
 registry: ''
@@ -11270,7 +11270,7 @@ specifiers:
   db-migrate-pg: 0.4.0
   deep-eql: 3.0.1
   eslint: 7.24.0
-  eslint-config-6river: 5.1.0-tsStrict.5
+  eslint-config-6river: 5.1.0
   eslint-config-google: 0.12.0
   eslint-config-prettier: 8.2.0
   eslint-plugin-6river: 1.0.6
