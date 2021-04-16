@@ -255,7 +255,6 @@ workflows:
             - build
             - test
       - deploy-npm:
-          name: deploy-npm-dev
           context: 6rs-circle
           filters:
             branches:
@@ -281,7 +280,6 @@ workflows:
             - lint
             - deploy-docker
       - tag-docker:
-          name: tag-docker-dev
           context: 6rs-circle
           filters:
             branches:
