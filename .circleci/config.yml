@@ -226,17 +226,10 @@ jobs:
 workflows:
   version: 2
 
-  build-deploy-release:
+  build-deploy:
     jobs:
       - install:
           context: 6rs-circle
-          # everything depends on `install`, so preventing it from running
-          # _should_ prevent all the others too
-          filters:
-            branches:
-              only:
-                - main
-                - /^lts
       - build:
           context: 6rs-circle
           requires:
@@ -250,49 +243,25 @@ workflows:
           requires:
             - build
       - deploy-npm:
+          name: deploy-npm-release
           context: 6rs-circle
+          filters:
+            branches:
+              only:
+                - main
+                - /^lts
           requires:
             - lint
             - build
             - test
-      - deploy-docker:
-          context: 6rs-circle
-          requires:
-            - build
-      - tag-docker:
-          context: 6rs-circle
-          requires:
-            - test
-            - lint
-            - deploy-docker
-      - save-local-cache:
-          context: 6rs-circle
-          requires:
-            - install
-
-  build-deploy-dev:
-    jobs:
-      - install:
+      - deploy-npm:
+          name: deploy-npm-dev
           context: 6rs-circle
           filters:
             branches:
               ignore:
                 - main
                 - /^lts
-      - build:
-          context: 6rs-circle
-          requires:
-            - install
-      - lint:
-          context: 6rs-circle
-          requires:
-            - install
-      - test:
-          context: 6rs-circle
-          requires:
-            - build
-      - deploy-npm:
-          context: 6rs-circle
           requires:
             - build
       - deploy-docker:
@@ -300,7 +269,25 @@ workflows:
           requires:
             - build
       - tag-docker:
+          name: tag-docker-release
           context: 6rs-circle
+          filters:
+            branches:
+              only:
+                - main
+                - /^lts
+          requires:
+            - test
+            - lint
+            - deploy-docker
+      - tag-docker:
+          name: tag-docker-dev
+          context: 6rs-circle
+          filters:
+            branches:
+              ignore:
+                - main
+                - /^lts
           requires:
             - deploy-docker
       - save-local-cache:
