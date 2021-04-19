@@ -3,9 +3,7 @@
 	"extends": "../../tsconfig-base.json",
 	"compilerOptions": {
 		"rootDir": ".",
-		"outDir": "dist",
-		// gulp-typescript is not yet compatible with incremental
-		"incremental": false
+		"outDir": "dist"
 	},
 	"include": ["src", "test", "index.ts"]
 }

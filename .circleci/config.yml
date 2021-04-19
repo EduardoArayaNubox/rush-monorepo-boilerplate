@@ -1,8 +1,8 @@
+version: 2.1
+
 orbs:
   sixrs-gke: sixriversystems/sixrs-gke@2
   gcp-cli: circleci/gcp-cli@2.1.0
-
-version: 2.1
 
 jobs:
   install:
