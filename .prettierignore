@@ -3,3 +3,4 @@ package.json
 pnpm-lock.yaml
 .rush/temp/**
 coverage/
+migrations/**/*.js
