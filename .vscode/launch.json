@@ -8,9 +8,7 @@
 			"program": "${workspaceFolder}/packages/common/node_modules/mocha/bin/_mocha",
 			"outputCapture": "std",
 			"stopOnEntry": false,
-			"args": [
-				"--no-timeouts"
-			],
+			"args": ["--no-timeouts"],
 			"cwd": "${workspaceFolder}/packages/common/",
 			"runtimeExecutable": null,
 			"env": {
@@ -19,12 +17,10 @@
 				"SITE_NAME": "test",
 				"LOG_PRETTY": "true",
 				"PUBSUB_EMULATOR_HOST": "localhost:8802",
-				"PUBSUB_GCLOUD_PROJECT": "test",
+				"PUBSUB_GCLOUD_PROJECT": "test"
 			},
-			"skipFiles": [
-				"<node_internals>/**"
-			],
-			"preLaunchTask": "rush build template common",
+			"skipFiles": ["<node_internals>/**"],
+			"preLaunchTask": "rush build template common"
 		},
 		{
 			"name": "Run template common mocha subset",
@@ -33,11 +29,7 @@
 			"program": "${workspaceFolder}/packages/common/node_modules/mocha/bin/_mocha",
 			"outputCapture": "std",
 			"stopOnEntry": false,
-			"args": [
-				"--no-timeouts",
-				"--grep",
-				"${input:mochaGrep}"
-			],
+			"args": ["--no-timeouts", "--grep", "${input:mochaGrep}"],
 			"cwd": "${workspaceFolder}/packages/common/",
 			"runtimeExecutable": null,
 			"env": {
@@ -46,12 +38,10 @@
 				"SITE_NAME": "test",
 				"LOG_PRETTY": "true",
 				"PUBSUB_EMULATOR_HOST": "localhost:8802",
-				"PUBSUB_GCLOUD_PROJECT": "test",
+				"PUBSUB_GCLOUD_PROJECT": "test"
 			},
-			"skipFiles": [
-				"<node_internals>/**"
-			],
-			"preLaunchTask": "rush build template common",
+			"skipFiles": ["<node_internals>/**"],
+			"preLaunchTask": "rush build template common"
 		},
 		{
 			"name": "Run template oas mocha",
@@ -60,9 +50,7 @@
 			"program": "${workspaceFolder}/packages/oas/node_modules/mocha/bin/_mocha",
 			"outputCapture": "std",
 			"stopOnEntry": false,
-			"args": [
-				"--no-timeouts"
-			],
+			"args": ["--no-timeouts"],
 			"cwd": "${workspaceFolder}/packages/oas/",
 			"runtimeExecutable": null,
 			"env": {
@@ -71,12 +59,10 @@
 				"SITE_NAME": "test",
 				"LOG_PRETTY": "true",
 				"PUBSUB_EMULATOR_HOST": "localhost:8802",
-				"PUBSUB_GCLOUD_PROJECT": "test",
+				"PUBSUB_GCLOUD_PROJECT": "test"
 			},
-			"skipFiles": [
-				"<node_internals>/**"
-			],
-			"preLaunchTask": "rush build template oas",
+			"skipFiles": ["<node_internals>/**"],
+			"preLaunchTask": "rush build template oas"
 		},
 		{
 			"name": "Run template oas mocha subset",
@@ -85,11 +71,7 @@
 			"program": "${workspaceFolder}/packages/oas/node_modules/mocha/bin/_mocha",
 			"outputCapture": "std",
 			"stopOnEntry": false,
-			"args": [
-				"--no-timeouts",
-				"--grep",
-				"${input:mochaGrep}"
-			],
+			"args": ["--no-timeouts", "--grep", "${input:mochaGrep}"],
 			"cwd": "${workspaceFolder}/packages/oas/",
 			"runtimeExecutable": null,
 			"env": {
@@ -98,12 +80,10 @@
 				"SITE_NAME": "test",
 				"LOG_PRETTY": "true",
 				"PUBSUB_EMULATOR_HOST": "localhost:8802",
-				"PUBSUB_GCLOUD_PROJECT": "test",
+				"PUBSUB_GCLOUD_PROJECT": "test"
 			},
-			"skipFiles": [
-				"<node_internals>/**"
-			],
-			"preLaunchTask": "rush build template oas",
+			"skipFiles": ["<node_internals>/**"],
+			"preLaunchTask": "rush build template oas"
 		},
 		{
 			"name": "Run oas convertModelsToSchemas",
@@ -112,10 +92,8 @@
 			"outputCapture": "std",
 			"program": "${workspaceFolder}/packages/oas/dist/utils/convertModelsToSchemas.js",
 			"cwd": "${workspaceFolder}/packages/oas",
-			"skipFiles": [
-				"<node_internals>/**"
-			],
-			"preLaunchTask": "oas build utils",
+			"skipFiles": ["<node_internals>/**"],
+			"preLaunchTask": "oas build utils"
 		},
 		{
 			"name": "Run template service mocha",
@@ -124,9 +102,7 @@
 			"program": "${workspaceFolder}/packages/service/node_modules/mocha/bin/_mocha",
 			"outputCapture": "std",
 			"stopOnEntry": false,
-			"args": [
-				"--no-timeouts"
-			],
+			"args": ["--no-timeouts"],
 			"cwd": "${workspaceFolder}/packages/service/",
 			"runtimeExecutable": null,
 			"env": {
@@ -135,12 +111,10 @@
 				"SITE_NAME": "test",
 				"LOG_PRETTY": "true",
 				"PUBSUB_EMULATOR_HOST": "localhost:8802",
-				"PUBSUB_GCLOUD_PROJECT": "test",
+				"PUBSUB_GCLOUD_PROJECT": "test"
 			},
-			"skipFiles": [
-				"<node_internals>/**"
-			],
-			"preLaunchTask": "rush build template service",
+			"skipFiles": ["<node_internals>/**"],
+			"preLaunchTask": "rush build template service"
 		},
 		{
 			"name": "Run template service mocha subset",
@@ -149,11 +123,7 @@
 			"program": "${workspaceFolder}/packages/service/node_modules/mocha/bin/_mocha",
 			"outputCapture": "std",
 			"stopOnEntry": false,
-			"args": [
-				"--no-timeouts",
-				"--grep",
-				"${input:mochaGrep}"
-			],
+			"args": ["--no-timeouts", "--grep", "${input:mochaGrep}"],
 			"cwd": "${workspaceFolder}/packages/service/",
 			"runtimeExecutable": null,
 			"env": {
@@ -162,12 +132,10 @@
 				"SITE_NAME": "test",
 				"LOG_PRETTY": "true",
 				"PUBSUB_EMULATOR_HOST": "localhost:8802",
-				"PUBSUB_GCLOUD_PROJECT": "test",
+				"PUBSUB_GCLOUD_PROJECT": "test"
 			},
-			"skipFiles": [
-				"<node_internals>/**"
-			],
-			"preLaunchTask": "rush build template service",
+			"skipFiles": ["<node_internals>/**"],
+			"preLaunchTask": "rush build template service"
 		},
 		{
 			"type": "node",
@@ -180,14 +148,12 @@
 				"SITE_NAME": "development",
 				"LOG_PRETTY": "true",
 				"PUBSUB_EMULATOR_HOST": "localhost:8802",
-				"PUBSUB_GCLOUD_PROJECT": "development",
+				"PUBSUB_GCLOUD_PROJECT": "development"
 			},
-			"program": "${workspaceFolder}/packages/service/index.js",
+			"program": "${workspaceFolder}/packages/service/dist/src/index.js",
 			"cwd": "${workspaceFolder}/packages/service",
-			"skipFiles": [
-				"<node_internals>/**"
-			],
-			"preLaunchTask": "rush build template service",
+			"skipFiles": ["<node_internals>/**"],
+			"preLaunchTask": "rush build template service"
 		}
 	],
 	"inputs": [
@@ -196,5 +162,5 @@
 			"description": "Regex to pass to mocha --grep",
 			"type": "promptString"
 		}
-	],
+	]
 }
