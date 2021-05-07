@@ -26,7 +26,7 @@ dependencies:
   '@rush-temp/template-service': file:projects/template-service.tgz
   '@sixriver/config-schema': 1.46.1
   '@sixriver/loopback4-metrics': 6.3.5_b2240a90f11b33f7dcf67ab9288bab5c
-  '@sixriver/loopback4-support': 6.3.5_02e69dd8f9c47bcd711ffaf132e858b5
+  '@sixriver/loopback4-support': 6.3.5_6a3b898c1e3069cd6155d722de5efb43
   '@sixriver/service-directory': 6.3.5
   '@sixriver/typescript-support': 6.3.5
   '@types/bunyan': 1.8.4
@@ -56,8 +56,8 @@ dependencies:
   chai-string: 1.4.0_chai@4.2.0
   chance: 1.0.13
   child_process: 1.0.2
-  db-migrate: 0.11.5
-  db-migrate-pg: 0.4.0
+  db-migrate: 0.11.12
+  db-migrate-pg: 1.2.2
   deep-eql: 3.0.1
   eslint: 7.24.0
   eslint-config-6river: 5.1.1_eslint@7.24.0
@@ -74,7 +74,7 @@ dependencies:
   json-schema-ref-parser: 6.1.0
   json-schema-to-typescript: 6.1.3
   lodash: 4.17.19
-  loopback-connector-postgresql: 3.6.0
+  loopback-connector-postgresql: 5.4.0
   merge2: 1.2.3
   mocha: 5.1.1
   mocha-junit-reporter: 1.15.0_mocha@5.1.1
@@ -1174,7 +1174,7 @@ packages:
     resolution:
       integrity: sha1-8pAl4pdBcGNfrxFWx3hxE34Ai7s=
       tarball: '@sixriver/loopback4-metrics/-/@sixriver/loopback4-metrics-6.3.5.tgz'
-  /@sixriver/loopback4-support/6.3.5_02e69dd8f9c47bcd711ffaf132e858b5:
+  /@sixriver/loopback4-support/6.3.5_6a3b898c1e3069cd6155d722de5efb43:
     dependencies:
       '@6river/reason-guard': 3.7.4
       '@loopback/boot': 2.2.0
@@ -1193,7 +1193,7 @@ packages:
       axios: 0.21.1
       bunyan: 1.8.12
       bunyan-prettystream: 0.1.3
-      db-migrate: 0.11.5
+      db-migrate: 0.11.12
       lodash: 4.17.15
       parse-database-url: 0.3.0
       pino: 5.16.0
@@ -3178,26 +3178,26 @@ packages:
     dev: false
     resolution:
       integrity: sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q==
-  /db-migrate-base/1.6.3:
+  /db-migrate-base/2.3.1:
     dependencies:
       bluebird: 3.7.2
     dev: false
     resolution:
-      integrity: sha512-O6Kh72Yh0DfvRAKg9QKzu1KkMwI5iI0dFHO6RmDLvbiYvtRW3faFXJNFwJYeioVBx22QA3AkVFbDIcw4j4QxGw==
-  /db-migrate-pg/0.4.0:
+      integrity: sha512-HewYQ3HPmy7NOWmhhMLg9TzN1StEtSqGL3w8IbBRCxEsJ+oM3bDUQ/z5fqpYKfIUK07mMXieCmZYwFpwWkSHDw==
+  /db-migrate-pg/1.2.2:
     dependencies:
       bluebird: 3.7.2
-      db-migrate-base: 1.6.3
-      pg: 7.18.2
+      db-migrate-base: 2.3.1
+      pg: 8.6.0
       semver: 5.7.1
     dev: false
     resolution:
-      integrity: sha512-N49I0qEh7e8fd852R3zD5ed+w2jyqTHsBkIULoTgafgTr3QBvbYLOZcQ4FWNtGa+h0lrxtwh7qvv6LMbv916YQ==
+      integrity: sha512-+rgrhGNWC2SzcfweopyZqOQ1Igz1RVFMUZwUs6SviHpOUzFwb0NZWkG0pw1GaO+JxTxS7VJjckUWkOwZbVYVag==
   /db-migrate-shared/1.2.0:
     dev: false
     resolution:
       integrity: sha512-65k86bVeHaMxb2L0Gw3y5V+CgZSRwhVQMwDMydmw5MvIpHHwD6SmBciqIwHsZfzJ9yzV/yYhdRefRM6FV5/siw==
-  /db-migrate/0.11.5:
+  /db-migrate/0.11.12:
     dependencies:
       balanced-match: 1.0.0
       bluebird: 3.7.2
@@ -3207,20 +3207,19 @@ packages:
       final-fs: 1.6.1
       inflection: 1.12.0
       mkdirp: 0.5.5
-      optimist: 0.6.1
       parse-database-url: 0.3.0
-      pkginfo: 0.4.1
       prompt: 1.0.0
       rc: 1.2.8
       resolve: 1.18.1
       semver: 5.7.1
       tunnel-ssh: 4.1.4
+      yargs: 15.4.1
     dev: false
     engines:
-      node: '>=0.6.0'
+      node: '>=8.0.0'
     hasBin: true
     resolution:
-      integrity: sha512-2HSBOQBaKwq93OpMfdBR9O9gm3eTRgj4HB+Zzy7/YJxxNuxGKY9JDCe/Mb0QRlYqxVQDFUJCJRZcDVxadAUDgg==
+      integrity: sha512-HUS8T5A3sKGCi+hz9XMKMwAKfU9sqhpDufW9nbVSRc5wxDO695uxA5lDe+If0OdvwwQOVxOnEZqkzAAxgyeFWg==
   /debug-fabulous/1.1.0:
     dependencies:
       debug: 3.2.6
@@ -5478,6 +5477,7 @@ packages:
     resolution:
       integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
   /ini/1.3.5:
+    deprecated: Please update to ini >=1.3.6 to avoid a prototype pollution issue
     dev: false
     resolution:
       integrity: sha512-RZY5huIKCMRWDUqZlEi72f/lmXKMvuszcMBduliQ3nnWbx9X/ZBQO7DijMEYS9EhHBb2qacRUMtC7svLwe0lcw==
@@ -5519,12 +5519,6 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-EEqOSqym09jNFXqO+L+rLXo//bY=
-  /invert-kv/2.0.0:
-    dev: false
-    engines:
-      node: '>=4'
-    resolution:
-      integrity: sha512-wPVv/y/QQ/Uiirj/vh3oP+1Ww+AWehmi1g5fFWGPF6IpCBCDVrhgHRMvrLfdYcwDh3QJbGXDW4JAuzxElLSqKA==
   /invert-kv/3.0.1:
     dev: false
     engines:
@@ -6386,14 +6380,6 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-MIrMr6C8SDo4Z7S28rlQYlHRuDU=
-  /lcid/2.0.0:
-    dependencies:
-      invert-kv: 2.0.0
-    dev: false
-    engines:
-      node: '>=6'
-    resolution:
-      integrity: sha512-avPEb8P8EGnwXKClwsNUgryVjllcRqtMYa49NTsbQagYuT1DcXnl1915oxWjoyGrXR6zH/Y0Zc96xWsPcoDKeA==
   /lcid/3.1.1:
     dependencies:
       invert-kv: 3.0.1
@@ -6632,33 +6618,21 @@ packages:
     dev: false
     resolution:
       integrity: sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==
-  /loopback-connector-postgresql/3.6.0:
-    dependencies:
-      async: 0.9.2
-      bluebird: 3.7.2
-      debug: 3.2.6
-      loopback-connector: 4.11.1
-      pg: 7.18.2
-      strong-globalize: 4.1.3
-      uuid: 3.4.0
-    dev: false
-    engines:
-      node: '>=6'
-    resolution:
-      integrity: sha512-eIJ7sh+K3tehFPw20IWHRg4EkF7BIh80v31udi8LZb/s6ChOuZNoRUtUOHHAlKDLNmtOffH8ZcQCNY5qYsS/Jw==
-  /loopback-connector/4.11.1:
+  /loopback-connector-postgresql/5.4.0:
     dependencies:
       async: 3.2.0
       bluebird: 3.7.2
+      chalk: 4.1.0
       debug: 4.2.0
-      msgpack5: 4.2.1
-      strong-globalize: 5.1.0
-      uuid: 7.0.3
+      loopback-connector: 5.0.0
+      pg: 8.6.0
+      strong-globalize: 6.0.5
+      uuid: 8.3.1
     dev: false
     engines:
-      node: '>=8.9'
+      node: '>=10'
     resolution:
-      integrity: sha512-EA31zur3xIhP4UW+P2rWEcSbqpk4jPddpTBZSSw8KCszM7T0/Pe4HvEmG0MndAWJctRPtrwKDEu/8rWuMDLf+A==
+      integrity: sha512-eOeadayD4hZYlthk/PJLcF7kQd697fUrDqCdOVE09mcy14uVm8cOvSMCjIk1lxJNIrT7J27OiavkESPPq6abdA==
   /loopback-connector/5.0.0:
     dependencies:
       async: 3.2.0
@@ -6860,16 +6834,6 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha1-Xt1StIXKHZAP5kiVUFOZoN+kX3Y=
-  /mem/4.3.0:
-    dependencies:
-      map-age-cleaner: 0.1.3
-      mimic-fn: 2.1.0
-      p-is-promise: 2.1.0
-    dev: false
-    engines:
-      node: '>=6'
-    resolution:
-      integrity: sha512-qX2bG48pTqYRVmDB37rn/6PT7LcR8T7oAX3bf99u1Tt1nzxYfxkgqDwUwolPlXweM0XzBOBFzSx4kfp7KP1s/w==
   /mem/5.1.1:
     dependencies:
       map-age-cleaner: 0.1.3
@@ -7057,10 +7021,6 @@ packages:
       node: '>= 4'
     resolution:
       integrity: sha512-FyBrT/d0d4+uiZRbqznPXqw3IpZZG3gl3wKWiX784FycUKVwBt0uLBFkQrtE4tZOrgo78nZp2jnKz3L65T5LdQ==
-  /minimist/0.0.10:
-    dev: false
-    resolution:
-      integrity: sha1-3j+YVD2/lggr5IrRoMfNqDYwHc8=
   /minimist/0.0.8:
     dev: false
     resolution:
@@ -7834,13 +7794,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-8DmE2oKayvSkIR3XSZ4+pRliBsx19bSNeIzkTPswY8r4wvjX86bMxsORdqwAwMxE8PefOcSAT2auvi/0TZe9yA==
-  /optimist/0.6.1:
-    dependencies:
-      minimist: 0.0.10
-      wordwrap: 0.0.3
-    dev: false
-    resolution:
-      integrity: sha1-2j6nRob6IaGaERwybpDrFaAZZoY=
   /optionator/0.8.3:
     dependencies:
       deep-is: 0.1.3
@@ -7897,16 +7850,6 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-3sslG3zJbEYcaC4YVAvDorjGxc7tv6KVATnLPZONiljsUncvihe9BQoVCEs0RZ1kmf4Hk9OBqlZfJZWI4GanKA==
-  /os-locale/3.1.0:
-    dependencies:
-      execa: 1.0.0
-      lcid: 2.0.0
-      mem: 4.3.0
-    dev: false
-    engines:
-      node: '>=6'
-    resolution:
-      integrity: sha512-Z8l3R4wYWM40/52Z+S265okfFj8Kt2cC2MKY+xNi3kFs+XGI7WXu/I309QQQYbRW4ijiZ+yxs9pqEhJh0DqW3Q==
   /os-locale/5.0.0:
     dependencies:
       execa: 4.1.0
@@ -8251,28 +8194,28 @@ packages:
     dev: false
     resolution:
       integrity: sha512-NrNHJn5mUGupSiheBTy6x+6SXCFbLlm8fVZh9moIzw/LgqElN5q4ncR4pbCBCYuCJ8Kcl9mYM0NgDxvW+b4LxA==
-  /pg-connection-string/0.1.3:
+  /pg-connection-string/2.5.0:
     dev: false
     resolution:
-      integrity: sha1-2hhHsglA5C7hSSvq9l1J2RskXfc=
+      integrity: sha512-r5o/V/ORTA6TmUnyWZR9nCj1klXCO2CEKNRlVuJptZe85QuhFayC7WeMic7ndayT5IRIR0S0xFxFi2ousartlQ==
   /pg-int8/1.0.1:
     dev: false
     engines:
       node: '>=4.0.0'
     resolution:
       integrity: sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==
-  /pg-packet-stream/1.1.0:
-    dev: false
-    resolution:
-      integrity: sha512-kRBH0tDIW/8lfnnOyTwKD23ygJ/kexQVXZs7gEyBljw4FYqimZFxnMMx50ndZ8In77QgfGuItS5LLclC2TtjYg==
-  /pg-pool/2.0.10_pg@7.18.2:
+  /pg-pool/3.3.0_pg@8.6.0:
     dependencies:
-      pg: 7.18.2
+      pg: 8.6.0
     dev: false
     peerDependencies:
-      pg: '>5.0'
+      pg: '>=8.0'
     resolution:
-      integrity: sha512-qdwzY92bHf3nwzIUcj+zJ0Qo5lpG/YxchahxIN8+ZVmXqkahKXsnl2aiJPHLYN9o5mB/leG+Xh6XKxtP7e0sjg==
+      integrity: sha512-0O5huCql8/D6PIRFAlmccjphLYWC+JIzvUhSzXSpGaf+tjTZc4nn+Lr7mLXBbFJfvwbP0ywDv73EiaBsxn7zdg==
+  /pg-protocol/1.5.0:
+    dev: false
+    resolution:
+      integrity: sha512-muRttij7H8TqRNu/DxrAJQITO4Ac7RmX3Klyr/9mJEOBeIpgnF8f9jAfRz5d3XwQZl5qBjF9gLsUtMPJE0vezQ==
   /pg-types/2.2.0:
     dependencies:
       pg-int8: 1.0.1
@@ -8285,21 +8228,25 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-qTAAlrEsl8s4OiEQY69wDvcMIdQN6wdz5ojQiOy6YRMuynxenON0O5oCpJI6lshc6scgAY8qvJ2On/p+CXY0GA==
-  /pg/7.18.2:
+  /pg/8.6.0:
     dependencies:
       buffer-writer: 2.0.0
       packet-reader: 1.0.0
-      pg-connection-string: 0.1.3
-      pg-packet-stream: 1.1.0
-      pg-pool: 2.0.10_pg@7.18.2
+      pg-connection-string: 2.5.0
+      pg-pool: 3.3.0_pg@8.6.0
+      pg-protocol: 1.5.0
       pg-types: 2.2.0
       pgpass: 1.0.4
-      semver: 4.3.2
     dev: false
     engines:
-      node: '>= 4.5.0'
+      node: '>= 8.0.0'
+    peerDependencies:
+      pg-native: '>=2.0.0'
+    peerDependenciesMeta:
+      pg-native:
+        optional: true
     resolution:
-      integrity: sha512-Mvt0dGYMwvEADNKy5PMQGlzPudKcKKzJds/VbOeZJpb6f/pI3mmoXX0JksPgI3l3JPP/2Apq7F36O63J7mgveA==
+      integrity: sha512-qNS9u61lqljTDFvmk/N66EeGq3n6Ujzj0FFyNMGQr6XuEv4tgNTXvJQTfJdcvGit5p5/DWPu+wj920hAJFI+QQ==
   /pgpass/1.0.4:
     dependencies:
       split2: 3.2.2
@@ -9270,11 +9217,6 @@ packages:
       node: '>= 0.10'
     resolution:
       integrity: sha1-E+jCZYq5aRywzXEJMkAoDTb3els=
-  /semver/4.3.2:
-    dev: false
-    hasBin: true
-    resolution:
-      integrity: sha1-x6BxWKgL7dBSNVt3DYLWZA+AO+c=
   /semver/5.7.1:
     dev: false
     hasBin: true
@@ -9966,36 +9908,6 @@ packages:
       node: '>=10'
     resolution:
       integrity: sha512-PCMOf6RYni7wMD3ytGN/TBIJdKZ/EfgItgE8tVrJNGVAf2X39L7I0r/tlDyn+1G9qfVCZL0mSeutljpkOpBy1Q==
-  /strong-globalize/4.1.3:
-    dependencies:
-      accept-language: 3.0.18
-      debug: 4.2.0
-      globalize: 1.6.0
-      lodash: 4.17.19
-      md5: 2.3.0
-      mkdirp: 0.5.5
-      os-locale: 3.1.0
-      yamljs: 0.3.0
-    dev: false
-    engines:
-      node: '>=6'
-    resolution:
-      integrity: sha512-SJegV7w5D4AodEspZJtJ7rls3fmi+Zc0PdyJCqBsg4RN9B8TC80/uAI2fikC+s1Jp9FLvr2vDX8f0Fqc62M4OA==
-  /strong-globalize/5.1.0:
-    dependencies:
-      accept-language: 3.0.18
-      debug: 4.2.0
-      globalize: 1.6.0
-      lodash: 4.17.19
-      md5: 2.3.0
-      mkdirp: 0.5.5
-      os-locale: 5.0.0
-      yamljs: 0.3.0
-    dev: false
-    engines:
-      node: '>=8.9'
-    resolution:
-      integrity: sha512-9cooAb6kNMDFmTDybkkch1x7b+LuzZNva8oIr+MxXnvx9jcvw4/4DTSXPc53mG68G0Q9YOTYZkhDkWe/DiJ1Qg==
   /strong-globalize/6.0.5:
     dependencies:
       accept-language: 3.0.18
@@ -10805,12 +10717,6 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==
-  /wordwrap/0.0.3:
-    dev: false
-    engines:
-      node: '>=0.4.0'
-    resolution:
-      integrity: sha1-o9XabNXAvAAI03I0u68b7WMFkQc=
   /wrap-ansi/2.1.0:
     dependencies:
       string-width: 1.0.2
@@ -11162,7 +11068,7 @@ packages:
       '@loopback/testlab': 3.1.3
       '@sixriver/config-schema': 1.46.1
       '@sixriver/loopback4-metrics': 6.3.5_b2240a90f11b33f7dcf67ab9288bab5c
-      '@sixriver/loopback4-support': 6.3.5_02e69dd8f9c47bcd711ffaf132e858b5
+      '@sixriver/loopback4-support': 6.3.5_6a3b898c1e3069cd6155d722de5efb43
       '@sixriver/service-directory': 6.3.5
       '@sixriver/typescript-support': 6.3.5
       '@types/bunyan': 1.8.4
@@ -11186,8 +11092,8 @@ packages:
       chai-as-promised: 7.1.1_chai@4.2.0
       chai-string: 1.4.0_chai@4.2.0
       chance: 1.0.13
-      db-migrate: 0.11.5
-      db-migrate-pg: 0.4.0
+      db-migrate: 0.11.12
+      db-migrate-pg: 1.2.2
       deep-eql: 3.0.1
       eslint: 7.24.0
       eslint-config-6river: 5.1.1_eslint@7.24.0
@@ -11200,7 +11106,7 @@ packages:
       gulp-sourcemaps: 2.6.5
       gulp-typescript: 5.0.1_typescript@3.9.7
       lodash: 4.17.19
-      loopback-connector-postgresql: 3.6.0
+      loopback-connector-postgresql: 5.4.0
       mocha: 5.1.1
       mocha-junit-reporter: 1.15.0_mocha@5.1.1
       mocha-lcov-reporter: 1.3.0
@@ -11218,7 +11124,7 @@ packages:
     dev: false
     name: '@rush-temp/template-service'
     resolution:
-      integrity: sha512-8ctXbPDpz2Wh5dMrIP2+AXI6r9RjoNUvRu7iZpQlHRkMkWBBxffNE1jrU2iMd6E850S+kCaKhPypr17cn4naTg==
+      integrity: sha512-Bu5OIps5Et2d3+jv0acKsVsDzfeUaEZI1tW5/3xvXUpJiniBc4LU4FUtiGxuXezzRLeCI6gnV7DmirXIsZ2u1w==
       tarball: file:projects/template-service.tgz
     version: 0.0.0
 registry: ''
@@ -11280,8 +11186,8 @@ specifiers:
   chai-string: 1.4.0
   chance: 1.0.13
   child_process: 1.0.2
-  db-migrate: 0.11.5
-  db-migrate-pg: 0.4.0
+  db-migrate: 0.11.12
+  db-migrate-pg: 1.2.2
   deep-eql: 3.0.1
   eslint: 7.24.0
   eslint-config-6river: 5.1.1
@@ -11298,7 +11204,7 @@ specifiers:
   json-schema-ref-parser: 6.1.0
   json-schema-to-typescript: 6.1.3
   lodash: 4.17.19
-  loopback-connector-postgresql: 3.6.0
+  loopback-connector-postgresql: 5.4.0
   merge2: 1.2.3
   mocha: 5.1.1
   mocha-junit-reporter: 1.15.0
