@@ -6,6 +6,7 @@ import { ApplicationConfig, Provider, BindingScope } from '@loopback/core';
 import { RepositoryMixin, juggler } from '@loopback/repository';
 import { RestApplication, RestServer, RestBindings, DefaultSequence } from '@loopback/rest';
 import { RestExplorerComponent } from '@loopback/rest-explorer';
+import { initializeTracing } from '@sixriver/google-cloud-trace-helpers';
 import { MetricsComponent } from '@sixriver/loopback4-metrics';
 import {
 	CommonBindings,
@@ -29,6 +30,8 @@ import * as _ from 'lodash';
 
 import { TemplateDataSource } from './datasources';
 import { TemplateServiceProviderKeys } from './providers';
+
+initializeTracing('template-application');
 
 const defaultListenHost = '0.0.0.0';
 

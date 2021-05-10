@@ -25,6 +25,7 @@ dependencies:
   '@rush-temp/template-repo-tools': file:projects/template-repo-tools.tgz
   '@rush-temp/template-service': file:projects/template-service.tgz
   '@sixriver/config-schema': 1.46.1
+  '@sixriver/google-cloud-trace-helpers': 1.0.11
   '@sixriver/loopback4-metrics': 6.3.5_b2240a90f11b33f7dcf67ab9288bab5c
   '@sixriver/loopback4-support': 6.3.5_6a3b898c1e3069cd6155d722de5efb43
   '@sixriver/service-directory': 6.3.5
@@ -543,6 +544,22 @@ packages:
     dev: false
     resolution:
       integrity: sha512-GoXw0U2Qaa33m3eUcxuHnHpNvHjNlLo0gtV091XBpaRINaB4X6FGCG5XKxSFNFiPpugUDqNruHzaqpTdDm4AOg==
+  /@google-cloud/common/3.6.0:
+    dependencies:
+      '@google-cloud/projectify': 2.0.1
+      '@google-cloud/promisify': 2.0.3
+      arrify: 2.0.1
+      duplexify: 4.1.1
+      ent: 2.2.0
+      extend: 3.0.2
+      google-auth-library: 7.0.4
+      retry-request: 4.1.3
+      teeny-request: 7.0.1
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-aHIFTqJZmeTNO9md8XxV+ywuvXF3xBm5WNmgWeeCK+XN5X+kGW0WEX94wGwj+/MdOnrVf4dL2RvSIt9J5yJG6Q==
   /@google-cloud/paginator/1.0.2:
     dependencies:
       arrify: 2.0.1
@@ -566,12 +583,24 @@ packages:
       node: '>=8.10.0'
     resolution:
       integrity: sha512-ZdzQUN02eRsmTKfBj9FDL0KNDIFNjBn/d6tHQmA/+FImH5DO6ZV8E7FzxMgAUiVAUq41RFAkb25p1oHOZ8psfg==
+  /@google-cloud/projectify/2.0.1:
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-ZDG38U/Yy6Zr21LaR3BTiiLtpJl6RkPS/JwoRT453G+6Q1DhlV0waNf8Lfu+YVYGIIxgKnLayJRfYlFJfiI8iQ==
   /@google-cloud/promisify/1.0.4:
     dev: false
     engines:
       node: '>=8.10.0'
     resolution:
       integrity: sha512-VccZDcOql77obTnFh0TbNED/6ZbbmHDf8UMNnzO1d5g9V0Htfm4k5cllY8P1tJsRKC3zWYGRLaViiupcgVjBoQ==
+  /@google-cloud/promisify/2.0.3:
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-d4VSA86eL/AFTe5xtyZX+ePUjE8dIFu2T8zmdeNBSa5/kNgXPCx/o/wbFNHAGLJdGnk1vddRuMESD9HbOC8irw==
   /@google-cloud/pubsub/0.30.1:
     dependencies:
       '@google-cloud/paginator': 1.0.2
@@ -596,6 +625,29 @@ packages:
       node: '>=8.10.0'
     resolution:
       integrity: sha512-xMNylRrAi84jFuPfuzJELMJg0zz5p0M1q3ACVaPF8Fst2sNKaNr5WBMqg0vNP/zFtsn17wxcNfcZSP6DiI/Q0Q==
+  /@google-cloud/trace-agent/5.1.3:
+    dependencies:
+      '@google-cloud/common': 3.6.0
+      '@opencensus/propagation-stackdriver': 0.0.22
+      builtin-modules: 3.2.0
+      console-log-level: 1.4.1
+      continuation-local-storage: 3.2.1
+      extend: 3.0.2
+      gcp-metadata: 4.2.1
+      google-auth-library: 7.0.4
+      hex2dec: 1.1.2
+      is: 3.3.0
+      methods: 1.1.2
+      require-in-the-middle: 5.1.0
+      semver: 7.3.2
+      shimmer: 1.2.1
+      source-map-support: 0.5.19
+      uuid: 8.3.1
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-f+5DX7n6QpDlHA+4kr81z69SLAdrlvd9T8skqCMgnYvtXx14AwzXZyzEDf3jppOYzYoqPPJv8XYiyYHHmYD0BA==
   /@grpc/grpc-js/0.4.3:
     dependencies:
       semver: 6.3.0
@@ -1047,6 +1099,26 @@ packages:
     dev: false
     resolution:
       integrity: sha512-+1RBoJ+xjX8mIXxisTJVlN/r6DOh4kyszw3cLBSAxwKP7Ui42DjlxWgR2PnWxOOWtRCnQurRzlsvL1ce5FUrWg==
+  /@opencensus/core/0.0.22:
+    dependencies:
+      continuation-local-storage: 3.2.1
+      log-driver: 1.2.7
+      semver: 7.3.2
+      shimmer: 1.2.1
+      uuid: 8.3.1
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-ErazJtivjceNoOZI1bG9giQ6cWS45J4i6iPUtlp7dLNu58OLs/v+CD0FsaPCh47XgPxAI12vbBE8Ec09ViwHNA==
+  /@opencensus/propagation-stackdriver/0.0.22:
+    dependencies:
+      '@opencensus/core': 0.0.22
+      hex2dec: 1.1.2
+      uuid: 8.3.1
+    dev: false
+    resolution:
+      integrity: sha512-eBvf/ihb1mN8Yz/ASkz8nHzuMKqygu77+VNnUeR0yEh3Nj+ykB8VVR6lK+NAFXo1Rd1cOsTmgvuXAZgDAGleQQ==
   /@protobufjs/aspromise/1.1.2:
     dev: false
     resolution:
@@ -1156,6 +1228,13 @@ packages:
     resolution:
       integrity: sha1-S6NBSQta4sqY16v4qB8CI1UGbPU=
       tarball: '@sixriver/config-schema/-/@sixriver/config-schema-1.46.1.tgz'
+  /@sixriver/google-cloud-trace-helpers/1.0.11:
+    dependencies:
+      '@google-cloud/trace-agent': 5.1.3
+    dev: false
+    resolution:
+      integrity: sha1-m5L/DHnimvYy29f1TOhU2O/Ir8w=
+      tarball: '@sixriver/google-cloud-trace-helpers/-/@sixriver/google-cloud-trace-helpers-1.0.11.tgz'
   /@sixriver/loopback4-metrics/6.3.5_b2240a90f11b33f7dcf67ab9288bab5c:
     dependencies:
       '@loopback/context': 3.9.3
@@ -1261,6 +1340,12 @@ packages:
     resolution:
       integrity: sha1-F3k0pwCkSM4HTRjcKRyE26kRnKE=
       tarball: '@sixriver/typescript-support/-/@sixriver/typescript-support-6.3.5.tgz'
+  /@tootallnate/once/1.1.2:
+    dev: false
+    engines:
+      node: '>= 6'
+    resolution:
+      integrity: sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==
   /@types/body-parser/1.19.0:
     dependencies:
       '@types/connect': 3.4.33
@@ -2184,6 +2269,15 @@ packages:
     dev: false
     resolution:
       integrity: sha512-z/WhQ5FPySLdvREByI2vZiTWwCnF0moMJ1hK9YQwDTHKh6I7/uSckMetoRGb5UBZPC1z0jlw+n/XCgjeH7y1AQ==
+  /async-listener/0.6.10:
+    dependencies:
+      semver: 5.7.1
+      shimmer: 1.2.1
+    dev: false
+    engines:
+      node: <=0.11.8 || >0.11.10
+    resolution:
+      integrity: sha512-gpuo6xOyF4D5DE5WvyqZdPA3NGhiT6Qf07l7DCB0wwDEsLvDIbCr6j9S5aj5Ch96dLace5tXVzWBZkxU/c5ohw==
   /async-settle/1.0.0:
     dependencies:
       async-done: 1.3.2
@@ -2426,6 +2520,12 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-a7ZpuTZU1TRtnwyCNW3I5dc0wWNC3VR9S++Ewyk2HHZdrO3CQJqSpd+95Us590V6AL7JqUAH2IwZ/398PmNFgw==
+  /builtin-modules/3.2.0:
+    dev: false
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-lGzLKcioL90C7wMczpkY0n/oART3MbBa8R9OFGE1rJxoVI86u4WAGfEk8Wjv10eKSyTHVGkSo3bvBylCEtk7LA==
   /bunyan-prettystream/0.1.3:
     dev: false
     engines:
@@ -2969,6 +3069,10 @@ packages:
       '0': node >= 0.8
     resolution:
       integrity: sha512-27HBghJxjiZtIk3Ycvn/4kbJk/1uZuJFfuPEns6LaEvpvG1f0hTea8lilrouyo9mVc2GWdcEZ8OLoGmSADlrCw==
+  /console-log-level/1.4.1:
+    dev: false
+    resolution:
+      integrity: sha512-VZzbIORbP+PPcN/gg3DXClTLPLg5Slwd5fL2MIc+o1qZ4BXBvWyc6QxPk6T/Mkr6IVjRpoAGf32XxP3ZWMVRcQ==
   /constant-case/3.0.3:
     dependencies:
       no-case: 3.0.3
@@ -2997,6 +3101,13 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-hIP3EEPs8tB9AT1L+NUqtwOAps4mk2Zob89MWXMHjHWg9milF/j4osnnQLXBCBFBk/tvIG/tUc9mOUJiPBhPXA==
+  /continuation-local-storage/3.2.1:
+    dependencies:
+      async-listener: 0.6.10
+      emitter-listener: 1.1.2
+    dev: false
+    resolution:
+      integrity: sha512-jx44cconVqkCEEyLSKWwkvUXwO561jXMa3LPjTPsm5QR22PA0/mhe33FT4Xb5y74JDvt/Cq+5lm8S8rskLv9ZA==
   /conventional-changelog-angular/1.6.6:
     dependencies:
       compare-func: 1.3.4
@@ -3523,6 +3634,15 @@ packages:
     dev: false
     resolution:
       integrity: sha512-07z8uv2wMyS51kKhD1KsdXJg5WQ6t93RneqRxUHnskXVtlYYkLqM0gqStQZ3pj073g687jPCHrqNfCzawLYh5g==
+  /duplexify/4.1.1:
+    dependencies:
+      end-of-stream: 1.4.4
+      inherits: 2.0.4
+      readable-stream: 3.6.0
+      stream-shift: 1.0.1
+    dev: false
+    resolution:
+      integrity: sha512-DY3xVEmVHTv1wSzKNbwoU6nVjzI369Y6sPoqfYr0/xlx3IdX2n94xIszTcjPO8W8ZIv0Wb0PXNcjuZyT4wiICA==
   /each-props/1.3.2:
     dependencies:
       is-plain-object: 2.0.4
@@ -3556,6 +3676,12 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-dldq3ZfFtgVTJMLjOe+/3sROTzALlL9E34V4/sDtUd/KlBSS0s6U1/+WPE1B4sj9CXHJpL1M6rhNJnc9Wbal9w==
+  /emitter-listener/1.1.2:
+    dependencies:
+      shimmer: 1.2.1
+    dev: false
+    resolution:
+      integrity: sha512-Bt1sBAGFHY9DKY+4/2cV6izcKJUf5T7/gkdmkxzX/qv9CcGH8xSwVRW5mtX03SWJtRTWSOpzCuWN9rBFYZepZQ==
   /emoji-regex/7.0.3:
     dev: false
     resolution:
@@ -3590,6 +3716,10 @@ packages:
       node: '>=8.6'
     resolution:
       integrity: sha512-yjNnPr315/FjS4zIsUxYguYUPP2e1NK4d7E7ZOLiyYCcbFBiTMyID+2wvm2w6+pZ/odMA7cRkjhsPbltwBOrLg==
+  /ent/2.2.0:
+    dev: false
+    resolution:
+      integrity: sha1-6WQhkyWiHQX0RGai9obtbOX13R0=
   /error-ex/1.3.2:
     dependencies:
       is-arrayish: 0.2.1
@@ -4691,6 +4821,18 @@ packages:
       node: '>=8.10.0'
     resolution:
       integrity: sha512-US8UMj8C5pRnao3Zykc4AAVr+cffoNKRTg9Rsf2GiuZCW69vgJj38VK2PzlPuQU73FZ/nTk9/Av6/JGcE1N9vA==
+  /gaxios/4.2.1:
+    dependencies:
+      abort-controller: 3.0.0
+      extend: 3.0.2
+      https-proxy-agent: 5.0.0
+      is-stream: 2.0.0
+      node-fetch: 2.6.1
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-s+rTywpw6CmfB8r9TXYkpix7YFeuRjnR/AqhaJrQqsNhsAqej+IAiCc3hadzQH3gHyWth30tvYjxH8EVjQt/8Q==
   /gcp-metadata/1.0.0:
     dependencies:
       gaxios: 1.8.4
@@ -4709,6 +4851,15 @@ packages:
       node: '>=8.10.0'
     resolution:
       integrity: sha512-ZQf+DLZ5aKcRpLzYUyBS3yo3N0JSa82lNDO8rj3nMSlovLcz2riKFBsYgDzeXcv75oo5eqB2lx+B14UvPoCRnA==
+  /gcp-metadata/4.2.1:
+    dependencies:
+      gaxios: 4.2.1
+      json-bigint: 1.0.0
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-tSk+REe5iq/N+K+SK1XjZJUrFPuDqGZVzCy2vocIHIGmPlTGsa8owXMJwGkrXr73NO0AzhPW4MF2DEHz7P2AVw==
   /gensync/1.0.0-beta.2:
     dev: false
     engines:
@@ -5009,6 +5160,22 @@ packages:
       node: '>=8.10.0'
     resolution:
       integrity: sha512-rOlaok5vlpV9rSiUu5EpR0vVpc+PhN62oF4RyX/6++DG1VsaulAFEMlDYBLjJDDPI6OcNOCGAKy9UVB/3NIDXg==
+  /google-auth-library/7.0.4:
+    dependencies:
+      arrify: 2.0.1
+      base64-js: 1.3.1
+      ecdsa-sig-formatter: 1.0.11
+      fast-text-encoding: 1.0.3
+      gaxios: 4.2.1
+      gcp-metadata: 4.2.1
+      gtoken: 5.2.1
+      jws: 4.0.0
+      lru-cache: 6.0.0
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-o8irYyeijEiecTXeoEe8UKNEzV1X+uhR4b2oNdapDMZixypp0J+eHimGOyx5Joa3UAeokGngdtDLXtq9vDqG2Q==
   /google-gax/1.15.3:
     dependencies:
       '@grpc/grpc-js': 1.0.5_google-auth-library@5.10.1
@@ -5049,6 +5216,15 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-S4blHBQWZRnEW44OcR7TL9WR+QCqByRvhNDZ/uuQfpxywfupikf/miba8js1jZi6ZOGv5slgSuoshCWh6EMDzg==
+  /google-p12-pem/3.0.3:
+    dependencies:
+      node-forge: 0.10.0
+    dev: false
+    engines:
+      node: '>=10'
+    hasBin: true
+    resolution:
+      integrity: sha512-wS0ek4ZtFx/ACKYF3JhyGe5kzH7pgiQ7J5otlumqR9psmWMYc+U9cErKlCYVYHoUaidXHdZ2xbo34kB+S+24hA==
   /graceful-fs/4.2.4:
     dev: false
     resolution:
@@ -5092,6 +5268,16 @@ packages:
       node: '>=8.10.0'
     resolution:
       integrity: sha512-VxirzD0SWoFUo5p8RDP8Jt2AGyOmyYcT/pOUgDKJCK+iSw0TMqwrVfY37RXTNmoKwrzmDHSk0GMT9FsgVmnVSA==
+  /gtoken/5.2.1:
+    dependencies:
+      gaxios: 4.2.1
+      google-p12-pem: 3.0.3
+      jws: 4.0.0
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-OY0BfPKe3QnMsY9MzTHTSKn+Vl2l1CcLe6BwDEQj00mbbkl5nyQ/7EUREstg4fQNZ8iYE7br4JJ7TdKeDOPWmw==
   /gulp-cli/2.3.0:
     dependencies:
       ansi-colors: 1.1.0
@@ -5275,6 +5461,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-LChe/V32mnUQnTwTxd3aAlNMk8ia9tjCDb/LjYtoMrdAPApxLB+azejUk5ERZIZdIqvinwv6BAUuFXH/tQPdZA==
+  /hex2dec/1.1.2:
+    dev: false
+    resolution:
+      integrity: sha512-Yu+q/XWr2fFQ11tHxPq4p4EiNkb2y+lAacJNhAdRXVfRIcDH6gi7htWFnnlIzvqHMHoWeIsfXlNAjZInpAOJDA==
   /hoist-non-react-statics/3.3.2:
     dependencies:
       react-is: 16.13.1
@@ -5333,6 +5523,16 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-4I8r0C5JDhT5VkvI47QktDW75rNlGVsUf/8hzjCC/wkWI/jdTRmBb9aI7erSG82r1bjKY3F6k28WnsVxB1C73A==
+  /http-proxy-agent/4.0.1:
+    dependencies:
+      '@tootallnate/once': 1.1.2
+      agent-base: 6.0.2
+      debug: 4.2.0
+    dev: false
+    engines:
+      node: '>= 6'
+    resolution:
+      integrity: sha512-k0zdNgqWTGA6aeIRVpvfVob4fL52dTfaehylg0Y4UvSySvOq/Y+BOyPrgpUrA7HylqvU8vIZGsRuXmspskV0Tg==
   /http-status/1.4.2:
     dev: false
     engines:
@@ -5906,6 +6106,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-eXK1UInq2bPmjyX6e3VHIzMLobc4J94i4AWn+Hpq3OU5KkrRC96OAcR3PRJ/pGu6m8TRnBHP9dkXQVsT/COVIA==
+  /is/3.3.0:
+    dev: false
+    resolution:
+      integrity: sha512-nW24QBoPcFGGHJGUwnfpI7Yc5CdqWNdsyHQszVE/z2pKHXzh7FZ5GWhJqSyaQ9wMkQnsTx+kAI8bHlCX4tKdbg==
   /isarray/0.0.1:
     dev: false
     resolution:
@@ -6143,6 +6347,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-DGWnSzmusIreWlEupsUelHrhwmPPE+FiQvg+drKfk2p+bdEYa5mp4PJ8JsCWqae0M2jQNb0HPvnwvf1qOTThzQ==
+  /json-bigint/1.0.0:
+    dependencies:
+      bignumber.js: 9.0.1
+    dev: false
+    resolution:
+      integrity: sha512-SiPv/8VpZuWbvLSMtTDU8hEfrZWg/mH/nV/b4o0CYbSxu1UIQPLdwKOCIyLQX+VIPO5vrLX3i8qtqFyhdPSUSQ==
   /json-merge-patch/0.2.3:
     dependencies:
       deep-equal: 1.1.1
@@ -6596,6 +6806,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
+  /log-driver/1.2.7:
+    dev: false
+    engines:
+      node: '>=0.8.6'
+    resolution:
+      integrity: sha512-U7KCmLdqsGHBLeWqYlFA0V0Sl6P08EE1ZrmA9cxjUE0WVqT9qnyVDPz1kzpFEP0jdJuFnasWIfSd7fsaNXkpbg==
   /log-symbols/3.0.0:
     dependencies:
       chalk: 2.4.2
@@ -6701,6 +6917,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==
+  /lru-cache/6.0.0:
+    dependencies:
+      yallist: 4.0.0
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==
   /lru-queue/0.1.0:
     dependencies:
       es5-ext: 0.10.53
@@ -7139,6 +7363,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-O9CIypScywTVpNaRrCAgoUnJgozpIofjKUYmJhiCIJMiuYnLI6otcb1/kpW9/n/tJODHGZ7i8aLQoDVsMtOKQQ==
+  /module-details-from-path/1.0.3:
+    dev: false
+    resolution:
+      integrity: sha1-EUyUlnPiqKNenTV4hSeqN7Z52is=
   /moment/2.29.1:
     dev: false
     optional: true
@@ -7354,6 +7582,12 @@ packages:
       node: 4.x || >=6.0.0
     resolution:
       integrity: sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
+  /node-forge/0.10.0:
+    dev: false
+    engines:
+      node: '>= 6.0.0'
+    resolution:
+      integrity: sha512-PPmu8eEeG9saEUvI97fm4OYxXVB6bFvyNTyiUOBichBpFG8A1Ljw3bY62+5oOjDEMHRnd0Y7HQ+x7uzxOzC6JA==
   /node-forge/0.8.5:
     dev: false
     engines:
@@ -9012,6 +9246,14 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==
+  /require-in-the-middle/5.1.0:
+    dependencies:
+      debug: 4.2.0
+      module-details-from-path: 1.0.3
+      resolve: 1.18.1
+    dev: false
+    resolution:
+      integrity: sha512-M2rLKVupQfJ5lf9OvqFGIT+9iVLnTmjgbOmpil12hiSQNn5zJTKGPoIisETNjfK+09vP3rpm1zJajmErpr2sEQ==
   /require-main-filename/1.0.1:
     dev: false
     resolution:
@@ -9337,6 +9579,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-mRz/m/JVscCrkMyPqHc/bczi3OQHkLTqXHEFu0zDhK/qfv3UcOA4SVmRCLmos4bhjr9ekVQubj/R7waKapmiQg==
+  /shimmer/1.2.1:
+    dev: false
+    resolution:
+      integrity: sha512-sQTKC1Re/rM6XyFM6fIAGHRPVGvyXfgzIDvzoq608vM+jeyVD0Tu1E6Np0Kc2zAIFWIj963V2800iF/9LPieQw==
   /shortid/2.2.16:
     dependencies:
       nanoid: 2.1.11
@@ -10057,6 +10303,18 @@ packages:
     dev: false
     resolution:
       integrity: sha1-Ljyyw56kSeVdHmzZEReszKRYgCE=
+  /teeny-request/7.0.1:
+    dependencies:
+      http-proxy-agent: 4.0.1
+      https-proxy-agent: 5.0.0
+      node-fetch: 2.6.1
+      stream-events: 1.0.5
+      uuid: 8.3.1
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-sasJmQ37klOlplL4Ia/786M5YlOcoLGQyq2TE4WHSRupbAuDaQW0PfVxV4MtdBtRJ4ngzS+1qim8zP6Zp35qCw==
   /test-exclude/5.2.3:
     dependencies:
       glob: 7.1.6
@@ -10805,6 +11063,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==
+  /yallist/4.0.0:
+    dev: false
+    resolution:
+      integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
   /yaml/1.10.0:
     dev: false
     engines:
@@ -11067,6 +11329,7 @@ packages:
       '@loopback/rest-explorer': 2.2.0
       '@loopback/testlab': 3.1.3
       '@sixriver/config-schema': 1.46.1
+      '@sixriver/google-cloud-trace-helpers': 1.0.11
       '@sixriver/loopback4-metrics': 6.3.5_b2240a90f11b33f7dcf67ab9288bab5c
       '@sixriver/loopback4-support': 6.3.5_6a3b898c1e3069cd6155d722de5efb43
       '@sixriver/service-directory': 6.3.5
@@ -11124,7 +11387,7 @@ packages:
     dev: false
     name: '@rush-temp/template-service'
     resolution:
-      integrity: sha512-Bu5OIps5Et2d3+jv0acKsVsDzfeUaEZI1tW5/3xvXUpJiniBc4LU4FUtiGxuXezzRLeCI6gnV7DmirXIsZ2u1w==
+      integrity: sha512-fCqlegjB1twcPFZutdK2LrgcQYGIorlMaSF/AvF0QPzBFNcAphWyoCqTwGCsC7B4a/zGWRJvfIDBNGMUtBSzZw==
       tarball: file:projects/template-service.tgz
     version: 0.0.0
 registry: ''
@@ -11155,6 +11418,7 @@ specifiers:
   '@rush-temp/template-repo-tools': file:./projects/template-repo-tools.tgz
   '@rush-temp/template-service': file:./projects/template-service.tgz
   '@sixriver/config-schema': 1.46.1
+  '@sixriver/google-cloud-trace-helpers': ~1.0.11
   '@sixriver/loopback4-metrics': 6.3.5
   '@sixriver/loopback4-support': 6.3.5
   '@sixriver/service-directory': 6.3.5
