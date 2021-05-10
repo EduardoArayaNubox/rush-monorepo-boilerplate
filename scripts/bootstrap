@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 readonly DIR="$(dirname "$(realpath "$0")")"
 
 # Find every subdirectory containing package.json, excluding the root with `mindepth` and excluding node_modules and rush-recycler
