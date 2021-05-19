@@ -1,8 +1,8 @@
 version: 2.1
 
 orbs:
-  sixrs-gke: sixriversystems/sixrs-gke@2
-  gcp-cli: circleci/gcp-cli@2.1.0
+  sixrs-gke: sixriversystems/sixrs-gke@3
+  gcp-cli: circleci/gcp-cli@2
 
 jobs:
   install:
@@ -156,10 +156,7 @@ jobs:
             repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js coverage
             mkdir -p coverage
             for p in packages/* ; do [ -d "$p" -a -d "$p/coverage" ] || continue ; pp="$(basename "$p")" ; cp -av "$p/coverage" "coverage/$pp" ; done
-      - run:
-          name: upload coverage
-          command: |
-            bash <( curl -s https://codecov.io/bash ) -s coverage
+      - sixrs-gke/codecov
       - store_artifacts:
           path: coverage
       - store_artifacts:
