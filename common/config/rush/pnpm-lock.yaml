@@ -36,7 +36,7 @@ dependencies:
   '@types/chai-string': 1.4.1
   '@types/chance': 1.0.1
   '@types/json-schema': 7.0.4
-  '@types/lodash': 4.14.159
+  '@types/lodash': 4.14.169
   '@types/mocha': 5.2.7
   '@types/nock': 9.3.1
   '@types/node': 12.12.54
@@ -74,7 +74,7 @@ dependencies:
   jsmin: 1.0.1
   json-schema-ref-parser: 6.1.0
   json-schema-to-typescript: 6.1.3
-  lodash: 4.17.19
+  lodash: 4.17.21
   loopback-connector-postgresql: 5.4.0
   merge2: 1.2.3
   mocha: 5.1.1
@@ -1476,6 +1476,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-gF7A72f7WQN33DpqOWw9geApQPh4M3PxluMtaHxWHXEGSN12/WbcEk/eNSqWNQcQhF66VSZ06vCF94CrHwXJDg==
+  /@types/lodash/4.14.169:
+    dev: false
+    resolution:
+      integrity: sha512-DvmZHoHTFJ8zhVYwCLWbQ7uAbYQEk52Ev2/ZiQ7Y7gQGeV9pjBqjnQpECMHfKS1rCYAhMI7LHVxwyZLZinJgdw==
   /@types/long/4.0.1:
     dev: false
     resolution:
@@ -11225,7 +11229,7 @@ packages:
       '@types/chai-as-promised': 7.1.0
       '@types/chai-string': 1.4.1
       '@types/chance': 1.0.1
-      '@types/lodash': 4.14.159
+      '@types/lodash': 4.14.169
       '@types/mocha': 5.2.7
       '@types/node': 12.12.54
       '@types/sinon': 7.5.0
@@ -11242,7 +11246,7 @@ packages:
       eslint-plugin-6river: 1.0.6
       eslint-plugin-import: 2.22.1_eslint@7.24.0
       eslint-plugin-mocha: 8.1.0_eslint@7.24.0
-      lodash: 4.17.19
+      lodash: 4.17.21
       mocha: 5.1.1
       mocha-junit-reporter: 1.15.0_mocha@5.1.1
       mocha-lcov-reporter: 1.3.0
@@ -11255,7 +11259,7 @@ packages:
     dev: false
     name: '@rush-temp/template-common'
     resolution:
-      integrity: sha512-xu3UW6C36BVS3BOpglFkl1rJUex2X7fftOU0zrrRU7BIqJlAkAFsTfHeEoE0LNShmJblobYP6yc/8NjkL2lLdQ==
+      integrity: sha512-+Om6TgBdJNIssL8CTgNjGYVYgKF/oEQ6cEwvm1gqPZ6BbFsOGTBorVzpMYIJiJgiDTLPA49UzW9SKHsCAjuzAw==
       tarball: file:projects/template-common.tgz
     version: 0.0.0
   file:projects/template-oas.tgz:
@@ -11264,7 +11268,7 @@ packages:
       '@sixriver/oas-support': 6.3.5
       '@sixriver/typescript-support': 6.3.5
       '@types/json-schema': 7.0.4
-      '@types/lodash': 4.14.159
+      '@types/lodash': 4.14.169
       '@types/mocha': 5.2.7
       '@types/node': 12.12.54
       '@types/source-map-support': 0.5.3
@@ -11282,7 +11286,7 @@ packages:
       eslint-plugin-mocha: 8.1.0_eslint@7.24.0
       json-schema-ref-parser: 6.1.0
       json-schema-to-typescript: 6.1.3
-      lodash: 4.17.19
+      lodash: 4.17.21
       npm-run-all: 4.1.5
       openapi-schema-to-json-schema: 2.2.0
       prettier: 2.2.1
@@ -11293,7 +11297,7 @@ packages:
     dev: false
     name: '@rush-temp/template-oas'
     resolution:
-      integrity: sha512-1jwzR2L5G5EexyXlplLryB4MBEzSJ44S3XNJkNfXWHr8gxCaGy2t9EQTmslgYsnoouZX4D+GHtM0XwXO7gPt1g==
+      integrity: sha512-TryM1wAEVBBEMpdN3189YckuFLrN89BLULmX14VWo5eEZxxgJidyXp7/1U4J5bvXK3BuMgFMz8JahlwKxT9YWw==
       tarball: file:projects/template-oas.tgz
     version: 0.0.0
   file:projects/template-repo-tools.tgz:
@@ -11339,7 +11343,7 @@ packages:
       '@types/chai-as-promised': 7.1.0
       '@types/chai-string': 1.4.1
       '@types/chance': 1.0.1
-      '@types/lodash': 4.14.159
+      '@types/lodash': 4.14.169
       '@types/mocha': 5.2.7
       '@types/nock': 9.3.1
       '@types/node': 12.12.54
@@ -11368,7 +11372,7 @@ packages:
       gulp: 4.0.2
       gulp-sourcemaps: 2.6.5
       gulp-typescript: 5.0.1_typescript@3.9.7
-      lodash: 4.17.19
+      lodash: 4.17.21
       loopback-connector-postgresql: 5.4.0
       mocha: 5.1.1
       mocha-junit-reporter: 1.15.0_mocha@5.1.1
@@ -11387,7 +11391,7 @@ packages:
     dev: false
     name: '@rush-temp/template-service'
     resolution:
-      integrity: sha512-fCqlegjB1twcPFZutdK2LrgcQYGIorlMaSF/AvF0QPzBFNcAphWyoCqTwGCsC7B4a/zGWRJvfIDBNGMUtBSzZw==
+      integrity: sha512-djO3dCBDGQEeB3rBzK9EmWmtEPFXPfIUi+khyGPpYMtIYhkK84R05yFAfhSWQf5vrbYbqamEkmc50jwqRgYeUg==
       tarball: file:projects/template-service.tgz
     version: 0.0.0
 registry: ''
@@ -11429,7 +11433,7 @@ specifiers:
   '@types/chai-string': 1.4.1
   '@types/chance': 1.0.1
   '@types/json-schema': 7.0.4
-  '@types/lodash': 4.14.159
+  '@types/lodash': ~4.14.169
   '@types/mocha': 5.2.7
   '@types/nock': 9.3.1
   '@types/node': 12.12.54
@@ -11467,7 +11471,7 @@ specifiers:
   jsmin: 1.0.1
   json-schema-ref-parser: 6.1.0
   json-schema-to-typescript: 6.1.3
-  lodash: 4.17.19
+  lodash: ~4.17.21
   loopback-connector-postgresql: 5.4.0
   merge2: 1.2.3
   mocha: 5.1.1
