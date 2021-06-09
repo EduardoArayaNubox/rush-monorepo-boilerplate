@@ -132,13 +132,16 @@ jobs:
           POSTGRES_USER: root
           POSTGRES_DB: circle_test
           POSTGRES_HOST_AUTH_METHOD: trust
-      - image: gcr.io/plasma-column-128721/pubsub-emulator:latest
+      - image: gcr.io/plasma-column-128721/mmmbbb-service:latest
         auth:
           username: _json_key
           password: $GCLOUD_SERVICE_KEY
         environment:
-          PUBSUB_PROJECT_ID: test
-          PUBSUB_LISTEN_ADDRESS: 0.0.0.0:8802
+          NODE_ENV: development
+          DATABASE_URL: postgres://root:@127.0.0.1:5432/mmmbbb
+          CREATE_DB_VIA: circle_test
+          LOG_LEVEL: debug
+          PORT: 8801
     steps:
       - attach_workspace:
           at: ./
