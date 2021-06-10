@@ -56,6 +56,7 @@ jobs:
           root: ./
           paths:
             - .
+      - sixrs-gke/publish-version
 
   save-local-cache:
     docker:
@@ -220,14 +221,7 @@ jobs:
           name: Run rush deploy and build docker images
           command: |
             repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js build-publish-docker
-           
-  comment-version:
-    docker:
-      - image: circleci/node:12.22.1
-    steps:
-      - attach_workspace:
-          at: ./
-      - sixrs-gke/publish-version
+
 
 workflows:
   version: 2
@@ -298,7 +292,3 @@ workflows:
           context: 6rs-circle
           requires:
             - install
-      # - comment-version:
-      #     context: 6rs-circle
-      #     requires:
-      #       - install
