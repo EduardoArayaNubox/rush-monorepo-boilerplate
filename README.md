@@ -37,10 +37,10 @@ start your service(s).
   CodeCov web interface before coverage uploads and analysis will work.
 - You can optionally enable the 6RS bot to comment the latest version of the
   repository in any PR by following these steps:
--- Option 1: Uncomment the line `# - sixrs-gke/publish-version` in
+  - Option 1: Uncomment the line `# - sixrs-gke/publish-version` in
   `.circleci/config.yaml` to have the 6RS bot automatically comment the latest
    version of the repository in any opened PR.
--- Option2: Remove that line if you do not wish to have the version commented
+  - Option2: Remove that line if you do not wish to have the version commented
 
 ### Set up branch protection rules
 
