@@ -56,7 +56,7 @@ jobs:
           root: ./
           paths:
             - .
-      - sixrs-gke/publish-version
+      # - sixrs-gke/publish-version
 
   save-local-cache:
     docker:
