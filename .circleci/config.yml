@@ -96,6 +96,21 @@ jobs:
             - ./packages/
             - ./common/temp/rush-link.json
 
+  calculate-version:
+    docker:
+      - image: circleci/node:12.22.1
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Calculate Version
+          command: ci_scripts/ci_tool.sh --run_release
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - .version
+
   lint:
     docker:
       - image: cimg/node:12.22.1
@@ -220,6 +235,14 @@ jobs:
           name: Run rush deploy and build docker images
           command: |
             repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js build-publish-docker
+           
+  comment-version:
+    docker:
+      - image: circleci/node:12.22.1
+    steps:
+      - attach_workspace:
+          at: ./
+      - sixrs-gke/publish-version
 
 workflows:
   version: 2
@@ -232,6 +255,10 @@ workflows:
           context: 6rs-circle
           requires:
             - install
+      - calculate-version:
+          context: 6rs-circle
+          requires:
+            - build
       - lint:
           context: 6rs-circle
           requires:
@@ -290,3 +317,7 @@ workflows:
           context: 6rs-circle
           requires:
             - install
+      - comment-version:
+          context: 6rs-circle
+          requires:
+            - calculate-version
