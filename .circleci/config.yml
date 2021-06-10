@@ -222,7 +222,6 @@ jobs:
           command: |
             repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js build-publish-docker
 
-
 workflows:
   version: 2
 
