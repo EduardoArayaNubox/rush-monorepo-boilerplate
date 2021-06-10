@@ -2,13 +2,6 @@
 
 ## Instantiating It
 
-### Enabling CI 6RS Bot Integration
-
-1. Option 1: Uncomment the line `# - sixrs-gke/publish-version` in
-  `.circleci/config.yaml` to have the 6RS bot automatically comment the latest
-  version of the repository in any opened PR.
-2. Option2: Remove that line if you do not wish to have the version commented
-
 ### Get a Clean Copy
 
 1. Option 1: This repo is setup as a template you can use as the initial contents
@@ -42,6 +35,12 @@ start your service(s).
 - However, you will need to edit the project settings in the CircleCI web
   interface and add the `CODECOV_TOKEN` environment variable generated from the
   CodeCov web interface before coverage uploads and analysis will work.
+- You can optionally enable the 6RS bot to comment the latest version of the
+  repository in any PR by following these steps:
+-- Option 1: Uncomment the line `# - sixrs-gke/publish-version` in
+  `.circleci/config.yaml` to have the 6RS bot automatically comment the latest
+   version of the repository in any opened PR.
+-- Option2: Remove that line if you do not wish to have the version commented
 
 ### Set up branch protection rules
 
