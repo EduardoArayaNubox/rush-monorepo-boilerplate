@@ -1,8 +1,12 @@
 # Template Rush Project
 
 ## Instantiating It
-1. Option 1: Uncomment the line `# - sixrs-gke/publish-version` in `.circleci/config.yaml` to have the 6RS bot automatically
-   comment the latest version of the repository in any opened PR.
+
+### Enabling CI 6RS Bot Integration
+
+1. Option 1: Uncomment the line `# - sixrs-gke/publish-version` in
+  `.circleci/config.yaml` to have the 6RS bot automatically comment the latest
+  version of the repository in any opened PR.
 2. Option2: Remove that line if you do not wish to have the version commented
 
 ### Get a Clean Copy
