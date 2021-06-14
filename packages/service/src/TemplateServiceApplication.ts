@@ -69,8 +69,11 @@ export class TemplateServiceApplication extends BootMixin(RepositoryMixin(RestAp
 
 		super(args.options);
 
-		// the DefaultSequence will ask for the RestBindings.SequenceActions.REJECT. Therefore its important to set REJECT
-		// before setting the sequence.
+		// This allows for uncaught SemanticHttpErrors that were thrown in the application to write the `semanticErrorCode`
+		// `nested`, and `message` fields to the response, instead of the default 500 InternalServerError, which hides the
+		// message. If an uncaught error is thrown, and is not a SemanticHttpError, then the default behavior follows.
+		// The `DefaultSequence` will ask for the `RestBindings.SequenceActions.REJECT`. Therefore its important to set
+		// the `REJECT` binding _before_ setting the sequence.
 		this.bind(RestBindings.SequenceActions.REJECT).toProvider(SemanticHttpErrorRejectProvider);
 
 		this.sequence(DefaultSequence);
