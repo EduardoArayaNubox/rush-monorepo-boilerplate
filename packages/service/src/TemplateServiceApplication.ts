@@ -20,6 +20,7 @@ import {
 	JsonSchema4ValidatorProvider,
 	KillController,
 	LoggingConfigOptions,
+	SemanticHttpErrorRejectProvider,
 	ServiceConfig,
 	UptimeController,
 } from '@sixriver/loopback4-support';
@@ -67,6 +68,10 @@ export class TemplateServiceApplication extends BootMixin(RepositoryMixin(RestAp
 		);
 
 		super(args.options);
+
+		// the DefaultSequence will ask for the RestBindings.SequenceActions.REJECT. Therefore its important to set REJECT
+		// before setting the sequence.
+		this.bind(RestBindings.SequenceActions.REJECT).toProvider(SemanticHttpErrorRejectProvider);
 
 		this.sequence(DefaultSequence);
 
