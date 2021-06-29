@@ -16,11 +16,11 @@ echo "Extracted version: ${PACKAGE_VERSION}"
 # Find the yaml files in packages/oas tht are committed to git
 YAML_FILES=$(git ls-files ${ROOT}/packages/oas/ \
   | xargs -I {} find {} -type f -maxdepth 3 -name "*.yaml")
-echo ${YAML_FILES}
 
 # Now do the replacement in-place (MacOS/Unix compatible) https://frontend-apps.6river.org/api/v${PACKAGE_VERSION}
 for FILE in ${YAML_FILES}
 do
+  # If the yaml file imports from standard api, update the version
   if grep -q "https://frontend-apps.6river.org/api/v" ${ROOT}/${FILE}
   then
     sed -i.bak -e "s#\(https://frontend-apps.6river.org/api/v\)[^/]*/#https://frontend-apps.6river.org/api/v${PACKAGE_VERSION}/#g" "${ROOT}/${FILE}"
