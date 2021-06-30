@@ -9,7 +9,7 @@ ROOT=$(git rev-parse --show-toplevel)
 # Get the version from package.json
 PACKAGE_VERSION=$(jq -r '.dependencies["@sixriver/standard-api"] | select(. != null)' ${ROOT}/packages/*/package.json | head -1)
 
-# If there is no value found, default the version to what is in the monorepo-boilerplate
+# If there is no value found, default the version to the latest stable version
 if [ -z "${PACKAGE_VERSION}" ] ; then
   PACKAGE_VERSION=${PACKAGE_VERSION_DEFAULT}
 fi
