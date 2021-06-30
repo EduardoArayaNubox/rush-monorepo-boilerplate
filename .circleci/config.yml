@@ -109,6 +109,8 @@ jobs:
           name: Restore Rush Global Cache
           keys:
             - rush-global-v1-{{ checksum "rush.json" }}-{{ checksum ".node-version" }}
+      - initialize_npm_config:
+          command: ci_scripts/ci_tool.sh --setup_npm
       - run:
           name: Lint
           command: |
