@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 DO_IT=${1:-false}
-PACKAGE_VERSION_DEFAULT="2.x.x"
+PACKAGE_VERSION_DEFAULT=$(npm view @sixriver/standard-api@latest -json | jq -r .version)
 
 # Get the root path of the repo
 ROOT=$(git rev-parse --show-toplevel)
