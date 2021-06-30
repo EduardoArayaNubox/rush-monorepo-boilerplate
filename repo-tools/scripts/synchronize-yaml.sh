@@ -6,12 +6,7 @@ DO_IT=${1:-false}
 ROOT=$(git rev-parse --show-toplevel)
 
 # Get the version from package.json
-PACKAGE_VERSION=$(cat ${ROOT}/packages/*/package.json \
-  | grep @sixriver/standard-api \
-  | head -1 \
-  | awk -F: '{ print $2 }' \
-  | sed 's/[",]//g' \
-  | tr -d '[[:space:]]')
+PACKAGE_VERSION=$(jq -r '.dependencies["@sixriver/standard-api"] | select(. != null)' ${ROOT}/packages/*/package.json | head -1)
 
 # Find the yaml files in packages/oas tht are committed to git
 YAML_FILES=$(git ls-files --full-name "${ROOT}/packages/oas/*.yaml" "${ROOT}/packages/oas/**/*.yaml")
@@ -24,7 +19,7 @@ for FILE in ${YAML_FILES} ; do
       sed -i.bak -e "s#\(https://frontend-apps.6river.org/api/v\)[^/]*/#https://frontend-apps.6river.org/api/v${PACKAGE_VERSION}/#g" "${ROOT}/${FILE}"
       rm "${ROOT}/${FILE}.bak"
     else
-      diff "${ROOT}/${FILE}" <( sed -e "s#\(https://frontend-apps.6river.org/api/v\)[^/]*/#https://frontend-apps.6river.org/api/v${PACKAGE_VERSION}/#g" "${ROOT}/${FILE}" )
+      diff -u "${ROOT}/${FILE}" <( sed -e "s#\(https://frontend-apps.6river.org/api/v\)[^/]*/#https://frontend-apps.6river.org/api/v${PACKAGE_VERSION}/#g" "${ROOT}/${FILE}" )
     fi
   fi
 done
