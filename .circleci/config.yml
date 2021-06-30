@@ -110,6 +110,9 @@ jobs:
           keys:
             - rush-global-v1-{{ checksum "rush.json" }}-{{ checksum ".node-version" }}
       - run:
+          name: Initialize ci_scripts
+          command: ci_scripts/ci_tool.sh --setup_npm
+      - run:
           name: Lint
           command: |
             repo-tools/scripts/run-rush-collect-logs.sh rush-logs node common/scripts/install-run-rush.js lint
