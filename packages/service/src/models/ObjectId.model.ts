@@ -13,4 +13,6 @@ export class ObjectIdModel extends Model implements ObjectId {
 	constructor(data?: Partial<ObjectIdModel>) {
 		super(data);
 	}
+
+	[k: string]: unknown;
 }

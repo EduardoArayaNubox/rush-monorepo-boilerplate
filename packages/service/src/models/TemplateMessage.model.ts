@@ -16,9 +16,12 @@ export class TemplateMessageModel extends Model implements TemplateMessage {
 		type: 'object',
 		required: false,
 	})
-	data?: object;
+	data?: { [k: string]: unknown };
 
 	constructor(data?: Partial<TemplateMessageModel>) {
 		super(data);
 	}
+
+	[x: string]: unknown;
+	someDate?: string | undefined;
 }
