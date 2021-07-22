@@ -1,7 +1,10 @@
 import { FileInfo, ParserError } from '@apidevtools/json-schema-ref-parser';
+import { SchemaObject } from 'ajv';
 
 import { applyDateFormat } from '../applyDateFormat';
 
+// NOTE: this is the json parser copied from v9.0.9 of json-schema-ref-parser (and modified) since it is not exported
+// https://github.com/APIDevTools/json-schema-ref-parser/blob/v9.0.9/lib/parsers/yaml.js
 export const JsonParser = {
 	/**
 	 * The order that this parser will run, in relation to other parsers.
@@ -37,29 +40,32 @@ export const JsonParser = {
 	 * @returns {Promise}
 	 */
 	async parse(file: FileInfo): Promise<unknown> {
-		// eslint-disable-line require-await
 		let data = file.data;
 		if (Buffer.isBuffer(data)) {
 			data = data.toString();
 		}
 
+		let parsed: SchemaObject | undefined;
+
 		if (typeof data === 'string') {
 			if (data.trim().length === 0) {
-				return; // This mirrors the YAML behavior
+				parsed = undefined; // This mirrors the YAML behavior
 			} else {
 				try {
-					return JSON.parse(data);
+					parsed = JSON.parse(data);
 				} catch (e) {
 					throw new ParserError(e.message, file.url);
 				}
 			}
 		} else {
 			// data is already a JavaScript value (object, array, number, null, NaN, etc.)
-
-			if (data) {
-				return applyDateFormat(data);
-			}
-			return data;
+			parsed = data;
 		}
+
+		if (parsed) {
+			return applyDateFormat(parsed);
+		}
+
+		return parsed;
 	},
 };
