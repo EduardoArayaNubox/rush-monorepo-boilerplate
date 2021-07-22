@@ -1,11 +1,8 @@
-import { FileInfo } from '@apidevtools/json-schema-ref-parser';
-import JsonSchemaRefParser from '@apidevtools/json-schema-ref-parser';
-import { SchemaObject } from 'ajv';
+import { FileInfo, ParserError } from '@apidevtools/json-schema-ref-parser';
+import { load } from 'js-yaml';
 
 import { applyDateFormat } from '../applyDateFormat';
 
-// NOTE: this is the yaml parser copied from v6.1.0 of json-schema-ref-parser (and modified) since it is not exported
-//       and this appears to be the only way to hook into parsing refs in order to fixup date fields
 export const YamlParser = {
 	/**
 	 * The order that this parser will run, in relation to other parsers.
@@ -41,24 +38,25 @@ export const YamlParser = {
 	 * @returns {Promise}
 	 */
 	async parse(file: FileInfo): Promise<unknown> {
+		// eslint-disable-line require-await
 		let data = file.data;
 		if (Buffer.isBuffer(data)) {
 			data = data.toString();
 		}
 
-		let parsed: SchemaObject | undefined;
 		if (typeof data === 'string') {
-			// YAML property isn't in the types
-			parsed = (JsonSchemaRefParser as any).YAML.parse(data);
+			try {
+				return load(data);
+			} catch (e) {
+				throw new ParserError(e.message, file.url);
+			}
 		} else {
 			// data is already a JavaScript value (object, array, number, null, NaN, etc.)
-			parsed = data;
-		}
 
-		if (parsed) {
-			return applyDateFormat(parsed);
+			if (data) {
+				return applyDateFormat(data);
+			}
+			return data;
 		}
-
-		return parsed;
 	},
 };
