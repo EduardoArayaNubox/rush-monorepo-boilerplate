@@ -4,7 +4,8 @@ import { load } from 'js-yaml';
 
 import { applyDateFormat } from '../applyDateFormat';
 
-// NOTE: this is the json parser copied from v9.0.9 of json-schema-ref-parser (and modified) since it is not exported
+// NOTE: this is the yaml parser copied from v9.0.9 of json-schema-ref-parser (and modified) since it is not exported
+// and this appears to be the only way to hook into parsing refs in order to fixup date fields
 // https://github.com/APIDevTools/json-schema-ref-parser/blob/v9.0.9/lib/parsers/yaml.js
 export const YamlParser = {
 	/**
