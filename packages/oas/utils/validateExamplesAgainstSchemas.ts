@@ -101,7 +101,7 @@ async function testSamplesAgainstApi(apiPath: string, api: OpenAPI.Document) {
 
 async function run(rootDir: string) {
 	try {
-		const api = await parseOasYamlFile(join(rootDir, 'openapi.yaml'), {
+		const api = await parseOasYamlFile(join(rootDir, 'template-openapi.yaml'), {
 			dereference: true,
 			stripTsTypes: true,
 		});

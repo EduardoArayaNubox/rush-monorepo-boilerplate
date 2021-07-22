@@ -17,7 +17,7 @@ import {
 	getDefaultLoggingConfiguration,
 	getServiceConfigOptions,
 	InternalServiceDirectoryProvider,
-	JsonSchema4ValidatorProvider,
+	JsonSchema2020ValidatorProvider,
 	KillController,
 	LoggingConfigOptions,
 	SemanticHttpErrorRejectProvider,

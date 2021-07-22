@@ -46,7 +46,7 @@ export const YamlParser = {
 			data = data.toString();
 		}
 
-		let parsed: SchemaObject | undefined;
+		let parsed: string | number | object | null | undefined;
 
 		if (typeof data === 'string') {
 			try {
@@ -59,10 +59,10 @@ export const YamlParser = {
 			parsed = data;
 		}
 
-			if (parsed) {
-				return applyDateFormat(parsed);
-			}
+		if (parsed) {
+			return applyDateFormat(parsed as SchemaObject);
+		}
 
-			return parsed;
+		return parsed;
 	},
 };

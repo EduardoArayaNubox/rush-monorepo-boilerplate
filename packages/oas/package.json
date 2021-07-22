@@ -39,12 +39,12 @@
     "release": "true"
   },
   "dependencies": {
-    "@sixriver/typescript-support": "6.3.5"
+    "@sixriver/typescript-support": "8.6.0-HackdaysValidator.4"
   },
   "devDependencies": {
     "@apidevtools/json-schema-ref-parser": "9.0.9",
     "@6river/prettier-config": "1.0.37",
-    "@sixriver/oas-support": "6.3.5",
+    "@sixriver/oas-support": "8.6.0-HackdaysValidator.4",
     "@stoplight/spectral": "6.0.0-alpha3",
     "@types/js-yaml": "4.0.2",
     "@types/json-schema": "7.0.4",

@@ -45,7 +45,7 @@ export const JsonParser = {
 			data = data.toString();
 		}
 
-		let parsed: SchemaObject | undefined;
+		let parsed: string | number | object | null | undefined;
 
 		if (typeof data === 'string') {
 			if (data.trim().length === 0) {
@@ -63,7 +63,7 @@ export const JsonParser = {
 		}
 
 		if (parsed) {
-			return applyDateFormat(parsed);
+			return applyDateFormat(parsed as SchemaObject);
 		}
 
 		return parsed;
