@@ -1,8 +1,8 @@
-import { FileInfo } from 'json-schema-ref-parser';
-import JsonSchemaRefParser from 'json-schema-ref-parser';
+import { FileInfo } from '@apidevtools/json-schema-ref-parser';
+import JsonSchemaRefParser from '@apidevtools/json-schema-ref-parser';
+import { SchemaObject } from 'ajv';
 
-import { JSONSchema4 } from './JSONSchema4';
-import { applyDateFormat } from './applyDateFormat';
+import { applyDateFormat } from '../applyDateFormat';
 
 // NOTE: this is the yaml parser copied from v6.1.0 of json-schema-ref-parser (and modified) since it is not exported
 //       and this appears to be the only way to hook into parsing refs in order to fixup date fields
@@ -46,7 +46,7 @@ export const YamlParser = {
 			data = data.toString();
 		}
 
-		let parsed: JSONSchema4 | undefined;
+		let parsed: SchemaObject | undefined;
 		if (typeof data === 'string') {
 			// YAML property isn't in the types
 			parsed = (JsonSchemaRefParser as any).YAML.parse(data);

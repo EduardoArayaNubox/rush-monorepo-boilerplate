@@ -1,7 +1,7 @@
-import { FileInfo } from 'json-schema-ref-parser';
+import { FileInfo } from '@apidevtools/json-schema-ref-parser';
+import { SchemaObject } from 'ajv';
 
-import { JSONSchema4 } from './JSONSchema4';
-import { applyDateFormat } from './applyDateFormat';
+import { applyDateFormat } from '../applyDateFormat';
 
 export const JsonParser = {
 	/**
@@ -43,7 +43,7 @@ export const JsonParser = {
 			data = data.toString();
 		}
 
-		let parsed: JSONSchema4 | undefined;
+		let parsed: SchemaObject | undefined;
 		if (typeof data === 'string') {
 			if (data.trim().length === 0) {
 				parsed = undefined; // This mirrors the YAML behavior

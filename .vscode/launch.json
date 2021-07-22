@@ -87,13 +87,16 @@
 		},
 		{
 			"name": "Run oas convertModelsToSchemas",
-			"type": "node",
+			"type": "pwa-node",
 			"request": "launch",
 			"outputCapture": "std",
 			"program": "${workspaceFolder}/packages/oas/dist/utils/convertModelsToSchemas.js",
 			"cwd": "${workspaceFolder}/packages/oas",
-			"skipFiles": ["<node_internals>/**"],
-			"preLaunchTask": "oas build utils"
+			"skipFiles": ["<node_internals>/**", "**/tslib/**/*.js"],
+			"preLaunchTask": "oas build utils",
+			"sourceMaps": true,
+			"stopOnEntry": false,
+			"resolveSourceMapLocations": ["${workspaceFolder}/**", "!**/node_modules/**"]
 		},
 		{
 			"name": "Run template service mocha",
