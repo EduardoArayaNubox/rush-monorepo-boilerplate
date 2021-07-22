@@ -3,3 +3,4 @@ extends: spectral:oas
 except:
   'template-openapi.yaml':
     - oas3-unused-components-schema
+    - oas3-unused-component
