@@ -6,6 +6,7 @@ import { ApplicationConfig, Provider, BindingScope } from '@loopback/core';
 import { RepositoryMixin, juggler } from '@loopback/repository';
 import { RestApplication, RestServer, RestBindings, DefaultSequence } from '@loopback/rest';
 import { RestExplorerComponent } from '@loopback/rest-explorer';
+import { ServiceConfig } from '@sixriver/config-support';
 import { initializeTracing } from '@sixriver/google-cloud-trace-helpers';
 import { MetricsComponent } from '@sixriver/loopback4-metrics';
 import {
@@ -21,7 +22,6 @@ import {
 	KillController,
 	LoggingConfigOptions,
 	SemanticHttpErrorRejectProvider,
-	ServiceConfig,
 	UptimeController,
 } from '@sixriver/loopback4-support';
 import { ServicePortFactory, getEnvironment } from '@sixriver/service-directory';
@@ -133,7 +133,7 @@ export class TemplateServiceApplication extends BootMixin(RepositoryMixin(RestAp
 			.toProvider(InternalServiceDirectoryProvider)
 			.inScope(BindingScope.SINGLETON);
 
-		class TemplateMessageValidatorProvider extends JsonSchema4ValidatorProvider<TemplateMessage> {
+		class TemplateMessageValidatorProvider extends JsonSchema2020ValidatorProvider<TemplateMessage> {
 			constructor(
 				@inject(CommonBindings.LOG_FACTORY)
 				logFactory: MinimalLogFactory,

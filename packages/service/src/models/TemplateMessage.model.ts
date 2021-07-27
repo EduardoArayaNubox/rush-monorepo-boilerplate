@@ -3,7 +3,7 @@ import { TemplateMessage } from '@sixriver/template-oas';
 
 // NOTE: the message is a `Model`, but _NOT_ an `Entity` -- it is not persisted
 @model()
-export class TemplateMessageModel extends Model implements TemplateMessage {
+export class TemplateMessageModel extends Model implements Pick<TemplateMessage, 'id' | 'data'> {
 	@property({
 		type: 'string',
 		id: true,
@@ -21,7 +21,4 @@ export class TemplateMessageModel extends Model implements TemplateMessage {
 	constructor(data?: Partial<TemplateMessageModel>) {
 		super(data);
 	}
-
-	[x: string]: unknown;
-	someDate?: string | undefined;
 }

@@ -26,11 +26,12 @@ dependencies:
   '@rush-temp/template-repo-tools': file:projects/template-repo-tools.tgz
   '@rush-temp/template-service': file:projects/template-service.tgz
   '@sixriver/config-schema': 1.46.1
+  '@sixriver/config-support': 8.6.0-HackdaysValidator.10
   '@sixriver/google-cloud-trace-helpers': 1.0.11
-  '@sixriver/loopback4-metrics': 8.6.0-HackdaysValidator.4_b2240a90f11b33f7dcf67ab9288bab5c
-  '@sixriver/loopback4-support': 8.6.0-HackdaysValidator.4_bc5ccbcf7fda6d7a39b2c3aa89c38d69
-  '@sixriver/service-directory': 8.6.0-HackdaysValidator.4
-  '@sixriver/typescript-support': 8.6.0-HackdaysValidator.4
+  '@sixriver/loopback4-metrics': 8.6.0-HackdaysValidator.10_b2240a90f11b33f7dcf67ab9288bab5c
+  '@sixriver/loopback4-support': 8.6.0-HackdaysValidator.10_29814845f5db043fde85ce655169612d
+  '@sixriver/service-directory': 8.6.0-HackdaysValidator.10
+  '@sixriver/typescript-support': 8.6.0-HackdaysValidator.10
   '@stoplight/spectral': 6.0.0-alpha3
   '@types/bunyan': 1.8.4
   '@types/chai': 4.2.5
@@ -116,6 +117,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-06+XoJuu2N82vk6BLCKt1G1IF9uEV6H6R658TUD8UjfF1BOjfnAuIaL0dgTcvCRgcN9sQrcTFASl24LsoYMUrQ==
+  /@6river/where-filter/1.2.0:
+    dev: false
+    resolution:
+      integrity: sha512-gxS/eK9ZiAnCU8OTwQC8hH3LewxejDHjWTAmXIlonVHV1PXBBPOK3VVpd4c+i3mcYhx/m4krwYu9JTcSGq95vg==
   /@apidevtools/json-schema-ref-parser/9.0.9:
     dependencies:
       '@jsdevtools/ono': 7.1.3
@@ -1242,6 +1247,16 @@ packages:
     resolution:
       integrity: sha1-S6NBSQta4sqY16v4qB8CI1UGbPU=
       tarball: '@sixriver/config-schema/-/@sixriver/config-schema-1.46.1.tgz'
+  /@sixriver/config-support/8.6.0-HackdaysValidator.10:
+    dependencies:
+      '@6river/where-filter': 1.2.0
+      '@sixriver/typescript-support': 8.6.0-HackdaysValidator.10
+    dev: false
+    engines:
+      node: '>=10.15.3'
+    resolution:
+      integrity: sha1-9XvpRQOFJpz2v9BMM6qtJrrvT/4=
+      tarball: '@sixriver/config-support/-/@sixriver/config-support-8.6.0-HackdaysValidator.10.tgz'
   /@sixriver/google-cloud-trace-helpers/1.0.11:
     dependencies:
       '@google-cloud/trace-agent': 5.1.3
@@ -1249,7 +1264,7 @@ packages:
     resolution:
       integrity: sha1-m5L/DHnimvYy29f1TOhU2O/Ir8w=
       tarball: '@sixriver/google-cloud-trace-helpers/-/@sixriver/google-cloud-trace-helpers-1.0.11.tgz'
-  /@sixriver/loopback4-metrics/8.6.0-HackdaysValidator.4_b2240a90f11b33f7dcf67ab9288bab5c:
+  /@sixriver/loopback4-metrics/8.6.0-HackdaysValidator.10_b2240a90f11b33f7dcf67ab9288bab5c:
     dependencies:
       '@loopback/context': 3.9.3
       '@loopback/core': 2.5.0
@@ -1265,9 +1280,9 @@ packages:
       '@loopback/rest': ^4.0.0
       prom-client: ^12.0.0
     resolution:
-      integrity: sha1-cm2KEsdaqRLsspGXlXdlBilRRYA=
-      tarball: '@sixriver/loopback4-metrics/-/@sixriver/loopback4-metrics-8.6.0-HackdaysValidator.4.tgz'
-  /@sixriver/loopback4-support/8.6.0-HackdaysValidator.4_6a3b898c1e3069cd6155d722de5efb43:
+      integrity: sha1-3lvrbmyF5WKYV7PeqOKkejvQzJo=
+      tarball: '@sixriver/loopback4-metrics/-/@sixriver/loopback4-metrics-8.6.0-HackdaysValidator.10.tgz'
+  /@sixriver/loopback4-support/8.6.0-HackdaysValidator.10_29814845f5db043fde85ce655169612d:
     dependencies:
       '@6river/reason-guard': 3.7.4
       '@loopback/boot': 2.2.0
@@ -1279,9 +1294,63 @@ packages:
       '@loopback/rest': 4.0.0
       '@loopback/rest-explorer': 2.2.0
       '@sixriver/config-schema': 1.46.1
-      '@sixriver/oas-support': 8.6.0-HackdaysValidator.4
-      '@sixriver/service-directory': 8.6.0-HackdaysValidator.4
-      '@sixriver/typescript-support': 8.6.0-HackdaysValidator.4
+      '@sixriver/config-support': 8.6.0-HackdaysValidator.10
+      '@sixriver/oas-support': 8.6.0-HackdaysValidator.10
+      '@sixriver/service-directory': 8.6.0-HackdaysValidator.10
+      '@sixriver/typescript-support': 8.6.0-HackdaysValidator.10
+      axios: 0.21.1
+      bunyan: 1.8.12
+      bunyan-prettystream: 0.1.3
+      db-migrate: 0.11.12
+      lodash: 4.17.21
+      parse-database-url: 0.3.0
+      pino: 5.16.0
+      pino-pretty: 3.2.1
+      url-join: 4.0.0
+      url-mask: 1.0.5
+      uuid: 3.4.0
+    dev: false
+    engines:
+      node: '>=10.16.3'
+    peerDependencies:
+      '@loopback/boot': ^2.2.0
+      '@loopback/context': ^3.7.0
+      '@loopback/core': ^2.5.0
+      '@loopback/metadata': ^2.1.3
+      '@loopback/openapi-v3': ^3.3.1
+      '@loopback/repository': ^2.4.0
+      '@loopback/rest': ^4.0.0
+      '@loopback/rest-explorer': ^2.2.0
+      '@sixriver/config-schema': ^1.71.1
+      '@sixriver/config-support': 8.6.0-HackdaysValidator.10
+      ajv: ^8.6.2
+      axios: ^0.21.1
+      bunyan: ^1.8.12
+      bunyan-prettystream: ^0.1.3
+      db-migrate: ^0.11.5
+      pino: ^6.11.3
+      pino-pretty: ^4.8.0
+      strong-error-handler: ^3.4.0
+      uuid: ^7.0.3
+    resolution:
+      integrity: sha1-bl2JQdlF1h8oKM7oOm2Xz4yGzAg=
+      tarball: '@sixriver/loopback4-support/-/@sixriver/loopback4-support-8.6.0-HackdaysValidator.10.tgz'
+  /@sixriver/loopback4-support/8.6.0-HackdaysValidator.10_2c140a42eaf953b5a9e55777a34587ed:
+    dependencies:
+      '@6river/reason-guard': 3.7.4
+      '@loopback/boot': 2.2.0
+      '@loopback/context': 3.9.3
+      '@loopback/core': 2.5.0
+      '@loopback/metadata': 2.2.6
+      '@loopback/openapi-v3': 3.3.1
+      '@loopback/repository': 2.4.0
+      '@loopback/rest': 4.0.0
+      '@loopback/rest-explorer': 2.2.0
+      '@sixriver/config-schema': 1.46.1
+      '@sixriver/config-support': 8.6.0-HackdaysValidator.10
+      '@sixriver/oas-support': 8.6.0-HackdaysValidator.10
+      '@sixriver/service-directory': 8.6.0-HackdaysValidator.10
+      '@sixriver/typescript-support': 8.6.0-HackdaysValidator.10
       ajv: 6.10.0
       axios: 0.21.1
       bunyan: 1.8.12
@@ -1307,7 +1376,7 @@ packages:
       '@loopback/rest': ^4.0.0
       '@loopback/rest-explorer': ^2.2.0
       '@sixriver/config-schema': ^1.71.1
-      '@sixriver/config-support': 8.6.0-HackdaysValidator.4
+      '@sixriver/config-support': 8.6.0-HackdaysValidator.10
       ajv: ^8.6.2
       axios: ^0.21.1
       bunyan: ^1.8.12
@@ -1318,63 +1387,11 @@ packages:
       strong-error-handler: ^3.4.0
       uuid: ^7.0.3
     resolution:
-      integrity: sha1-+H3VOImeqMHCt+97Sz37h+t9TZ4=
-      tarball: '@sixriver/loopback4-support/-/@sixriver/loopback4-support-8.6.0-HackdaysValidator.4.tgz'
-  /@sixriver/loopback4-support/8.6.0-HackdaysValidator.4_bc5ccbcf7fda6d7a39b2c3aa89c38d69:
+      integrity: sha1-bl2JQdlF1h8oKM7oOm2Xz4yGzAg=
+      tarball: '@sixriver/loopback4-support/-/@sixriver/loopback4-support-8.6.0-HackdaysValidator.10.tgz'
+  /@sixriver/oas-support/8.6.0-HackdaysValidator.10:
     dependencies:
-      '@6river/reason-guard': 3.7.4
-      '@loopback/boot': 2.2.0
-      '@loopback/context': 3.9.3
-      '@loopback/core': 2.5.0
-      '@loopback/metadata': 2.2.6
-      '@loopback/openapi-v3': 3.3.1
-      '@loopback/repository': 2.4.0
-      '@loopback/rest': 4.0.0
-      '@loopback/rest-explorer': 2.2.0
-      '@sixriver/config-schema': 1.46.1
-      '@sixriver/oas-support': 8.6.0-HackdaysValidator.4
-      '@sixriver/service-directory': 8.6.0-HackdaysValidator.4
-      '@sixriver/typescript-support': 8.6.0-HackdaysValidator.4
-      axios: 0.21.1
-      bunyan: 1.8.12
-      bunyan-prettystream: 0.1.3
-      db-migrate: 0.11.12
-      lodash: 4.17.21
-      parse-database-url: 0.3.0
-      pino: 5.16.0
-      pino-pretty: 3.2.1
-      url-join: 4.0.0
-      url-mask: 1.0.5
-      uuid: 3.4.0
-    dev: false
-    engines:
-      node: '>=10.16.3'
-    peerDependencies:
-      '@loopback/boot': ^2.2.0
-      '@loopback/context': ^3.7.0
-      '@loopback/core': ^2.5.0
-      '@loopback/metadata': ^2.1.3
-      '@loopback/openapi-v3': ^3.3.1
-      '@loopback/repository': ^2.4.0
-      '@loopback/rest': ^4.0.0
-      '@loopback/rest-explorer': ^2.2.0
-      '@sixriver/config-schema': ^1.71.1
-      '@sixriver/config-support': 8.6.0-HackdaysValidator.4
-      ajv: ^8.6.2
-      axios: ^0.21.1
-      bunyan: ^1.8.12
-      bunyan-prettystream: ^0.1.3
-      db-migrate: ^0.11.5
-      pino: ^6.11.3
-      pino-pretty: ^4.8.0
-      strong-error-handler: ^3.4.0
-      uuid: ^7.0.3
-    resolution:
-      integrity: sha1-+H3VOImeqMHCt+97Sz37h+t9TZ4=
-      tarball: '@sixriver/loopback4-support/-/@sixriver/loopback4-support-8.6.0-HackdaysValidator.4.tgz'
-  /@sixriver/oas-support/8.6.0-HackdaysValidator.4:
-    dependencies:
-      '@sixriver/typescript-support': 8.6.0-HackdaysValidator.4
+      '@sixriver/typescript-support': 8.6.0-HackdaysValidator.10
       ajv: 8.6.2
       ajv-draft-04: 1.0.0_ajv@8.6.2
       ajv-formats: 2.1.0
@@ -1382,19 +1399,19 @@ packages:
     engines:
       node: '>=10.16.3'
     resolution:
-      integrity: sha1-IDBVXPrhdurXk7tARDuN2AoHwN4=
-      tarball: '@sixriver/oas-support/-/@sixriver/oas-support-8.6.0-HackdaysValidator.4.tgz'
-  /@sixriver/service-directory/8.6.0-HackdaysValidator.4:
+      integrity: sha1-Jkr7CL5X2tISRzdSC2amYh3H5ro=
+      tarball: '@sixriver/oas-support/-/@sixriver/oas-support-8.6.0-HackdaysValidator.10.tgz'
+  /@sixriver/service-directory/8.6.0-HackdaysValidator.10:
     dependencies:
-      '@sixriver/typescript-support': 8.6.0-HackdaysValidator.4
+      '@sixriver/typescript-support': 8.6.0-HackdaysValidator.10
       url-join: 4.0.0
     dev: false
     engines:
       node: '>=10.16.3'
     resolution:
-      integrity: sha1-NNYzMfqhNjE/lbEjnss4nmHkZiM=
-      tarball: '@sixriver/service-directory/-/@sixriver/service-directory-8.6.0-HackdaysValidator.4.tgz'
-  /@sixriver/typescript-support/8.6.0-HackdaysValidator.4:
+      integrity: sha1-HzrDHB5K5ZWZiElFvUEAOZ/Rd7I=
+      tarball: '@sixriver/service-directory/-/@sixriver/service-directory-8.6.0-HackdaysValidator.10.tgz'
+  /@sixriver/typescript-support/8.6.0-HackdaysValidator.10:
     dependencies:
       '@6river/reason-guard': 3.7.4
       double-ended-queue: 2.1.0-0
@@ -1406,8 +1423,8 @@ packages:
     engines:
       node: '>=10.16.3'
     resolution:
-      integrity: sha1-clfeV2vapN8qiL+2Le3OIFelOHE=
-      tarball: '@sixriver/typescript-support/-/@sixriver/typescript-support-8.6.0-HackdaysValidator.4.tgz'
+      integrity: sha1-P6xl2k6eJjPdXT4dmbnb4GdrdZ0=
+      tarball: '@sixriver/typescript-support/-/@sixriver/typescript-support-8.6.0-HackdaysValidator.10.tgz'
   /@stoplight/better-ajv-errors/0.1.1_ajv@8.5.0:
     dependencies:
       ajv: 8.5.0
@@ -11859,8 +11876,8 @@ packages:
     dependencies:
       '@6river/prettier-config': 1.0.37
       '@apidevtools/json-schema-ref-parser': 9.0.9
-      '@sixriver/oas-support': 8.6.0-HackdaysValidator.4
-      '@sixriver/typescript-support': 8.6.0-HackdaysValidator.4
+      '@sixriver/oas-support': 8.6.0-HackdaysValidator.10
+      '@sixriver/typescript-support': 8.6.0-HackdaysValidator.10
       '@stoplight/spectral': 6.0.0-alpha3
       '@types/js-yaml': 4.0.2
       '@types/json-schema': 7.0.4
@@ -11896,7 +11913,7 @@ packages:
     dev: false
     name: '@rush-temp/template-oas'
     resolution:
-      integrity: sha512-/ojqsWdCbkFrzzYcEX2kZ0ahLvWGDA0nGKPylWRb+AoBdyXZpXZKTl8sR+uo5k0oN+AK6dFIp4V2CMh2xXqw2A==
+      integrity: sha512-2xyKse0UpACFeCrg6emrbyc+db6EOOLeTVOT1IHWMBtXVBC6zx0u8Qt8X75SnSOvNbzsJR+ajfj8YPoGGaDyBQ==
       tarball: file:projects/template-oas.tgz
     version: 0.0.0
   file:projects/template-repo-tools.tgz:
@@ -11932,11 +11949,12 @@ packages:
       '@loopback/rest-explorer': 2.2.0
       '@loopback/testlab': 3.1.3
       '@sixriver/config-schema': 1.46.1
+      '@sixriver/config-support': 8.6.0-HackdaysValidator.10
       '@sixriver/google-cloud-trace-helpers': 1.0.11
-      '@sixriver/loopback4-metrics': 8.6.0-HackdaysValidator.4_b2240a90f11b33f7dcf67ab9288bab5c
-      '@sixriver/loopback4-support': 8.6.0-HackdaysValidator.4_6a3b898c1e3069cd6155d722de5efb43
-      '@sixriver/service-directory': 8.6.0-HackdaysValidator.4
-      '@sixriver/typescript-support': 8.6.0-HackdaysValidator.4
+      '@sixriver/loopback4-metrics': 8.6.0-HackdaysValidator.10_b2240a90f11b33f7dcf67ab9288bab5c
+      '@sixriver/loopback4-support': 8.6.0-HackdaysValidator.10_2c140a42eaf953b5a9e55777a34587ed
+      '@sixriver/service-directory': 8.6.0-HackdaysValidator.10
+      '@sixriver/typescript-support': 8.6.0-HackdaysValidator.10
       '@types/bunyan': 1.8.4
       '@types/chai': 4.2.5
       '@types/chai-as-promised': 7.1.0
@@ -11990,7 +12008,7 @@ packages:
     dev: false
     name: '@rush-temp/template-service'
     resolution:
-      integrity: sha512-YaOa/qR7jwihnf57ECm4eqM9pqziPAPBCMewTmgmmFgTduRx9PspQKlYztkKg2EsL60L2zpdVjaw+V1aCtj8fQ==
+      integrity: sha512-4pJ8vZep98aoM7Pm78mBzPaCmtqZWpNe0yZzXdoHVj4y0rt31V8mCEVWiYHF0APaa/5yLg7co9hspNSqA29eSQ==
       tarball: file:projects/template-service.tgz
     version: 0.0.0
 registry: ''
@@ -12022,11 +12040,12 @@ specifiers:
   '@rush-temp/template-repo-tools': file:./projects/template-repo-tools.tgz
   '@rush-temp/template-service': file:./projects/template-service.tgz
   '@sixriver/config-schema': 1.46.1
+  '@sixriver/config-support': 8.6.0-HackdaysValidator.10
   '@sixriver/google-cloud-trace-helpers': ~1.0.11
-  '@sixriver/loopback4-metrics': 8.6.0-HackdaysValidator.4
-  '@sixriver/loopback4-support': 8.6.0-HackdaysValidator.4
-  '@sixriver/service-directory': 8.6.0-HackdaysValidator.4
-  '@sixriver/typescript-support': 8.6.0-HackdaysValidator.4
+  '@sixriver/loopback4-metrics': 8.6.0-HackdaysValidator.10
+  '@sixriver/loopback4-support': 8.6.0-HackdaysValidator.10
+  '@sixriver/service-directory': 8.6.0-HackdaysValidator.10
+  '@sixriver/typescript-support': 8.6.0-HackdaysValidator.10
   '@stoplight/spectral': 6.0.0-alpha3
   '@types/bunyan': 1.8.4
   '@types/chai': 4.2.5

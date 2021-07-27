@@ -1,5 +1,6 @@
 import { Provider } from '@loopback/context';
-import { ServiceConfig, ServiceConfigBindings } from '@sixriver/loopback4-support';
+import { ServiceConfig } from '@sixriver/config-support';
+import { ServiceConfigBindings } from '@sixriver/loopback4-support';
 import { assert } from 'chai';
 
 import { TemplateServiceApplication } from '../../src';

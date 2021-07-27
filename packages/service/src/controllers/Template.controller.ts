@@ -57,7 +57,7 @@ export class TemplateController {
 	): Promise<ObjectIdModel> {
 		try {
 			this.logger.info(
-				{ message: _.pick(message, 'id', 'timestamp', 'source', 'destinations') },
+				{ template: _.pick(message, 'id', 'timestamp') },
 				'Received template request',
 			);
 
