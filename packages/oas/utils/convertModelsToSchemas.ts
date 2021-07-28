@@ -62,15 +62,13 @@ async function generateSchemas(path: string, api: OpenAPI.Document) {
 	);
 
 	await Promise.all(
-		Object.keys(schemas)
-			.filter((schemaName) => /.+Message/g.test(schemaName))
-			.map(async (schemaName) => {
-				const schema = schemas[schemaName];
-				schema.$schema = schemaVersion;
-				const file = join(schemasPath, `${schemaName}.json`);
-				const content = JSON.stringify(schema, null, 2);
-				await write(schemaName, file, content);
-			}),
+		Object.keys(schemas).map(async (schemaName) => {
+			const schema = schemas[schemaName];
+			schema.$schema = schemaVersion;
+			const file = join(schemasPath, `${schemaName}.json`);
+			const content = JSON.stringify(schema, null, 2);
+			await write(schemaName, file, content);
+		}),
 	);
 }
 
