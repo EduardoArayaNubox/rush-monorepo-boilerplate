@@ -4,13 +4,15 @@ import * as fs from 'fs';
 import { join, basename } from 'path';
 import { promisify } from 'util';
 
-import Ajv from 'ajv';
+import { SchemaObject } from 'ajv';
+import ajvFormats from 'ajv-formats';
+import Ajv2020 from 'ajv/dist/2020';
 import { get } from 'lodash';
-import toJsonSchema from 'openapi-schema-to-json-schema';
-import SwaggerParser from 'swagger-parser';
-import { Spec } from 'swagger-schema-official';
+import { OpenAPI } from 'openapi-types';
 
 import { getDirectories } from './FileUtils';
+import { schemaVersion } from './jsonSchemaVersion';
+import { parseOasYamlFile } from './parseOasYaml';
 
 const readdir = promisify(fs.readdir);
 const readFile = promisify(fs.readFile);
@@ -18,30 +20,37 @@ const readFile = promisify(fs.readFile);
 // this is a command line script, it definitely uses the console
 /* eslint-disable no-console */
 
-const ajv = new Ajv({
-	schemaId: 'id',
-	unknownFormats: ['int32', 'float'],
-	format: 'full',
-	// do not log output from AJV, it goes to stderr and that makes rush test fail
-	logger: false,
-});
+const ajv = ajvFormats(
+	new Ajv2020({
+		// do not log output from AJV, it goes to stderr and that makes rush test fail
+		logger: false,
+	}),
+	['date-time', 'float', 'int32'],
+);
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'));
+function buildSchemaValidator(name: string, schema: any) {
+	try {
+		return ajv.compile(schema);
+	} catch (err) {
+		console.error(`failed to build schema validator for ${name}`, err);
+		throw err;
+	}
+}
 
-async function testOneSamplesDir(samplesPath: string, api: Spec) {
+async function testOneSamplesDir(samplesPath: string, api: OpenAPI.Document) {
 	let failures = 0;
 
 	const sampleFolder = basename(samplesPath);
 	const sampleFileNames = (await readdir(samplesPath)).filter((name) => name.endsWith('.json'));
 
-	const oasModel = get(api, `components.schemas.${sampleFolder}`, null);
+	const modelPath = `components.schemas.${sampleFolder}`;
+	const oasModel = get(api, modelPath, null);
 	if (!oasModel) {
 		throw new Error(`Schema ${sampleFolder} does not exist.`);
 	}
 
-	const schema = toJsonSchema(oasModel);
-	const validate = ajv.compile(schema);
+	const schema: SchemaObject = { ...oasModel, $schema: schemaVersion };
+	const validate = buildSchemaValidator(modelPath, schema);
 	await Promise.all(
 		sampleFileNames.map(async (sampleFileName) => {
 			const contents = await readFile(join(samplesPath, sampleFileName));
@@ -68,7 +77,7 @@ async function testOneSamplesDir(samplesPath: string, api: Spec) {
 	return failures;
 }
 
-async function testSamplesAgainstApi(apiPath: string, api: Spec) {
+async function testSamplesAgainstApi(apiPath: string, api: OpenAPI.Document) {
 	const samplesPath = join(apiPath, 'samples');
 
 	const schemaDirs = (await getDirectories(samplesPath)).map((d) => join(samplesPath, d));
@@ -92,8 +101,10 @@ async function testSamplesAgainstApi(apiPath: string, api: Spec) {
 
 async function run(rootDir: string) {
 	try {
-		const oasFile = join(rootDir, 'template-openapi.yaml');
-		const api = await SwaggerParser.dereference(await SwaggerParser.parse(oasFile));
+		const api = await parseOasYamlFile(join(rootDir, 'template-openapi.yaml'), {
+			dereference: true,
+			stripTsTypes: true,
+		});
 
 		const failures = await testSamplesAgainstApi(rootDir, api);
 		if (failures !== 0) {

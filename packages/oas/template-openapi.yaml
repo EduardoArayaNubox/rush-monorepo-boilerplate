@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.1.0
 
 info:
   title: 6 River Systems Template API
@@ -29,21 +29,21 @@ paths:
             schema:
               $ref: '#/components/schemas/TemplateMessage'
       responses:
-        201:
+        '201':
           description: |
             TODO
           content:
             application/json:
               schema:
-                $ref: 'https://frontend-apps.6river.org/api/v2.17.1/openapi.yaml#/components/schemas/BaseWithId'
-        400:
-          $ref: 'https://frontend-apps.6river.org/api/v2.17.1/openapi.yaml#/components/responses/BadRequest'
-        403:
-          $ref: 'https://frontend-apps.6river.org/api/v2.17.1/openapi.yaml#/components/responses/Unauthorized'
-        422:
-          $ref: 'https://frontend-apps.6river.org/api/v2.17.1/openapi.yaml#/components/responses/UnprocessableEntity'
-        500:
-          $ref: 'https://frontend-apps.6river.org/api/v2.17.1/openapi.yaml#/components/responses/InternalServerError'
+                $ref: 'https://frontend-apps.6river.org/api/v2.17.4/openapi.yaml#/components/schemas/BaseWithId'
+        '400':
+          $ref: 'https://frontend-apps.6river.org/api/v2.17.4/openapi.yaml#/components/responses/BadRequest'
+        '403':
+          $ref: 'https://frontend-apps.6river.org/api/v2.17.4/openapi.yaml#/components/responses/Unauthorized'
+        '422':
+          $ref: 'https://frontend-apps.6river.org/api/v2.17.4/openapi.yaml#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: 'https://frontend-apps.6river.org/api/v2.17.4/openapi.yaml#/components/responses/InternalServerError'
 
 components:
   schemas:

@@ -1,4 +1,4 @@
-import { JSONSchema4 } from './JSONSchema4';
+import { SchemaObject } from 'ajv';
 
 // NOTE: this mainly exists because `json-schema-to-typescript` doesn't understand '"format": "date-time"',
 // see here: https://github.com/bcherny/json-schema-to-typescript/issues/183
@@ -13,7 +13,7 @@ import { JSONSchema4 } from './JSONSchema4';
  * @param schema Schema to adjust, will be cloned if modifications are needed
  * @returns Adjusted schema
  */
-export function applyDateFormat(schema: JSONSchema4): JSONSchema4 {
+export function applyDateFormat(schema: SchemaObject): SchemaObject {
 	if (typeof schema !== 'object' || schema === null || schema === undefined) {
 		return schema;
 	}

@@ -1,19 +1,20 @@
 import 'source-map-support/register';
 
-import * as fs from 'fs';
+import fs from 'fs';
 import { join } from 'path';
 import { promisify } from 'util';
 
+import { dereference, JSONSchema } from '@apidevtools/json-schema-ref-parser';
 import { allSettledAndThrow } from '@sixriver/typescript-support';
+import { SchemaObject } from 'ajv';
 import { compile, DEFAULT_OPTIONS } from 'json-schema-to-typescript';
-import * as _ from 'lodash';
-import toJsonSchema from 'openapi-schema-to-json-schema';
-import SwaggerParser from 'swagger-parser';
-import { Spec } from 'swagger-schema-official';
+import _ from 'lodash';
+import { OpenAPI } from 'openapi-types';
 
 import { applyDateFormat } from './applyDateFormat';
-import { JsonParser } from './jsonParser';
-import { YamlParser } from './yamlParser';
+import { JsonParser, YamlParser } from './json-schema-to-typescript-parsers';
+import { schemaVersion } from './jsonSchemaVersion';
+import { parseOasYamlFile } from './parseOasYaml';
 
 const mkdir = promisify(fs.mkdir);
 const writeFile = promisify(fs.writeFile);
@@ -51,18 +52,19 @@ function magicRefs(obj: StringKeyed) {
 	}
 }
 
-async function generateSchemas(path: string, api: Spec) {
+async function generateSchemas(path: string, api: OpenAPI.Document) {
 	const schemasPath = join(path, 'schemas');
 	await safeMkdir(schemasPath);
 
 	const schemas = Object.assign(
 		{},
-		_.get(await SwaggerParser.dereference(_.cloneDeep(api)), 'components.schemas', {}),
+		_.get(await dereference(_.cloneDeep(api) as JSONSchema), 'components.schemas', {}),
 	);
 
 	await Promise.all(
 		Object.keys(schemas).map(async (schemaName) => {
-			const schema = toJsonSchema(schemas[schemaName]);
+			const schema = schemas[schemaName];
+			schema.$schema = schemaVersion;
 			const file = join(schemasPath, `${schemaName}.json`);
 			const content = JSON.stringify(schema, null, 2);
 			await write(schemaName, file, content);
@@ -72,7 +74,7 @@ async function generateSchemas(path: string, api: Spec) {
 
 async function generateInterfaces(
 	path: string,
-	api: Spec,
+	api: OpenAPI.Document,
 	apiName: string,
 	...schemaNames: string[]
 ) {
@@ -81,7 +83,7 @@ async function generateInterfaces(
 
 	// if only exporting for some schemas, need to dereference things first
 	if (schemaNames.length) {
-		api = await SwaggerParser.dereference(_.cloneDeep(api));
+		api = (await dereference(_.cloneDeep(api) as JSONSchema)) as any;
 	}
 
 	let schemas = Object.assign({}, _.get(api, 'components.schemas', {}));
@@ -99,7 +101,8 @@ async function generateInterfaces(
 		}
 		magicRefs(s as StringKeyed);
 	}
-	const schema = toJsonSchema({ definitions: schemas });
+	const schema: SchemaObject = { definitions: schemas };
+	schema.$schema = schemaVersion;
 	const preparedSchema = applyDateFormat(schema);
 	const content = await compile(preparedSchema, apiName, {
 		unreachableDefinitions: true,
@@ -120,27 +123,9 @@ async function write(schemaName: string, file: string, content: string) {
 	await writeFile(file, content);
 }
 
-async function parseApi(apiFolder: string, yamlName: string) {
-	const apiFile = join(apiFolder, yamlName);
-	const api = await SwaggerParser.parse(apiFile);
-	// replace `x-tsType` with `tsType`: the latter is what the typescript
-	// generator wants, but it makes YAML validation angry
-	function fixer(value: any, key: string, owner: any) {
-		if (key === 'x-tsType') {
-			owner.tsType = value;
-			delete owner[key];
-		}
-		if (typeof value === 'object') {
-			_.forIn(value, fixer);
-		}
-	}
-	_.forIn(api, fixer);
-	return api;
-}
-
 async function run(rootDir: string) {
 	try {
-		const api = await parseApi(rootDir, 'template-openapi.yaml');
+		const api = await parseOasYamlFile(join(rootDir, 'template-openapi.yaml'));
 		await allSettledAndThrow([
 			generateSchemas(join(rootDir, 'dist'), api),
 			generateInterfaces(rootDir, api, 'template-openapi'),
